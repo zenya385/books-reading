@@ -8,7 +8,6 @@ import PublicRoute from "./components/Routs/PublicRoute";
 const LoginPage = lazy(() => import("./pages/LoginPage.jsx"));
 const RegisterPage = lazy(() => import("./pages/RegisterPage.jsx"));
 const LibraryPage = lazy(() => import("./pages/LibraryPage.jsx"));
-const StatisticsPage = lazy(() => import("./pages/StatisticsPage.jsx"));
 const TrainingPage = lazy(() => import("./pages/TrainingPage.jsx"));
 
 export default function App() {
