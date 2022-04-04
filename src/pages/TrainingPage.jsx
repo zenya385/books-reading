@@ -1,6 +1,10 @@
 import React from "react";
+// import BookInfoList from "../components/BookInfoList/BookInfoList";
 const TrainingPage = () => {
-  return <></>;
+  return  (
+    <>
+      </>
+  );
 };
 
 export default TrainingPage;

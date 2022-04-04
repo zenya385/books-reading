@@ -5,6 +5,7 @@ import AppBar from "./components/navigation/AppBar";
 import PrivateRoute from "./components/Routs/PrivateRoute";
 import PublicRoute from "./components/Routs/PublicRoute";
 import { Route } from "react-router-dom";
+import BookInfoList from "./components/BookInfoList/BookInfoList";
 
 const LoginPage = lazy(() => import("./pages/LoginPage.jsx"));
 const RegisterPage = lazy(() => import("./pages/RegisterPage.jsx"));
@@ -25,7 +26,7 @@ export default function App() {
             <LoginPage />
           </Route>
           <Route path="/library">
-            <LibraryPage />
+            <LibraryPage />          
           </Route>
           <Redirect to="/" />
         </Switch>
