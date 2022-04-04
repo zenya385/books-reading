@@ -1,7 +1,7 @@
 import React from "react";
 
 const LibraryPage = () => {
-  return <></>;
+  return <>Library</>;
 };
 
 export default LibraryPage;

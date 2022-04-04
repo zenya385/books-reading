@@ -4,6 +4,7 @@ import { Redirect, Switch } from "react-router-dom";
 import AppBar from "./components/navigation/AppBar";
 import PrivateRoute from "./components/Routs/PrivateRoute";
 import PublicRoute from "./components/Routs/PublicRoute";
+import { Route } from "react-router-dom";
 
 const LoginPage = lazy(() => import("./pages/LoginPage.jsx"));
 const RegisterPage = lazy(() => import("./pages/RegisterPage.jsx"));
@@ -15,7 +16,20 @@ export default function App() {
     <>
       <AppBar />
 
-      <Suspense fallback={<h1>Wait a second, please =)</h1>}></Suspense>
+      <Suspense fallback={<h1>Wait a second, please =)</h1>}>
+        <Switch>
+          <Route path="/register">
+            <RegisterPage />
+          </Route>
+          <Route path="/login">
+            <LoginPage />
+          </Route>
+          <Route path="/library">
+            <LibraryPage />
+          </Route>
+          <Redirect to="/" />
+        </Switch>
+      </Suspense>
     </>
   );
 }
