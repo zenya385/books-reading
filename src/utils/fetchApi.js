@@ -21,11 +21,13 @@ export async function loginUserApi(userData) {
 export async function registerUserApi(userData) {
   await axios.post("/auth/register", userData);
   const { email, password } = userData;
-  const { data } = fetchLogin({
-    email,
-    password,
-  });
-  // console.log("registerUserApi_data :>> ", data);
+  // const { data } = loginUserApi({
+  //   email,
+  //   password,
+  // });
+  const { data } = await axios.post("/auth/login", { email, password });
+  token.set(data.accessToken);
+  // console.log("loginUserApi_data :>> ", data);
   return data;
 }
 
@@ -37,7 +39,6 @@ export async function logoutUserApi() {
 }
 
 export async function refreshUserTokenApi(persistedToken) {
-  token.set(persistedToken);
   const { data } = await axios.get("/auth/refresh", persistedToken);
   // console.log("refreshUserTokenApi_data :>> ", data);
   return data;
