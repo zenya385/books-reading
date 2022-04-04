@@ -7,7 +7,11 @@ const LoginPage = () => {
   const dispatch = useDispatch();
 
   return (
-    <div>
+    <div style={{
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+    }}>
       <h1>Google</h1>
       <Formik
         initialValues={{ email: "", password: "" }}
@@ -22,8 +26,9 @@ const LoginPage = () => {
           }
           return errors;
         }}
-        onSubmit={(values) => {
+        onSubmit={(values, { resetForm }) => {
           dispatch(login(values));
+          resetForm();
           // console.log("values", values);
         }}
       >
@@ -68,7 +73,7 @@ const LoginPage = () => {
             <button type="submit" disabled={isSubmitting}>
               Увiйти
             </button>
-            <a href="#">Реєстрацiя</a>
+            <a href="/register">Реєстрацiя</a>
           </form>
         )}
       </Formik>
