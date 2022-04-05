@@ -1,26 +1,44 @@
 
  @media screen and (min-width: 320px) {
- 
    .regForm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 270px;
     background-color: brown;
  }
-   .regFormFormikGoogle {
+  .regFormFormikGoogle {
     background-image: url(../images/pic1-mob-1x.jpg);
  }
-
+ @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+  .regFormFormikGoogle {
+  background-image: url(../images/pic1-mob-2x.jpg);
+  }
  }
+}
  @media screen and (min-width: 768px) {
   .regForm {
-   /* width: 740px; */
+    flex-direction: row;
+    align-items: center;
   }
  }
  @media screen and (min-width: 1280px) {
   .regForm {
-    width: 1090px;
+  
    }
    
  }
+ /* background-image: url(../images/about-bg-mob-1x.png);
+ background-repeat: no-repeat;
+ background-position: bottom;
+ background-size: contain;
+ flex-grow: 1;
+ text-align: center;
+ @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+   background-image: url(../images/about-bg-mob-2x.png);
+ }
+ @media screen and (min-width: 768px) {
+   background-image: none;
+ }
+ @media screen and (min-width: 1280px) {
+   background-image: url(../images/about-bg-desktop-1x.png);
+   @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+     background-image: url(../images/about-bg-desktop-2x.png);
+   }
+ } */
