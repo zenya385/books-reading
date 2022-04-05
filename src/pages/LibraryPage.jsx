@@ -1,6 +1,7 @@
 import React from "react";
 
 import BookInfoList from "../components/BookInfoList/BookInfoList";
+import TrainingPage from "./TrainingPage";
 
 const booksLibrary = [
   {
@@ -26,9 +27,9 @@ const booksLibrary = [
 const LibraryPage = () => {
  
   return (
-    <>     
-         
+    <>              
       <BookInfoList booksLibrary={booksLibrary} />
+      <TrainingPage />
     </>
   );
 };
