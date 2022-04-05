@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import BookForm from "../components/BookForm/BookForm";
-
+import {getGoingToRead, getBooksState} from '../redux/books/booksSelectors';
 
 import BookInfoList from "../components/BookInfoList/BookInfoList";
+import { getBooks } from "../redux/books/booksOperations";
 
 const booksLibrary = [
   {
@@ -26,9 +28,30 @@ const booksLibrary = [
 ];
 
 const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
+  const fullArray = useSelector(getGoingToRead);
+  console.log(fullArray);
+  
+  // const books = useSelector(getBooksState)
+  // console.log(books)
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getBooks())
+  }, [])
   return (
     <>
-      <BookInfoList booksLibrary={booksLibrary} />
+      
+      {/* <BookInfoList booksLibrary={booksLibrary} /> */}
+      <BookForm />
+      {fullArray.lenght > 0 &&
+        (<ul>
+        
+        {fullArray.map(el =>(<li key={el.newBook.title}>
+              {el.newBook.title}
+            </li>))
+          }
+        </ul>)}
+
     </>
   );
 

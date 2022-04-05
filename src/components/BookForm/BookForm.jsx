@@ -8,7 +8,7 @@ export default function BookForm() {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [publishYear, setPublishYear] = useState("");
-  const [totalPages, setTotalPages] = useState("");
+  const [pagesTotal, setPagesTotal] = useState("");
   // const checkRepeatTitle = name => {
   //   return bookTitle.find(
   //     title => title.name.toLowerCase() === name.toLowerCase(),
@@ -28,8 +28,8 @@ export default function BookForm() {
       case "publishYear":
         setPublishYear(value);
         break;
-      case "totalPages":
-        setTotalPages(value);
+      case "pagesTotal":
+        setPagesTotal(value);
         break;
 
       default:
@@ -43,7 +43,7 @@ const newObj = {
       title,
       author,
       publishYear,
-      totalPages,
+      pagesTotal,
     };
     dispatch(addBook(newObj));
     reset();
@@ -53,7 +53,7 @@ const newObj = {
     setTitle("");
     setAuthor("");
     setPublishYear("");
-    setTotalPages("");
+    setPagesTotal("");
   };
 
   return (
@@ -95,9 +95,9 @@ const newObj = {
         Кількість сторінок
         <input
           type="number"
-          name="totalPages"
+          name="pagesTotal"
           autoComplete="off"
-          value={totalPages}
+          value={pagesTotal}
           onChange={handleChange}
           placeholder="..."
         />

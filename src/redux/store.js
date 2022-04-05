@@ -24,7 +24,7 @@ const authPersistedReducer = persistReducer(authPersistConfig, authReducer);
 const store = configureStore({
   reducer: {
     auth: authPersistedReducer,
-    book: booksReducer,
+    books: booksReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

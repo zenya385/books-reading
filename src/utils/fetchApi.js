@@ -49,7 +49,7 @@ export async function refreshUserTokenApi(persistedToken) {
 
 export async function addBookApi(newBook) {
   const { data } = await axios.post("/book", newBook);
-  console.log("fetchAddBook :>> ", data);
+  // console.log("fetchAddBook :>> ", data);
   return data;
 }
 
@@ -82,8 +82,8 @@ export async function getPlanningApi() {
 //--------------------------------------------------------------/
 
 export async function getUserBooksApi() {
-  const { data } = await axios.post("/user/books");
-  token.unset();
-  // console.log("fetchLogout_data :>> ", data);
+  const { data } = await axios.get("/user/books");
+
+  console.log("getUserBooksApi()", data);
   return data;
 }
