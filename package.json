@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.26.0",
     "chart.js": "^3.7.1",
+    "faker": "^6.6.6",
     "formik": "^2.2.9",
     "nanoid": "^3.3.1",
     "npm": "^8.5.5",
