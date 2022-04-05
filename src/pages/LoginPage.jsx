@@ -1,7 +1,8 @@
 import React from "react";
-import { Formik, useFormik } from "formik";
+import { Formik } from "formik";
 import { useDispatch } from "react-redux";
-import { login, register } from "../redux/auth/authOperations";
+import { login } from "../redux/auth/authOperations";
+import GoogleForm from '../components/GoogleForm/GoogleForm.jsx'
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -12,7 +13,7 @@ const LoginPage = () => {
       flexDirection: "column",
       alignItems: "center",
     }}>
-      <h1>Google</h1>
+      <GoogleForm/>
       <Formik
         initialValues={{ email: "", password: "" }}
         validate={(values) => {
@@ -22,7 +23,7 @@ const LoginPage = () => {
           } else if (
             !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
           ) {
-            errors.email = "Invalid email address";
+            errors.email = "Введите правильный электронный адрес";
           }
           return errors;
         }}

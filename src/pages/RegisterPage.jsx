@@ -10,8 +10,15 @@ const RegisterPage = () => {
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
-    }}>
-      <h1>Google</h1>
+    }}>  
+    <div id="name"></div>
+    <div id="gSignInWrapper">
+      <span class="label">Sign in with:</span>
+      <div id="customBtn" class="customGPlusSignIn">
+        <span class="icon"></span>
+        <span class="buttonText">Google</span>
+      </div>
+    </div>
       <Formik
         initialValues={{
           name: "",
@@ -26,7 +33,7 @@ const RegisterPage = () => {
           } else if (
             !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
           ) {
-            errors.email = "Invalid email address";
+            errors.email = "Ошибка в электронном адресе";
           }
           return errors;
         }}
