@@ -13,7 +13,8 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import BookInfoList from "../components/BookInfoList/BookInfoList";
-// import faker from 'faker';
+
+
 
 ChartJS.register(
   CategoryScale,
@@ -30,6 +31,7 @@ export const options = {
   cubicInterpolationMode: "monotone",
   responsive: true,
   plugins: {
+
     legend: {
       position: "top",
       align: "end",
@@ -41,6 +43,7 @@ export const options = {
     title: {
       display: false,
       text: "Кількість сторінок за день",
+
     },
   },
 };
@@ -60,6 +63,7 @@ export const data = {
     {
       label: "fact",
       data: [1, 2, 3, 5, 8, 10, 12],
+
       // data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
       borderColor: "#FF6B08",
       backgroundColor: "#FF6B08",
@@ -94,12 +98,14 @@ const TrainingPage = () => {
 
   return (
     <>
-      <h2>Моє тренування</h2>
+          <h2>Моє тренування</h2>
+
       <DatePicker
         selected={startDate}
         onChange={(date) => setStartDate(date)}
       />
       <DatePicker selected={endDate} onChange={(date) => setEndDate(date)} />
+
       <select>
         {booksLibrary.map((book) => (
           <option key={book._id} value={book.title}>
@@ -112,7 +118,8 @@ const TrainingPage = () => {
       <h2>Моя мета прочитати</h2>
       <span>{booksLibrary.length}</span>
       <span> {Math.floor((endDate - startDate)/(3600*24*1000))}</span>
-      <Line options={options} data={data} />;
+      <Line options={options} data={data} />;   
+
     </>
   );
 };

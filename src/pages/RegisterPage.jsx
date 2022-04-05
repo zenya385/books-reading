@@ -6,7 +6,11 @@ import { register } from "../redux/auth/authOperations";
 const RegisterPage = () => {
   const dispatch = useDispatch();
   return (
-    <div>
+    <div style={{
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+    }}>
       <h1>Google</h1>
       <Formik
         initialValues={{
@@ -26,8 +30,9 @@ const RegisterPage = () => {
           }
           return errors;
         }}
-        onSubmit={(values) => {
+        onSubmit={(values, { resetForm }) => {
           dispatch(register(values));
+          resetForm();
           // console.log("values", values);
         }}
       >
@@ -93,7 +98,7 @@ const RegisterPage = () => {
               Зареєструватися
             </button>
             <p>
-              Вже з нами?<a href="#"> Увiйти</a>
+              Вже з нами?<a href="/login"> Увiйти</a>
             </p>
           </form>
         )}

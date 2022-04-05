@@ -26,7 +26,10 @@ export default function App() {
             <LoginPage />
           </Route>
           <Route path="/library">
-            <LibraryPage />          
+            <LibraryPage />
+          </Route>
+          <Route path="/training">
+            <TrainingPage />
           </Route>
           <Redirect to="/" />
         </Switch>
