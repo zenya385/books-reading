@@ -58,25 +58,24 @@ const authSlice = createSlice({
     },
     [logout.rejected](state, { payload }) {
       state.isLoading = false;
-      state.isLoggedIn = false;
+      state.isLoggedIn = true;
       state.error = payload;
     },
-    // [getNewTokens.pending](state) {
-    //   state.isLoading = true;
-    //   state.error = null;
-    // },
-    // [getNewTokens.fulfilled](state, { payload }) {
-    //   state.user = { payload };
-    //   // state.token = null;
-    //   state.isLoggedIn = true;
-    //   state.isLoading = false;
-    //   state.isRefreshingCurrentUser = false;
-    // },
-    // [getNewTokens.rejected](state, { payload }) {
-    //   state.isRefreshingCurrentUser = false;
-    //   // state.isLoggedIn = false;
-    //   // state.error = payload;
-    // },
+    [getNewTokens.pending](state) {
+      state.isLoading = true;
+      state.error = null;
+    },
+    [getNewTokens.fulfilled](state, { payload }) {
+      state.idToken = payload.idToken;
+      state.accessToken = payload.accessToken;
+      state.refreshToken = payload.refreshToken;
+      state.isLoggedIn = true;
+      state.isLoading = false;
+    },
+    [getNewTokens.rejected](state, { payload }) {
+      state.isLoading = false;
+      state.error = payload;
+    },
   },
 });
 
