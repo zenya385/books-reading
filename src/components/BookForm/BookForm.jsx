@@ -7,8 +7,8 @@ export default function BookForm() {
 
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
-  const [publishYear, setPublishYear] = useState('');
-  const [totalPages, setTotalPages] = useState('');
+  const [publishYear, setPublishYear] = useState("");
+  const [totalPages, setTotalPages] = useState("");
   // const checkRepeatTitle = name => {
   //   return bookTitle.find(
   //     title => title.name.toLowerCase() === name.toLowerCase(),

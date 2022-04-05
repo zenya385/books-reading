@@ -2,7 +2,10 @@ import React from "react";
 import BookForm from "../components/BookForm/BookForm";
 
 const LibraryPage = () => {
-  return <><BookForm/></>;
+  return <>
+    <BookForm />
+              
+  </>;
 };
 
 export default LibraryPage;
