@@ -8,6 +8,10 @@
     width: 270px;
     background-color: brown;
  }
+   .regFormFormikGoogle {
+    background-image: url(../images/pic1-mob-1x.jpg);
+ }
+
  }
  @media screen and (min-width: 768px) {
   .regForm {
