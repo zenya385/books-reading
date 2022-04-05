@@ -2,18 +2,17 @@ import React from "react";
 import { Formik } from "formik";
 import { useDispatch } from "react-redux";
 import { login } from "../redux/auth/authOperations";
-import GoogleForm from '../components/GoogleForm/GoogleForm.jsx'
+import s from './LoginPage.module.css'
+// import GoogleForm from '../components/GoogleForm/GoogleForm.jsx'
+// import { Link } from "react-router-dom";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
 
   return (
-    <div style={{
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-    }}>
-      <GoogleForm/>
+    <div  className={s.regForm}>
+      {/* <GoogleForm/>
+      <a href="https://bookread-backend.goit.global/auth/google">Google</a> */}
       <Formik
         initialValues={{ email: "", password: "" }}
         validate={(values) => {
@@ -78,6 +77,11 @@ const LoginPage = () => {
           </form>
         )}
       </Formik>
+      <div>
+        <p>.</p>
+        <p>Книги — это корабли мысли, странствующие по волнам времени и бережно несущие свой драгоценный груз от поколения к поколению. </p>
+        <p>Бэкон Ф.</p>
+      </div>
     </div>
   );
 };

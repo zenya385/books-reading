@@ -1,0 +1,22 @@
+
+ @media screen and (min-width: 320px) {
+ 
+   .regForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 270px;
+    background-color: brown;
+ }
+ }
+ @media screen and (min-width: 768px) {
+  .regForm {
+   /* width: 740px; */
+  }
+ }
+ @media screen and (min-width: 1280px) {
+  .regForm {
+    width: 1090px;
+   }
+   
+ }

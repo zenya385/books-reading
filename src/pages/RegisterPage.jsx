@@ -2,6 +2,7 @@ import React from "react";
 import { Formik, useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import { register } from "../redux/auth/authOperations";
+import GoogleForm from '../components/GoogleForm/GoogleForm.jsx'
 
 const RegisterPage = () => {
   const dispatch = useDispatch();
@@ -11,14 +12,7 @@ const RegisterPage = () => {
       flexDirection: "column",
       alignItems: "center",
     }}>  
-    <div id="name"></div>
-    <div id="gSignInWrapper">
-      <span class="label">Sign in with:</span>
-      <div id="customBtn" class="customGPlusSignIn">
-        <span class="icon"></span>
-        <span class="buttonText">Google</span>
-      </div>
-    </div>
+      {/* <GoogleForm/> */}
       <Formik
         initialValues={{
           name: "",
