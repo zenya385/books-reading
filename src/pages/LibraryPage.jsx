@@ -28,8 +28,8 @@ const LibraryPage = () => {
  
   return (
     <>              
-      {/* <BookInfoList booksLibrary={booksLibrary} /> */}
-      <TrainingPage />
+      <BookInfoList booksLibrary={booksLibrary} />
+     
     </>
   );
 };
