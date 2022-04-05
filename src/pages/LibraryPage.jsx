@@ -23,11 +23,9 @@ const booksLibrary = [
   },
 ];
 
-const LibraryPage = () => {
- 
+const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
   return (
-    <>     
-         
+    <>
       <BookInfoList booksLibrary={booksLibrary} />
     </>
   );

@@ -67,7 +67,7 @@ const TrainingPage = () => {
         onChange={(date) => setStartDate(date)}
       />
       <DatePicker selected={endDate} onChange={(date) => setEndDate(date)} />
-      return <Line options={options} data={data} />;{" "}
+      return <Line options={options} data={data} />;
     </>
   );
 };
