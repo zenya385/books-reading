@@ -12,6 +12,7 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
+import BookInfoList from "../components/BookInfoList/BookInfoList";
 // import faker from 'faker';
 
 ChartJS.register(
@@ -30,13 +31,13 @@ export const options = {
   responsive: true,
   plugins: {
     legend: {
-      position: 'top',
-      align:'end',
+      position: "top",
+      align: "end",
       display: true,
       labels: {
-          color: 'rgb(255, 99, 132)'
-      }
-  },
+        color: "rgb(255, 99, 132)",
+      },
+    },
     title: {
       display: false,
       text: "Кількість сторінок за день",
@@ -58,26 +59,60 @@ export const data = {
     },
     {
       label: "fact",
-      data: [1, 2, 3, 5, 8,  10, 12],
+      data: [1, 2, 3, 5, 8, 10, 12],
       // data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
       borderColor: "#FF6B08",
       backgroundColor: "#FF6B08",
     },
   ],
 };
-// import BookInfoList from "../components/BookInfoList/BookInfoList";
+
+const booksLibrary = [
+  {
+    title: "The Book of Five Rings",
+    author: "Miyamoto Musashi",
+    publishYear: 1643,
+    totalPages: 110,
+    pagesFinished: 0,
+    _id: "507f1f77bcf86cd799439013",
+    __v: 0,
+  },
+  {
+    title: "Scrum. Революционный метод управлениями проектами.",
+    author: "Джефф Сазерленд",
+    publishYear: 1643,
+    totalPages: 25,
+    pagesFinished: 0,
+    _id: "507f1f77bcf86cd799439012",
+    __v: 0,
+  },
+];
+
 const TrainingPage = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
 
   return (
     <>
+      <h2>Моє тренування</h2>
       <DatePicker
         selected={startDate}
         onChange={(date) => setStartDate(date)}
       />
       <DatePicker selected={endDate} onChange={(date) => setEndDate(date)} />
-      return <Line options={options} data={data} />;{" "}
+      <select>
+        {booksLibrary.map((book) => (
+          <option key={book._id} value={book.title}>
+            {book.title}
+          </option>
+        ))}
+      </select>
+      <button>Додати</button>
+      <BookInfoList booksLibrary={booksLibrary} />
+      <h2>Моя мета прочитати</h2>
+      <span>{booksLibrary.length}</span>
+      <span> {Math.floor((endDate - startDate)/(3600*24*1000))}</span>
+      <Line options={options} data={data} />;
     </>
   );
 };

@@ -28,7 +28,7 @@ const LibraryPage = () => {
  
   return (
     <>              
-      <BookInfoList booksLibrary={booksLibrary} />
+      {/* <BookInfoList booksLibrary={booksLibrary} /> */}
       <TrainingPage />
     </>
   );
