@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import {getBooks, addBook, addBookReview} from './booksOperations'
 
 const booksSlice = createSlice({
   name: "books",
@@ -6,8 +7,17 @@ const booksSlice = createSlice({
     goingToRead: [],
     currentlyReading: [],
     finishedReading: [],
+    isLoading: false
   },
-  extraReducers: {},
+  extraReducers: {
+    // ----GET----- //
+    [getBooks.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [getBooks.fulfilled]: (state, {payload}) => {
+      state.goingToRead = payload;
+    }
+  },
 });
 
 export default booksSlice.reducer;
