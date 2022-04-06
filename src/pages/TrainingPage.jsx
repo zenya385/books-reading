@@ -12,7 +12,9 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-// import faker from 'faker';
+import BookInfoList from "../components/BookInfoList/BookInfoList";
+import { useSelector } from "react-redux";
+import { getBooksGoingToReadState } from "../redux/books/booksSelectors";
 
 ChartJS.register(
   CategoryScale,
@@ -29,9 +31,17 @@ export const options = {
   cubicInterpolationMode: "monotone",
   responsive: true,
   plugins: {
-    title: {
+    legend: {
+      position: "top",
+      align: "end",
       display: true,
-      text: "Chart.js Line Chart",
+      labels: {
+        color: "rgb(255, 99, 132)",
+      },
+    },
+    title: {
+      display: false,
+      text: "Кількість сторінок за день",
     },
   },
 };
@@ -42,32 +52,53 @@ export const data = {
   labels,
   datasets: [
     {
-      label: "Dataset 1",
+      label: "plan",
+      data: [0, 3, 5, 6, 9, 10, 11],
       // data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
       borderColor: "rgb(0, 0, 0)",
-      backgroundColor: "rgba(0, 0, 0, 0.5)",
+      backgroundColor: "rgba(0, 0, 0, 0.8)",
     },
     {
-      label: "Dataset 2",
+      label: "fact",
+      data: [1, 2, 3, 5, 8, 10, 12],
+
       // data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
       borderColor: "#FF6B08",
       backgroundColor: "#FF6B08",
     },
   ],
 };
-// import BookInfoList from "../components/BookInfoList/BookInfoList";
+
 const TrainingPage = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
+  const booksLibrary=useSelector(getBooksGoingToReadState);
 
   return (
     <>
+      <h2>Моє тренування</h2>
       <DatePicker
+      dateFormat="dd.MM.yyyy"
         selected={startDate}
         onChange={(date) => setStartDate(date)}
       />
-      <DatePicker selected={endDate} onChange={(date) => setEndDate(date)} />
-      return <Line options={options} data={data} />;{" "}
+
+      <DatePicker dateFormat="dd.MM.yyyy" selected={endDate} onChange={(date) => setEndDate(date)} />
+      <select>
+        {booksLibrary.map((book) => (
+          <option key={book._id} value={book.title}>
+            {book.title}
+          </option>
+        ))}
+      </select>
+      <button>Додати</button>
+      <h2>Моя мета прочитати</h2>
+      <span>{booksLibrary.length}</span>
+      <span> {Math.floor((endDate - startDate) / (3600 * 24 * 1000))}</span>
+      <BookInfoList booksLibrary={booksLibrary} />
+      <button>Почати тренування</button>
+      <Line options={options} data={data} />
+
     </>
   );
 };

@@ -9,15 +9,18 @@ const AppBar = () => {
   const isLoggedIn = useSelector(getIsLoggedIn);
   return (
     <header className={styles.header}>
-      <NavLink
-        to="/login"
-        exact
-        className={styles.link}
-        activeClassName={styles.activLink}
-      >
-        BR
-      </NavLink>
-      <UserMenu />
+      {!isLoggedIn ? (
+        <NavLink
+          to="/login"
+          exact
+          className={styles.link}
+          activeClassName={styles.activLink}
+        >
+          BR
+        </NavLink>
+      ) : (
+        <UserMenu />
+      )}
       {/* (
          <div>
            <NavLink to="/register" className="link" activeClassName="activeLink">
