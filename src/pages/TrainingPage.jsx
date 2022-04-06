@@ -96,10 +96,11 @@ const TrainingPage = () => {
     <>
       <h2>Моє тренування</h2>
       <DatePicker
+      dateFormat="dd.MM.yyyy"
         selected={startDate}
         onChange={(date) => setStartDate(date)}
       />
-      <DatePicker selected={endDate} onChange={(date) => setEndDate(date)} />
+      <DatePicker dateFormat="dd.MM.yyyy" selected={endDate} onChange={(date) => setEndDate(date)} />
       <select>
         {booksLibrary.map((book) => (
           <option key={book._id} value={book.title}>
