@@ -1,5 +1,6 @@
 .dateGroup {
   display: flex;
+  /* margin-right: 30px; */
 }
 
 .date {
@@ -68,11 +69,11 @@
 
   background-color: white;
   box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
-  margin-right: 70px;
+  // margin-right: 70px;
 }
 
 .box::before {
-  content: "До закінчення року залишилось";
+  content: "До досягнення мети залишилось";
 
   position: absolute;
   top: -38px;
