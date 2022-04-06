@@ -58,16 +58,17 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
       <BookForm />
       {Boolean(booksFinishedReading.length) && <h2>Прочитано</h2>}
       {Boolean(booksFinishedReading.length) && (
-        <BookInfoList booksLibrary={booksFinishedReading} />
+        <BookInfoList booksLibrary={booksFinishedReading} colorIcon="dark-grey" />
       )}
       {Boolean(booksCurrentlyReading.length) && <h2>Читаю</h2>}
       {Boolean(booksCurrentlyReading.length) && (
-        <BookInfoList booksLibrary={booksCurrentlyReading} />
+        <BookInfoList booksLibrary={booksCurrentlyReading} colorIcon="accent" />
       )}
       {Boolean(booksGoingToRead.length) && <h2>Маю намір прочитати</h2>}
       {Boolean(booksGoingToRead.length) && (
-        <BookInfoList booksLibrary={booksGoingToRead} />
+        <BookInfoList booksLibrary={booksGoingToRead} colorIcon="grey" />
       )}
+      <a href="/training">Далі</a>
       {/* {loggedIn && (
         <ul>
           {fullArray.map((el) => (
