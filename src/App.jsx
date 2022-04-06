@@ -1,4 +1,4 @@
-import "./index.css";
+import "./index.scss";
 import React, { Suspense, lazy } from "react";
 import { Redirect, Switch } from "react-router-dom";
 import AppBar from "./components/navigation/AppBar";
