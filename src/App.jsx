@@ -6,6 +6,7 @@ import PrivateRoute from "./components/Routs/PrivateRoute";
 import PublicRoute from "./components/Routs/PublicRoute";
 import { Route } from "react-router-dom";
 import BookInfoList from "./components/BookInfoList/BookInfoList";
+import Container from "./components/Share/Container";
 
 const LoginPage = lazy(() => import("./pages/LoginPage.jsx"));
 const RegisterPage = lazy(() => import("./pages/RegisterPage.jsx"));
@@ -14,7 +15,7 @@ const TrainingPage = lazy(() => import("./pages/TrainingPage.jsx"));
 
 export default function App() {
   return (
-    <>
+    <Container>
       <AppBar />
 
       <Suspense fallback={<h1>Wait a second, please =</h1>}>
@@ -34,6 +35,6 @@ export default function App() {
           <Redirect to="/register" />
         </Switch>
       </Suspense>
-    </>
+    </Container>
   );
 }
