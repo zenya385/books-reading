@@ -12,7 +12,7 @@ const RegisterPage = () => {
       flexDirection: "column",
       alignItems: "center",
     }}>  
-      {/* <GoogleForm/> */}
+    <a href="https://bookread-backend.goit.global/auth/google">Google</a>
       <Formik
         initialValues={{
           name: "",

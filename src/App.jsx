@@ -15,8 +15,9 @@ const TrainingPage = lazy(() => import("./pages/TrainingPage.jsx"));
 
 export default function App() {
   return (
-    <Container>
-      <AppBar />
+    <>
+    <AppBar />
+      <Container>
       <Suspense fallback={<h1>Wait a second, please =)</h1>}>
         <Switch>
           <Route path="/register">
@@ -35,5 +36,7 @@ export default function App() {
         </Switch>
       </Suspense>
     </Container>
+    </>
+      
   );
 }

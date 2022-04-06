@@ -11,10 +11,10 @@ const LoginPage = () => {
   const dispatch = useDispatch();
 
   return (
-    // <Container>
+
       <div className={s.regForm}>
         <div className={s.regFormFormikGoogle}>
-          {/* <GoogleForm/> */}
+        
           <a href="https://bookread-backend.goit.global/auth/google">Google</a>
           <Formik
             initialValues={{ email: "", password: "" }}
@@ -83,7 +83,7 @@ const LoginPage = () => {
           <p>Бэкон Ф.</p>
         </div>
       </div>
-    // </Container>
+  
     
   );
 };
