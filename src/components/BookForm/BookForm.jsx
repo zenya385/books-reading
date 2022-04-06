@@ -57,9 +57,10 @@ export default function BookForm() {
   };
 
   return (
-    <div className={s.book}>
-    <form onSubmit={handleSubmit} className={s.book__form}>
-      <label className={s.book__label}>
+    
+      <form onSubmit={handleSubmit} className={s.form}>
+        <div className={s.form__container}>
+      <label className={s.form__label}>
         Назва книги
         <input
           type="text"
@@ -71,7 +72,7 @@ export default function BookForm() {
             className={s.title}
         />
       </label>
-      <label className={s.book__label}>
+      <label className={s.form__label}>
         Автор книги
         <input
           type="text"
@@ -83,7 +84,7 @@ export default function BookForm() {
             className={s.author}
         />
       </label>
-      <label className={s.book__label}>
+      <label className={s.form__label}>
         Рік випуску
         <input
           type="number"
@@ -95,7 +96,7 @@ export default function BookForm() {
             className={s.yearPages}
         />
       </label>
-      <label className={s.book__label}>
+      <label className={s.form__label}>
         Кількість сторінок
         <input
           type="number"
@@ -107,9 +108,11 @@ export default function BookForm() {
             className={s.yearPages}
         />
       </label>
-
-      <button type="submit" className={s.book__btn}>Додати</button>
+        </div>
+       
+          <button type="submit" className={s.form__btn}>Додати</button>
+          
       </form>
-      </div>
+    
   );
 }

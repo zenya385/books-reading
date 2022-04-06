@@ -1,66 +1,114 @@
-.book{
-	&__form{
+.form{
 	display: flex;
-	align-items: flex-end;
-	}
-	&__label {
-	display: flex;
-	flex-direction: column;
-	font-style: normal;
-	font-weight: 500;
-	font-size: 14px;
-	line-height: 2.71;
-	color: var(--seconadry-text-color);
-	&:not(:first-child){
-		margin-left: 15px;
-	}
+	@media screen and (max-width: 1279px) {
+		flex-direction: column;
+		align-items: center;
 	}
 	
-	&__btn{
+	&__container{
+		display: flex;
+		flex-direction: column;
+		@media screen and (min-width: 768px) {
+			flex-direction: row;
+			flex-wrap: wrap;
+		}
+	}
+	&__label{
+		font-weight: 500;
+		font-size: 14px;
+		line-height: 2.71;
+		color: var(--seconadry-text-color);
+		@media screen and (min-width: 768px) {
+			display: flex;
+			flex-direction: column;
+		}
+	&:not(:nth-last-child(n+3)){
+		@media screen and (min-width: 768px) {
+		margin-left: 27px;
+		}
+		@media screen and (min-width: 1280px) {
+			margin-left: 0;
+		}
+	}
+	&:not(:first-child) {
+		@media screen and (min-width: 1280px) {
+			margin-left: 27px;
+		}
+	}
+	}
+   &__btn{
 		width: 171px;
 		height: 42px;
-		left: 985px;
-		top: 128px;
 		background: #F6F7FB;
 		border: 1px solid var(--title-text-color);
 		box-sizing: border-box;
 		cursor: pointer;
 		-webkit-transition-duration: 0.4s;
 		transition-duration: 0.4s;
-		margin-left: 45px;
+		@media screen and (max-width: 1279px) {
+			margin-top: 35px;
+		}
+		@media screen and (min-width: 1280px) {
+         margin-left: 45px;
+			margin-top: 37px;
+		}
+		
 		&:hover,
 		&:focus {
 			background: var(--accent-primary-color);
 			color: #F6F7FB;
-		}
 	}
-	
 }
+}
+
+
+
 input{
-	
 	background: #F6F7FB;
 	border: 1px solid #A6ABB9;
 	box-sizing: border-box;
+	height: 42px;
+	margin-bottom: 10px;
+	width: 100%;
+	&:focus {
 	
-	&:focus{
-		outline: none;
-		background-color: var(--primary-bg-color);
+	background-color: var(--primary-bg-color);
 	}
 	&.title{
-    width: 346px;
-    height: 42px;
-	}
-	&.author{
-		width: 250px;
-		height: 42px;
-	}
-	&.yearPages{
-		
-		width: 130px;
-		height: 42px;
-		&::-webkit-outer-spin-button,
-		&::-webkit-inner-spin-button{
-			-webkit-appearance: none;
+	
+		@media screen and (min-width: 768px) {
+			width: 594px;
+		}
+		@media screen and (min-width: 1280px) {
+		width: 346px;
 		}
 	}
-}
+			&.author{
+			@media screen and (min-width: 768px) {
+				width: 250px;
+			}
+			@media screen and (min-width: 1280px) {
+				width: 250px;
+			}
+			}
+			&.yearPages{
+				@media screen and (min-width: 768px) {
+					width: 145px;
+					
+				}
+				@media screen and (min-width: 1280px) {
+					width: 130px;
+				}
+			
+				&::-webkit-outer-spin-button,
+				&::-webkit-inner-spin-button{
+					-webkit-appearance: none;
+				}
+			}
+
+	}
+	
+
+
+
+
