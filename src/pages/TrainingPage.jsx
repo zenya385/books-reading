@@ -18,6 +18,7 @@ import { getBooksGoingToReadState } from "../redux/books/booksSelectors";
 import { getIsLoggedIn } from "../redux/auth/authSelectors";
 import { getBooks } from "../redux/books/booksOperations";
 import MyPurposeToRead from "../components/MyPurposeToRead/MyPurposeToRead";
+import s from "./TrainingPage.module.scss";
 
 ChartJS.register(
   CategoryScale,
@@ -30,7 +31,6 @@ ChartJS.register(
 );
 // import second from './'
 
-import s from "./TrainingPage.module.scss";
 
 export const options = {
   backgroundColor: "#FF6B08",
