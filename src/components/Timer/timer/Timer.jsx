@@ -13,3 +13,7 @@ const Timer = () => {
 };
 
 export default Timer;
+
+// import Timer from "./components/Timer/timer/Timer";
+
+/* <Timer /> */
