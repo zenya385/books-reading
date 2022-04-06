@@ -11,9 +11,9 @@ const BookInfoItem = ({ title, author, publishYear, pagesTotal }) => {
       <a href="" className="link nav__link-contact">
         <p className="title-book">{title}</p>
       </a>
-      <p className="author-book">Автор: {author}</p>
-      <p className="publishYear-book">Рік: {publishYear}</p>
-      <p className="pagesTotal-book">Стор: {pagesTotal}</p>
+      <p className="author-book">{author}</p>
+      <p className="publishYear-book">{publishYear}</p>
+      <p className="pagesTotal-book">{pagesTotal}</p>
     </li>
   );
 };

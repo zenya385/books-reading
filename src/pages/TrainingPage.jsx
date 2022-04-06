@@ -14,7 +14,7 @@ import {
 import { Line } from "react-chartjs-2";
 import BookInfoList from "../components/BookInfoList/BookInfoList";
 import { useSelector } from "react-redux";
-import { getBooksState } from "../redux/books/booksSelectors";
+import { getBooksGoingToReadState } from "../redux/books/booksSelectors";
 
 ChartJS.register(
   CategoryScale,
@@ -72,7 +72,7 @@ export const data = {
 const TrainingPage = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  const booksLibrary=useSelector(getBooksState);
+  const booksLibrary=useSelector(getBooksGoingToReadState);
 
   return (
     <>
@@ -85,7 +85,7 @@ const TrainingPage = () => {
 
       <DatePicker dateFormat="dd.MM.yyyy" selected={endDate} onChange={(date) => setEndDate(date)} />
       <select>
-        {booksLibrary.goingToRead.map((book) => (
+        {booksLibrary.map((book) => (
           <option key={book._id} value={book.title}>
             {book.title}
           </option>
@@ -95,9 +95,9 @@ const TrainingPage = () => {
       <h2>Моя мета прочитати</h2>
       <span>{booksLibrary.length}</span>
       <span> {Math.floor((endDate - startDate) / (3600 * 24 * 1000))}</span>
-      <BookInfoList booksLibrary={booksLibrary.goingToRead} />
+      <BookInfoList booksLibrary={booksLibrary} />
       <button>Почати тренування</button>
-      <Line options={options} data={data} />;
+      <Line options={options} data={data} />
 
     </>
   );

@@ -1,19 +1,16 @@
-.item{
-    display: flex;
-    align-items: center;
-    height: 62px;
+.item {
+  display: flex;
+  align-items: center; 
+  margin: 0;
+  background: var (--primary-bg-color);
+
+  a {
+    text-decoration: none;
+  }
+
+  p {
     margin: 0;
-    background:var (--primary-bg-color);
-    color: var( --primary-text-color);
-
-    a{
-        text-decoration: none;
-    }
-
-    p{
-        margin: 0;   
-        padding: 11px;  
-        color: var( --primary-text-color);
-   
-    }
+    padding: 11px;
+    color: var(--primary-text-color);
+  }
 }
