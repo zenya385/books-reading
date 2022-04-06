@@ -50,7 +50,7 @@ export async function refreshUserTokenApi(persistedToken) {
 export async function addBookApi(newBook, persistedToken) {
   token.set(persistedToken);
   const { data } = await axios.post("/book", newBook);
-  console.log("fetchAddBook :>> ", data);
+  // console.log("fetchAddBook :>> ", data);
   return data;
 }
 

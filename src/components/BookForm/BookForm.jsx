@@ -44,14 +44,7 @@ export default function BookForm() {
       publishYear,
       pagesTotal,
     };
-    dispatch(
-      addBook({
-        title,
-        author,
-        publishYear,
-        pagesTotal,
-      })
-    );
+    dispatch(addBook(newObj));
     reset();
   };
 

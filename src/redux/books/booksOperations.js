@@ -8,7 +8,7 @@ export const addBook = createAsyncThunk(
     const persistedToken = state.auth.accessToken;
     try {
       const book = await addBookApi(newBook, persistedToken);
-      console.log(book.newBook);
+      //   console.log(book.newBook);
       return book.newBook;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);

@@ -29,8 +29,8 @@ const booksSlice = createSlice({
     [getBooks.fulfilled]: (state, { payload }) => ({
       ...state,
       goingToRead: payload.goingToRead,
-      // currentlyReading: [...state.currentlyReading, payload.currentlyReading],
-      // finishedReading: [...state.finishedReading, payload.finishedReading],
+      currentlyReading: payload.currentlyReading,
+      finishedReading: payload.finishedReading,
     }),
     [getBooks.rejected]: (state, { payload }) => ({
       ...state,

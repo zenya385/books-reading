@@ -30,28 +30,25 @@ const booksLibrary = [
 
 const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
   const fullArray = useSelector(getGoingToRead);
-  console.log(fullArray);
   const loggedIn = useSelector(getIsLoggedIn);
-
-  // const books = useSelector(getBooksState);
-  // console.log(books);
   const dispatch = useDispatch();
 
   loggedIn &&
     useEffect(() => {
       dispatch(getBooks());
     }, []);
+
   return (
     <>
       {/* <BookInfoList booksLibrary={booksLibrary} /> */}
       <BookForm />
-      {loggedIn && (
+      {/* {loggedIn && (
         <ul>
           {fullArray.map((el) => (
             <li key={el._id}>{el.title}</li>
           ))}
         </ul>
-      )}
+      )} */}
     </>
   );
 };
