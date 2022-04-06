@@ -1,0 +1,154 @@
+.modal {
+    padding: 31px 15px 38px 15px;
+    width: 270px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #FFFFFF;
+    box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+
+        @media screen and (min-width: 768px) {
+            width: 570px;
+            padding: 15px 30px 30px 30px;
+        }
+}
+
+.title {
+    margin-bottom: 5px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 2.1;
+    color: #242A37;
+
+        @media screen and (min-width: 768px) {
+            margin-bottom: 10px;
+            margin-top: 0;
+            
+            font-size: 19px;
+            line-height: 2;
+        }
+    
+}
+
+.firstStep {
+    margin-bottom: 8px;
+    padding-left: 46px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.2;
+    color: #242A37;
+
+        @media screen and (min-width: 768px) {
+            margin-bottom: 0;
+            margin-top: 0;
+
+            font-size: 16px;
+            line-height: 2.3;
+        }
+}
+.firstStepDescr {
+    padding-left: 65px;
+    font-family: 'Montserrat';
+    font-size: 14px;
+    line-height: 1.2;
+    
+    color: #898F9F;
+
+        @media screen and (min-width: 768px) {
+            margin-top: 0;
+            margin-bottom: 20px;
+            line-height: 2.7;
+        }
+}
+.firstStepWrapper {
+    position: relative;
+}
+.firstStepIcon {
+    position: absolute;
+    left: 30px;
+    top: 58px;
+}
+.firstStepIconDescr {
+    position: absolute;
+    left: 61px;
+    top: 91px;
+}
+.secondStep {
+    margin-bottom: 8px;
+    padding-left: 46px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.2;
+    color: #242A37;
+
+        @media screen and (min-width: 768px) {
+            margin-bottom: 0;
+            margin-top: 0;
+    
+            font-size: 16px;
+            line-height: 2.3;
+        }
+   
+}
+.secondStepDescr {
+    padding-left: 65px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.2;
+
+    color: #898F9F;
+
+        @media screen and (min-width: 768px) {
+            line-height: 2.7;
+        }   
+}
+.secondStepIcon {
+    position: absolute;
+    left: 30px;
+    bottom: 68px;
+}
+.secondStepIconDescr {
+    position: absolute;
+    left: 61px;
+    bottom: 45px;
+}
+.stepWrapper {
+    margin-bottom: 25px;
+
+    @media screen and (min-width: 768px) {
+        margin-bottom: 0;
+    }
+}
+.okBtn {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    width: 127px;
+
+    font-family: 'Montserrat';
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 2.7;
+    color: #FFFFFF;
+
+    background: #D15807;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border: none;
+    margin:auto;
+
+        @media screen and (min-width: 768px) {
+            display: none;
+        }
+}
+
+// @media screen and (min-width: 1280px) {}
