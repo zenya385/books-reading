@@ -47,14 +47,10 @@ const LoginPage = () => {
             }) => (
               <form
                 onSubmit={handleSubmit}
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                }}
               >
-                <label htmlFor="email">Електронна адреса</label>
+                <label className={s.inputLabel} htmlFor="email">Електронна адреса</label>
                 <input
+                  className={s.inputEmail}
                   type="email"
                   name="email"
                   placeholder="your@email.com"
@@ -63,8 +59,9 @@ const LoginPage = () => {
                   value={values.email}
                 />
                 {errors.email && touched.email && errors.email}
-                <label htmlFor="password">Пароль</label>
+                <label className={s.inputLabel} htmlFor="password">Пароль</label>
                 <input
+                  className={s.inputPassword}
                   type="password"
                   name="password"
                   placeholder="...."
@@ -73,10 +70,10 @@ const LoginPage = () => {
                   value={values.password}
                 />
                 {errors.password && touched.password && errors.password}
-                <button type="submit" disabled={isSubmitting}>
+                <button className={s.btnSubmit} type="submit" disabled={isSubmitting}>
                   Увiйти
                 </button>
-                <a href="/register">Реєстрацiя</a>
+                <a className={s.btnRegisterLogin} href="/register">Реєстрацiя</a>
               </form>
             )}
           </Formik>
