@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addBook } from "../../redux/books/booksOperations";
+import s from '../BookForm/BookForm.module.scss'
 export default function BookForm() {
   const dispatch = useDispatch();
 
@@ -56,8 +57,10 @@ export default function BookForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
+    
+      <form onSubmit={handleSubmit} className={s.form}>
+        <div className={s.form__container}>
+      <label className={s.form__label}>
         Назва книги
         <input
           type="text"
@@ -65,10 +68,11 @@ export default function BookForm() {
           autoComplete="off"
           value={title}
           onChange={handleChange}
-          placeholder="..."
+            placeholder="..."
+            className={s.title}
         />
       </label>
-      <label>
+      <label className={s.form__label}>
         Автор книги
         <input
           type="text"
@@ -76,10 +80,11 @@ export default function BookForm() {
           autoComplete="off"
           value={author}
           onChange={handleChange}
-          placeholder="..."
+            placeholder="..."
+            className={s.author}
         />
       </label>
-      <label>
+      <label className={s.form__label}>
         Рік випуску
         <input
           type="number"
@@ -87,10 +92,11 @@ export default function BookForm() {
           autoComplete="off"
           value={publishYear}
           onChange={handleChange}
-          placeholder="..."
+            placeholder="..."
+            className={s.yearPages}
         />
       </label>
-      <label>
+      <label className={s.form__label}>
         Кількість сторінок
         <input
           type="number"
@@ -98,11 +104,15 @@ export default function BookForm() {
           autoComplete="off"
           value={pagesTotal}
           onChange={handleChange}
-          placeholder="..."
+            placeholder="..."
+            className={s.yearPages}
         />
       </label>
-
-      <button type="submit">Додати</button>
-    </form>
+        </div>
+       
+          <button type="submit" className={s.form__btn}>Додати</button>
+          
+      </form>
+    
   );
 }
