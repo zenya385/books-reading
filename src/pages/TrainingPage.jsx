@@ -13,6 +13,8 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import BookInfoList from "../components/BookInfoList/BookInfoList";
+import { useSelector } from "react-redux";
+import { getBooksState } from "../redux/books/booksSelectors";
 
 ChartJS.register(
   CategoryScale,
@@ -67,30 +69,10 @@ export const data = {
   ],
 };
 
-const booksLibrary = [
-  {
-    title: "The Book of Five Rings",
-    author: "Miyamoto Musashi",
-    publishYear: 1643,
-    totalPages: 110,
-    pagesFinished: 0,
-    _id: "507f1f77bcf86cd799439013",
-    __v: 0,
-  },
-  {
-    title: "Scrum. Революционный метод управлениями проектами.",
-    author: "Джефф Сазерленд",
-    publishYear: 1643,
-    totalPages: 25,
-    pagesFinished: 0,
-    _id: "507f1f77bcf86cd799439012",
-    __v: 0,
-  },
-];
-
 const TrainingPage = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
+  const booksLibrary=useSelector(getBooksState);
 
   return (
     <>
@@ -103,7 +85,7 @@ const TrainingPage = () => {
 
       <DatePicker dateFormat="dd.MM.yyyy" selected={endDate} onChange={(date) => setEndDate(date)} />
       <select>
-        {booksLibrary.map((book) => (
+        {booksLibrary.goingToRead.map((book) => (
           <option key={book._id} value={book.title}>
             {book.title}
           </option>
@@ -113,7 +95,7 @@ const TrainingPage = () => {
       <h2>Моя мета прочитати</h2>
       <span>{booksLibrary.length}</span>
       <span> {Math.floor((endDate - startDate) / (3600 * 24 * 1000))}</span>
-      <BookInfoList booksLibrary={booksLibrary} />
+      <BookInfoList booksLibrary={booksLibrary.goingToRead} />
       <button>Почати тренування</button>
       <Line options={options} data={data} />;
 
