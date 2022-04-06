@@ -1,0 +1,39 @@
+.myPurposeToRead {
+  width: 100%;
+  height: 318px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--primary-bg-color);
+
+  h2{
+      width: 100%;
+      height: 100px;
+      color: var(--third-text-color);
+      background: var(--secondary-bg-color);
+      display: flex;
+      align-items: center;
+      justify-content: center; 
+      margin: 0;
+      margin-bottom: 55px;
+  }
+
+  span {
+    width: 63px;
+    height: 63px;
+    background: var(--third-bg-color);
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 45px;
+    line-height: 0.84;  
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+  }
+  .numbersPurpose {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+}

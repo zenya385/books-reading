@@ -4,7 +4,7 @@ import s from './BookInfoList.module.scss'
 
 
 
-const BookInfoList = ({booksLibrary}) => {
+const BookInfoList = ({booksLibrary, colorIcon,review}) => {
   return (
     <ul>
       <div className={s.bookInfo}>
@@ -20,6 +20,8 @@ const BookInfoList = ({booksLibrary}) => {
           author={book.author}
           publishYear={book.publishYear}
           pagesTotal={book.pagesTotal}
+          colorIcon={colorIcon}
+          review={review}
         />
       ))}
     </ul>
