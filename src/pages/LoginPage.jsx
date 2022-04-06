@@ -14,8 +14,8 @@ const LoginPage = () => {
     // <Container>
       <div className={s.regForm}>
         <div className={s.regFormFormikGoogle}>
-          {/* <GoogleForm/>
-          <a href="https://bookread-backend.goit.global/auth/google">Google</a> */}
+          {/* <GoogleForm/> */}
+          <a href="https://bookread-backend.goit.global/auth/google">Google</a>
           <Formik
             initialValues={{ email: "", password: "" }}
             validate={(values) => {
@@ -57,8 +57,7 @@ const LoginPage = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.email}
-                />
-                {errors.email && touched.email && errors.email}
+                />{errors.email && touched.email && errors.email}
                 <label className={s.inputLabel} htmlFor="password">Пароль</label>
                 <input
                   className={s.inputPassword}
