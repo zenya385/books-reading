@@ -7,6 +7,7 @@ const authSlice = createSlice({
     user: { name: null, email: null },
     accessToken: null,
     refreshToken: null,
+    sid: null,
     isLoading: false,
     isLoggedIn: false,
     error: null,
@@ -20,6 +21,7 @@ const authSlice = createSlice({
       state.user = payload.user;
       state.accessToken = payload.accessToken;
       state.refreshToken = payload.refreshToken;
+      state.sid = payload.sid;
       state.isLoggedIn = true;
       state.isLoading = false;
     },
@@ -37,6 +39,7 @@ const authSlice = createSlice({
       state.user.email = payload.userData.email;
       state.accessToken = payload.accessToken;
       state.refreshToken = payload.refreshToken;
+      state.sid = payload.sid;
       state.isLoggedIn = true;
       state.isLoading = false;
     },
@@ -53,6 +56,7 @@ const authSlice = createSlice({
       state.user = { name: null, email: null };
       state.accessToken = null;
       state.refreshToken = null;
+      state.sid = null;
       state.isLoggedIn = false;
       state.isLoading = false;
     },
@@ -66,11 +70,17 @@ const authSlice = createSlice({
       state.error = null;
     },
     [getNewTokens.fulfilled](state, { payload }) {
-      state.idToken = payload.idToken;
-      state.accessToken = payload.accessToken;
-      state.refreshToken = payload.refreshToken;
-      state.isLoggedIn = true;
-      state.isLoading = false;
+      return {
+        ...state,
+        isLoggedIn: true,
+        isLoading: false,
+        ...payload,
+      };
+      // state.accessToken = payload.accessToken;
+      // state.refreshToken = payload.refreshToken;
+      // state.sid = payload.sid;
+      // state.isLoggedIn = true;
+      // state.isLoading = false;
     },
     [getNewTokens.rejected](state, { payload }) {
       state.isLoading = false;

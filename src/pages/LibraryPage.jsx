@@ -44,9 +44,9 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
   const booksAllLibrary = useSelector(getBooksState);
   const dispatch = useDispatch();
 
-  console.log(Boolean(booksFinishedReading.length));
-  console.log(booksGoingToRead.length);
-  console.log(booksAllLibrary);
+  // console.log(Boolean(booksFinishedReading.length));
+  // console.log(booksGoingToRead.length);
+  // console.log(booksAllLibrary);
 
   loggedIn &&
     useEffect(() => {
