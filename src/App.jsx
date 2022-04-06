@@ -1,4 +1,6 @@
 import "./index.css";
+// import React from "react";
+
 import React, { Suspense, lazy } from "react";
 import { Redirect, Switch } from "react-router-dom";
 import AppBar from "./components/navigation/AppBar";
@@ -7,6 +9,7 @@ import PublicRoute from "./components/Routs/PublicRoute";
 import { Route } from "react-router-dom";
 import BookInfoList from "./components/BookInfoList/BookInfoList";
 import Container from "./components/Share/Container";
+
 
 const LoginPage = lazy(() => import("./pages/LoginPage.jsx"));
 const RegisterPage = lazy(() => import("./pages/RegisterPage.jsx"));
