@@ -1,10 +1,10 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { Icons } from "react-toastify";
 import { logout } from "../../redux/auth/authOperations";
-import styles from "./UserMenu.module.css";
-import Icons from "../../images/symbol-defs.svg";
 import { getUserName } from "../../redux/auth/authSelectors";
+import styles from "./UserMenu.module.scss";
 
 export function UserMenu() {
   const dispatch = useDispatch();

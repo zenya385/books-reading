@@ -1,4 +1,6 @@
-import "./index.css";
+import "./index.scss";
+// import React from "react";
+
 import React, { Suspense, lazy } from "react";
 import { Redirect, Switch } from "react-router-dom";
 import AppBar from "./components/navigation/AppBar";
@@ -7,6 +9,7 @@ import PublicRoute from "./components/Routs/PublicRoute";
 import { Route } from "react-router-dom";
 import BookInfoList from "./components/BookInfoList/BookInfoList";
 import Container from "./components/Share/Container";
+import Timer from "./components/Timer/Timer";
 
 const LoginPage = lazy(() => import("./pages/LoginPage.jsx"));
 const RegisterPage = lazy(() => import("./pages/RegisterPage.jsx"));
@@ -15,26 +18,27 @@ const TrainingPage = lazy(() => import("./pages/TrainingPage.jsx"));
 
 export default function App() {
   return (
-    <Container>
+    <>
       <AppBar />
-
-      <Suspense fallback={<h1>Wait a second, please =</h1>}>
-        <Switch>
-          <PublicRoute path="/register" redirectTo="/library" restricted>
-            <RegisterPage />
-          </PublicRoute>
-          <PublicRoute path="/login" redirectTo="/library" restricted>
-            <LoginPage />
-          </PublicRoute>
-          <PrivateRoute path="/library" redirectTo="/login">
-            <LibraryPage />
-          </PrivateRoute>
-          <PrivateRoute path="/training" redirectTo="/login">
-            <TrainingPage />
-          </PrivateRoute>
-          <Redirect to="/register" />
-        </Switch>
-      </Suspense>
-    </Container>
+      <Container>
+        <Suspense fallback={<h1>Wait a second, please =)</h1>}>
+          <Switch>
+            <Route path="/register">
+              <RegisterPage />
+            </Route>
+            <Route path="/login">
+              <LoginPage />
+            </Route>
+            <Route path="/library">
+              <LibraryPage />
+            </Route>
+            <Route path="/training">
+              <TrainingPage />
+            </Route>
+            <Redirect to="/" />
+          </Switch>
+        </Suspense>
+      </Container>
+    </>
   );
 }
