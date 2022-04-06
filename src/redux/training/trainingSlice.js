@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const trainingSlice = createSlice({
-  name: "raining",
+  name: "training",
   initialState: {
-    startDate: null,
-    endDate: null,
+    books:[],
+    startDate: new Date(),
+    endDate:new Date(),
     duration: null,
     pagesPerDay: null,
     stats: {},

@@ -1,5 +1,3 @@
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import React, { useEffect, useState } from "react";
 import {
   Chart as ChartJS,
@@ -19,6 +17,7 @@ import { getIsLoggedIn } from "../redux/auth/authSelectors";
 import { getBooks } from "../redux/books/booksOperations";
 import MyPurposeToRead from "../components/MyPurposeToRead/MyPurposeToRead";
 import s from "./TrainingPage.module.scss";
+import MyTrainingPlaining from "../components/MyTrainingPlaining/MyTrainingPlaining";
 
 ChartJS.register(
   CategoryScale,
@@ -76,8 +75,8 @@ export const data = {
 
 const TrainingPage = () => {
   const loggedIn = useSelector(getIsLoggedIn);
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+  // const [startDate, setStartDate] = useState(new Date());
+  // const [endDate, setEndDate] = useState(new Date());
   const booksLibrary = useSelector(getBooksGoingToReadState);
 
   const dispatch = useDispatch();
@@ -89,8 +88,9 @@ const TrainingPage = () => {
 
   return (
     <div className={s.TrainingPage}>
+      <MyTrainingPlaining />
       <h2>Моє тренування</h2>
-      <DatePicker
+      {/* <DatePicker
         dateFormat="dd.MM.yyyy"
         selected={startDate}
         onChange={(date) => setStartDate(date)}
@@ -100,7 +100,7 @@ const TrainingPage = () => {
         dateFormat="dd.MM.yyyy"
         selected={endDate}
         onChange={(date) => setEndDate(date)}
-      />
+      /> */}
       <select>
         {booksLibrary.map((book) => (
           <option key={book._id} value={book.title}>
@@ -111,9 +111,7 @@ const TrainingPage = () => {
       <button>Додати</button>
       <MyPurposeToRead
         booksLibrary={booksLibrary}
-        endDate={endDate}
-        startDate={startDate}
-      />
+             />
       <Line options={options} data={data} />
     </div>
   );
