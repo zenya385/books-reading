@@ -1,10 +1,10 @@
 import React from "react";
-import s from './Container.module.css'
+import s from './Container.module.scss'
 
 export default function Container({ children }) {
 
   return (
-   <container className={s.container}> { children } </container>
+   <section className={s.container}> { children } </section>
   )   
 
 }

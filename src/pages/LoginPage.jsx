@@ -2,7 +2,7 @@ import React from "react";
 import { Formik } from "formik";
 import { useDispatch } from "react-redux";
 import { login } from "../redux/auth/authOperations";
-import s from './LoginPage.module.css'
+import s from './LoginPage.module.scss'
 import Container from "../components/Share/Container";
 // import GoogleForm from '../components/GoogleForm/GoogleForm.jsx'
 // import { Link } from "react-router-dom";
@@ -11,7 +11,7 @@ const LoginPage = () => {
   const dispatch = useDispatch();
 
   return (
-    <Container>
+    // <Container>
       <div className={s.regForm}>
         <div className={s.regFormFormikGoogle}>
           {/* <GoogleForm/>
@@ -87,7 +87,7 @@ const LoginPage = () => {
           <p>Бэкон Ф.</p>
         </div>
       </div>
-    </Container>
+    // </Container>
     
   );
 };

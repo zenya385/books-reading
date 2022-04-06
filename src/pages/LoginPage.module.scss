@@ -1,29 +1,40 @@
+.regForm {
+  background-color: brown;
 
  @media screen and (min-width: 320px) {
-   .regForm {
-    background-color: brown;
+
  }
-  .regFormFormikGoogle {
-    background-image: url(../images/pic1-mob-1x.jpg);
- }
- @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
-  .regFormFormikGoogle {
-  background-image: url(../images/pic1-mob-2x.jpg);
-  }
+ @media screen and (min-width: 480px) {
+
+}
+
+@media screen and (min-width: 768px) {
+      display:flex;
+      flex-direction: row;
+      align-items: center;
+   } 
+ @media screen and (min-width: 1280px) {
+  
  }
 }
- @media screen and (min-width: 768px) {
-  .regForm {
-    flex-direction: row;
-    align-items: center;
+.regFormFormikGoogle {
+  height: 400px;
+  background-image: linear-gradient(
+    to right,
+    rgba(9, 30, 63, 0.8),
+    rgba(9, 30, 63, 0.8)
+  ),
+  url(../images/pic1-mob-1x.jpg);
+  background-position: center;
+  background-size: cover;
+  @media screen and (min-width: 320px) {
   }
- }
- @media screen and (min-width: 1280px) {
-  .regForm {
-  
-   }
-   
- }
+ 
+ @media screen and (min-width: 768px) {   
+    } 
+  @media screen and (min-width: 1280px) {  
+  }
+}
  /* background-image: url(../images/about-bg-mob-1x.png);
  background-repeat: no-repeat;
  background-position: bottom;
