@@ -1,4 +1,4 @@
-import "./index.css";
+import "./index.scss";
 // import React from "react";
 
 import React, { Suspense, lazy } from "react";
