@@ -41,12 +41,9 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
   const booksGoingToRead = useSelector(getBooksGoingToReadState);
   const booksFinishedReading = useSelector(getBooksFinishedReadingState);
   const booksCurrentlyReading = useSelector(getBooksCurrentlyReadingState);
-  const booksAllLibrary = useSelector(getBooksState);
   const dispatch = useDispatch();
 
-  console.log(Boolean(booksFinishedReading.length));
-  console.log(booksGoingToRead.length);
-  console.log(booksAllLibrary);
+  let review = 1;
 
   loggedIn &&
     useEffect(() => {
@@ -58,15 +55,19 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
       <BookForm />
       {Boolean(booksFinishedReading.length) && <h2>Прочитано</h2>}
       {Boolean(booksFinishedReading.length) && (
-        <BookInfoList booksLibrary={booksFinishedReading} colorIcon="dark-grey" />
+        <BookInfoList
+          booksLibrary={booksFinishedReading}
+          colorIcon="dark-grey"
+          review={review}
+        />
       )}
       {Boolean(booksCurrentlyReading.length) && <h2>Читаю</h2>}
       {Boolean(booksCurrentlyReading.length) && (
-        <BookInfoList booksLibrary={booksCurrentlyReading} colorIcon="accent" />
+        <BookInfoList booksLibrary={booksCurrentlyReading} colorIcon="accent" review={0}/>
       )}
       {Boolean(booksGoingToRead.length) && <h2>Маю намір прочитати</h2>}
       {Boolean(booksGoingToRead.length) && (
-        <BookInfoList booksLibrary={booksGoingToRead} colorIcon="grey" />
+        <BookInfoList booksLibrary={booksGoingToRead} colorIcon="grey" review={0} />
       )}
       <a href="/training">Далі</a>
       {/* {loggedIn && (

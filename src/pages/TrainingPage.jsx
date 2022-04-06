@@ -12,7 +12,7 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import BookInfoList from "../components/BookInfoList/BookInfoList";
+// import BookInfoList from "../components/BookInfoList/BookInfoList";
 import { useDispatch, useSelector } from "react-redux";
 import { getBooksGoingToReadState } from "../redux/books/booksSelectors";
 import { getIsLoggedIn } from "../redux/auth/authSelectors";
@@ -30,7 +30,6 @@ ChartJS.register(
   Legend
 );
 // import second from './'
-
 
 export const options = {
   backgroundColor: "#FF6B08",
@@ -79,25 +78,29 @@ const TrainingPage = () => {
   const loggedIn = useSelector(getIsLoggedIn);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  const booksLibrary=useSelector(getBooksGoingToReadState);
+  const booksLibrary = useSelector(getBooksGoingToReadState);
 
-const dispatch=useDispatch();
+  const dispatch = useDispatch();
 
   loggedIn &&
-  useEffect(() => {
-    dispatch(getBooks());
-  }, []);
+    useEffect(() => {
+      dispatch(getBooks());
+    }, []);
 
   return (
     <div className={s.TrainingPage}>
       <h2>Моє тренування</h2>
       <DatePicker
-      dateFormat="dd.MM.yyyy"
+        dateFormat="dd.MM.yyyy"
         selected={startDate}
         onChange={(date) => setStartDate(date)}
       />
 
-      <DatePicker dateFormat="dd.MM.yyyy" selected={endDate} onChange={(date) => setEndDate(date)} />
+      <DatePicker
+        dateFormat="dd.MM.yyyy"
+        selected={endDate}
+        onChange={(date) => setEndDate(date)}
+      />
       <select>
         {booksLibrary.map((book) => (
           <option key={book._id} value={book.title}>
@@ -106,14 +109,12 @@ const dispatch=useDispatch();
         ))}
       </select>
       <button>Додати</button>
-      <MyPurposeToRead booksLibrary={booksLibrary} endDate={endDate} startDate={startDate} />
-      {/* <h2>Моя мета прочитати</h2>
-      <span>{booksLibrary.length}</span>
-      <span> {Math.floor((endDate - startDate) / (3600 * 24 * 1000))}</span> */}
-      {/* <BookInfoList booksLibrary={booksLibrary} colorIcon="grey"/> */}
-      {/* <button>Почати тренування</button> */}
+      <MyPurposeToRead
+        booksLibrary={booksLibrary}
+        endDate={endDate}
+        startDate={startDate}
+      />
       <Line options={options} data={data} />
-
     </div>
   );
 };
