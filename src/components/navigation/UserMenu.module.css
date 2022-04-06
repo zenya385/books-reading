@@ -1,8 +1,62 @@
 .link {
-  text-decoration: none;
-  color: black;
 }
 .activeLink {
-  text-decoration: none;
-  color: black;
+}
+.logout_btb {
+  border: none;
+  background: #ffffff;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 38px;
+  text-decoration-line: underline;
+  color: #242a37;
+  padding: 0;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.user_menu {
+  width: 900px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.home__icon {
+  margin-left: 15px;
+}
+.book__icon {
+  margin-left: 410px;
+}
+.name {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 38px;
+  color: #242a37;
+  margin-left: 10px;
+}
+.firs_letter {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 38px;
+  color: #242a37;
+}
+.letter_wrapper {
+  width: 33px;
+  height: 33px;
+  border-radius: 50%;
+  background: #f5f7fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.line {
+  height: 33px;
+  border: 1px solid #e0e5eb;
+  margin-left: 15px;
 }

@@ -17,21 +17,21 @@ export default function App() {
     <>
       <AppBar />
 
-      <Suspense fallback={<h1>Wait a second, please =)</h1>}>
+      <Suspense fallback={<h1>Wait a second, please =</h1>}>
         <Switch>
-          <Route path="/register">
+          <PublicRoute path="/register" redirectTo="/library" restricted>
             <RegisterPage />
-          </Route>
-          <Route path="/login">
+          </PublicRoute>
+          <PublicRoute path="/login" redirectTo="/library" restricted>
             <LoginPage />
-          </Route>
-          <Route path="/library">
+          </PublicRoute>
+          <PrivateRoute path="/library" redirectTo="/login">
             <LibraryPage />
-          </Route>
-          <Route path="/training">
+          </PrivateRoute>
+          <PrivateRoute path="/training" redirectTo="/login">
             <TrainingPage />
-          </Route>
-          <Redirect to="/" />
+          </PrivateRoute>
+          <Redirect to="/register" />
         </Switch>
       </Suspense>
     </>
