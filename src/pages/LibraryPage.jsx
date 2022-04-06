@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import BookForm from "../components/BookForm/BookForm";
+import { getBooksState, getGoingToRead } from "../redux/books/booksSelectors";
 
 import BookInfoList from "../components/BookInfoList/BookInfoList";
-import TrainingPage from "./TrainingPage";
+
+import { getBooks } from "../redux/books/booksOperations";
+import { getIsLoggedIn } from "../redux/auth/authSelectors";
 
 const booksLibrary = [
   {
@@ -24,12 +29,29 @@ const booksLibrary = [
   },
 ];
 
-const LibraryPage = () => {
- 
+const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
+  const fullArray = useSelector(getGoingToRead);
+  const loggedIn = useSelector(getIsLoggedIn);
+  const dispatch = useDispatch();
+
+  loggedIn &&
+    useEffect(() => {
+      dispatch(getBooks());
+    }, []);
+
   return (
-    <>              
-      <BookInfoList booksLibrary={booksLibrary} />
-     
+
+    <>
+      {/* <BookInfoList booksLibrary={booksLibrary} /> */}
+      <BookForm />
+      {/* {loggedIn && (
+        <ul>
+          {fullArray.map((el) => (
+            <li key={el._id}>{el.title}</li>
+          ))}
+        </ul>
+      )} */}
+
     </>
   );
 };

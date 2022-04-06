@@ -100,6 +100,7 @@ const TrainingPage = () => {
         selected={startDate}
         onChange={(date) => setStartDate(date)}
       />
+
       <DatePicker dateFormat="dd.MM.yyyy" selected={endDate} onChange={(date) => setEndDate(date)} />
       <select>
         {booksLibrary.map((book) => (
@@ -115,6 +116,7 @@ const TrainingPage = () => {
       <BookInfoList booksLibrary={booksLibrary} />
       <button>Почати тренування</button>
       <Line options={options} data={data} />;
+
     </>
   );
 };

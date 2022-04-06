@@ -21,20 +21,21 @@ export async function loginUserApi(userData) {
 export async function registerUserApi(userData) {
   await axios.post("/auth/register", userData);
   const { email, password } = userData;
-  // const { data } = loginUserApi({
-  //   email,
-  //   password,
-  // });
-  const { data } = await axios.post("/auth/login", { email, password });
-  token.set(data.accessToken);
+  const data = loginUserApi({
+    email,
+    password,
+  });
+  // const { data } = await axios.post("/auth/login", { email, password });
+  // token.set(data.accessToken);
   // console.log("loginUserApi_data :>> ", data);
   return data;
 }
 
-export async function logoutUserApi() {
-  const { data } = await axios.post("/auth/logout");
+export async function logoutUserApi(persistedToken) {
+  token.set(persistedToken);
+  const { data } = await axios.post("/auth/logout", persistedToken);
   token.unset();
-  // console.log("logoutUserApi :>> ", data);
+  console.log("logoutUserApi :>> ", data);
   return data;
 }
 
@@ -46,7 +47,8 @@ export async function refreshUserTokenApi(persistedToken) {
 
 //--------------------------------------------------------------/
 
-export async function addBookApi(newBook) {
+export async function addBookApi(newBook, persistedToken) {
+  token.set(persistedToken);
   const { data } = await axios.post("/book", newBook);
   // console.log("fetchAddBook :>> ", data);
   return data;
@@ -81,7 +83,7 @@ export async function getPlanningApi() {
 //--------------------------------------------------------------/
 
 export async function getUserBooksApi() {
-  const { data } = await axios.post("/user/books");
+  const { data } = await axios.get("/user/books");
   token.unset();
   // console.log("fetchLogout_data :>> ", data);
   return data;

@@ -33,8 +33,10 @@ export const login = createAsyncThunk(
 );
 
 export const logout = createAsyncThunk("auth/logout", async (_, thunkApi) => {
+  const state = thunkApi.getState();
+  const persistedToken = state.auth.accessToken;
   try {
-    await logoutUserApi();
+    await logoutUserApi(persistedToken);
   } catch (error) {
     return thunkApi.rejectWithValue(error.message);
   }
