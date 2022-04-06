@@ -1,6 +1,5 @@
 .dateGroup {
   display: flex;
-  /* margin-right: 30px; */
 }
 
 .date {
@@ -11,8 +10,7 @@
   line-height: 1.52;
   margin-left: 10px;
 
-  color:  #091E3F;
-;
+  color: #091e3f;
 }
 
 .date:first-child {
@@ -70,11 +68,20 @@
 
   background-color: white;
   box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
-  margin-right: 70px;
+
+  @media screen and (min-width: 480px) {
+    margin-right: 30px;
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-right: 70px;
+  }
+  @media screen and (min-width: 1280px) {
+  }
 }
 
 .box::before {
-  content: "До досягнення мети залишилось";
+  content: "До закінчення року залишилось";
 
   position: absolute;
   top: -38px;

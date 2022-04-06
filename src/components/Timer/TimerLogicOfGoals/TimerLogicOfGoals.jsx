@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import classnames from "classnames";
-import s from "./TimerLogicOfGoals.module.css";
+import s from "./TimerLogicOfGoals.module.scss";
 
 const TimerLogicOfGoals = () => {
   // const endDate = useSelector(null); // вставить trainingSelectors (Время отсчета)

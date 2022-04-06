@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import classnames from "classnames";
-import s from "./TimerLogicOfYear.module.css";
+import s from "./TimerLogicOfYear.module.scss";
 
 const TimerLogicOfYear = () => {
   const year = new Date(new Date().getFullYear() + 1, 0, 1).getTime();
