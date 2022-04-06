@@ -2,6 +2,7 @@ import React from "react";
 import { Formik, useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import { register } from "../redux/auth/authOperations";
+import GoogleForm from '../components/GoogleForm/GoogleForm.jsx'
 
 const RegisterPage = () => {
   const dispatch = useDispatch();
@@ -10,8 +11,8 @@ const RegisterPage = () => {
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
-    }}>
-      <h1>Google</h1>
+    }}>  
+      {/* <GoogleForm/> */}
       <Formik
         initialValues={{
           name: "",
@@ -26,7 +27,7 @@ const RegisterPage = () => {
           } else if (
             !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
           ) {
-            errors.email = "Invalid email address";
+            errors.email = "Ошибка в электронном адресе";
           }
           return errors;
         }}
