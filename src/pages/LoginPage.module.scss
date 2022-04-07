@@ -143,7 +143,9 @@
   flex-direction: column;
   text-align: center;
   padding: 50px 45px 7px;
+  position: relative;
 }
+
 .textFont {
   color: var(--title-text-color);
   font-weight: 500;
@@ -157,6 +159,16 @@
   @media screen and (min-width: 1280px) {  
     padding: 80px;
   }
+}
+.textFont::before {display: inline-block;
+    position: absolute;
+    content: "";
+    width: 54px;
+    height: 40px;
+    top: 8px;
+    left: 189px;
+    background-image: url(/src/images/“.png);
+    background-size: cover;
 }
 .textAuthor {
   color: var(--seconadry-text-color);
