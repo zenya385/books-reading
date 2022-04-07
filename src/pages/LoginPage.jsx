@@ -50,7 +50,7 @@ const LoginPage = () => {
                   <form
                     onSubmit={handleSubmit}
                   >
-                    <label className={s.inputLabel} htmlFor="email">Електронна адреса</label>
+                    <label className={s.inputLabel} htmlFor="email">Електронна адреса <span className={s.spanStar}>*</span></label>
                     <input
                       className={s.inputEmail}
                       type="email"
@@ -60,12 +60,12 @@ const LoginPage = () => {
                       onBlur={handleBlur}
                       value={values.email}
                     />{errors.email && touched.email && errors.email}
-                    <label className={s.inputLabel} htmlFor="password">Пароль</label>
+                    <label className={s.inputLabel} htmlFor="password">Пароль <span className={s.spanStar}>*</span></label>
                     <input
                       className={s.inputPassword}
                       type="password"
                       name="password"
-                      placeholder="...."
+                      placeholder="..."
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value={values.password}
@@ -82,7 +82,9 @@ const LoginPage = () => {
         </div>
         <div className={s.textLogin}>
           <p className={s.textFont}>Книги — это корабли мысли, странствующие по волнам времени и бережно несущие свой драгоценный груз от поколения к поколению. </p>
+          <div className={s.lineBefore}>
           <p className={s.textAuthor}>Бэкон Ф.</p>
+          </div>
         </div>
       </div>
   

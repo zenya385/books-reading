@@ -25,6 +25,9 @@
       padding: 185px 82px;
      }
 }
+.spanStar {
+  color: var(--accent-primary-color);
+}
 .regFormFormikGoogle {
   height: 400px;
   @media screen and (min-width: 320px) {
@@ -143,10 +146,11 @@
   flex-direction: column;
   text-align: center;
   padding: 50px 45px 7px;
-  position: relative;
+  
 }
 
 .textFont {
+  position: relative;
   color: var(--title-text-color);
   font-weight: 500;
   font-size: 13px;
@@ -160,24 +164,91 @@
     padding: 80px;
   }
 }
-.textFont::before {display: inline-block;
-    position: absolute;
-    content: "";
-    width: 54px;
-    height: 40px;
-    top: 8px;
-    left: 189px;
-    background-image: url(/src/images/“.png);
+.textFont::before {
+  position: absolute;
+  content: "";
+  width: 22px;
+  height: 17px;
+  top: -32px;
+  left: 82px;
+  background-image: url(../images/kavy-mob-1x.png);
+  background-size: auto;
+  background-repeat: no-repeat;
+  @media screen and (min-width: 480px) {  
+    background-image: url(../images/kavy-mob-1x.png);
     background-size: cover;
+    width: 23px;
+    height: 17px;
+    top: -31px;
+    left: 161px;
+}
+    @media screen and (min-width: 768px) {  
+    background-image: url(../images/kavy-desctop-2x.png);
+    background-size: cover;
+    width: 25px;
+    height: 19px;
+    top: 7px;
+    left: 278px;
+    }
+    @media screen and (min-width: 1280px) {  
+      background-image: url(../images/kavy-desctop-2x.png);
+      background-size: cover;
+      width: 24px;
+      height: 19px;
+      top: 35px;
+      left: 254px;
+      }
 }
 .textAuthor {
   color: var(--seconadry-text-color);
   font-weight: 500;
   font-size: 14px;
   line-height: calc(38/14);
+  margin: 20px;
   @media screen and (min-width: 768px) {  
     font-size: 20px;
   line-height: calc(38/20);
   }
+  @media screen and (min-width: 1280px) {  
+    margin: 0px;
+  }
+}
+.lineBefore{
+  position: relative;
+}
+.textAuthor::before {
+  position: absolute;
+  content: "";
+  width: 91px;
+  height: 17px;
+  top: 567px;
+  left: 112px;
+  background-image: url(../images/Line-all-1x.png);
+  background-size: auto;
+  background-repeat: no-repeat;
+  @media screen and (min-width: 480px) {  
+    background-image: url(../images/Line-all-1x.png);
+    background-size: cover;
+    width: 91px;
+    height: 2px;
+    top: 536px;
+    left: 190px;
+}
+    @media screen and (min-width: 768px) {  
+    background-image: url(../images/Line-all-1x.png);
+    background-size: cover;
+    width: 120px;
+    height: 2px;
+    top: 9px;
+    left: 231px;
+    }
+    @media screen and (min-width: 1280px) {  
+      background-image: url(../images/Line-all-1x.png);
+      background-size: cover;
+      width: 150px;
+      height: 2px;
+      top: -6px;
+      left: 194px;
+      }
 }
 

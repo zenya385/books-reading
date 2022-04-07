@@ -3,7 +3,7 @@ import { Formik, useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import { register } from "../redux/auth/authOperations";
 import GoogleForm from '../components/GoogleForm/GoogleForm.jsx'
-
+import s from './RegisterPage.module.scss'
 const RegisterPage = () => {
   const dispatch = useDispatch();
   return (
@@ -59,13 +59,13 @@ const RegisterPage = () => {
             <input
               type="name"
               name="name"
-              placeholder="...."
+              placeholder="..."
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.name}
             />
             {errors.email && touched.email && errors.email}
-            <label htmlFor="email">Електронна адреса</label>
+            <label htmlFor="email">Електронна адреса <span className={s.spanStar}>*</span></label>
             <input
               type="email"
               name="email"
@@ -75,21 +75,21 @@ const RegisterPage = () => {
               value={values.email}
             />
             {errors.email && touched.email && errors.email}
-            <label htmlFor="password">Пароль</label>
+            <label htmlFor="password">Пароль <span className={s.spanStar}>*</span></label>
             <input
               type="password"
               name="password"
-              placeholder="...."
+              placeholder="..."
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.password}
             />
             {errors.password && touched.password && errors.password}
-            <label htmlFor="passwordRepeat">Пiдтвердити пароль</label>
+            <label htmlFor="passwordRepeat">Пiдтвердити пароль <span className={s.spanStar}>*</span></label>
             <input
               type="password"
               name="confirmPassword"
-              placeholder="...."
+              placeholder="..."
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.confirmPassword}
