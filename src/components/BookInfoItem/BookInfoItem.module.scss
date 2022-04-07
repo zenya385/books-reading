@@ -1,0 +1,21 @@
+.item {
+  display: flex;
+  align-items: center; 
+  margin: 0;
+  background: var (--primary-bg-color);
+
+  a {
+    text-decoration: none;
+  }
+
+  p {
+    margin: 0;
+    padding: 11px;
+    color: var(--primary-text-color);
+  }
+  button{
+    background: transparent;
+    outline: none;
+    border: none;
+  }
+}
