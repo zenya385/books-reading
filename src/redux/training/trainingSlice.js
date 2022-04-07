@@ -22,14 +22,24 @@ const trainingSlice = createSlice({
     changeDateEnd(state, { payload }) {
       return {
         ...state,
-        startDate: payload,
+        endDate: payload,
       };
     },
 
     getDuration(state, { payload }) {
+      console.log(state);
       return {
         ...state,
         duration: payload,
+      };
+    },
+
+    addBookForTraining(state, { payload }) {
+      console.log(payload.valueIdBook);
+      console.log(state.books);
+      return {
+        ...state,
+        books: [...state.books, payload.valueIdBook],
       };
     },
   },
@@ -43,4 +53,5 @@ export const {
   changeDateStart,
   changeDateEnd,
   getDuration,
+  addBookForTraining,
 } = trainingSlice.actions;

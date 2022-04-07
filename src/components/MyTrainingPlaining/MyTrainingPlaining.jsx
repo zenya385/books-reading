@@ -1,18 +1,29 @@
 import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "react-datepicker/dist/react-datepicker.css";
 import s from "./MyTrainingPlaining.module.scss";
 import {
+  addBookForTraining,
   changeDateEnd,
   changeDateStart,
   getDuration,
 } from "../../redux/training/trainingSlice";
 import { formatISO, intervalToDuration } from "date-fns";
+import {
+  getBooksCurrentlyReadingState,
+  getBooksGoingToReadState,
+} from "../../redux/books/booksSelectors";
+import BookInfoList from "../BookInfoList/BookInfoList";
+import { getTrainingBooks } from "../../redux/training/trainingSelectors";
 
 const MyTrainingPlaining = () => {
   const [startDateOrigin, setStartDateOrigin] = useState(new Date());
   const [endDateOrigin, setEndDateOrigin] = useState(new Date());
+  const [valueIdBook, setValueIdBook] = useState("");
+  const booksLibrary = useSelector(getBooksGoingToReadState);
+  const booksCurrentlyReading = useSelector(getBooksCurrentlyReadingState);
+  const books=useSelector(getTrainingBooks);
 
   const dispatch = useDispatch();
 
@@ -51,8 +62,25 @@ const MyTrainingPlaining = () => {
     );
   }, [startDateOrigin, endDateOrigin]);
 
+  const handleChangeValue = (e) => {
+    setValueIdBook(e.target.value);
+  };
+
+  const insertBookForRead = ({ e }) => {
+    // e.preventDefault()
+    console.log(e);
+  };
+
+  const handleSubmitBookForRead = (e) => {
+    e.preventDefault();
+    dispatch(addBookForTraining({ valueIdBook }));
+  };
+
+  console.log(booksLibrary[0].title);
+  console.log(valueIdBook);
+
   return (
-    <form onSubmit={null}>
+    <form onSubmit={handleSubmitBookForRead}>
       <h2>Моє тренування</h2>
       <div className={s.datePicker}>
         <DatePicker
@@ -66,6 +94,25 @@ const MyTrainingPlaining = () => {
           onChange={(date) => setEndDateOrigin(date)}
         />
       </div>
+      <select value={valueIdBook} onChange={handleChangeValue}>
+        {booksLibrary.map((book) => (
+          <option key={book._id} value={book._id}>
+            {book.title}
+          </option>
+        ))}
+      </select>
+      <input type="submit" value="Додати" />
+      {/* <button type="button" onClick={()=>insertBookForRead()}>Додати</button> */}
+      {Boolean(books.length) && (
+        <BookInfoList
+          booksLibrary={books}
+          colorIcon="grey"
+          review={0}
+        />
+      )}
+      {Boolean(books.length) && (
+        <button type="submit">Почати тренування</button>
+      )}
     </form>
   );
 };

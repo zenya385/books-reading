@@ -11,13 +11,17 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { useDispatch, useSelector } from "react-redux";
-import { getBooksGoingToReadState } from "../redux/books/booksSelectors";
+// import { getBooksGoingToReadState } from "../redux/books/booksSelectors";
 import { getIsLoggedIn } from "../redux/auth/authSelectors";
 import { getBooks } from "../redux/books/booksOperations";
 import MyPurposeToRead from "../components/MyPurposeToRead/MyPurposeToRead";
 import s from "./TrainingPage.module.scss";
 import MyTrainingPlaining from "../components/MyTrainingPlaining/MyTrainingPlaining";
-import { getEndDate, getStartDate, getTrainingBooks } from "../redux/training/trainingSelectors";
+import {
+  // getEndDate,
+  // getStartDate,
+  getTrainingBooks,
+} from "../redux/training/trainingSelectors";
 
 ChartJS.register(
   CategoryScale,
@@ -74,14 +78,12 @@ export const data = {
 
 const TrainingPage = () => {
   const loggedIn = useSelector(getIsLoggedIn);
-  const booksLibrary = useSelector(getBooksGoingToReadState);
-  const startDate = useSelector(getStartDate);
-  const endDate = useSelector(getEndDate);
-  const books=useSelector(getTrainingBooks);
+  // const booksLibrary = useSelector(getBooksGoingToReadState);
+  // const startDate = useSelector(getStartDate);
+  // const endDate = useSelector(getEndDate);
+  const books = useSelector(getTrainingBooks);
 
-  const dispatch = useDispatch();
-
-  console.log(startDate, endDate);
+  const dispatch = useDispatch();  
 
   loggedIn &&
     useEffect(() => {
@@ -91,18 +93,7 @@ const TrainingPage = () => {
   return (
     <div className={s.TrainingPage}>
       <MyTrainingPlaining />
-      <h2>Моє тренування</h2>     
-      <select>
-        {booksLibrary.map((book) => (
-          <option key={book._id} value={book.title}>
-            {book.title}
-          </option>
-        ))}
-      </select>
-      <button>Додати</button>
-      <MyPurposeToRead
-        books={books}
-      />
+      <MyPurposeToRead books={books} />
       <Line options={options} data={data} />
     </div>
   );
