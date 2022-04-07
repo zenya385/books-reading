@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import Results from '../Results/Results';
 import Statistics from '../Statistics/Statistics';
-import './AllStyle.css';
-const All = () => {
+import './StatisticsResultsStyle.css';
+import React from 'react';
+
+const StatisticsResults = () => {
     const [arr, setArr] = useState([])
     return (
         <div className='div_all'>
@@ -22,4 +24,6 @@ const All = () => {
     );
 }
 
-export default All;
+export default StatisticsResults;
+
+{/* <StatisticsResults/> */}

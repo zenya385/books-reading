@@ -1,4 +1,5 @@
 import './StatiscticsStyle.css';
+import React from 'react';
 
 const Statistics = ({arr}) => {
 
