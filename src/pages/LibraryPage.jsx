@@ -53,8 +53,6 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
       dispatch(getBooks());
     }, []);
 
-  console.log(booksGoingToRead.length);
-
   return (
     <>
       <BookForm />
@@ -82,12 +80,6 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
           review={0}
         />
       )}
-
-      {/* {setTimeout(() => {
-        booksGoingToRead.length && <InstructionModal />;
-      }, 0)} */}
-
-      {/* {booksGoingToRead.length === 0 && <InstructionModal />} */}
       {!booksIsLoading && booksGoingToRead.length === 0 && <InstructionModal />}
 
       <a href="/training">Далі</a>
