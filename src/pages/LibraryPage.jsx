@@ -5,7 +5,6 @@ import {
   getBooksCurrentlyReadingState,
   getBooksFinishedReadingState,
   getBooksGoingToReadState,
-  getBooksState,
   // getGoingToRead,
 } from "../redux/books/booksSelectors";
 
@@ -13,6 +12,7 @@ import BookInfoList from "../components/BookInfoList/BookInfoList";
 
 import { getBooks } from "../redux/books/booksOperations";
 import { getIsLoggedIn } from "../redux/auth/authSelectors";
+import { Link } from "react-router-dom";
 
 // const booksLibrary = [
 //   {
@@ -43,6 +43,10 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
   const booksCurrentlyReading = useSelector(getBooksCurrentlyReadingState);
   const dispatch = useDispatch();
 
+  // console.log(Boolean(booksFinishedReading.length));
+  // console.log(booksGoingToRead.length);
+  // console.log(booksAllLibrary);
+
   let review = 1;
 
   loggedIn &&
@@ -63,13 +67,23 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
       )}
       {Boolean(booksCurrentlyReading.length) && <h2>Читаю</h2>}
       {Boolean(booksCurrentlyReading.length) && (
-        <BookInfoList booksLibrary={booksCurrentlyReading} colorIcon="accent" review={0}/>
+        <BookInfoList
+          booksLibrary={booksCurrentlyReading}
+          colorIcon="accent"
+          review={0}
+        />
       )}
       {Boolean(booksGoingToRead.length) && <h2>Маю намір прочитати</h2>}
       {Boolean(booksGoingToRead.length) && (
-        <BookInfoList booksLibrary={booksGoingToRead} colorIcon="grey" review={0} />
+        <BookInfoList
+          booksLibrary={booksGoingToRead}
+          colorIcon="grey"
+          review={0}
+        />
       )}
-      <a href="/training">Далі</a>
+      {/* <a href="/training">Далі</a> */}
+      <Link to="/training">Next</Link>
+
       {/* {loggedIn && (
         <ul>
           {fullArray.map((el) => (

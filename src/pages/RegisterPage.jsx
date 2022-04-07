@@ -1,18 +1,20 @@
 import React from "react";
-import { Formik, useFormik } from "formik";
+import { Formik } from "formik";
 import { useDispatch } from "react-redux";
 import { register } from "../redux/auth/authOperations";
-import GoogleForm from '../components/GoogleForm/GoogleForm.jsx'
 import s from './RegisterPage.module.scss'
+
 const RegisterPage = () => {
   const dispatch = useDispatch();
   return (
-    <div style={{
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-    }}>  
-    <a href="https://bookread-backend.goit.global/auth/google">Google</a>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
+      <a href="https://bookread-backend.goit.global/auth/google">Google</a>
       <Formik
         initialValues={{
           name: "",

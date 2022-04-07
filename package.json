@@ -12,9 +12,7 @@
     "faker": "^6.6.6",
     "formik": "^2.2.9",
     "nanoid": "^3.3.1",
-
     "node-sass": "^4.14.1",
-
     "npm": "^8.5.5",
     "query-string": "^7.1.1",
     "react": "^17.0.2",
@@ -60,6 +58,7 @@
     ]
   },
   "devDependencies": {
-    "prop-types": "^15.8.1"
+    "prop-types": "^15.8.1",
+    "sass": "^1.50.0"
   }
 }

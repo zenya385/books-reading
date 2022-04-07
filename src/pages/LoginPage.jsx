@@ -2,23 +2,21 @@ import React from "react";
 import { Formik } from "formik";
 import { useDispatch } from "react-redux";
 import { login } from "../redux/auth/authOperations";
-import s from './LoginPage.module.scss'
-import Container from "../components/Share/Container";
-// import GoogleForm from '../components/GoogleForm/GoogleForm.jsx'
-// import { Link } from "react-router-dom";
+import s from "./LoginPage.module.scss";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
 
   return (
 
-      <div className={s.regForm}>
-        <div className={s.LoginRegDiv}>
-          <div className={s.regFormFormikGoogle}>
-            <div className={s.googleFormDiv}>
+
+    <div className={s.regForm}>
+      <div className={s.LoginRegDiv}>
+        <div className={s.regFormFormikGoogle}>
+          <div className={s.googleFormDiv}>
             <a className={s.googleForm} href="https://bookread-backend.goit.global/auth/google">Google</a>
-            </div>
-              <Formik
+          </div>
+            <Formik
                 initialValues={{ email: "", password: "" }}
                 validate={(values) => {
                   const errors = {};
@@ -77,18 +75,16 @@ const LoginPage = () => {
                     <a className={s.btnRegisterLogin} href="/register">Реєстрацiя</a>
                   </form>
                 )}
-              </Formik>
-          </div>
+            </Formik>
         </div>
+      </div>
         <div className={s.textLogin}>
           <p className={s.textFont}>Книги — это корабли мысли, странствующие по волнам времени и бережно несущие свой драгоценный груз от поколения к поколению. </p>
           <div className={s.lineBefore}>
             <p className={s.textAuthor}>Бэкон Ф.</p>
           </div>
         </div>
-      </div>
-  
-    
+    </div>
   );
 };
 
