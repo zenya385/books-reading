@@ -35,7 +35,11 @@ export default function App() {
             <PrivateRoute path="/training" redirectTo="/login">
               <TrainingPage />
             </PrivateRoute>
+<<<<<<< Updated upstream
             <Redirect to="/" />
+=======
+            <Redirect to="/register" />
+>>>>>>> Stashed changes
           </Switch>
         </Suspense>
       </Container>

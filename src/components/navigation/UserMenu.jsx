@@ -2,6 +2,11 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { logout } from "../../redux/auth/authOperations";
+<<<<<<< Updated upstream
+=======
+import styles from "./UserMenu.module.scss";
+import Icons from "../../images/symbol-defs.svg";
+>>>>>>> Stashed changes
 import { getUserName } from "../../redux/auth/authSelectors";
 import styles from "./UserMenu.module.scss";
 import Icons from "../../images/symbol-defs.svg";
