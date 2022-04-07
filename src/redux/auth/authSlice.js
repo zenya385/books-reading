@@ -1,5 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getNewTokens, login, logout, register } from "./authOperations";
+import {
+  getNewTokens,
+  login,
+  logout,
+  register,
+  loginGoogle,
+  getUser,
+} from "./authOperations";
+import { getBooks } from "../books/booksOperations";
 
 const authSlice = createSlice({
   name: "auth",
@@ -11,6 +19,14 @@ const authSlice = createSlice({
     isLoading: false,
     isLoggedIn: false,
     error: null,
+  },
+  reducers: {
+    setGoogleData(state, { payload }) {
+      state.accessToken = payload.accessToken;
+      state.refreshToken = payload.refreshToken;
+      state.sid = payload.sid;
+      state.isLoggedIn = true;
+    },
   },
   extraReducers: {
     [register.pending](state) {
@@ -86,7 +102,18 @@ const authSlice = createSlice({
       state.isLoading = false;
       state.error = payload;
     },
+
+    // [getUser.fulfilled](state, { payload }) {
+    //   state.user.name = payload.name;
+    //   state.user.email = payload.email;
+    //   // state.isLoggedIn = true;
+    // },
+    [getBooks.fulfilled](state, { payload }) {
+      state.user.name = payload.name;
+      state.user.email = payload.email;
+      // state.isLoggedIn = true;
+    },
   },
 });
-
+export const { setGoogleData } = authSlice.actions;
 export default authSlice.reducer;

@@ -18,11 +18,11 @@ export async function loginUserApi(userData) {
   return data;
 }
 
-export async function loginGoogleUserApi() {
-  const { data } = await axios.post("/auth/google");
-  // console.log("loginGoogleUserApi :>> ", data);
-  return data;
-}
+// export async function loginGoogleUserApi({ accessToken, refreshToken, sid }) {
+//   const { data } = await axios.post("/auth/google");
+//   console.log("loginGoogleUserApi :>> ", data);
+//   return data;
+// }
 
 export async function registerUserApi(userData) {
   await axios.post("/auth/register", userData);
@@ -31,8 +31,6 @@ export async function registerUserApi(userData) {
     email,
     password,
   });
-  // const { data } = await axios.post("/auth/login", { email, password });
-  // token.set(data.accessToken);
   // console.log("loginUserApi_data :>> ", data);
   return data;
 }
@@ -57,13 +55,13 @@ export async function refreshUserTokenApi({ refreshToken, sid }) {
 export async function addBookApi(newBook, persistedToken) {
   token.set(persistedToken);
   const { data } = await axios.post("/book", newBook);
-  const {
-    newAccessToken: accessToken,
-    newRefreshToken: refreshToken,
-    newSid: sid,
-  } = data;
-  // console.log("fetchAddBook :>> ", data);
-  return { accessToken, refreshToken, sid };
+  // const {
+  //   newAccessToken: accessToken,
+  //   newRefreshToken: refreshToken,
+  //   newSid: sid,
+  // } = data;
+  console.log("fetchAddBook :>> ", data);
+  return data;
 }
 
 export async function addBookReviewApi({ bookId, form }) {
@@ -94,9 +92,17 @@ export async function getPlanningApi() {
 
 //--------------------------------------------------------------/
 
-export async function getUserBooksApi() {
+export async function getUserBooksApi(accessToken) {
+  token.set(accessToken);
   const { data } = await axios.get("/user/books");
   token.unset();
   // console.log("fetchLogout_data :>> ", data);
   return data;
 }
+
+// export async function getUserApi(accessToken) {
+//   token.set(accessToken);
+//   const { data } = await axios.get("/user/books");
+//   // console.log("fetchLogout_data :>> ", data);
+//   return data;
+// }

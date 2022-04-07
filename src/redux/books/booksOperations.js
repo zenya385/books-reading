@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { addBookApi, getUserBooksApi } from "../../utils/fetchApi";
+import { addBookApi, getUserApi, getUserBooksApi } from "../../utils/fetchApi";
 
 export const addBook = createAsyncThunk(
   "books/addBook",
@@ -19,8 +19,10 @@ export const addBook = createAsyncThunk(
 export const getBooks = createAsyncThunk(
   "books/getBooks",
   async (_, thunkApi) => {
+    const state = thunkApi.getState();
+    const accessToken = state.auth.accessToken;
     try {
-      const books = await getUserBooksApi();
+      const books = await getUserBooksApi(accessToken);
       //   console.log(books);
       return books;
     } catch (error) {
@@ -28,3 +30,15 @@ export const getBooks = createAsyncThunk(
     }
   }
 );
+
+// export const getUser = createAsyncThunk("user/getUser", async (_, thunkApi) => {
+//   const state = thunkApi.getState();
+//   const accessToken = state.auth.accessToken;
+//   try {
+//     const user = await getUserApi(accessToken);
+//     console.log(user);
+//     return user;
+//   } catch (error) {
+//     return thunkApi.rejectWithValue(error.message);
+//   }
+// });

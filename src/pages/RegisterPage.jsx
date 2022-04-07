@@ -1,18 +1,18 @@
 import React from "react";
-import { Formik, useFormik } from "formik";
+import { Formik } from "formik";
 import { useDispatch } from "react-redux";
 import { register } from "../redux/auth/authOperations";
-import GoogleForm from '../components/GoogleForm/GoogleForm.jsx'
 
 const RegisterPage = () => {
   const dispatch = useDispatch();
   return (
-    <div style={{
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-    }}>  
-      {/* <GoogleForm/> */}
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
       <Formik
         initialValues={{
           name: "",
