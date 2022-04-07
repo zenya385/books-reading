@@ -15,6 +15,7 @@ import BookInfoList from "../components/BookInfoList/BookInfoList";
 import { getBooks } from "../redux/books/booksOperations";
 import { getIsLoggedIn } from "../redux/auth/authSelectors";
 import InstructionModal from "../components/InstructionModal/InstructionModal";
+import FinishTrainingModal from "../components/FinishTrainingModal/FinishTrainingModal";
 
 // const booksLibrary = [
 //   {
@@ -80,7 +81,12 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
           review={0}
         />
       )}
-      {!booksIsLoading && booksGoingToRead.length === 0 && <InstructionModal />}
+
+      {/* {!booksIsLoading && booksGoingToRead.length === 0 && <InstructionModal />} */}
+
+      {!booksIsLoading && booksGoingToRead.length === 0 && (
+        <FinishTrainingModal />
+      )}
 
       <a href="/training">Далі</a>
       {/* {loggedIn && (
