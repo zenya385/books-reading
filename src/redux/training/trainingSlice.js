@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { addPlaningTraning } from "./trainingOperations";
 
 const trainingSlice = createSlice({
   name: "training",
@@ -43,7 +44,21 @@ const trainingSlice = createSlice({
       };
     },
   },
-  extraReducers: {},
+  extraReducers: {
+    [addPlaningTraning.pending]: (state) => ({
+      ...state,
+      error: null,
+    }),
+    [addPlaningTraning.fulfilled]: (state, { payload }) => ({
+      ...state,
+      goingToRead: [...state.goingToRead, payload],
+    }),
+    [addPlaningTraning.rejected]: (state, { payload }) => ({
+      ...state,
+
+      error: payload,
+    }),
+  },
 });
 
 console.log(trainingSlice);

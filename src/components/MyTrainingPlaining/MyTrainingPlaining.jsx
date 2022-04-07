@@ -15,7 +15,8 @@ import {
   getBooksGoingToReadState,
 } from "../../redux/books/booksSelectors";
 import BookInfoList from "../BookInfoList/BookInfoList";
-import { getTrainingBooks } from "../../redux/training/trainingSelectors";
+import { getEndDate, getStartDate, getTrainingBooks } from "../../redux/training/trainingSelectors";
+import { addPlaningTraning } from "../../redux/training/trainingOperations";
 
 const MyTrainingPlaining = () => {
   const [startDateOrigin, setStartDateOrigin] = useState(new Date());
@@ -23,7 +24,9 @@ const MyTrainingPlaining = () => {
   const [valueIdBook, setValueIdBook] = useState("");
   const booksLibrary = useSelector(getBooksGoingToReadState);
   const booksCurrentlyReading = useSelector(getBooksCurrentlyReadingState);
-  const books=useSelector(getTrainingBooks);
+  const books = useSelector(getTrainingBooks);
+  const startDate = useSelector(getStartDate);
+  const endDate = useSelector(getEndDate);
 
   const dispatch = useDispatch();
 
@@ -66,14 +69,14 @@ const MyTrainingPlaining = () => {
     setValueIdBook(e.target.value);
   };
 
-  const insertBookForRead = ({ e }) => {
-    // e.preventDefault()
-    console.log(e);
-  };
-
   const handleSubmitBookForRead = (e) => {
     e.preventDefault();
     dispatch(addBookForTraining({ valueIdBook }));
+  };
+
+  const handleSubmitBookForTraining = (e) => {
+    e.preventDefault();
+    dispatch(addPlaningTraning({ startDate, endDate, books }));
   };
 
   console.log(booksLibrary[0].title);
@@ -104,14 +107,12 @@ const MyTrainingPlaining = () => {
       <input type="submit" value="Додати" />
       {/* <button type="button" onClick={()=>insertBookForRead()}>Додати</button> */}
       {Boolean(books.length) && (
-        <BookInfoList
-          booksLibrary={books}
-          colorIcon="grey"
-          review={0}
-        />
+        <BookInfoList booksLibrary={books} colorIcon="grey" review={0} />
       )}
       {Boolean(books.length) && (
-        <button type="submit">Почати тренування</button>
+        <button type="submit" onClick={handleSubmitBookForTraining}>
+          Почати тренування
+        </button>
       )}
     </form>
   );
