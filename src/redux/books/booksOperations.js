@@ -19,8 +19,10 @@ export const addBook = createAsyncThunk(
 export const getBooks = createAsyncThunk(
   "books/getBooks",
   async (_, thunkApi) => {
+    const state = thunkApi.getState();
+    const accessToken = state.auth.accessToken;
     try {
-      const books = await getUserBooksApi();
+      const books = await getUserBooksApi(accessToken);
       //   console.log(books);
       return books;
     } catch (error) {
