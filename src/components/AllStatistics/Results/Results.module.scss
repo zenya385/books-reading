@@ -1,9 +1,9 @@
-.react-datepicker__input-container input {
+.input_date {
     padding: 0px;
-    width: 95px;
+    width: 110px;
     height: 42px;
-    padding-left: 13px;
-    /* padding-right: 13px; */
+    text-align: center;
+    
     font-weight: 400;
     font-size: 14px;
     line-height: 38px;
@@ -11,9 +11,16 @@
     background-color: #F6F7FB;
     border: 1px solid #A6ABB9;
     letter-spacing: 1.4px;
+
     margin-right: 20px;
+     
 }
 
+.form_res {
+    @media screen and (max-width: 768px) {
+        display: flex;
+    }
+}
 .data_text {
     margin: 0;
     font-weight: 500;
@@ -36,7 +43,7 @@
     font-size: 14px;
     line-height: 38px;
     color: #242A37;
-    width: 95px;
+    width: 110px;
     height: 42px; 
 }
 
@@ -52,7 +59,7 @@
     color: #898F9F;
 }
 
-.add-res_btn {
+.add_res_btn {
     width: 240px;
     height: 40px;
     text-align: center;

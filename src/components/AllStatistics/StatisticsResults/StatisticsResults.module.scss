@@ -1,26 +1,35 @@
 .div_all {
-    width: 240px;
+    width: 275px;
     height: 340px; 
     box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
-    margin-left: 10px;
     padding-top: 10px;
     padding-left: 19px;
     padding-right: 16px;
     padding-bottom: 13px;
+    font-family: 'Montserrat';
+
+    @media screen and (max-width: 768px) {
+        width: 678px;
+        height: 306px;
+        padding-left: 84px;
+        padding-right: 84px;
+    }
 }
 
 .result_text {
-    /* font-family: 'Montserrat'; */
     height: 38px;
-    margin: 0;
+    // margin: 0;
     text-align: center;
-    font-style: normal;
     font-weight: 600;
     font-size: 12px;
     line-height: 38px;
     text-transform: uppercase;
     color: #242A37;
 
+    @media screen and (max-width: 768px) {
+        font-size: 14px;
+        line-height: 38px;
+    }
 }
 
 .stat_text {
@@ -30,13 +39,27 @@
     text-align: center;
     text-transform: uppercase;
     color: #242A37;
-    margin: 0;
     height: 25px;
     width: 87px;
+    margin-left: 5px;
+    margin-right: 5px;
+    @media screen and (max-width: 768px) {
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 38px;
+        margin-left: 0px;
+        margin-right: 10px;
+        line-height: 25px;
+        width: 102px;
+    }
 }
 
 .scroll_block { 
     height: 110px !important;
+
+    @media screen and (max-width: 768px) {
+        height: 70px !important;
+    }
     
 }
 
@@ -45,23 +68,36 @@
     padding: 0;
     height: 110px;
     overflow-y: scroll;
+    @media screen and (max-width: 768px) {
+        height: 70px;
+    }
 }
 
 .stat_block {
     display: flex;
     align-items: center;
+
 }
 
 .stat_block_before {
-    width: 76px;
+    width: 100%;
     border: 1px solid #E0E5EB;
     height: 0px;
+    
+    @media screen and (max-width: 768px) {
+        width: 0px;
+        border: none;
+    }
 }
 
 .stat_block_after {
     height: 0px;
-    width: 76px;
+    width: 100%;
     border: 1px solid #E0E5EB;
+
+    @media screen and (max-width: 768px) {
+        width: 128px;
+    }
 }
 
 .stat_list::-webkit-scrollbar {
