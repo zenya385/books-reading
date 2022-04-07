@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -88,6 +88,7 @@ const TrainingPage = () => {
 
   return (
     <div className={s.TrainingPage}>
+     
       <MyTrainingPlaining />
       <h2>Моє тренування</h2>
       {/* <DatePicker
