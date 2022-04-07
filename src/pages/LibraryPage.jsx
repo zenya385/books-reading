@@ -83,6 +83,7 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
       )}
       {/* <a href="/training">Далі</a> */}
       <Link to="/training">Next</Link>
+
       {/* {loggedIn && (
         <ul>
           {fullArray.map((el) => (
