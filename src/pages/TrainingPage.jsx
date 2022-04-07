@@ -1,6 +1,6 @@
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -12,9 +12,13 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import BookInfoList from "../components/BookInfoList/BookInfoList";
-import { useSelector } from "react-redux";
+// import BookInfoList from "../components/BookInfoList/BookInfoList";
+import { useDispatch, useSelector } from "react-redux";
 import { getBooksGoingToReadState } from "../redux/books/booksSelectors";
+import { getIsLoggedIn } from "../redux/auth/authSelectors";
+import { getBooks } from "../redux/books/booksOperations";
+import MyPurposeToRead from "../components/MyPurposeToRead/MyPurposeToRead";
+import s from "./TrainingPage.module.scss";
 
 ChartJS.register(
   CategoryScale,
@@ -25,6 +29,7 @@ ChartJS.register(
   Tooltip,
   Legend
 );
+// import second from './'
 
 export const options = {
   backgroundColor: "#FF6B08",
@@ -70,20 +75,32 @@ export const data = {
 };
 
 const TrainingPage = () => {
+  const loggedIn = useSelector(getIsLoggedIn);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  const booksLibrary=useSelector(getBooksGoingToReadState);
+  const booksLibrary = useSelector(getBooksGoingToReadState);
+
+  const dispatch = useDispatch();
+
+  loggedIn &&
+    useEffect(() => {
+      dispatch(getBooks());
+    }, []);
 
   return (
-    <>
+    <div className={s.TrainingPage}>
       <h2>Моє тренування</h2>
       <DatePicker
-      dateFormat="dd.MM.yyyy"
+        dateFormat="dd.MM.yyyy"
         selected={startDate}
         onChange={(date) => setStartDate(date)}
       />
 
-      <DatePicker dateFormat="dd.MM.yyyy" selected={endDate} onChange={(date) => setEndDate(date)} />
+      <DatePicker
+        dateFormat="dd.MM.yyyy"
+        selected={endDate}
+        onChange={(date) => setEndDate(date)}
+      />
       <select>
         {booksLibrary.map((book) => (
           <option key={book._id} value={book.title}>
@@ -92,14 +109,13 @@ const TrainingPage = () => {
         ))}
       </select>
       <button>Додати</button>
-      <h2>Моя мета прочитати</h2>
-      <span>{booksLibrary.length}</span>
-      <span> {Math.floor((endDate - startDate) / (3600 * 24 * 1000))}</span>
-      <BookInfoList booksLibrary={booksLibrary} />
-      <button>Почати тренування</button>
+      <MyPurposeToRead
+        booksLibrary={booksLibrary}
+        endDate={endDate}
+        startDate={startDate}
+      />
       <Line options={options} data={data} />
-
-    </>
+    </div>
   );
 };
 

@@ -13,6 +13,7 @@ const RegisterPage = () => {
         alignItems: "center",
       }}
     >
+      <a href="https://bookread-backend.goit.global/auth/google">Google</a>
       <Formik
         initialValues={{
           name: "",
