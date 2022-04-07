@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getNewTokens, login, logout, register } from "./authOperations";
+import { getBooks } from "../books/booksOperations";
 
 const authSlice = createSlice({
   name: "auth",
@@ -7,9 +8,18 @@ const authSlice = createSlice({
     user: { name: null, email: null },
     accessToken: null,
     refreshToken: null,
+    sid: null,
     isLoading: false,
     isLoggedIn: false,
     error: null,
+  },
+  reducers: {
+    setGoogleData(state, { payload }) {
+      state.accessToken = payload.accessToken;
+      state.refreshToken = payload.refreshToken;
+      state.sid = payload.sid;
+      state.isLoggedIn = true;
+    },
   },
   extraReducers: {
     [register.pending](state) {
@@ -20,6 +30,7 @@ const authSlice = createSlice({
       state.user = payload.user;
       state.accessToken = payload.accessToken;
       state.refreshToken = payload.refreshToken;
+      state.sid = payload.sid;
       state.isLoggedIn = true;
       state.isLoading = false;
     },
@@ -37,6 +48,7 @@ const authSlice = createSlice({
       state.user.email = payload.userData.email;
       state.accessToken = payload.accessToken;
       state.refreshToken = payload.refreshToken;
+      state.sid = payload.sid;
       state.isLoggedIn = true;
       state.isLoading = false;
     },
@@ -53,6 +65,7 @@ const authSlice = createSlice({
       state.user = { name: null, email: null };
       state.accessToken = null;
       state.refreshToken = null;
+      state.sid = null;
       state.isLoggedIn = false;
       state.isLoading = false;
     },
@@ -66,17 +79,34 @@ const authSlice = createSlice({
       state.error = null;
     },
     [getNewTokens.fulfilled](state, { payload }) {
-      state.idToken = payload.idToken;
-      state.accessToken = payload.accessToken;
-      state.refreshToken = payload.refreshToken;
-      state.isLoggedIn = true;
-      state.isLoading = false;
+      return {
+        ...state,
+        isLoggedIn: true,
+        isLoading: false,
+        ...payload,
+      };
+      // state.accessToken = payload.accessToken;
+      // state.refreshToken = payload.refreshToken;
+      // state.sid = payload.sid;
+      // state.isLoggedIn = true;
+      // state.isLoading = false;
     },
     [getNewTokens.rejected](state, { payload }) {
       state.isLoading = false;
       state.error = payload;
     },
+
+    // [getUser.fulfilled](state, { payload }) {
+    //   state.user.name = payload.name;
+    //   state.user.email = payload.email;
+    //   // state.isLoggedIn = true;
+    // },
+    [getBooks.fulfilled](state, { payload }) {
+      state.user.name = payload.name;
+      state.user.email = payload.email;
+      // state.isLoggedIn = true;
+    },
   },
 });
-
+export const { setGoogleData } = authSlice.actions;
 export default authSlice.reducer;

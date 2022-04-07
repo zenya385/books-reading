@@ -12,7 +12,7 @@ export const register = createAsyncThunk(
     const { confirmPassword, ...rest } = userData;
     try {
       const data = await registerUserApi(rest);
-      console.log("data", data);
+      // console.log("data", data);
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
@@ -46,12 +46,13 @@ export const getNewTokens = createAsyncThunk(
   "auth/refresh",
   async (_, thunkApi) => {
     const state = thunkApi.getState();
-    const persistedToken = state.auth.refreshToken;
-    if (!persistedToken) {
+    const refreshToken = state.auth.refreshToken;
+    const sid = state.auth.sid;
+    if (!refreshToken) {
       return thunkApi.rejectWithValue();
     }
     try {
-      const data = await refreshUserTokenApi(persistedToken);
+      const data = await refreshUserTokenApi({ refreshToken, sid });
       // console.log("data", data);
       return data;
     } catch (error) {
@@ -59,3 +60,15 @@ export const getNewTokens = createAsyncThunk(
     }
   }
 );
+
+// export const getUser = createAsyncThunk("user/getUser", async (_, thunkApi) => {
+//   const state = thunkApi.getState();
+//   const accessToken = state.auth.accessToken;
+//   try {
+//     const user = await getUserApi(accessToken);
+//     console.log(user);
+//     return user;
+//   } catch (error) {
+//     return thunkApi.rejectWithValue(error.message);
+//   }
+// });
