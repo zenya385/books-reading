@@ -1,12 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {
-  getNewTokens,
-  login,
-  logout,
-  register,
-  loginGoogle,
-  getUser,
-} from "./authOperations";
+import { getNewTokens, login, logout, register } from "./authOperations";
 import { getBooks } from "../books/booksOperations";
 
 const authSlice = createSlice({

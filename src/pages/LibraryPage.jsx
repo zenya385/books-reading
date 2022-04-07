@@ -5,7 +5,6 @@ import {
   getBooksCurrentlyReadingState,
   getBooksFinishedReadingState,
   getBooksGoingToReadState,
-  getBooksState,
   // getGoingToRead,
 } from "../redux/books/booksSelectors";
 
@@ -13,6 +12,7 @@ import BookInfoList from "../components/BookInfoList/BookInfoList";
 
 import { getBooks } from "../redux/books/booksOperations";
 import { getIsLoggedIn } from "../redux/auth/authSelectors";
+import { Link } from "react-router-dom";
 
 // const booksLibrary = [
 //   {
@@ -81,7 +81,8 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
           review={0}
         />
       )}
-      <a href="/training">Далі</a>
+      {/* <a href="/training">Далі</a> */}
+      <Link to="/training">Next</Link>
       {/* {loggedIn && (
         <ul>
           {fullArray.map((el) => (

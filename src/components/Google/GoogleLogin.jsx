@@ -1,14 +1,12 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { getUser, loginGoogle } from "../../redux/auth/authOperations";
-import { getBooks } from "../../redux/books/booksOperations";
 import { setGoogleData } from "../../redux/auth/authSlice";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const GoogleLogin = () => {
   const location = useLocation();
-  console.log("location", location);
+  // console.log("location", location);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -23,7 +21,7 @@ const GoogleLogin = () => {
           paramMap[param[0]] = param[1];
         });
 
-      console.log("paramMap :>> ", paramMap);
+      // console.log("paramMap :>> ", paramMap);
 
       const accessToken = decodeURI(paramMap.accessToken);
       const refreshToken = paramMap.refreshToken;
@@ -31,7 +29,6 @@ const GoogleLogin = () => {
 
       dispatch(setGoogleData({ accessToken, refreshToken, sid }));
       history.push("/library");
-      // dispatch(getBooks());
     }
   }, [location]);
 };

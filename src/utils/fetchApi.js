@@ -18,12 +18,6 @@ export async function loginUserApi(userData) {
   return data;
 }
 
-// export async function loginGoogleUserApi({ accessToken, refreshToken, sid }) {
-//   const { data } = await axios.post("/auth/google");
-//   console.log("loginGoogleUserApi :>> ", data);
-//   return data;
-// }
-
 export async function registerUserApi(userData) {
   await axios.post("/auth/register", userData);
   const { email, password } = userData;
@@ -60,7 +54,7 @@ export async function addBookApi(newBook, persistedToken) {
   //   newRefreshToken: refreshToken,
   //   newSid: sid,
   // } = data;
-  console.log("fetchAddBook :>> ", data);
+  // console.log("fetchAddBook :>> ", data);
   return data;
 }
 
@@ -99,10 +93,3 @@ export async function getUserBooksApi(accessToken) {
   // console.log("fetchLogout_data :>> ", data);
   return data;
 }
-
-// export async function getUserApi(accessToken) {
-//   token.set(accessToken);
-//   const { data } = await axios.get("/user/books");
-//   // console.log("fetchLogout_data :>> ", data);
-//   return data;
-// }

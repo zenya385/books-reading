@@ -1,18 +1,12 @@
 import "./index.scss";
 // import React from "react";
 import React, { Suspense, lazy } from "react";
-import { Redirect, Switch } from "react-router-dom";
+import { Switch } from "react-router-dom";
 import AppBar from "./components/navigation/AppBar";
 import PrivateRoute from "./components/Routs/PrivateRoute";
 import PublicRoute from "./components/Routs/PublicRoute";
-import { Route } from "react-router-dom";
-import BookInfoList from "./components/BookInfoList/BookInfoList";
 import Container from "./components/Share/Container";
-<<<<<<< HEAD
 import GoogleLogin from "./components/Google/GoogleLogin";
-=======
-import Timer from "./components/Timer/Timer";
->>>>>>> dev
 
 const LoginPage = lazy(() => import("./pages/LoginPage.jsx"));
 const RegisterPage = lazy(() => import("./pages/RegisterPage.jsx"));
@@ -40,7 +34,7 @@ export default function App() {
             <PrivateRoute path="/training" redirectTo="/login">
               <TrainingPage />
             </PrivateRoute>
-            <Redirect to="/" />
+            {/* <Redirect to="/" /> */}
           </Switch>
         </Suspense>
       </Container>
