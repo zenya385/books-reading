@@ -6,6 +6,7 @@ import {
   getBooksFinishedReadingState,
   getBooksGoingToReadState,
   getBooksState,
+  getIsLoading,
   // getGoingToRead,
 } from "../redux/books/booksSelectors";
 
@@ -42,6 +43,7 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
   const booksGoingToRead = useSelector(getBooksGoingToReadState);
   const booksFinishedReading = useSelector(getBooksFinishedReadingState);
   const booksCurrentlyReading = useSelector(getBooksCurrentlyReadingState);
+  const booksIsLoading = useSelector(getIsLoading);
   const dispatch = useDispatch();
 
   let review = 1;
@@ -50,6 +52,8 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
     useEffect(() => {
       dispatch(getBooks());
     }, []);
+
+  console.log(booksGoingToRead.length);
 
   return (
     <>
@@ -83,7 +87,8 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
         booksGoingToRead.length && <InstructionModal />;
       }, 0)} */}
 
-      {booksGoingToRead.length && <InstructionModal />}
+      {/* {booksGoingToRead.length === 0 && <InstructionModal />} */}
+      {!booksIsLoading && booksGoingToRead.length === 0 && <InstructionModal />}
 
       <a href="/training">Далі</a>
       {/* {loggedIn && (
