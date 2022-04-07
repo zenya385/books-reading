@@ -1,29 +1,55 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  getTrainingBooks,
-  getEndDate,
-  getStartDate,
-} from "../../redux/training/trainingSelectors";
+import { useDispatch } from "react-redux";
 import "react-datepicker/dist/react-datepicker.css";
 import s from "./MyTrainingPlaining.module.scss";
-import { changeDateStart } from "../../redux/training/trainingSlice";
+import {
+  changeDateEnd,
+  changeDateStart,
+  getDuration,
+} from "../../redux/training/trainingSlice";
+import { formatISO, intervalToDuration } from "date-fns";
 
 const MyTrainingPlaining = () => {
-  const startDate = useSelector(getStartDate);
-  const endDate = useSelector(getEndDate);
-  // const books = useSelector(getTrainingBooks);
+  const [startDateOrigin, setStartDateOrigin] = useState(new Date());
+  const [endDateOrigin, setEndDateOrigin] = useState(new Date());
+
   const dispatch = useDispatch();
 
-  // const handleChange = (e) => {
-  //   console.log(e)
-  //   console.log(dispatch)
-  //   // console.log(dispatch(changeDateStart()));
-  //   // return e
-  //   // const { name, value } = e.target;
-  //   dispatch(changeDateStart(e));
-  // };
+  useEffect(() => {
+    dispatch(
+      changeDateStart(
+        formatISO(new Date(startDateOrigin), { representation: "date" })
+      )
+    );
+  }, [startDateOrigin]);
+
+  useEffect(() => {
+    dispatch(
+      changeDateEnd(
+        formatISO(new Date(endDateOrigin), { representation: "date" })
+      )
+    );
+  }, [endDateOrigin]);
+
+  useEffect(() => {
+    console.log(
+      intervalToDuration({
+        start: startDateOrigin,
+        end: endDateOrigin,
+      }).days
+    );
+    dispatch(
+      getDuration(
+        Number(
+          intervalToDuration({
+            start: startDateOrigin,
+            end: endDateOrigin,
+          }).days
+        )
+      )
+    );
+  }, [startDateOrigin, endDateOrigin]);
 
   return (
     <form onSubmit={null}>
@@ -31,13 +57,13 @@ const MyTrainingPlaining = () => {
       <div className={s.datePicker}>
         <DatePicker
           dateFormat="dd.MM.yyyy"
-          selected={startDate}
-          onChange={(date) => dispatch(changeDateStart(date))} //(date) => setStartDate(date)
+          selected={startDateOrigin}
+          onChange={(date) => setStartDateOrigin(date)}
         />
         <DatePicker
           dateFormat="dd.MM.yyyy"
-          selected={endDate}
-          onChange={null} //(date) => setEndDate(date)
+          selected={endDateOrigin}
+          onChange={(date) => setEndDateOrigin(date)}
         />
       </div>
     </form>

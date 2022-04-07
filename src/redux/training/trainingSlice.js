@@ -4,25 +4,43 @@ const trainingSlice = createSlice({
   name: "training",
   initialState: {
     books: [],
-    startDate: new Date(),
-    endDate: new Date(),
-    duration: null,
-    pagesPerDay: null,
+    startDate: "", //new Date()
+    endDate: "", //new Date()
+    duration: 0,
+    pagesPerDay: 0,
     stats: {},
     _id: null,
   },
-  reducer: {
+  reducers: {
     changeDateStart(state, { payload }) {
-      console.log(state);
       return {
-        
-        startDate:  payload ,
-        // user: { ...state.user, [payload.name]: payload.value },
+        ...state,
+        startDate: payload,
+      };
+    },
+
+    changeDateEnd(state, { payload }) {
+      return {
+        ...state,
+        startDate: payload,
+      };
+    },
+
+    getDuration(state, { payload }) {
+      return {
+        ...state,
+        duration: payload,
       };
     },
   },
   extraReducers: {},
 });
 
+console.log(trainingSlice);
+
 export default trainingSlice.reducer;
-export const { changeDateStart } = trainingSlice.actions;
+export const {
+  changeDateStart,
+  changeDateEnd,
+  getDuration,
+} = trainingSlice.actions;
