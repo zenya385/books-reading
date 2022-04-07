@@ -1,43 +1,90 @@
-.link {
-}
-.activeLink {
-}
 .logout_btb {
-  border: none;
-  background: #ffffff;
-  font-family: "Montserrat";
-  font-style: normal;
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 38px;
-  text-decoration-line: underline;
-  color: #242a37;
-  padding: 0;
-  margin-left: 15px;
-  cursor: pointer;
+  @media screen and (min-width: 320px) {
+    border: none;
+    background: #ffffff;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 38px;
+    text-decoration-line: underline;
+    color: #242a37;
+    padding: 0;
+    margin-left: 15px;
+    cursor: pointer;
+    margin-left: 60px;
+  }
+  @media screen and (min-width: 480px) {
+  }
+  @media screen and (min-width: 768px) {
+    margin-left: 15px;
+  }
+  @media screen and (min-width: 1280px) {
+  }
 }
 
 .user_menu {
-  width: 900px;
-  display: flex;
-  align-items: center;
-  justify-content: end;
+  @media screen and (min-width: 320px) {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+  }
+  @media screen and (min-width: 480px) {
+  }
+  @media screen and (min-width: 768px) {
+    // justify-content: center;
+  }
+  @media screen and (min-width: 1280px) {
+  }
 }
-.home__icon {
-  margin-left: 15px;
+.link_training {
+  @media screen and (min-width: 320px) {
+    margin-left: 60px;
+    display: flex;
+    align-items: center;
+  }
+  @media screen and (min-width: 480px) {
+    margin-left: 230px;
+  }
+  @media screen and (min-width: 768px) {
+    margin-left: 150px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-left: 410px;
+  }
 }
-.book__icon {
-  margin-left: 410px;
+.link_library {
+  @media screen and (min-width: 320px) {
+    margin-left: 15px;
+  }
+  @media screen and (min-width: 480px) {
+  }
+  @media screen and (min-width: 768px) {
+  }
+  @media screen and (min-width: 1280px) {
+  }
 }
+
 .name {
-  font-family: "Montserrat";
-  font-style: normal;
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 38px;
-  color: #242a37;
-  margin-left: 10px;
+  @media screen and (min-width: 320px) {
+    display: none;
+  }
+  @media screen and (min-width: 480px) {
+  }
+  @media screen and (min-width: 768px) {
+    display: inline-block;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 38px;
+    color: #242a37;
+    margin-left: 10px;
+  }
+  @media screen and (min-width: 1280px) {
+  }
 }
+
 .firs_letter {
   font-family: "Montserrat";
   font-style: normal;
@@ -45,18 +92,62 @@
   font-size: 14px;
   line-height: 38px;
   color: #242a37;
+  margin-left: 0;
+  @media screen and (min-width: 320px) {
+  }
+  @media screen and (min-width: 480px) {
+  }
+  @media screen and (min-width: 768px) {
+  }
+  @media screen and (min-width: 1280px) {
+  }
 }
+
 .letter_wrapper {
-  width: 33px;
-  height: 33px;
-  border-radius: 50%;
-  background: #f5f7fa;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @media screen and (min-width: 320px) {
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    background: #f5f7fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 77px;
+  }
+  @media screen and (min-width: 480px) {
+  }
+  @media screen and (min-width: 768px) {
+    position: static;
+    margin-left: 255px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-left: 510px;
+  }
 }
+
 .line {
-  height: 33px;
-  border: 1px solid #e0e5eb;
-  margin-left: 15px;
+  @media screen and (min-width: 320px) {
+    height: 33px;
+    border: 1px solid #e0e5eb;
+    margin-left: 15px;
+  }
+  @media screen and (min-width: 480px) {
+  }
+  @media screen and (min-width: 768px) {
+    margin-left: 10px;
+  }
+  @media screen and (min-width: 1280px) {
+  }
 }
+
+// @media screen and (min-width: 320px) {
+
+//   }
+//   @media screen and (min-width: 480px) {
+//   }
+//   @media screen and (min-width: 768px) {
+
+//   }
+//   @media screen and (min-width: 1280px) {
+//   }

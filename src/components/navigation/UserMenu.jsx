@@ -1,10 +1,10 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { Icons } from "react-toastify";
 import { logout } from "../../redux/auth/authOperations";
 import { getUserName } from "../../redux/auth/authSelectors";
 import styles from "./UserMenu.module.scss";
+import Icons from "../../images/symbol-defs.svg";
 
 export function UserMenu() {
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ export function UserMenu() {
       <span className={styles.name}>{userName}</span>
       <NavLink
         to="/training"
-        className={styles.link}
+        className={styles.link_training}
         activeClassName={styles.activeLink}
       >
         <svg class={styles.book__icon} width="22px" height="17px">
@@ -27,7 +27,7 @@ export function UserMenu() {
       </NavLink>
       <NavLink
         to="/library"
-        className={styles.link}
+        className={styles.link_library}
         activeClassName={styles.activeLink}
       >
         <svg className={styles.home__icon} width="20px" height="17px">
