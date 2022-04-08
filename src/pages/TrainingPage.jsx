@@ -18,6 +18,7 @@ import { getBooks } from "../redux/books/booksOperations";
 import MyPurposeToRead from "../components/MyPurposeToRead/MyPurposeToRead";
 import s from "./TrainingPage.module.scss";
 import MyTrainingPlaining from "../components/MyTrainingPlaining/MyTrainingPlaining";
+import StatisticsResults from "../components/AllStatistics/StatisticsResults/StatisticsResults";
 
 ChartJS.register(
   CategoryScale,
@@ -113,6 +114,8 @@ const TrainingPage = () => {
         booksLibrary={booksLibrary}
              />
       <Line options={options} data={data} />
+      
+<StatisticsResults />
     </div>
   );
 };
