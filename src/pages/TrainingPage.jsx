@@ -22,6 +22,7 @@ import {
   // getStartDate,
   getTrainingBooks,
 } from "../redux/training/trainingSelectors";
+import StatisticsResults from "../components/AllStatistics/StatisticsResults/StatisticsResults"
 
 ChartJS.register(
   CategoryScale,
@@ -95,6 +96,7 @@ const TrainingPage = () => {
       <MyTrainingPlaining />
       <MyPurposeToRead books={books} />
       <Line options={options} data={data} />
+      <StatisticsResults/>
     </div>
   );
 };

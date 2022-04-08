@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import { login } from "../redux/auth/authOperations";
 import s from "./LoginPage.module.scss";
 
-
 const LoginPage = () => {
   const dispatch = useDispatch();
 
