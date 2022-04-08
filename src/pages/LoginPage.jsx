@@ -3,7 +3,7 @@ import { Formik } from "formik";
 import { useDispatch } from "react-redux";
 import { login } from "../redux/auth/authOperations";
 import s from "./LoginPage.module.scss";
-import StatisticsResults from "../components/AllStatistics/StatisticsResults/StatisticsResults";
+
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -85,7 +85,6 @@ const LoginPage = () => {
             <p className={s.textAuthor}>Бэкон Ф.</p>
           </div>
         </div>
-        {/* <StatisticsResults/> */}
     </div>
   );
 };
