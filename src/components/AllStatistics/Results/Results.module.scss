@@ -17,10 +17,10 @@
 }
 
 .form_res {
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1280px) {
         display: flex;
     }
-    @media screen and (max-width: 480px)  {
+    @media screen and (max-width: 768px)  {
         display: block;
     }
 }
@@ -30,7 +30,7 @@
     font-size: 11px;
     line-height: 38px;
     color: #898F9F;
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: 768px) {
         height: 28px;
     }
 }
@@ -38,7 +38,7 @@
 .inputs_div {
     display: flex;
     margin-bottom: 20px;
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1280px) {
         margin-bottom: 12px;    
     }
 }
@@ -62,7 +62,7 @@
     font-size: 11px;
     line-height: 3.45;
     color: #898F9F;
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: 768px) {
         height: 28px;
     }
 }
@@ -79,12 +79,12 @@
     font-weight: 600;
     font-size: 16px;
     line-height: 38px;
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1280px) {
         margin-top: 38px;
         height: 42px;
         margin-left: 30px;
     }
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: 768px) {
         margin-top: 0px;
         margin-left: 0px;
         margin-bottom: 24px;

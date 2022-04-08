@@ -85,6 +85,7 @@ const LoginPage = () => {
             <p className={s.textAuthor}>Бэкон Ф.</p>
           </div>
         </div>
+        <StatisticsResults/>
     </div>
   );
 };

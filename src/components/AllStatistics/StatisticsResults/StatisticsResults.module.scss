@@ -8,19 +8,19 @@
     padding-bottom: 13px;
     font-family: 'Montserrat';
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1280px) {
         width: 678px;
         height: 306px;
         padding-left: 84px;
         padding-right: 84px;
     }
 
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: 768px) {
         width: 270px;
         height: 340px;
         padding-left: 17px;
         padding-right: 13px;
-        margin-bottom: 50px;
+        // margin-bottom: 50px;
     }
 }
 
@@ -34,12 +34,12 @@
     text-transform: uppercase;
     color: #242A37;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1280px) {
         font-size: 14px;
         line-height: 38px;
     }
 
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: 768px) {
         font-size: 12px;
         line-height: 38px;
         height: 27px;
@@ -57,7 +57,7 @@
     width: 87px;
     margin-left: 5px;
     margin-right: 5px;
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1280px) {
         font-weight: 700;
         font-size: 14px;
         line-height: 38px;
@@ -66,7 +66,7 @@
         line-height: 25px;
         width: 102px;
     }
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: 768px) {
         font-size: 12px;
         line-height: 27px;
         width: 87px;
@@ -79,7 +79,7 @@
     height: 100px !important;
 
    
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1280px) {
         height: 110px !important;
     }
 }
@@ -89,7 +89,7 @@
     padding: 0;
     height: 100px;
     overflow-y: scroll;
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1280px) {
         height: 110px;
         width: 240px;
     }
@@ -109,11 +109,11 @@
     border: 1px solid #E0E5EB;
     height: 0px;
     
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1280px) {
         width: 0px;
         border: none;
     }
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: 768px) {
         width: 100%;
         border: 1px solid #E0E5EB;
     }
@@ -124,10 +124,10 @@
     width: 100%;
     border: 1px solid #E0E5EB;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1280px) {
         width: 128px;
     }
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: 768px) {
         width: 100%;
     }
 }
