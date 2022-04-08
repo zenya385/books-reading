@@ -1,5 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { addBookApi, getUserBooksApi } from "../../utils/fetchApi";
+import {
+  addBookApi,
+  getPlanningApi,
+  getUserBooksApi,
+} from "../../utils/fetchApi";
+import { getPlaningTraning } from "../training/trainingOperations";
 
 export const addBook = createAsyncThunk(
   "books/addBook",
@@ -23,7 +28,19 @@ export const getBooks = createAsyncThunk(
     const accessToken = state.auth.accessToken;
     try {
       const books = await getUserBooksApi(accessToken);
+      const training = await getPlanningApi(accessToken).catch((error) => {
+        if (error.request.status === 403) {
+          console.log(error.request);          
+          return null; // {planning:{books:[]}};
+        } else {
+          throw error;
+        }
+      });
       //   console.log(books);
+      books.currentlyReading =training? training.planning.books:[];
+      books.goingToRead = books.goingToRead.filter(
+        ({ _id }) => !books.currentlyReading.some((book) => book._id === _id)
+      );
       return books;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
