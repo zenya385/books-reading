@@ -7,6 +7,7 @@ const booksSlice = createSlice({
     currentlyReading: [],
     finishedReading: [],
     error: null,
+    isLoading: false,
   },
   extraReducers: {
     [addBook.pending]: (state) => ({
@@ -25,17 +26,20 @@ const booksSlice = createSlice({
     [getBooks.pending]: (state) => ({
       ...state,
       error: null,
+      isLoading: true,
     }),
     [getBooks.fulfilled]: (state, { payload }) => ({
       ...state,
       goingToRead: payload.goingToRead,
       currentlyReading: payload.currentlyReading,
       finishedReading: payload.finishedReading,
+      isLoading: false,
     }),
     [getBooks.rejected]: (state, { payload }) => ({
       ...state,
 
       error: payload,
+      isLoading: false,
     }),
   },
 });
