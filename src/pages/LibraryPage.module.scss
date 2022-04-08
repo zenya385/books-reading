@@ -3,6 +3,33 @@ h2{
 	font-size: 19px;
 	line-height: 2;
 	
+	margin-top: 30px;
+	color: var(--title-text-color);
+}
+.nextBtn{
+	display: block;
+	text-align: center;
+	background: var(--accent-primary-color);
+	color: var(--primary-bg-color);
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 2.38;
+	border: none;
+	margin-top: 40px;
+	margin-bottom: 40px;
+	margin-left: 74px;
+	width: 171px;
+	height: 42px;
+	@media screen and (min-width: 768px) {
+	width: 200px;
+	height: 40px;
+		margin-left: 240px;
+	}
+	@media screen and (min-width: 1280px) {
+		
+			margin-left: 540px;
+	}
+
 	
-	color: #242A37;
+	
 }
