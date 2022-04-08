@@ -48,7 +48,7 @@ const RegisterPage = () => {
               /* and other goodies */
             }) => (
               <form onSubmit={handleSubmit}>
-                <label className={s.inputLabel} htmlFor="name">Iм'я</label>
+                <label className={s.inputLabel} htmlFor="name">Iм'я <span className={s.spanStar}>*</span></label>
                 <input  className={s.inputEmail}
                   type="name"
                   name="name"
