@@ -2,6 +2,7 @@ import React from "react";
 import Icons from "../../images/symbol-defs.svg";
 import s from "./BookInfoItem.module.scss";
 import MediaQuery from "react-responsive";
+import Summary from "../Summary/Summary";
 const BookInfoItem = ({
   title,
   author,
@@ -9,6 +10,7 @@ const BookInfoItem = ({
   pagesTotal,
   colorIcon,
   review,
+  bookId,
 }) => {
   return (
     <>
@@ -34,7 +36,9 @@ const BookInfoItem = ({
           <p className={s.bookMoreInfoPage}>{pagesTotal}</p>
         </div>
         {/* {review&&<zirochki >Резюме</zirochki>} */}
-        {Boolean(review) && <button>Резюме</button>}
+        {/* {Boolean(review) && <button>Резюме</button>} */}
+        {Boolean(review) && <Summary bookId={bookId} />}
+
         {/* <button>
         <svg className="nav__icon" width="14px" height="18px">
         <use xlinkHref={`${Icons}#icon-delete`} />

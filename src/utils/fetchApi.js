@@ -59,8 +59,8 @@ export async function addBookApi(newBook, persistedToken) {
 }
 
 export async function addBookReviewApi({ bookId, form }) {
-  const data = await axios.patch(`/book/review`, form);
-  // console.log("fetchAddBookReview :>> ", data);
+  const { data } = await axios.patch(`/book/review/${bookId.bookId}`, form);
+  console.log("fetchAddBookReview :>> ", data);
   return data;
 }
 

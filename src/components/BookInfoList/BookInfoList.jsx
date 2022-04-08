@@ -26,11 +26,11 @@ const BookInfoList = ({ booksLibrary, colorIcon, review }) => {
             pagesTotal={book.pagesTotal}
             colorIcon={colorIcon}
             review={review}
+            bookId={book._id}
           />
         ))}
       </ul>
     </>
-
   );
 };
 
