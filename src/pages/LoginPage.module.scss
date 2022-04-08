@@ -138,6 +138,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 .googleForm {
   display: flex;
@@ -153,7 +154,26 @@
   line-height: 2.03;
   color: var(--google-color);
   margin-bottom: 16px;
+  position: relative;
 }
+.googleForm::before {
+  position: absolute;
+  content: "";
+  width: 18px;
+  height: 18px;
+  top: 11px;
+  left: 9px;
+  background-image: url(../images/google-mob.png);
+  background-size: auto;
+  background-repeat: no-repeat;
+@media screen and (min-width: 768px) {
+  background-image: url(../images/google-mob.png);
+}
+@media screen and (min-width: 1280px) {
+  background-image: url(../images/google-mob.png);
+}
+}
+
 // .regFormText{
 //   @media screen and (min-width: 1280px) {  
 //     display: flex;
