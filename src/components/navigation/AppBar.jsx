@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { getIsLoggedIn } from "../../redux/auth/authSelectors";
 import { UserMenu } from "./UserMenu";
 import styles from "./AppBar.module.scss";
+import SwitchTheme from "../SwitchTheme/SwitchTheme";
 
 const AppBar = () => {
   const isLoggedIn = useSelector(getIsLoggedIn);
@@ -18,6 +19,7 @@ const AppBar = () => {
         BR
       </NavLink>
       {isLoggedIn && <UserMenu />}
+      <SwitchTheme />
     </header>
   );
 };

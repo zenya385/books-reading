@@ -7,6 +7,8 @@ import PrivateRoute from "./components/Routs/PrivateRoute";
 import PublicRoute from "./components/Routs/PublicRoute";
 import Container from "./components/Share/Container";
 import GoogleLogin from "./components/Google/GoogleLogin";
+import { useSelector } from "react-redux";
+import { getTheme } from "./redux/theme/themeSelector";
 
 const LoginPage = lazy(() => import("./pages/LoginPage.jsx"));
 const RegisterPage = lazy(() => import("./pages/RegisterPage.jsx"));
@@ -14,10 +16,17 @@ const LibraryPage = lazy(() => import("./pages/LibraryPage.jsx"));
 const TrainingPage = lazy(() => import("./pages/TrainingPage.jsx"));
 
 export default function App() {
+  const theme = useSelector(getTheme);
   GoogleLogin();
 
   return (
-    <>
+    <div
+      style={{
+        backgroundColor: theme === "light" ? "white" : "darkgrey",
+        // color: theme === "light" ? "black" : "white",
+        height: "100vh",
+      }}
+    >
       <AppBar />
       <Container>
         <Suspense fallback={<h1>Wait a second, please =</h1>}>
@@ -38,6 +47,6 @@ export default function App() {
           </Switch>
         </Suspense>
       </Container>
-    </>
+    </div>
   );
 }
