@@ -52,7 +52,7 @@ export const options = {
       display: false,
       text: "Кількість сторінок за день",
     },
-  },
+  }, 
 };
 
 const labels = ["January", "February", "March", "April", "May", "June", "July"];
