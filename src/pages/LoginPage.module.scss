@@ -3,6 +3,7 @@
   display:flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
  }
  @media screen and (min-width: 1280px) {
   flex-direction: row;
@@ -43,7 +44,8 @@
     padding: 70px 184px;
      } 
      @media screen and (min-width: 1280px) {
-        padding: 185px 0;
+      padding: 185px 40px;
+      width: 40%;
      }
 }
 .spanStar {
@@ -152,6 +154,11 @@
   color: var(--google-color);
   margin-bottom: 16px;
 }
+// .regFormText{
+//   @media screen and (min-width: 1280px) {  
+//     display: flex;
+//   }
+// }
 .textLogin {
   display: flex;
   flex-direction: column;
@@ -185,7 +192,7 @@
     width: 550px;
   }
   @media screen and (min-width: 1280px) {  
-    padding: 80px 80px 35px;
+    padding: 80px 80px 35px 0;
   }
 }
 .textFont::before {
@@ -220,7 +227,7 @@
       width: 24px;
       height: 19px;
       top: 35px;
-      left: 254px;
+      left: 223px;
       }
 }
 .textAuthor {
@@ -239,6 +246,7 @@
   }
   @media screen and (min-width: 1280px) {  
     margin: 0px;
+    margin-left: -70px;
   }
 }
 .lineBefore{
@@ -249,8 +257,8 @@
   content: "";
   width: 91px;
   height: 2px;
-  top: 21px;
-  left: 83px;
+  top: 5px;
+  left: 86px;
   background-image: url(../images/Line-all-1x.png);
   background-size: auto;
   background-repeat: no-repeat;
@@ -259,7 +267,7 @@
     background-size: cover;
     width: 91px;
     height: 2px;
-    top: 12px;
+    top: 2px;
     left: 151px;
 }
     @media screen and (min-width: 768px) {  
@@ -267,7 +275,7 @@
     background-size: cover;
     width: 120px;
     height: 2px;
-    top: 9px;
+    top: 0px;
     left: 210px;
     }
     @media screen and (min-width: 1280px) {  
@@ -276,7 +284,7 @@
       width: 150px;
       height: 2px;
       top: -6px;
-      left: 194px;
+      left: 161px;
       }
 }
 
