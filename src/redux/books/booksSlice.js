@@ -1,6 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addPlaningTraning, getPlaningTraning } from "../training/trainingOperations";
-import { addBook, getBooks } from "./booksOperations";
+import {
+  addPlaningTraning,
+  getPlaningTraning,
+} from "../training/trainingOperations";
+import { addBook, getBooks, reviewBook } from "./booksOperations";
 const booksSlice = createSlice({
   name: "books",
   initialState: {
@@ -9,6 +12,7 @@ const booksSlice = createSlice({
     finishedReading: [],
     error: null,
     isLoading: false,
+    bookRating: {},
   },
   extraReducers: {
     [addBook.pending]: (state) => ({
@@ -32,11 +36,24 @@ const booksSlice = createSlice({
     [getBooks.fulfilled]: (state, { payload }) => ({
       ...state,
       goingToRead: payload.goingToRead,
-      currentlyReading:  payload.currentlyReading,
+      currentlyReading: payload.currentlyReading,
       finishedReading: payload.finishedReading,
       isLoading: false,
     }),
     [getBooks.rejected]: (state, { payload }) => ({
+      ...state,
+
+      error: payload,
+      isLoading: false,
+    }),
+
+    [reviewBook.pending]: (state) => ({
+      ...state,
+      error: null,
+      isLoading: true,
+    }),
+    [reviewBook.fulfilled]: (state, { payload }) => console.log(payload),
+    [reviewBook.rejected]: (state, { payload }) => ({
       ...state,
 
       error: payload,
