@@ -6,9 +6,11 @@ import s from "./ReviewModal.module.scss";
 
 import Rating from "@mui/material/Rating";
 import { useDispatch } from "react-redux";
+import { reviewBook } from "../../redux/books/booksOperations";
 
 export default function ReviewModal({ bookId, modalOpen, onModalClose }) {
   const [open, setOpen] = React.useState(false);
+
   const [review, setReview] = React.useState("");
   const [rating, setRaiting] = React.useState(null);
   const dispatch = useDispatch();
@@ -34,8 +36,8 @@ export default function ReviewModal({ bookId, modalOpen, onModalClose }) {
   };
 
   const handleSave = (e) => {
-    // console.log({ form: { review, rating } });
-    // dispatch(AddBooksReview({ form: { review, rating }, booksId: bookId }));
+    // console.log({ review, rating }, bookId);
+    dispatch(reviewBook({ form: { review, rating }, bookId }));
     handleReset();
     rating && onModalClose(rating);
   };
