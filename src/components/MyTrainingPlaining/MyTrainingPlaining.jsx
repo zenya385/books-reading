@@ -76,6 +76,7 @@ const MyTrainingPlaining = () => {
 
   const handleSubmitBookForTraining = (e) => {
     e.preventDefault();
+    console.log(books);
     dispatch(addPlaningTraning({ startDate, endDate, books }));
   };
 

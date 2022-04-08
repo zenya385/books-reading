@@ -51,7 +51,13 @@ const trainingSlice = createSlice({
     }),
     [addPlaningTraning.fulfilled]: (state, { payload }) => ({
       ...state,
-      goingToRead: [...state.goingToRead, payload],
+      // books: [ payload.books],
+      startDate: payload.startDate,
+      endDate: payload.endDate,
+      duration: payload.duration,
+      pagesPerDay: payload.pagesPerDay,
+      stats: payload.stats,
+      _id: payload._id,
     }),
     [addPlaningTraning.rejected]: (state, { payload }) => ({
       ...state,
