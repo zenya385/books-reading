@@ -13,10 +13,6 @@ export function UserMenu() {
 
   return (
     <div className={styles.user_menu}>
-      <div className={styles.letter_wrapper}>
-        <span className={styles.firs_letter}>{firsLetter}</span>
-      </div>
-      <span className={styles.name}>{userName}</span>
       <NavLink
         to="/training"
         className={styles.link_training}
