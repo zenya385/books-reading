@@ -11,7 +11,7 @@ const AppBar = () => {
   const firsLetter = userName && userName.split("")[0].toUpperCase();
   return (
     <header className={styles.header}>
-      <div className={styles.logo_wrapper}>
+      <div>
         <NavLink
           to="/login"
           exact
@@ -21,13 +21,18 @@ const AppBar = () => {
           BR
         </NavLink>
       </div>
-      <div className={styles.name_wrapper}>
-        <div className={styles.letter_wrapper}>
-          <span className={styles.firs_letter}>{firsLetter}</span>
+
+      {isLoggedIn && (
+        <div className={styles.flex}>
+          <div className={styles.name_wrapper}>
+            <div className={styles.letter_wrapper}>
+              <span className={styles.firs_letter}>{firsLetter}</span>
+            </div>
+            <span className={styles.name}>{userName}</span>
+          </div>
+          <UserMenu />
         </div>
-        <span className={styles.name}>{userName}</span>
-      </div>
-      {isLoggedIn && <UserMenu />}
+      )}
     </header>
   );
 };
