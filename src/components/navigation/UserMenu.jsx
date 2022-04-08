@@ -1,22 +1,15 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { logout } from "../../redux/auth/authOperations";
-import { getUserName } from "../../redux/auth/authSelectors";
 import styles from "./UserMenu.module.scss";
 import Icons from "../../images/symbol-defs.svg";
 
 export function UserMenu() {
   const dispatch = useDispatch();
-  const userName = useSelector(getUserName);
-  const firsLetter = userName && userName.split("")[0].toUpperCase();
 
   return (
     <div className={styles.user_menu}>
-      <div className={styles.letter_wrapper}>
-        <span className={styles.firs_letter}>{firsLetter}</span>
-      </div>
-      <span className={styles.name}>{userName}</span>
       <NavLink
         to="/training"
         className={styles.link_training}

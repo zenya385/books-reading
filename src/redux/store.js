@@ -14,6 +14,7 @@ import storage from "redux-persist/lib/storage";
 import authReducer from "./auth/authSlice";
 import booksReducer from "./books/booksSlice";
 import themeReducer from "./theme/themeSlice";
+import trainingReducer from "./training/trainingSlice";
 
 const authPersistConfig = {
   key: "auth",
@@ -25,12 +26,13 @@ const authPersistedReducer = persistReducer(authPersistConfig, authReducer);
 const rootPersistConfig = {
   key: "root",
   storage,
-  whitelist: ["lang", "theme"],
+  whitelist: ["theme"],
 };
 
 const rootReducer = combineReducers({
   books: booksReducer,
   auth: authPersistedReducer,
+  training: trainingReducer,
   theme: themeReducer,
 });
 

@@ -28,25 +28,25 @@ export default function App() {
       }}
     >
       <AppBar />
-      <Container>
-        <Suspense fallback={<h1>Wait a second, please =</h1>}>
-          <Switch>
-            <PublicRoute path="/register" redirectTo="/library" restricted>
-              <RegisterPage />
-            </PublicRoute>
-            <PublicRoute path="/login" redirectTo="/library" restricted>
-              <LoginPage />
-            </PublicRoute>
+      <Suspense fallback={<h1>Wait a second, please =</h1>}>
+        <Switch>
+          <PublicRoute path="/register" redirectTo="/library" restricted>
+            <RegisterPage />
+          </PublicRoute>
+          <PublicRoute path="/login" redirectTo="/library" restricted>
+            <LoginPage />
+          </PublicRoute>
+          <Container>
             <PrivateRoute path="/library" redirectTo="/login">
               <LibraryPage />
             </PrivateRoute>
             <PrivateRoute path="/training" redirectTo="/login">
               <TrainingPage />
             </PrivateRoute>
-            {/* <Redirect to="/" /> */}
-          </Switch>
-        </Suspense>
-      </Container>
+          </Container>
+          {/* <Redirect to="/" /> */}
+        </Switch>
+      </Suspense>
     </div>
   );
 }
