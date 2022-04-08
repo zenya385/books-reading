@@ -5,14 +5,20 @@ import {
   getBooksCurrentlyReadingState,
   getBooksFinishedReadingState,
   getBooksGoingToReadState,
+  getBooksState,
+  getIsLoading,
   // getGoingToRead,
 } from "../redux/books/booksSelectors";
-
 import BookInfoList from "../components/BookInfoList/BookInfoList";
-
 import { getBooks } from "../redux/books/booksOperations";
 import { getIsLoggedIn } from "../redux/auth/authSelectors";
+import InstructionModal from "../components/InstructionModal/InstructionModal";
+import SuccessModal from "../components/FinishTrainingModal/SuccessModal";
+import FailModal from "../components/FinishTrainingModal/FailModal";
+import ReviewModal from "../components/ReviewModal/ReviewModal";
+
 import { Link } from "react-router-dom";
+
 
 // const booksLibrary = [
 //   {
@@ -41,6 +47,7 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
   const booksGoingToRead = useSelector(getBooksGoingToReadState);
   const booksFinishedReading = useSelector(getBooksFinishedReadingState);
   const booksCurrentlyReading = useSelector(getBooksCurrentlyReadingState);
+  const booksIsLoading = useSelector(getIsLoading);
   const dispatch = useDispatch();
 
   // console.log(Boolean(booksFinishedReading.length));
@@ -81,8 +88,13 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
           review={0}
         />
       )}
-      {/* <a href="/training">Далі</a> */}
-      <Link to="/training">Next</Link>
+
+      {!booksIsLoading && booksGoingToRead.length === 0 && <InstructionModal />}
+
+      {/* {!booksIsLoading && booksGoingToRead.length === 0 && <SuccessModal />} */}
+      {/* {!booksIsLoading && booksGoingToRead.length === 0 && <FailModal />} */}
+
+      <a href="/training">Далі</a>
 
       {/* {loggedIn && (
         <ul>
