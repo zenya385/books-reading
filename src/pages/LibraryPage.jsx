@@ -15,7 +15,9 @@ import BookInfoList from "../components/BookInfoList/BookInfoList";
 import { getBooks } from "../redux/books/booksOperations";
 import { getIsLoggedIn } from "../redux/auth/authSelectors";
 import InstructionModal from "../components/InstructionModal/InstructionModal";
-import FinishTrainingModal from "../components/FinishTrainingModal/FinishTrainingModal";
+import SuccessModal from "../components/FinishTrainingModal/SuccessModal";
+import FailModal from "../components/FinishTrainingModal/FailModal";
+import ReviewModal from "../components/ReviewModal/ReviewModal";
 
 // const booksLibrary = [
 //   {
@@ -82,11 +84,10 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
         />
       )}
 
-      {/* {!booksIsLoading && booksGoingToRead.length === 0 && <InstructionModal />} */}
+      {!booksIsLoading && booksGoingToRead.length === 0 && <InstructionModal />}
 
-      {!booksIsLoading && booksGoingToRead.length === 0 && (
-        <FinishTrainingModal />
-      )}
+      {/* {!booksIsLoading && booksGoingToRead.length === 0 && <SuccessModal />} */}
+      {/* {!booksIsLoading && booksGoingToRead.length === 0 && <FailModal />} */}
 
       <a href="/training">Далі</a>
       {/* {loggedIn && (
