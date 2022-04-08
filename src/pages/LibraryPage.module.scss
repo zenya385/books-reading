@@ -6,7 +6,18 @@ h2{
 	margin-top: 30px;
 	color: var(--title-text-color);
 }
+.section{
+	
+	margin-bottom: 30px;
+}
+.nextBtnWrapper{
+	position: relative;
+	height: 200px;
+}
 .nextBtn{
+	position: absolute;
+	top: 14%;
+	left: 20%;
 	display: block;
 	text-align: center;
 	background: var(--accent-primary-color);
@@ -15,21 +26,37 @@ h2{
 	font-size: 16px;
 	line-height: 2.38;
 	border: none;
-	margin-top: 40px;
-	margin-bottom: 40px;
-	margin-left: 74px;
+	margin-top:40px;
 	width: 171px;
 	height: 42px;
 	@media screen and (min-width: 768px) {
 	width: 200px;
 	height: 40px;
-		margin-left: 240px;
+	top: 40%;
+		left: 37%;
 	}
 	@media screen and (min-width: 1280px) {
-		
-			margin-left: 540px;
+		left: 45%;
+			
 	}
 
 	
 	
+}
+.modalOpenBtn{
+	color:var(--primary-bg-color);
+	width: 52px;
+	height: 52px;
+	background: rgba(255, 107, 8, 0.782);
+	
+	border-radius: 50%;
+	position: fixed;
+	left: 44%;
+	bottom: 40px;
+	z-index: 1;
+		-webkit-transition-duration: 0.4s;
+		transition-duration: 0.4s;
+	&:hover{
+    background-color: var(--accent-primary-color);
+	}
 }
