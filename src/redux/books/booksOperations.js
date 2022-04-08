@@ -31,7 +31,7 @@ export const getBooks = createAsyncThunk(
       const books = await getUserBooksApi(accessToken);
       const training = await getPlanningApi(accessToken).catch((error) => {
         if (error.request.status === 403) {
-          console.log(error.request);
+          // console.log(error.request);
           return null; // {planning:{books:[]}};
         } else {
           throw error;
@@ -55,10 +55,7 @@ export const reviewBook = createAsyncThunk(
     const state = thunkApi.getState();
     // const persistedToken = state.auth.accessToken;
     try {
-      // console.log(form);
-      // console.log(bookId);
       const book = await addBookReviewApi({ form, bookId });
-      console.log(book);
       return book;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);

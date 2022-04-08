@@ -1,21 +1,21 @@
 import React from "react";
 import Icons from "../../images/symbol-defs.svg";
-import s from "./BookInfoItem.module.scss";
+import s from "./BookReviewItem.module.scss";
 import MediaQuery from "react-responsive";
 import Summary from "../Summary/Summary";
-const BookInfoItem = ({
+
+const BookReviewItem = ({
   title,
   author,
   publishYear,
   pagesTotal,
   colorIcon,
-  review,
   bookId,
   rating,
   feedback,
 }) => {
   return (
-    <>
+    <div className={s.bookReviewItemWrapper}>
       <li className={s.item}>
         <div className={s.iconTitle}>
           <svg className={s.navIcon} width="22px" height="17px">
@@ -37,23 +37,12 @@ const BookInfoItem = ({
           <p className={s.bookMoreInfoYear}>{publishYear}</p>
           <p className={s.bookMoreInfoPage}>{pagesTotal}</p>
         </div>
-        {/* {review&&<zirochki >Резюме</zirochki>} */}
-
-        {/* {Boolean(review) && <button>Резюме</button>} */}
-
-        {Boolean(review) && (
-          <Summary bookId={bookId} rating={rating} feedback={feedback} />
-        )}
-
-        {/* <button>
-        <svg className="nav__icon" width="14px" height="18px">
-        <use xlinkHref={`${Icons}#icon-delete`} />
-      </svg>
-      </button> */}
       </li>
-      {/* </MediaQuery> */}
-    </>
+      <div className={s.reviewWrepper}>
+        <Summary bookId={bookId} rating={rating} feedback={feedback} />
+      </div>
+    </div>
   );
 };
 
-export default BookInfoItem;
+export default BookReviewItem;

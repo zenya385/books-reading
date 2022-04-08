@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import BookInfoItem from "../BookInfoItem/BookInfoItem";
+import BookReviewItem from "../BookReviewItem/BookReviewItem";
 import s from "./BookInfoList.module.scss";
 import MediaQuery from "react-responsive";
 import Icons from "../../images/symbol-defs.svg";
+import { getBooks } from "../../redux/books/booksOperations";
+import { useDispatch } from "react-redux";
 
 const BookInfoList = ({ booksLibrary, colorIcon, review }) => {
+  const dispatch = useDispatch();
+  console.log(review);
+
+  useEffect(() => {
+    dispatch(getBooks());
+  }, []);
+
   return (
     <>
       <ul className={s.bookList}>
@@ -17,7 +27,7 @@ const BookInfoList = ({ booksLibrary, colorIcon, review }) => {
             <p className={s.page}>Стор.</p>
           </div>
         </MediaQuery>
-        {booksLibrary.map((book) => (
+        {/* {booksLibrary.map((book) => (
           <BookInfoItem
             key={book._id}
             title={book.title}
@@ -27,8 +37,40 @@ const BookInfoList = ({ booksLibrary, colorIcon, review }) => {
             colorIcon={colorIcon}
             review={review}
             bookId={book._id}
+            rating={book.rating}
+            feedback={book.feedback}
           />
-        ))}
+        ))} */}
+
+        {Boolean(review)
+          ? booksLibrary.map((book) => (
+              <BookReviewItem
+                key={book._id}
+                title={book.title}
+                author={book.author}
+                publishYear={book.publishYear}
+                pagesTotal={book.pagesTotal}
+                colorIcon={colorIcon}
+                review={review}
+                bookId={book._id}
+                rating={book.rating}
+                feedback={book.feedback}
+              />
+            ))
+          : booksLibrary.map((book) => (
+              <BookInfoItem
+                key={book._id}
+                title={book.title}
+                author={book.author}
+                publishYear={book.publishYear}
+                pagesTotal={book.pagesTotal}
+                colorIcon={colorIcon}
+                review={review}
+                bookId={book._id}
+                rating={book.rating}
+                feedback={book.feedback}
+              />
+            ))}
       </ul>
     </>
   );

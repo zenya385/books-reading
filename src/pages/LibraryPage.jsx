@@ -48,6 +48,7 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
   const booksFinishedReading = useSelector(getBooksFinishedReadingState);
   const booksCurrentlyReading = useSelector(getBooksCurrentlyReadingState);
   const booksIsLoading = useSelector(getIsLoading);
+  const ratingChange = useSelector(getBooksState);
   const dispatch = useDispatch();
 
   // console.log(Boolean(booksFinishedReading.length));
@@ -60,7 +61,7 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
     useEffect(() => {
       dispatch(getBooks());
       //  setTimeout( (dispatch(getPlaningTraning())),0)
-    }, []);
+    }, [ratingChange.feedback, ratingChange.rating]);
 
   return (
     <>

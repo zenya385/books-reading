@@ -33,7 +33,7 @@ export async function logoutUserApi(persistedToken) {
   token.set(persistedToken);
   const { data } = await axios.post("/auth/logout", persistedToken);
   token.unset();
-  console.log("logoutUserApi :>> ", data);
+  // console.log("logoutUserApi :>> ", data);
   return data;
 }
 
@@ -59,8 +59,9 @@ export async function addBookApi(newBook, persistedToken) {
 }
 
 export async function addBookReviewApi({ bookId, form }) {
-  const { data } = await axios.patch(`/book/review/${bookId.bookId}`, form);
-  console.log("fetchAddBookReview :>> ", data);
+  // console.log(form);
+  const { data } = await axios.patch(`/book/review/${bookId}`, form);
+  // console.log("fetchAddBookReview :>> ", data);
   return data;
 }
 
@@ -92,6 +93,6 @@ export async function getUserBooksApi(accessToken) {
   token.set(accessToken);
   const { data } = await axios.get("/user/books");
   token.unset();
-  console.log("getUserBooksApi :>> ", data);
+  // console.log("getUserBooksApi :>> ", data);
   return data;
 }

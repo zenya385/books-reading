@@ -83,7 +83,7 @@ const TrainingPage = () => {
   // const endDate = useSelector(getEndDate);
   const books = useSelector(getTrainingBooks);
 
-  const dispatch = useDispatch();  
+  const dispatch = useDispatch();
 
   loggedIn &&
     useEffect(() => {
