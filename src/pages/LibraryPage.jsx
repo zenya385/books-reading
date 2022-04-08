@@ -9,15 +9,16 @@ import {
   getIsLoading,
   // getGoingToRead,
 } from "../redux/books/booksSelectors";
-
 import BookInfoList from "../components/BookInfoList/BookInfoList";
-
 import { getBooks } from "../redux/books/booksOperations";
 import { getIsLoggedIn } from "../redux/auth/authSelectors";
 import InstructionModal from "../components/InstructionModal/InstructionModal";
 import SuccessModal from "../components/FinishTrainingModal/SuccessModal";
 import FailModal from "../components/FinishTrainingModal/FailModal";
 import ReviewModal from "../components/ReviewModal/ReviewModal";
+
+import { Link } from "react-router-dom";
+
 
 // const booksLibrary = [
 //   {
@@ -48,6 +49,10 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
   const booksCurrentlyReading = useSelector(getBooksCurrentlyReadingState);
   const booksIsLoading = useSelector(getIsLoading);
   const dispatch = useDispatch();
+
+  // console.log(Boolean(booksFinishedReading.length));
+  // console.log(booksGoingToRead.length);
+  // console.log(booksAllLibrary);
 
   let review = 1;
 
@@ -90,6 +95,7 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
       {/* {!booksIsLoading && booksGoingToRead.length === 0 && <FailModal />} */}
 
       <a href="/training">Далі</a>
+
       {/* {loggedIn && (
         <ul>
           {fullArray.map((el) => (

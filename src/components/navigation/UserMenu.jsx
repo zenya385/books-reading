@@ -9,7 +9,8 @@ import Icons from "../../images/symbol-defs.svg";
 export function UserMenu() {
   const dispatch = useDispatch();
   const userName = useSelector(getUserName);
-  const firsLetter = userName.split("")[0].toUpperCase();
+  const firsLetter = userName && userName.split("")[0].toUpperCase();
+
   return (
     <div className={styles.user_menu}>
       <div className={styles.letter_wrapper}>
@@ -21,7 +22,7 @@ export function UserMenu() {
         className={styles.link_training}
         activeClassName={styles.activeLink}
       >
-        <svg class={styles.book__icon} width="22px" height="17px">
+        <svg className={styles.book__icon} width="22px" height="17px">
           <use xlinkHref={`${Icons}#icon-flat-grey`} />
         </svg>
       </NavLink>
