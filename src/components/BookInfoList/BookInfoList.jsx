@@ -30,6 +30,7 @@ const BookInfoList = ({ booksLibrary, colorIcon, review }) => {
         ))}
       </ul>
     </>
+
   );
 };
 
