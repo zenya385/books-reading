@@ -9,7 +9,7 @@ const trainingSlice = createSlice({
     endDate: "", //new Date()
     duration: 0,
     pagesPerDay: 0,
-    stats: {},
+    stats: [],
     _id: null,
   },
   reducers: {

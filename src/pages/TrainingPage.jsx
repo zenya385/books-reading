@@ -23,6 +23,7 @@ import {
   getTrainingBooks,
 } from "../redux/training/trainingSelectors";
 import StatisticsResults from "../components/AllStatistics/StatisticsResults/StatisticsResults"
+import Timer from "../components/Timer/Timer";
 
 ChartJS.register(
   CategoryScale,
@@ -86,6 +87,8 @@ const TrainingPage = () => {
 
   const dispatch = useDispatch();  
 
+  const isTrain=false
+
   loggedIn &&
     useEffect(() => {
       dispatch(getBooks());
@@ -93,10 +96,11 @@ const TrainingPage = () => {
 
   return (
     <div className={s.TrainingPage}>
+      <Timer />
       <MyTrainingPlaining />
-      <MyPurposeToRead books={books} />
+      <MyPurposeToRead books={books} isTrain={isTrain} />
       <Line options={options} data={data} />
-      <StatisticsResults/>
+      {isTrain&&<StatisticsResults/>}
     </div>
   );
 };

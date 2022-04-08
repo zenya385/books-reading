@@ -1,10 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { getDurationPeriod } from "../../redux/training/trainingSelectors";
+import { getDurationPeriod, getRemaindBooks } from "../../redux/training/trainingSelectors";
 import s from "./MyPurposeToRead.module.scss";
 
-const MyPurposeToRead = ({ books }) => {
+const MyPurposeToRead = ({ books,isTrain }) => {
   const duration = useSelector(getDurationPeriod);
+  const remaindBooks = useSelector(getRemaindBooks);
 
   return (
     <div className={s.myPurposeToRead}>
@@ -12,7 +13,7 @@ const MyPurposeToRead = ({ books }) => {
       <div className={s.numbersPurpose}>
         <span>{books.length}</span>
         <span> {duration}</span>
-        <span> {books.length}</span>
+       {isTrain&& <span> {remaindBooks.length}</span>}
       </div>
     </div>
   );
