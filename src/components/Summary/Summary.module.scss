@@ -1,7 +1,51 @@
+.wrapper {
+// display: flex;
+// flex-direction: column;
+margin-bottom: 30px;
+}
 .ratingWrepper {
     display: flex;
     align-items: center;
+    margin-left: 55px;
+    margin-bottom: 10px;
 }
-.reviewBtn {
+.ratingText {
+    font-family: 'Montserrat';
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 3.17;
+    
+    color: #898F9F;
+    margin-right: 15px;
+}
 
+.reviewBtn {
+    display: block;
+    margin: 0 auto;
+    width: 127px;
+    height: 40px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 2.7;
+    text-align: center;
+
+    color: #FFFFFF;
+    background: #6D7A8D;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+
+    @media screen and (min-width: 768px) {
+        width: 80px;
+        height: 40px;
+        margin-left: 20px;
+    
+    }
+    
+    // @media screen and (min-width: 1280px) {
+    
+    //     font-size: 14px;
+    //     line-height: 2.71;
+    // }
 }

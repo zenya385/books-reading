@@ -18,6 +18,15 @@ const BookInfoList = ({ booksLibrary, colorIcon, review }) => {
   return (
     <>
       <ul className={s.bookList}>
+        {/* <MediaQuery maxWidth={767}>
+          <div className={s.bookInfo}>
+            <p className={s.title}>Назва книги</p>
+
+            {/* <p className={s.author}>Автор</p> */}
+        {/* <p className={s.year}>Рік</p> */}
+        {/* <p className={s.page}>Стор.</p> */}
+        {/* </div> */}
+        {/* </MediaQuery> */}
         <MediaQuery minWidth={768}>
           <div className={s.bookInfo}>
             <p className={s.title}>Назва книги</p>
@@ -25,6 +34,7 @@ const BookInfoList = ({ booksLibrary, colorIcon, review }) => {
             <p className={s.author}>Автор</p>
             <p className={s.year}>Рік</p>
             <p className={s.page}>Стор.</p>
+            <p className={s.page}>Рейтинг.</p>
           </div>
         </MediaQuery>
         {/* {booksLibrary.map((book) => (

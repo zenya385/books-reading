@@ -3,6 +3,7 @@ import Icons from "../../images/symbol-defs.svg";
 import s from "./BookReviewItem.module.scss";
 import MediaQuery from "react-responsive";
 import Summary from "../Summary/Summary";
+import { Rating } from "@mui/material";
 
 const BookReviewItem = ({
   title,
@@ -37,10 +38,16 @@ const BookReviewItem = ({
           <p className={s.bookMoreInfoYear}>{publishYear}</p>
           <p className={s.bookMoreInfoPage}>{pagesTotal}</p>
         </div>
-      </li>
-      <div className={s.reviewWrepper}>
+        <Rating
+          name="half-rating-read"
+          size="size-medium"
+          value={rating}
+          precision={0.5}
+          readOnly
+        />
         <Summary bookId={bookId} rating={rating} feedback={feedback} />
-      </div>
+      </li>
+      {/* <div className={s.reviewWrepper}></div> */}
     </div>
   );
 };

@@ -2,7 +2,7 @@ import * as React from "react";
 import Rating from "@mui/material/Rating";
 import ReviewModal from "../ReviewModal/ReviewModal";
 import s from "./Summary.module.scss";
-
+import MediaQuery from "react-responsive";
 // import s from "./ReviewModal.module.scss";
 
 const Summary = ({ bookId, rating, feedback }) => {
@@ -16,20 +16,44 @@ const Summary = ({ bookId, rating, feedback }) => {
     setModalOpen(false);
   };
   return (
-    <div>
-      <div className={s.ratingWrepper}>
-        <p>Рейтинг: </p>
-        <Rating
+    <>
+      <MediaQuery minWidth={768}>
+        {/* <div className={s.wrapper}> */}
+        {/* <div className={s.ratingWrepper}> */}
+        {/* <p className={s.ratingText}>Рейтинг : </p> */}
+        {/* <Rating
           name="half-rating-read"
           size="small"
           value={rating}
           precision={0.5}
           readOnly
-        />
-      </div>
-      <button onClick={onModalOpen} className={s.reviewBtn}>
-        Резюме
-      </button>
+        /> */}
+        {/* </div> */}
+
+        <button onClick={onModalOpen} className={s.reviewBtn}>
+          Резюме
+        </button>
+        {/* </div> */}
+      </MediaQuery>
+
+      <MediaQuery maxWidth={767}>
+        <div className={s.wrapper}>
+          <div className={s.ratingWrepper}>
+            <p className={s.ratingText}>Рейтинг : </p>
+            <Rating
+              name="half-rating-read"
+              size="small"
+              value={rating}
+              precision={0.5}
+              readOnly
+            />
+          </div>
+
+          <button onClick={onModalOpen} className={s.reviewBtn}>
+            Резюме
+          </button>
+        </div>
+      </MediaQuery>
 
       {modalOpen && (
         <ReviewModal
@@ -40,7 +64,7 @@ const Summary = ({ bookId, rating, feedback }) => {
           coment={feedback}
         />
       )}
-    </div>
+    </>
   );
 };
 

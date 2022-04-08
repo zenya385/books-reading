@@ -41,9 +41,9 @@ const BookInfoItem = ({
 
         {/* {Boolean(review) && <button>Резюме</button>} */}
 
-        {Boolean(review) && (
+        {/* {Boolean(review) && (
           <Summary bookId={bookId} rating={rating} feedback={feedback} />
-        )}
+        )} */}
 
         {/* <button>
         <svg className="nav__icon" width="14px" height="18px">

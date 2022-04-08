@@ -11,7 +11,7 @@
     @media screen and (max-width: 767px) {
         position: relative;
         width: auto;
-        height: 178px;
+        // height: 178px;
         margin-top: 28px;
     }
 
@@ -38,14 +38,22 @@ button {
     display: flex;
 
     @media screen and (max-width: 767px) {
-
+        position:static;
         align-items: center;
         position: absolute;
-        bottom: 86%;
+        bottom: 95%;
+        left: 7%;
+    }
+    @media screen and (min-width: 480px) {
+        margin-bottom: 10px;
+        align-items: center;
+        position: absolute;
+        bottom: 95%;
         left: 7%;
     }
 
     @media screen and (min-width: 768px) {
+        position:static;
         align-items: center;
     }
 }
@@ -62,9 +70,12 @@ button {
     color: #242A37;
 
     @media screen and (min-width: 768px) {
+        // font-size: 14px;
+        // line-height: 0.8;
+        // width: 252px;
         font-size: 14px;
-        line-height: 0.8;
-        width: 252px;
+        line-height: 1.2;
+        width: 135px;
     }
 
     @media screen and (min-width: 1280px) {
@@ -75,9 +86,10 @@ button {
 }
 
 .navIcon {
+    margin-left: 20px;
+    margin-right: 20px;
     @media screen and (min-width: 768px) {
-        margin-left: 20px;
-        margin-right: 20px;
+        margin-right: 0;
     }
 
 }
@@ -106,10 +118,12 @@ button {
     color: #242A37;
 
     @media screen and (min-width: 768px) {
+        // font-size: 14px;
+        // line-height: 0.8;
+        // width: 150px;
         font-size: 14px;
-        line-height: 0.8;
-        width: 150px;
-
+        line-height: 1.7;
+        width: 110px;
     }
 
     @media screen and (min-width: 1280px) {
@@ -126,9 +140,12 @@ button {
     color: #242A37;
 
     @media screen and (min-width: 768px) {
+        // font-size: 14px;
+        // line-height: 0.8;
+        // width: 120px;
+        margin-right: 52px;
         font-size: 14px;
-        line-height: 0.8;
-        width: 120px;
+        line-height: 2.7;
     }
 
     @media screen and (min-width: 1280px) {
@@ -145,8 +162,11 @@ button {
     color: #242A37;
 
     @media screen and (min-width: 768px) {
+        // font-size: 14px;
+        // line-height: 0.8;
+        margin-right: 20px;
         font-size: 14px;
-        line-height: 0.8;
+        line-height: 2.7;
 
     }
 
@@ -160,7 +180,7 @@ button {
     background: var (--primary-bg-color);
     box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
 }
-.reviewWrepper{
-    display: flex;
-    align-items: center;
-}
+// .reviewWrepper{
+//     display: flex;
+//     align-items: center;
+// }
