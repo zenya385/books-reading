@@ -20,7 +20,6 @@ import ReviewModal from "../components/ReviewModal/ReviewModal";
 import { Link } from "react-router-dom";
 import { getPlaningTraning } from "../redux/training/trainingOperations";
 
-
 // const booksLibrary = [
 //   {
 //     title: "The Book of Five Rings",
@@ -60,32 +59,36 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
   loggedIn &&
     useEffect(() => {
       dispatch(getBooks());
-    //  setTimeout( (dispatch(getPlaningTraning())),0)
+      //  setTimeout( (dispatch(getPlaningTraning())),0)
     }, []);
-
-console.log(booksCurrentlyReading);
 
   return (
     <>
       <BookForm />
-      {booksFinishedReading&&Boolean(booksFinishedReading.length) && <h2>Прочитано</h2>}
-      {booksFinishedReading&&Boolean(booksFinishedReading.length) && (
+      {booksFinishedReading && Boolean(booksFinishedReading.length) && (
+        <h2>Прочитано</h2>
+      )}
+      {booksFinishedReading && Boolean(booksFinishedReading.length) && (
         <BookInfoList
           booksLibrary={booksFinishedReading}
           colorIcon="dark-grey"
           review={review}
         />
       )}
-      {booksCurrentlyReading&&Boolean(booksCurrentlyReading.length)&& <h2>Читаю</h2>}
-      {booksCurrentlyReading&&Boolean(booksCurrentlyReading.length) && (
+      {booksCurrentlyReading && Boolean(booksCurrentlyReading.length) && (
+        <h2>Читаю</h2>
+      )}
+      {booksCurrentlyReading && Boolean(booksCurrentlyReading.length) && (
         <BookInfoList
           booksLibrary={booksCurrentlyReading}
           colorIcon="accent"
           review={0}
         />
       )}
-      {booksGoingToRead&&Boolean(booksGoingToRead.length) && <h2>Маю намір прочитати</h2>}
-      {booksGoingToRead&&Boolean(booksGoingToRead.length) && (
+      {booksGoingToRead && Boolean(booksGoingToRead.length) && (
+        <h2>Маю намір прочитати</h2>
+      )}
+      {booksGoingToRead && Boolean(booksGoingToRead.length) && (
         <BookInfoList
           booksLibrary={booksGoingToRead}
           colorIcon="grey"
