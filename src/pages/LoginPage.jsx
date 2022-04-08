@@ -6,10 +6,7 @@ import s from "./LoginPage.module.scss";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
-
   return (
-
-
     <div className={s.regForm}>
       <div className={s.LoginRegDiv}>
         <div className={s.regFormFormikGoogle}>
@@ -45,9 +42,7 @@ const LoginPage = () => {
                   isSubmitting,
                   /* and other goodies */
                 }) => (
-                  <form
-                    onSubmit={handleSubmit}
-                  >
+                  <form onSubmit={handleSubmit}>
                     <label className={s.inputLabel} htmlFor="email">Електронна адреса <span className={s.spanStar}>*</span></label>
                     <input
                       className={s.inputEmail}
@@ -85,7 +80,6 @@ const LoginPage = () => {
               <p className={s.textAuthor}>Бэкон Ф.</p>
             </div>
           </div>
-          
         </div>
     </div>
   );
