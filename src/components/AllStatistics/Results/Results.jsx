@@ -1,8 +1,9 @@
+import React from 'react';
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import './ResultsStyle.css'
-import React from 'react';
+import s from './Results.module.scss'
+
 
 const Results = ({arr, setArr}) => {
     const [startDate, setStartDate] = useState(new Date());
@@ -18,18 +19,18 @@ const Results = ({arr, setArr}) => {
     }
     return ( 
         <>
-        <form action="" onSubmit={onSubmitForm}>
-            <div className="inputs_div">
+        <form className={s.form_res} action="" onSubmit={onSubmitForm}>
+            <div className={s.inputs_div}>
             <div>
-        <p className="data_text">Дата</p>
-        <DatePicker selected={startDate} onChange={(date) =>{setStartDate(date); console.log(startDate);}} dateFormat="dd.MM.yyyy"/> 
+        <p className={s.data_text}>Дата</p>
+        <DatePicker className={s.input_date} selected={startDate} onChange={(date) =>{setStartDate(date); console.log(startDate);}} dateFormat="dd.MM.yyyy"/> 
             </div>
             <div>
-        <p className="pages_text">Кількість сторінок</p>
-        <input type="text" className="input_pages" value={pages} onChange={(e)=> {console.log(e.target.value); setPages(e.target.value);}}/>
+        <p className={s.pages_text}>Кількість сторінок</p>
+        <input type="text" className={s.input_pages} value={pages} onChange={(e)=> {console.log(e.target.value); setPages(e.target.value);}}/>
             </div>
             </div>
-        <button className="add-res_btn" type="submit">Додати результат</button>
+        <button className={s.add_res_btn} type="submit">Додати результат</button>
         </form>
         </>
     );

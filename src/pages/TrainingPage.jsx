@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -10,15 +10,19 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-// import BookInfoList from "../components/BookInfoList/BookInfoList";
 import { useDispatch, useSelector } from "react-redux";
-import { getBooksGoingToReadState } from "../redux/books/booksSelectors";
+// import { getBooksGoingToReadState } from "../redux/books/booksSelectors";
 import { getIsLoggedIn } from "../redux/auth/authSelectors";
 import { getBooks } from "../redux/books/booksOperations";
 import MyPurposeToRead from "../components/MyPurposeToRead/MyPurposeToRead";
 import s from "./TrainingPage.module.scss";
 import MyTrainingPlaining from "../components/MyTrainingPlaining/MyTrainingPlaining";
-import StatisticsResults from "../components/AllStatistics/StatisticsResults/StatisticsResults";
+import {
+  // getEndDate,
+  // getStartDate,
+  getTrainingBooks,
+} from "../redux/training/trainingSelectors";
+import StatisticsResults from "../components/AllStatistics/StatisticsResults/StatisticsResults"
 
 ChartJS.register(
   CategoryScale,
@@ -29,7 +33,6 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-// import second from './'
 
 export const options = {
   backgroundColor: "#FF6B08",
@@ -76,11 +79,12 @@ export const data = {
 
 const TrainingPage = () => {
   const loggedIn = useSelector(getIsLoggedIn);
-  // const [startDate, setStartDate] = useState(new Date());
-  // const [endDate, setEndDate] = useState(new Date());
-  const booksLibrary = useSelector(getBooksGoingToReadState);
+  // const booksLibrary = useSelector(getBooksGoingToReadState);
+  // const startDate = useSelector(getStartDate);
+  // const endDate = useSelector(getEndDate);
+  const books = useSelector(getTrainingBooks);
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch();  
 
   loggedIn &&
     useEffect(() => {
@@ -90,32 +94,9 @@ const TrainingPage = () => {
   return (
     <div className={s.TrainingPage}>
       <MyTrainingPlaining />
-      <h2>Моє тренування</h2>
-      {/* <DatePicker
-        dateFormat="dd.MM.yyyy"
-        selected={startDate}
-        onChange={(date) => setStartDate(date)}
-      />
-
-      <DatePicker
-        dateFormat="dd.MM.yyyy"
-        selected={endDate}
-        onChange={(date) => setEndDate(date)}
-      /> */}
-      <select>
-        {booksLibrary.map((book) => (
-          <option key={book._id} value={book.title}>
-            {book.title}
-          </option>
-        ))}
-      </select>
-      <button>Додати</button>
-      <MyPurposeToRead
-        booksLibrary={booksLibrary}
-             />
+      <MyPurposeToRead books={books} />
       <Line options={options} data={data} />
-      
-<StatisticsResults />
+      <StatisticsResults/>
     </div>
   );
 };

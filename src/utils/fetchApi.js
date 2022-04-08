@@ -66,7 +66,8 @@ export async function addBookReviewApi({ bookId, form }) {
 
 //--------------------------------------------------------------/
 
-export async function addPlanningApi(form) {
+export async function addPlanningApi(form, accessToken) {
+  token.set(accessToken);
   const { data } = await axios.post("/planning", form);
   // console.log("fetchPlanning :>> ", data);
   return data;
@@ -78,9 +79,10 @@ export async function addPagesApi(num) {
   return data;
 }
 
-export async function getPlanningApi() {
+export async function getPlanningApi(accessToken) {
+  token.set(accessToken);
   const { data } = await axios.get("/planning");
-  // console.log("fetchPlanning :>> ", data);
+  console.log("getPlanningApi :>> ", data);
   return data;
 }
 
@@ -90,6 +92,6 @@ export async function getUserBooksApi(accessToken) {
   token.set(accessToken);
   const { data } = await axios.get("/user/books");
   token.unset();
-  // console.log("fetchLogout_data :>> ", data);
+  console.log("getUserBooksApi :>> ", data);
   return data;
 }
