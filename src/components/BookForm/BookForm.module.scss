@@ -1,9 +1,13 @@
 .form{
 	display: flex;
+	margin-top: 30px;
 	@media screen and (max-width: 1279px) {
 		flex-direction: column;
 		align-items: center;
 	}
+		@media screen and (min-width: 768px) {
+			padding-left: 44px;
+		}
 	
 	&__container{
 		display: flex;
@@ -45,7 +49,9 @@
 		cursor: pointer;
 		-webkit-transition-duration: 0.4s;
 		transition-duration: 0.4s;
+		
 		@media screen and (max-width: 1279px) {
+			
 			margin-top: 35px;
 		}
 		@media screen and (min-width: 1280px) {
