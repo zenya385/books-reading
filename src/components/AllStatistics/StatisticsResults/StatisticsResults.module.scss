@@ -14,6 +14,14 @@
         padding-left: 84px;
         padding-right: 84px;
     }
+
+    @media screen and (max-width: 480px) {
+        width: 270px;
+        height: 340px;
+        padding-left: 17px;
+        padding-right: 13px;
+        margin-bottom: 50px;
+    }
 }
 
 .result_text {
@@ -29,6 +37,12 @@
     @media screen and (max-width: 768px) {
         font-size: 14px;
         line-height: 38px;
+    }
+
+    @media screen and (max-width: 480px) {
+        font-size: 12px;
+        line-height: 38px;
+        height: 27px;
     }
 }
 
@@ -52,15 +66,22 @@
         line-height: 25px;
         width: 102px;
     }
+    @media screen and (max-width: 480px) {
+        font-size: 12px;
+        line-height: 27px;
+        width: 87px;
+        margin-right: 5px;
+        margin-left: 5px;
+    }
 }
 
 .scroll_block { 
     height: 110px !important;
 
-    @media screen and (max-width: 768px) {
-        height: 70px !important;
-    }
-    
+   
+    // @media screen and (max-width: 480px) {
+    //     height: 100px !important;
+    // }
 }
 
 .stat_list {
@@ -69,8 +90,11 @@
     height: 110px;
     overflow-y: scroll;
     @media screen and (max-width: 768px) {
-        height: 70px;
+        width: 240px;
     }
+    // @media screen and (max-width: 480px) {
+    //     height: 100px;
+    // }
 }
 
 .stat_block {
@@ -88,6 +112,10 @@
         width: 0px;
         border: none;
     }
+    @media screen and (max-width: 480px) {
+        width: 100%;
+        border: 1px solid #E0E5EB;
+    }
 }
 
 .stat_block_after {
@@ -97,6 +125,9 @@
 
     @media screen and (max-width: 768px) {
         width: 128px;
+    }
+    @media screen and (max-width: 480px) {
+        width: 100%;
     }
 }
 

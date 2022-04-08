@@ -16,7 +16,7 @@ const Statistics = ({arr}) => {
         {arr.map((stat, index) => (
                 <li key={index} className={s.stat_item}>
                     <p className={s.stat_date_text} >{func(JSON.stringify(new Date(stat.date).getDate()))}.{func(JSON.stringify(new Date(stat.date).getMonth() + 1))}.{JSON.stringify(new Date(stat.date).getFullYear())}</p>
-                    <p className={s.stat_time_text}>{JSON.stringify(new Date(stat.date).getHours())}:{func(JSON.stringify(new Date().getMinutes()))}:{JSON.stringify(new Date().getSeconds())}</p>
+                    <p className={s.stat_time_text}>{func(JSON.stringify(new Date(stat.date).getHours()))}:{func(JSON.stringify(new Date().getMinutes()))}:{func(JSON.stringify(new Date().getSeconds()))}</p>
                     <p className={s.stat_pages_text}>{stat.pages} <span className='stat_pages_span'>стор.</span> </p>
                 </li>
             ))
