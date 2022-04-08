@@ -87,7 +87,7 @@ const TrainingPage = () => {
 
   const dispatch = useDispatch();  
 
-  const isTrain=false
+  const isTrain=true
 
   loggedIn &&
     useEffect(() => {

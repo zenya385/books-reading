@@ -98,7 +98,7 @@ console.log(booksCurrentlyReading);
       {/* {!booksIsLoading && booksGoingToRead.length === 0 && <SuccessModal />} */}
       {/* {!booksIsLoading && booksGoingToRead.length === 0 && <FailModal />} */}
 
-      <a href="/training">Далі</a>
+      <Link to="/training">Далі</Link>
 
       {/* {loggedIn && (
         <ul>
