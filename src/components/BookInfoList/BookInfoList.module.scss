@@ -1,4 +1,39 @@
+p{
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 2.71;
+	color: #898F9F;
+	@media screen and (min-width: 768px) {
+		font-size: 14px;
+		line-height: 2.71;
+	}
+}
 .bookInfo{
 display: flex;
-justify-content: space-between;
+
+
+}
+.bookList{
+	display: flex;
+	flex-direction: column;
+		
+}
+.title{
+width: 460px;
+@media screen and (min-width: 1280px) {
+	width: 650px;
+}
+}
+.author{
+	width: 200px;
+	@media screen and (min-width: 1280px) {
+		width: 330px;
+	}
+}
+.year{
+	width: 146px;
+		
+}
+.page{
+	width: 68px;
 }
