@@ -22,8 +22,8 @@ export default function App() {
   return (
     <div
       style={{
-        backgroundColor: theme === "light" ? "white" : "darkgrey",
-        // color: theme === "light" ? "black" : "white",
+        backgroundColor: theme === "light" ? "white" : "black",
+        color: theme === "light" ? "black" : "white",
         height: "100vh",
       }}
     >
