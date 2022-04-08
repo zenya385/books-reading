@@ -30,14 +30,14 @@ export const getBooks = createAsyncThunk(
       const books = await getUserBooksApi(accessToken);
       const training = await getPlanningApi(accessToken).catch((error) => {
         if (error.request.status === 403) {
-          console.log(error.request);          
+          // console.log(error.request);
           return null; // {planning:{books:[]}};
         } else {
           throw error;
         }
       });
       //   console.log(books);
-      books.currentlyReading =training? training.planning.books:[];
+      books.currentlyReading = training ? training.planning.books : [];
       books.goingToRead = books.goingToRead.filter(
         ({ _id }) => !books.currentlyReading.some((book) => book._id === _id)
       );
