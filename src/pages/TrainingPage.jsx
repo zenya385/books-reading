@@ -18,6 +18,7 @@ import MyPurposeToRead from "../components/MyPurposeToRead/MyPurposeToRead";
 import s from "./TrainingPage.module.scss";
 import MyTrainingPlaining from "../components/MyTrainingPlaining/MyTrainingPlaining";
 import {
+  getDurationPeriod,
   // getEndDate,
   // getStartDate,
   getTrainingBooks,
@@ -25,6 +26,7 @@ import {
 import StatisticsResults from "../components/AllStatistics/StatisticsResults/StatisticsResults";
 import Timer from "../components/Timer/Timer";
 import { getBooksCurrentlyReadingState } from "../redux/books/booksSelectors";
+import { duration } from "@mui/material";
 
 ChartJS.register(
   CategoryScale,
@@ -53,24 +55,24 @@ export const options = {
       display: false,
       text: "Кількість сторінок за день",
     },
-  }, 
+  },
 };
 
-const labels = ["January", "February", "March", "April", "May", "June", "July"];
+let labels = [1,2,3,4,5,6,7,8,9,10];
 
 export const data = {
   labels,
   datasets: [
     {
       label: "plan",
-      data: [0, 3, 5, 6, 9, 10, 11],
+      data: [10, 10,10, 10,10, 10,10, 10,10, 10],
       // data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
       borderColor: "rgb(0, 0, 0)",
       backgroundColor: "rgba(0, 0, 0, 0.8)",
     },
     {
       label: "fact",
-      data: [1, 2, 3, 5, 8, 10, 12],
+      data: [10, 12,13, 15, 18, 10, 12,15,10,12],
 
       // data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
       borderColor: "#FF6B08",
@@ -80,6 +82,16 @@ export const data = {
 };
 
 const TrainingPage = () => {
+const stateInfo=useSelector(state=>state)
+
+console.log(stateInfo);
+
+  const duration=useSelector(getDurationPeriod)
+  for (let i = 0; i < duration; i += 1) {
+    labels[i] = i;
+  }
+  console.log(labels);
+
   const loggedIn = useSelector(getIsLoggedIn);
   // const booksLibrary = useSelector(getBooksGoingToReadState);
   // const startDate = useSelector(getStartDate);
@@ -102,7 +114,7 @@ const TrainingPage = () => {
        {!isTrain&& <MyTrainingPlaining  />}
       <MyPurposeToRead books={books} isTrain={isTrain} />
       <Line options={options} data={data} />
-      {isTrain&&<StatisticsResults/>}
+      {isTrain && <StatisticsResults />}
     </div>
   );
 };

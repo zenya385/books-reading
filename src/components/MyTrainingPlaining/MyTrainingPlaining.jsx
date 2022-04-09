@@ -22,6 +22,7 @@ import {
   getTrainingBooks,
 } from "../../redux/training/trainingSelectors";
 import { addPlaningTraning } from "../../redux/training/trainingOperations";
+import { Formik } from "formik";
 
 const MyTrainingPlaining = () => {
   const booksLibrary = useSelector(getBooksGoingToReadState);

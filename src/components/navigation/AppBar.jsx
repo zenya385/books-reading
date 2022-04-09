@@ -15,10 +15,10 @@ const AppBar = () => {
   return (
     <header
       className={styles.header}
-      // style={{
-      //   backgroundColor: theme === "light" ? "white" : "black",
-      //   color: theme === "light" ? "black" : "white",
-      // }}
+      style={{
+        backgroundColor: theme === "light" ? "white" : "black",
+        color: theme === "light" ? "black" : "white",
+      }}
     >
       <div>
         <NavLink
@@ -41,9 +41,9 @@ const AppBar = () => {
             </div>
             <span
               className={styles.name}
-              // style={{
-              //   color: theme === "light" ? "black" : "white",
-              // }}
+              style={{
+                color: theme === "light" ? "black" : "white",
+              }}
             >
               {userName}
             </span>
