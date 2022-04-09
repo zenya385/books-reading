@@ -83,7 +83,7 @@ export async function addPagesApi(num) {
 export async function getPlanningApi(accessToken) {
   token.set(accessToken);
   const { data } = await axios.get("/planning");
-  console.log("getPlanningApi :>> ", data);
+  // console.log("getPlanningApi :>> ", data);
   return data;
 }
 

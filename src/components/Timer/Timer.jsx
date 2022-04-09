@@ -12,11 +12,4 @@ const Timer = () => {
     </div>
   );
 };
-
 export default Timer;
-
-// import Timer from "./components/Timer/Timer";
-
-{
-  /* <Timer /> */
-}

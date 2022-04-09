@@ -5,7 +5,7 @@ import {
   getPlanningApi,
   getUserBooksApi,
 } from "../../utils/fetchApi";
-import { getPlaningTraning } from "../training/trainingOperations";
+// import { getPlaningTraning } from "../training/trainingOperations";
 
 export const addBook = createAsyncThunk(
   "books/addBook",
@@ -56,6 +56,7 @@ export const reviewBook = createAsyncThunk(
     // const persistedToken = state.auth.accessToken;
     try {
       const book = await addBookReviewApi({ form, bookId });
+      // console.log(book);
       return book;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
