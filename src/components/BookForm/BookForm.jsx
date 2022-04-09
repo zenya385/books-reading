@@ -2,7 +2,7 @@ import { ErrorMessage, Formik } from "formik";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addBook } from "../../redux/books/booksOperations";
-import { addBookValidationSchema } from "../../validation/BookFormValid";
+import { addBookValidationSchema } from "../../utils/validation/BookFormValid";
 import s from "../BookForm/BookForm.module.scss";
 
 export default function BookForm({ onHandleClose }) {
