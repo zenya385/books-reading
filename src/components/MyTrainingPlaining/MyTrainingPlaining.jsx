@@ -21,7 +21,7 @@ import {
   getStartDate,
   getTrainingBooks,
 } from "../../redux/training/trainingSelectors";
-import { addPlaningTraning } from "../../redux/training/trainingOperations";
+import { addPlaningTraining } from "../../redux/training/trainingOperations";
 import { Formik } from "formik";
 
 const MyTrainingPlaining = () => {
@@ -94,7 +94,7 @@ const MyTrainingPlaining = () => {
   const handleSubmitBookForTraining = (e) => {
     e.preventDefault();
     console.log(books);
-    dispatch(addPlaningTraning({ startDate, endDate, books }));
+    dispatch(addPlaningTraining({ startDate, endDate, books }));
   };
 
   console.log("bookForTraining>>>", bookForTraining);

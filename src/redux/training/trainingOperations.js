@@ -5,8 +5,8 @@ import {
   getPlanningApi,
 } from "../../utils/fetchApi";
 
-export const addPlaningTraning = createAsyncThunk(
-  "training/addPlaningTraning",
+export const addPlaningTraining = createAsyncThunk(
+  "training/addPlaningTraining",
   async (form, thunkApi) => {
     const state = thunkApi.getState();
     const accessToken = state.auth.accessToken;
@@ -19,7 +19,7 @@ export const addPlaningTraning = createAsyncThunk(
     }
   }
 );
-export const getPlaningTraning = createAsyncThunk(
+export const getPlaningTraining = createAsyncThunk(
   "training/getPlaningTraning",
   async (_, thunkApi) => {
     const state = thunkApi.getState();
@@ -35,13 +35,13 @@ export const getPlaningTraning = createAsyncThunk(
 );
 
 export const addPages = createAsyncThunk(
-  "training/addPagesApi",
+  "training/addPages",
   async (pages, thunkApi) => {
     const state = thunkApi.getState();
     const accessToken = state.auth.accessToken;
     try {
-      const planning = await addPagesApi(accessToken);
-      console.log("planningPages>>>", planning);
+      const planning = await addPagesApi(pages,accessToken);
+      // console.log("planningPages>>>", planning);
       return planning;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
