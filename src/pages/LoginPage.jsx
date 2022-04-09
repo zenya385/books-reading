@@ -7,7 +7,6 @@ import { loginValidationSchema } from "../validation/LoginValid";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
-
   return (
     <div className={s.regForm}>
       <div className={s.LoginRegDiv}>
