@@ -8,21 +8,24 @@ import Rating from "@mui/material/Rating";
 import { useDispatch } from "react-redux";
 import { reviewBook } from "../../redux/books/booksOperations";
 
-export default function ReviewModal({ bookId, modalOpen, onModalClose }) {
-  const [open, setOpen] = React.useState(false);
+export default function ReviewModal({
+  bookId,
+  modalOpen,
+  onModalClose,
+  bookRating,
+  coment,
+}) {
+  const [open, setOpen] = React.useState(modalOpen);
 
-  const [review, setReview] = React.useState("");
-  const [rating, setRaiting] = React.useState(null);
+  const [feedback, setFeedback] = React.useState(coment);
+
+  const [rating, setRaiting] = React.useState(bookRating);
+
   const dispatch = useDispatch();
 
-  React.useEffect(() => {
-    setOpen(modalOpen);
-  }, [modalOpen]);
-
-  // const handleOpen = () => setOpen(modalOpen);
   const handleClose = () => {
     setOpen(false);
-    rating && onModalClose(rating);
+    onModalClose(false);
   };
 
   const onRatihgChange = (e) => {
@@ -32,19 +35,17 @@ export default function ReviewModal({ bookId, modalOpen, onModalClose }) {
 
   const onReviewChange = (e) => {
     const currentReview = e.target.value;
-    setReview(currentReview);
+    setFeedback(currentReview);
   };
 
   const handleSave = (e) => {
-    // console.log({ review, rating }, bookId);
-    dispatch(reviewBook({ form: { review, rating }, bookId }));
+    dispatch(reviewBook({ form: { feedback, rating }, bookId }));
     handleReset();
-    rating && onModalClose(rating);
+    onModalClose(false);
   };
+
   const handleReset = () => {
     setOpen(false);
-    setReview("");
-    setRaiting(null);
   };
   return (
     <>
@@ -60,7 +61,8 @@ export default function ReviewModal({ bookId, modalOpen, onModalClose }) {
           </Typography>
           <Rating
             name="half-rating"
-            size="small"
+            size="size-medium"
+            sizeMedium
             precision={0.5}
             onClick={onRatihgChange}
           />
@@ -69,7 +71,7 @@ export default function ReviewModal({ bookId, modalOpen, onModalClose }) {
             <textarea
               className={s.textArea}
               name="review"
-              value={review}
+              value={feedback}
               onChange={onReviewChange}
             ></textarea>
           </Typography>
@@ -86,35 +88,3 @@ export default function ReviewModal({ bookId, modalOpen, onModalClose }) {
     </>
   );
 }
-
-//  const [modalOpen, setModalOpen] = useState(false);
-//  const [bookId, setBookId] = useState(null);
-//  const [retingValue, setRetingValue] = useState(null);
-
-//  const onModalOpen = () => {
-//    setModalOpen(true);
-//    setBookId(12334);
-//  };
-
-//  const onModalClose = (value) => {
-//    setModalOpen(false);
-//    setBookId(null);
-//    value && setRetingValue(value);
-//  };
-
-//  <div>
-//    <Rating
-//      name="half-rating"
-//      size="small"
-//      value={+retingValue}
-//      precision={0.5}
-//    />
-//    <button onClick={onModalOpen}>Резюме</button>
-//    {modalOpen && (
-//      <ReviewModal
-//        bookId={bookId}
-//        modalOpen={modalOpen}
-//        onModalClose={onModalClose}
-//      />
-//    )}
-//  </div>;

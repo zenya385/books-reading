@@ -1,0 +1,172 @@
+.item {
+    display: flex;
+    align-items: center;
+
+    margin: 0;
+    @media screen and (max-width: 767px) {
+        position: relative;
+        width: auto;
+    
+        margin-top: 28px;
+    }
+
+    @media screen and (min-width: 768px) {
+        margin-top: 14px;
+        height: 62px;
+    }
+}
+a {
+    text-decoration: none;
+}
+button {
+    background: transparent;
+    outline: none;
+    border: none;
+}
+
+.iconTitle {
+    display: flex;
+
+    @media screen and (max-width: 767px) {
+        position:static;
+        align-items: center;
+        position: absolute;
+        bottom: 75%;
+        left: 7%;
+    }
+    @media screen and (min-width: 480px) {
+        margin-bottom: 10px;
+        align-items: center;
+        position: absolute;
+        bottom: 75%;
+        left: 7%;
+    }
+
+    @media screen and (min-width: 768px) {
+        position:static;
+        align-items: center;
+    }
+}
+
+.bookInfo {
+    padding-left: 55px;
+    margin-top: 10px;
+
+}
+
+.bookTitle {
+    margin-left: 14px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.25;
+    color: #242A37;
+
+    @media screen and (min-width: 768px) {
+       
+        font-size: 14px;
+        line-height: 1.2;
+        width: 135px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        font-size: 14px;
+        line-height: 2.71;
+        width: 260px;
+        margin-right: 40px;
+    }
+}
+
+.navIcon {
+    @media screen and (min-width: 768px) {
+      margin-left: 20px;
+    }
+
+}
+
+.bookMoreInfo {
+    margin-left: 30px;
+    margin-top: 45px;
+
+    @media screen and (min-width: 768px) {
+        display: flex;
+        margin-top: 0;
+    }
+    @media screen and (min-width: 1280px) {
+        margin-left: 0;
+
+    }
+}
+
+.bookInfoText {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 3.17;
+    color: #898F9F;
+
+}
+
+.bookMoreInfoAuthor {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 3.17;
+    color: #242A37;
+
+    @media screen and (min-width: 768px) {
+        
+        font-size: 14px;
+        line-height: 1.7;
+        width: 110px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        width: 200px;
+        margin-right: 20px;
+        font-size: 14px;
+    }
+}
+
+.bookMoreInfoYear {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 3.17;
+    color: #242A37;
+
+    @media screen and (min-width: 768px) {
+       
+        margin-right: 52px;
+        font-size: 14px;
+        line-height: 2.7;
+    }
+
+    @media screen and (min-width: 1280px) {
+        font-size: 14px;
+        line-height: 2.71;
+        margin-right: 80px;
+    }
+}
+
+.bookMoreInfoPage {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 3.17;
+    color: #242A37;
+
+    @media screen and (min-width: 768px) {
+        
+        margin-right: 20px;
+        font-size: 14px;
+        line-height: 2.7;
+
+    }
+
+    @media screen and (min-width: 1280px) {
+        margin-right: 110px;
+        font-size: 14px;
+        line-height: 2.71;
+    }
+}
+.bookReviewItemWrapper {
+    background: var (--primary-bg-color);
+    box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+}
+
