@@ -7,4 +7,8 @@ export const langOptionsMyTrainPlan = {
     ua: "Почати тренування",
     en: "Start training",
   },
+  btn: {
+    ua: "Додати",
+    en: "Add",
+  },
 };

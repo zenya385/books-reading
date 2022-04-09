@@ -34,7 +34,7 @@ const MyTrainingPlaining = () => {
   const startDate = useSelector(getStartDate);
   const endDate = useSelector(getEndDate);
   const lang = useSelector(getLang);
-  const { training, startTraining } = langOptionsMyTrainPlan;
+  const { training, startTraining, btn } = langOptionsMyTrainPlan;
 
   const dispatch = useDispatch();
 
@@ -113,7 +113,7 @@ const MyTrainingPlaining = () => {
           </option>
         ))}
       </select>
-      <input type="submit" value="Додати" />
+      <button type="submit"> {btn[lang]}</button>
       {/* <button type="button" onClick={()=>insertBookForRead()}>Додати</button> */}
       {Boolean(books.length) && (
         <BookInfoList booksLibrary={books} colorIcon="grey" review={0} />
