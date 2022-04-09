@@ -7,7 +7,7 @@ import s from './StatisticsResults.module.scss';
 
 
 const StatisticsResults = () => {
-    // const [arr, setArr] = useState([])
+
     const arr=useSelector(getStats);
     return (
         <div className={s.div_all}>
