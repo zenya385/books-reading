@@ -30,4 +30,6 @@ const StatisticsResults = () => {
 
 export default StatisticsResults;
 
-{/* <StatisticsResults/> */}
+{
+  /* <StatisticsResults/> */
+}

@@ -22,7 +22,7 @@ import {
   // getStartDate,
   getTrainingBooks,
 } from "../redux/training/trainingSelectors";
-import StatisticsResults from "../components/AllStatistics/StatisticsResults/StatisticsResults"
+import StatisticsResults from "../components/AllStatistics/StatisticsResults/StatisticsResults";
 import Timer from "../components/Timer/Timer";
 
 ChartJS.register(
@@ -85,7 +85,7 @@ const TrainingPage = () => {
   // const endDate = useSelector(getEndDate);
   const books = useSelector(getTrainingBooks);
 
-  const dispatch = useDispatch();  
+  const dispatch = useDispatch();
 
   const isTrain=true
 
