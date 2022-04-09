@@ -24,6 +24,7 @@ import {
 } from "../redux/training/trainingSelectors";
 import StatisticsResults from "../components/AllStatistics/StatisticsResults/StatisticsResults"
 import Timer from "../components/Timer/Timer";
+import { getBooksCurrentlyReadingState } from "../redux/books/booksSelectors";
 
 ChartJS.register(
   CategoryScale,
@@ -84,10 +85,11 @@ const TrainingPage = () => {
   // const startDate = useSelector(getStartDate);
   // const endDate = useSelector(getEndDate);
   const books = useSelector(getTrainingBooks);
+  const booksCurrentlyReading =useSelector(getBooksCurrentlyReadingState)
 
   const dispatch = useDispatch();  
 
-  const isTrain=true
+  const isTrain=Boolean(booksCurrentlyReading.length)
 
   loggedIn &&
     useEffect(() => {
@@ -96,8 +98,8 @@ const TrainingPage = () => {
 
   return (
     <div className={s.TrainingPage}>
-      <Timer />
-      <MyTrainingPlaining />
+       {isTrain&&<Timer />}
+       {!isTrain&& <MyTrainingPlaining  />}
       <MyPurposeToRead books={books} isTrain={isTrain} />
       <Line options={options} data={data} />
       {isTrain&&<StatisticsResults/>}

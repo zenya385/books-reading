@@ -2,7 +2,7 @@ import React from "react";
 import BookInfoItem from "../BookInfoItem/BookInfoItem";
 import s from "./BookInfoList.module.scss";
 import MediaQuery from "react-responsive";
-import Icons from "../../images/symbol-defs.svg";
+// import Icons from "../../images/symbol-defs.svg";
 
 const BookInfoList = ({ booksLibrary, colorIcon, review }) => {
   return (

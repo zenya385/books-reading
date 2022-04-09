@@ -1,25 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import BookForm from "../components/BookForm/BookForm";
 import {
   getBooksCurrentlyReadingState,
   getBooksFinishedReadingState,
   getBooksGoingToReadState,
-  getBooksState,
-  getIsLoading,
-  // getGoingToRead,
+  // getBooksState,
+  getIsLoading,  
 } from "../redux/books/booksSelectors";
 import BookInfoList from "../components/BookInfoList/BookInfoList";
 import { getBooks } from "../redux/books/booksOperations";
 import { getIsLoggedIn } from "../redux/auth/authSelectors";
 import InstructionModal from "../components/InstructionModal/InstructionModal";
-import SuccessModal from "../components/FinishTrainingModal/SuccessModal";
-import FailModal from "../components/FinishTrainingModal/FailModal";
-import ReviewModal from "../components/ReviewModal/ReviewModal";
 import MediaQuery from "react-responsive";
 import { Link } from "react-router-dom";
-import { getPlaningTraning } from "../redux/training/trainingOperations";
-
 import { BsPlusLg } from "react-icons/bs";
 import s from "./LibraryPage.module.scss";
 import AddBookModal from "../components/AddBookModal/AddBookModal";
@@ -67,9 +61,9 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
       //  setTimeout( (dispatch(getPlaningTraning())),0)
     }, []);
 
-  console.log(booksCurrentlyReading);
+  // console.log(booksCurrentlyReading);
   const [modalOpen, setModalOpen] = React.useState(false);
-  console.log(modalOpen);
+  // console.log(modalOpen);
   const onModalOpen = () => {
     setModalOpen(true);
   };

@@ -82,7 +82,7 @@ export async function addPagesApi(num) {
 export async function getPlanningApi(accessToken) {
   token.set(accessToken);
   const { data } = await axios.get("/planning");
-  console.log("getPlanningApi :>> ", data);
+  // console.log("getPlanningApi :>> ", data);
   return data;
 }
 
@@ -92,6 +92,6 @@ export async function getUserBooksApi(accessToken) {
   token.set(accessToken);
   const { data } = await axios.get("/user/books");
   token.unset();
-  console.log("getUserBooksApi :>> ", data);
+  // console.log("getUserBooksApi :>> ", data);
   return data;
 }

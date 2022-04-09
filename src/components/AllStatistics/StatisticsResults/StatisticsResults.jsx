@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { getStats } from '../../../redux/training/trainingSelectors';
 import Results from '../Results/Results';
@@ -29,5 +28,3 @@ const StatisticsResults = () => {
 }
 
 export default StatisticsResults;
-
-{/* <StatisticsResults/> */}

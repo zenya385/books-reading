@@ -19,9 +19,9 @@ const BookInfoItem = ({
           <svg className={s.navIcon} width="22px" height="17px">
             <use xlinkHref={`${Icons}#icon-flat-${colorIcon}`} />
           </svg>
-          <a href="" className="link nav__link-contact">
+          <div className="link nav__link-contact">
             <p className={s.bookTitle}>{title}</p>
-          </a>
+          </div>
         </div>
         <MediaQuery maxWidth={767}>
           <div className={s.bookInfo}>

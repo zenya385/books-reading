@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
-  addPlaningTraning,
+  // addPlaningTraning,
   getPlaningTraning,
 } from "../training/trainingOperations";
 import { addBook, getBooks, reviewBook } from "./booksOperations";

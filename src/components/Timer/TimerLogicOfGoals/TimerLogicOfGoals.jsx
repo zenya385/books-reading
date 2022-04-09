@@ -2,18 +2,16 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import classnames from "classnames";
 import s from "./TimerLogicOfGoals.module.scss";
-import { getDurationPeriod, getEndDate } from "../../../redux/training/trainingSelectors";
+import { getEndDate } from "../../../redux/training/trainingSelectors";
 
 const TimerLogicOfGoals = () => {
-  const endDate = useSelector(getEndDate); // вставить trainingSelectors (Время отсчета)
-  const duration=useSelector(getDurationPeriod)
+  const endDate = useSelector(getEndDate);
   const oneDay = 86400000;
-  // const goal = new Date().getTime(endDate); // вставить endDate
-
+  const goal = new Date(endDate).getTime();
 
   const [, setDateTime] = useState(new Date());
 
-   const diff =duration*oneDay // goal + oneDay - new Date().getTime();
+  const diff = goal + oneDay - new Date().getTime();
 
   const days = () => {
     if (Math.floor(diff / (1000 * 60 * 60 * 24)) > 99) {
@@ -54,7 +52,7 @@ const TimerLogicOfGoals = () => {
     return () => {
       clearInterval(id);
     };
-  }, [duration]);
+  }, []);
 
   return (
     <div className={s.box}>
