@@ -44,7 +44,7 @@ export default function InstructionModal({ modalOpen, modalClose }) {
               }}
             />
           </button>
-          <BookForm />
+          <BookForm onHandleClose={handleClose} />
         </Box>
       </Modal>
     </>
