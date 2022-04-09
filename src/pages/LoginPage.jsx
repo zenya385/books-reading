@@ -95,9 +95,9 @@ const LoginPage = () => {
       <div className={s.textLogin}>
         <p
           className={s.textFont}
-          style={{
-            color: theme === "light" ? "var(--title-text-color)" : "white",
-          }}
+          // style={{
+          //   color: theme === "light" ? "black" : "white",
+          // }}
         >
           Книги — это корабли мысли, странствующие по волнам времени и бережно
           несущие свой драгоценный груз от поколения к поколению.{" "}
@@ -105,12 +105,12 @@ const LoginPage = () => {
         <div className={s.lineBefore}>
           <p
             className={s.textAuthor}
-            style={{
-              color:
-                theme === "light"
-                  ? "var(--seconadry-text-color)"
-                  : "var(--seconadry-text-color)",
-            }}
+            // style={{
+            //   color:
+            //     theme === "light"
+            //       ? "var(--seconadry-text-color)"
+            //       : "var(--seconadry-text-color)",
+            // }}
           >
             Бэкон Ф.
           </p>

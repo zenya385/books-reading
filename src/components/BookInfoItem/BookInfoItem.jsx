@@ -19,7 +19,9 @@ const BookInfoItem = ({
   return (
     <div
       style={{
-        backgroundColor: theme === "light" ? "white" : "white",
+        backgroundColor:
+          theme === "light" ? "var(--light-theme)" : "var(--dark-theme)",
+        // color: theme === "light" ? "black" : "white",
       }}
     >
       <li className={s.item}>
