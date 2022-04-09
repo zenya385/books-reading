@@ -7,6 +7,7 @@ import Icons from "../../images/symbol-defs.svg";
 import { getTheme } from "../../redux/theme/themeSelector";
 import { useSelector } from "react-redux";
 const BookInfoList = ({ booksLibrary, colorIcon, review }) => {
+  console.log(booksLibrary);
   const theme = useSelector(getTheme);
   return (
     <>
