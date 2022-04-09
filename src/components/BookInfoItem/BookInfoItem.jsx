@@ -4,6 +4,8 @@ import s from "./BookInfoItem.module.scss";
 import MediaQuery from "react-responsive";
 import { getTheme } from "../../redux/theme/themeSelector";
 import { useSelector } from "react-redux";
+import Summary from "../Summary/Summary";
+
 const BookInfoItem = ({
   title,
   author,
@@ -11,6 +13,7 @@ const BookInfoItem = ({
   pagesTotal,
   colorIcon,
   review,
+  bookId,
 }) => {
   const theme = useSelector(getTheme);
   return (
@@ -41,7 +44,9 @@ const BookInfoItem = ({
           <p className={s.bookMoreInfoPage}>{pagesTotal}</p>
         </div>
         {/* {review&&<zirochki >Резюме</zirochki>} */}
-        {Boolean(review) && <button>Резюме</button>}
+        {/* {Boolean(review) && <button>Резюме</button>} */}
+        {Boolean(review) && <Summary bookId={bookId} />}
+
         {/* <button>
         <svg className="nav__icon" width="14px" height="18px">
         <use xlinkHref={`${Icons}#icon-delete`} />
