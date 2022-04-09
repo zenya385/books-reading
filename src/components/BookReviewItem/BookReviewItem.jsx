@@ -53,7 +53,7 @@ const BookReviewItem = ({
           <MediaQuery minWidth={768} maxWidth={1279}>
             <Rating
               name="half-rating-read"
-              size="size-medium"
+              size="medium"
               value={rating}
               precision={0.5}
               readOnly
