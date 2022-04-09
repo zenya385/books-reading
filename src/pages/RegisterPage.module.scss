@@ -1,26 +1,18 @@
-.spanStar {
-  color: var(--accent-primary-color);
-}
 .errorMessage {
+  position: absolute;
+  top: 45%;
+  right: 3%;
   font-size: 18px;
   color: red;
   text-align: center;
   font-style: italic;
-}
-.errorMessagePass {
-  font-size: 18px;
-  color: red;
-  text-align: center;
-  font-style: italic;
-    font-style: italic;
-    margin: -10px 0 15px;
 }
 .regForm {
   @media screen and (min-width: 320px) {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    // justify-content: space-between;
   }
 
   @media screen and (min-width: 1280px) {
@@ -60,12 +52,8 @@
 
   @media screen and (min-width: 1280px) {
     padding: 185px 40px;
-    width: 40%;
+    width: 45%;
   }
-}
-
-.spanStar {
-  color: var(--accent-primary-color);
 }
 
 .regFormFormikGoogle {
@@ -126,6 +114,7 @@
 }
 
 .inputLabel {
+  position: relative;
   height: 40px;
   font-weight: 600;
   font-size: 14px;
@@ -203,8 +192,28 @@
     background-image: url(../images/google-mob.png);
   }
 }
-
-.textLogin {
+.regFormTitleMain {
+  font-family: Abril Fatface;
+  color: var(--title-text-color);
+  font-weight: 400;
+  font-size: 34px;
+  line-height: calc(38/34);
+  margin-bottom: 40px;
+  
+  @media screen and (min-width: 1280px) {
+    margin-bottom: 40px;
+  }
+}
+.regFormSpanText{
+  display:flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.spanArrow {
+  color: var(--accent-primary-color);
+  margin-right: 7px;
+}
+.textRegist {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -213,140 +222,45 @@
   @media screen and (min-width: 320px) {
     display: none;
   }
-
+  @media screen and (min-width: 768px) {
+    display:inline-block;
+  }
+  @media screen and (min-width: 1280px) {
+    margin: 0 auto;
+  }
 }
-
-.textFont {
-  position: relative;
+.regFormRegistrText{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+.btnRegisterSmallText{
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 2.71;
+  color: var(--seconadry-text-color);
+  margin-right: 5px;
+}
+.regFormTitleText {
+  display:flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.regFormTitle {
   color: var(--title-text-color);
   font-weight: 500;
-  font-size: 13px;
-  line-height: calc(16/13);
-
-  @media screen and (min-width: 320px) {
-    width: 270px;
-  }
-
-  @media screen and (min-width: 480px) {
-    font-size: 18px;
-    line-height: calc(38/18);
-    padding: 30px 30px 10px;
-    width: 400px;
-  }
-
-  @media screen and (min-width: 768px) {
-    font-size: 24px;
-    line-height: calc(38/24);
-    padding: 40px 30px 10px;
-    width: 550px;
-  }
-
-  @media screen and (min-width: 1280px) {
-    padding: 80px 80px 35px 0;
-  }
+  font-size: 20px;
+  line-height: calc(38/20);
 }
-
-.textFont::before {
-  position: absolute;
-  content: "";
-  width: 22px;
-  height: 17px;
-  top: -29px;
-  left: 120px;
-  background-image: url(../images/kavy-mob-1x.png);
-  background-size: auto;
-  background-repeat: no-repeat;
-
-  @media screen and (min-width: 480px) {
-    background-image: url(../images/kavy-mob-1x.png);
-    background-size: cover;
-    width: 23px;
-    height: 17px;
-    top: 6px;
-    left: 187px;
-  }
-
-  @media screen and (min-width: 768px) {
-    background-image: url(../images/kavy-desctop-2x.png);
-    background-size: cover;
-    width: 25px;
-    height: 19px;
-    top: 7px;
-    left: 258px;
-  }
-
-  @media screen and (min-width: 1280px) {
-    background-image: url(../images/kavy-desctop-2x.png);
-    background-size: cover;
-    width: 24px;
-    height: 19px;
-    top: 35px;
-    left: 223px;
-  }
-}
-
-.textAuthor {
+.textFontRegistr {
+  position: relative;
   color: var(--seconadry-text-color);
-  font-weight: 500;
+  font-weight: 400;
   font-size: 14px;
   line-height: calc(38/14);
-  margin: 20px;
-
-  @media screen and (min-width: 480px) {
-    font-size: 18px;
-    line-height: calc(38/18);
-  }
-
-  @media screen and (min-width: 768px) {
-    font-size: 20px;
-    line-height: calc(38/20);
-  }
-
-  @media screen and (min-width: 1280px) {
-    margin: 0px;
-    margin-left: -70px;
-  }
 }
 
-.lineBefore {
-  position: relative;
-}
 
-.textAuthor::before {
-  position: absolute;
-  content: "";
-  width: 91px;
-  height: 2px;
-  top: 5px;
-  left: 86px;
-  background-image: url(../images/Line-all-1x.png);
-  background-size: auto;
-  background-repeat: no-repeat;
 
-  @media screen and (min-width: 480px) {
-    background-image: url(../images/Line-all-1x.png);
-    background-size: cover;
-    width: 91px;
-    height: 2px;
-    top: 2px;
-    left: 151px;
-  }
 
-  @media screen and (min-width: 768px) {
-    background-image: url(../images/Line-all-1x.png);
-    background-size: cover;
-    width: 120px;
-    height: 2px;
-    top: 0px;
-    left: 210px;
-  }
 
-  @media screen and (min-width: 1280px) {
-    background-image: url(../images/Line-all-1x.png);
-    background-size: cover;
-    width: 150px;
-    height: 2px;
-    top: -6px;
-    left: 161px;
-  }
-}

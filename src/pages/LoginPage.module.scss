@@ -1,22 +1,20 @@
+
 .errorMessage {
+  position: absolute;
+  top: 45%;
+  right: 3%;
   font-size: 18px;
   color: red;
-      text-align: center;
-      font-style: italic;
+  text-align: center;
+  font-style: italic;
 }
-.errorMessagePass {
-    font-size: 18px;
-    color: red;
-    text-align: center;
-    font-style: italic;
-  margin: -10px 0 15px;
-}
+
 .regForm {
  @media screen and (min-width: 320px) {
   display:flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  // justify-content: space-between;
  }
  @media screen and (min-width: 1280px) {
   flex-direction: row;
@@ -117,6 +115,7 @@
     }
 }
 .inputLabel{ 
+  position: relative;
   height:40px;
   font-weight: 600;
   font-size: 14px;
@@ -186,12 +185,6 @@
   background-image: url(../images/google-mob.png);
 }
 }
-
-// .regFormText{
-//   @media screen and (min-width: 1280px) {  
-//     display: flex;
-//   }
-// }
 .textLogin {
   display: flex;
   flex-direction: column;
@@ -200,7 +193,9 @@
   @media screen and (min-width: 480px) {  
     padding: 40px 45px 7px;
   }
-  
+  @media screen and (min-width: 1280px) {  
+    margin: 0 auto;
+  }
 }
 .textFont {
   position: relative;
