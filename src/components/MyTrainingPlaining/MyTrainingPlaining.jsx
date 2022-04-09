@@ -21,6 +21,8 @@ import {
   getTrainingBooks,
 } from "../../redux/training/trainingSelectors";
 import { addPlaningTraning } from "../../redux/training/trainingOperations";
+import { getLang } from "../../redux/lang/langSelector";
+import { langOptionsMyTrainPlan } from "../../assets/langOptionsMyTrainPlan";
 
 const MyTrainingPlaining = () => {
   const [startDateOrigin, setStartDateOrigin] = useState(new Date());
@@ -31,6 +33,8 @@ const MyTrainingPlaining = () => {
   const books = useSelector(getTrainingBooks);
   const startDate = useSelector(getStartDate);
   const endDate = useSelector(getEndDate);
+  const lang = useSelector(getLang);
+  const { training, startTraining } = langOptionsMyTrainPlan;
 
   const dispatch = useDispatch();
 
@@ -89,7 +93,7 @@ const MyTrainingPlaining = () => {
 
   return (
     <form onSubmit={handleSubmitBookForRead}>
-      <h2>Моє тренування</h2>
+      <h2>{training[lang]}</h2>
       <div className={s.datePicker}>
         <DatePicker
           dateFormat="dd.MM.yyyy"
@@ -116,7 +120,7 @@ const MyTrainingPlaining = () => {
       )}
       {Boolean(books.length) && (
         <button type="submit" onClick={handleSubmitBookForTraining}>
-          Почати тренування
+          {startTraining[lang]}
         </button>
       )}
     </form>

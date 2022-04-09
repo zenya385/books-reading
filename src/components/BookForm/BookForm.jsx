@@ -1,12 +1,22 @@
 import { ErrorMessage, Formik } from "formik";
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { langOptionsBookForm } from "../../assets/langOptionsBookForm";
 import { addBook } from "../../redux/books/booksOperations";
+import { getLang } from "../../redux/lang/langSelector";
 import { addBookValidationSchema } from "../../utils/validation/BookFormValid";
 import s from "../BookForm/BookForm.module.scss";
 
 export default function BookForm() {
   const dispatch = useDispatch();
+  const lang = useSelector(getLang);
+  const {
+    title,
+    author,
+    publishYear,
+    pagesTotal,
+    pageAdd,
+  } = langOptionsBookForm;
 
   return (
     <>
@@ -36,7 +46,7 @@ export default function BookForm() {
           <form onSubmit={handleSubmit} className={s.form}>
             <div className={s.form__container}>
               <label className={s.form__label}>
-                Назва книги
+                {title[lang]}
                 <input
                   type="text"
                   name="title"
@@ -54,7 +64,7 @@ export default function BookForm() {
                 />
               </label>
               <label className={s.form__label}>
-                Автор книги
+                {author[lang]}
                 <input
                   type="text"
                   name="author"
@@ -72,7 +82,7 @@ export default function BookForm() {
                 />
               </label>
               <label className={s.form__label}>
-                Рік випуску
+                {publishYear[lang]}
                 <input
                   type="number"
                   name="publishYear"
@@ -90,7 +100,7 @@ export default function BookForm() {
                 />
               </label>
               <label className={s.form__label}>
-                Кількість сторінок
+                {pagesTotal[lang]}
                 <input
                   type="number"
                   name="pagesTotal"
@@ -110,7 +120,7 @@ export default function BookForm() {
             </div>
 
             <button type="submit" className={s.form__btn}>
-              Додати
+              {pageAdd[lang]}
             </button>
           </form>
         )}

@@ -5,10 +5,21 @@ import { login } from "../redux/auth/authOperations";
 import s from "./LoginPage.module.scss";
 import { getTheme } from "../redux/theme/themeSelector";
 import { loginValidationSchema } from "../utils/validation/LoginValid";
+import { getLang } from "../redux/lang/langSelector";
+import { langOptionsLogin } from "../assets/langOptionsLogin";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
   const theme = useSelector(getTheme);
+  const lang = useSelector(getLang);
+  const {
+    inputEmail,
+    inputPass,
+    buttonLogin,
+    linkReg,
+    text,
+    author,
+  } = langOptionsLogin;
 
   return (
     <div className={s.regForm}>
@@ -42,7 +53,7 @@ const LoginPage = () => {
             }) => (
               <form onSubmit={handleSubmit}>
                 <label className={s.inputLabel} htmlFor="email">
-                  Електронна адреса <span className={s.spanStar}>*</span>
+                  {inputEmail[lang]} <span className={s.spanStar}>*</span>
                   <input
                     className={s.inputEmail}
                     type="email"
@@ -61,7 +72,7 @@ const LoginPage = () => {
                 </label>
 
                 <label className={s.inputLabel} htmlFor="password">
-                  Пароль <span className={s.spanStar}>*</span>
+                  {inputPass[lang]} <span className={s.spanStar}>*</span>
                   <input
                     className={s.inputPassword}
                     type="password"
@@ -83,10 +94,10 @@ const LoginPage = () => {
                   type="submit"
                   // disabled={isSubmitting}
                 >
-                  Увiйти
+                  {buttonLogin[lang]}
                 </button>
                 <a className={s.btnRegisterLogin} href="/register">
-                  Реєстрацiя
+                  {linkReg[lang]}
                 </a>
               </form>
             )}
@@ -100,11 +111,10 @@ const LoginPage = () => {
           //   color: theme === "light" ? "black" : "white",
           // }}
         >
-          Книги — это корабли мысли, странствующие по волнам времени и бережно
-          несущие свой драгоценный груз от поколения к поколению.
+          {text[lang]}
         </p>
         <div className={s.lineBefore}>
-          <p className={s.textAuthor}>Бэкон Ф.</p>
+          <p className={s.textAuthor}>{author[lang]}</p>
         </div>
       </div>
     </div>

@@ -1,12 +1,17 @@
 import * as React from "react";
 import Rating from "@mui/material/Rating";
 import ReviewModal from "../ReviewModal/ReviewModal";
+import { useSelector } from "react-redux";
+import { getLang } from "../../redux/lang/langSelector";
+import { langOptionsSummary } from "../../assets/langOptionsSummary";
 // import s from "./ReviewModal.module.scss";
 
 const Summary = (bookId) => {
   const [modalOpen, setModalOpen] = React.useState(false);
   // const [bookId, setBookId] = React.useState(null);
   const [retingValue, setRetingValue] = React.useState(null);
+  const lang = useSelector(getLang);
+  const { resume } = langOptionsSummary;
 
   const onModalOpen = () => {
     setModalOpen(true);
@@ -27,7 +32,7 @@ const Summary = (bookId) => {
         precision={0.5}
         readOnly
       />
-      <button onClick={onModalOpen}>Резюме</button>
+      <button onClick={onModalOpen}>{resume[lang]}</button>
       {modalOpen && (
         <ReviewModal
           bookId={bookId}
