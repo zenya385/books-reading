@@ -15,7 +15,7 @@ const MyPurposeToRead = ({ books }) => {
         className={s.numbersPurpose}
         style={{
           color: theme === "light" ? "black" : "black",
-          height: "100vh",
+          // height: "100vh",
         }}
       >
         <span>{books.length}</span>

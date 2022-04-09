@@ -8,6 +8,7 @@ import {
   getStartDate,
 } from "../../../redux/training/trainingSelectors";
 import { getDuration } from "../../../redux/training/trainingSlice";
+import { getTheme } from "../../../redux/theme/themeSelector";
 
 const TimerLogicOfGoals = () => {
   // const startDate = useSelector(getStartDate);
@@ -62,19 +63,45 @@ const TimerLogicOfGoals = () => {
     };
   }, []);
 
+  const theme = useSelector(getTheme);
+
   return (
-    <div className={s.box}>
+    <div className={s.box} style={{
+      backgroundColor:
+        theme === "light" ? "white" : "var(--dark-header)",  
+    }}>
       <div className={s.dateGroup}>
-        <div className={classnames(s.date, s.days)}>{`${time.days ||
+        <div className={classnames(s.date, s.days)} style={{
+      color:
+        theme === "light" ? "#091e3f" : "var(--dark-text)",  
+    }}>{`${time.days ||
           "00"}`}</div>
-        <div className={s.date}>{`:`}</div>
-        <div className={classnames(s.date, s.hours)}>{`${time.hours ||
+        <div className={s.date} style={{
+      color:
+        theme === "light" ? "#091e3f" : "var(--dark-text)",  
+    }}>{`:`}</div>
+        <div className={classnames(s.date, s.hours)} style={{
+      color:
+        theme === "light" ? "#091e3f" : "var(--dark-text)",  
+    }}>{`${time.hours ||
           "00"}`}</div>
-        <div className={s.date}>{`:`}</div>
-        <div className={classnames(s.date, s.minutes)}>{`${time.minutes ||
+        <div className={s.date} style={{
+      color:
+        theme === "light" ? "#091e3f" : "var(--dark-text)",  
+    }}>{`:`}</div>
+        <div className={classnames(s.date, s.minutes)} style={{
+      color:
+        theme === "light" ? "#091e3f" : "var(--dark-text)",  
+    }}>{`${time.minutes ||
           "00"}`}</div>
-        <div className={s.date}>{`:`}</div>
-        <div className={classnames(s.date, s.seconds)}>{`${time.seconds ||
+        <div className={s.date} style={{
+      color:
+        theme === "light" ? "#091e3f" : "var(--dark-text)",  
+    }}>{`:`}</div>
+        <div className={classnames(s.date, s.seconds)} style={{
+      color:
+        theme === "light" ? "#091e3f" : "var(--dark-text)",  
+    }}>{`${time.seconds ||
           "00"}`}</div>
       </div>
     </div>

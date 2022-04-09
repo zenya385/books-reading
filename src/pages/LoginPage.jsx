@@ -94,9 +94,9 @@ const LoginPage = () => {
       <div className={s.textLogin}>
         <p
           className={s.textFont}
-          // style={{
-          //   color: theme === "light" ? "black" : "white",
-          // }}
+          style={{
+            color: theme === "light" ? "black" : "white",
+          }}
         >
           Книги — это корабли мысли, странствующие по волнам времени и бережно
           несущие свой драгоценный груз от поколения к поколению.{" "}

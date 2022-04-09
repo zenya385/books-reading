@@ -20,8 +20,8 @@ const BookInfoItem = ({
     <div
       style={{
         backgroundColor:
-          theme === "light" ? "var(--light-theme)" : "var(--dark-theme)",
-        // color: theme === "light" ? "black" : "white",
+          theme === "light" ? "white" : "var(--dark-header)",
+        color: theme === "light" ? "black" : "var(--dark-text)",
       }}
     >
       <li className={s.item}>
@@ -30,7 +30,9 @@ const BookInfoItem = ({
             <use xlinkHref={`${Icons}#icon-flat-${colorIcon}`} />
           </svg>
           <a href="" className="link nav__link-contact">
-            <p className={s.bookTitle}>{title}</p>
+            <p className={s.bookTitle} style={{
+        color: theme === "light" ? "#242A37" : "var(--dark-text)",
+      }}>{title}</p>
           </a>
         </div>
         <MediaQuery maxWidth={767}>
@@ -41,9 +43,15 @@ const BookInfoItem = ({
           </div>
         </MediaQuery>
         <div className={s.bookMoreInfo}>
-          <p className={s.bookMoreInfoAuthor}>{author}</p>
-          <p className={s.bookMoreInfoYear}>{publishYear}</p>
-          <p className={s.bookMoreInfoPage}>{pagesTotal}</p>
+          <p className={s.bookMoreInfoAuthor} style={{
+        color: theme === "light" ? "#242A37" : "var(--dark-text)",
+      }}>{author}</p>
+          <p className={s.bookMoreInfoYear} style={{
+        color: theme === "light" ? "#242A37" : "var(--dark-text)",
+      }}>{publishYear}</p>
+          <p className={s.bookMoreInfoPage} style={{
+        color: theme === "light" ? "#242A37" : "var(--dark-text)",
+      }}>{pagesTotal}</p>
         </div>
         {/* {review&&<zirochki >Резюме</zirochki>} */}
         {/* {Boolean(review) && <button>Резюме</button>} */}

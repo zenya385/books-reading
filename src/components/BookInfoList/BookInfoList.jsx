@@ -14,9 +14,9 @@ const BookInfoList = ({ booksLibrary, colorIcon, review }) => {
         className={s.bookList}
         style={{
           backgroundColor:
-            theme === "light" ? "var(--light-theme)" : "var(--light-theme)",
+            theme === "light" ? "var(--light-theme)" : "var(--dark-theme)",
           color: theme === "light" ? "black" : "white",
-          height: "100vh",
+          // height: "100vh",
         }}
       >
         <MediaQuery minWidth={768}>
