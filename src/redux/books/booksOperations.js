@@ -55,10 +55,7 @@ export const reviewBook = createAsyncThunk(
     const state = thunkApi.getState();
     // const persistedToken = state.auth.accessToken;
     try {
-      // console.log(form);
-      // console.log(bookId);
       const book = await addBookReviewApi({ form, bookId });
-      console.log(book);
       return book;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
