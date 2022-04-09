@@ -18,7 +18,7 @@ export default function BookForm({ onHandleClose }) {
           pagesTotal: "",
         }}
         validationSchema={addBookValidationSchema}
-        onSubmit={(values, { resetForm }, onModalClose) => {
+        onSubmit={(values, { resetForm }) => {
           console.log("values", values);
           dispatch(addBook(values));
           resetForm();
