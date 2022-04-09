@@ -51,7 +51,7 @@ const AppBar = () => {
           <UserMenu />
         </div>
       )}
-      <SwitchTheme />
+      {/* <SwitchTheme /> */}
     </header>
   );
 };

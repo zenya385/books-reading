@@ -21,12 +21,12 @@ export default function App() {
 
   return (
     <div
-      style={{
-        backgroundColor:
-          theme === "light" ? "var(--light-theme)" : "var(--dark-theme)",
-        color: theme === "light" ? "black" : "white",
-        height: "100vh",
-      }}
+    // style={{
+    //   backgroundColor:
+    //     theme === "light" ? "var(--light-theme)" : "var(--dark-theme)",
+    //   color: theme === "light" ? "black" : "white",
+    //   height: "100vh",
+    // }}
     >
       <AppBar />
       <Suspense fallback={<h1>Wait a second, please =</h1>}>
@@ -51,3 +51,22 @@ export default function App() {
     </div>
   );
 }
+
+// =======ДЛЯ ФИЛИНА=====
+// import { getTheme } from "../redux/theme/themeSelector";
+//   const theme = useSelector(getTheme);
+//  style={{
+//         backgroundColor:
+//           theme === "light" ? "var(--light-theme)" : "var(--dark-theme)",
+//         color: theme === "light" ? "black" : "white",
+//         height: "100vh",
+//       }}
+
+// переклчатель тем в AppBar внизу    <SwitchTheme />
+
+// indexe.scss
+//   --light-theme: #F6F7FB;
+//   --dark-theme: black;
+// для background
+
+//component/SwitchTheme -для смены селектора на чекбокс

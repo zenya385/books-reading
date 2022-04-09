@@ -67,7 +67,7 @@ const trainingSlice = createSlice({
   },
 });
 
-console.log(trainingSlice);
+// console.log(trainingSlice);
 
 export default trainingSlice.reducer;
 export const {

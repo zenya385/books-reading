@@ -1,9 +1,10 @@
 import React from "react";
-import { Formik } from "formik";
+import { ErrorMessage, Formik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../redux/auth/authOperations";
 import s from "./LoginPage.module.scss";
 import { getTheme } from "../redux/theme/themeSelector";
+import { loginValidationSchema } from "../validation/LoginValid";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -23,17 +24,7 @@ const LoginPage = () => {
           </div>
           <Formik
             initialValues={{ email: "", password: "" }}
-            validate={(values) => {
-              const errors = {};
-              if (!values.email) {
-                errors.email = "Required";
-              } else if (
-                !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-              ) {
-                errors.email = "Введите правильный электронный адрес";
-              }
-              return errors;
-            }}
+            validationSchema={loginValidationSchema}
             onSubmit={(values, { resetForm }) => {
               dispatch(login(values));
               resetForm();
@@ -48,7 +39,6 @@ const LoginPage = () => {
               handleBlur,
               handleSubmit,
               isSubmitting,
-              /* and other goodies */
             }) => (
               <form onSubmit={handleSubmit}>
                 <label className={s.inputLabel} htmlFor="email">
@@ -63,7 +53,12 @@ const LoginPage = () => {
                   onBlur={handleBlur}
                   value={values.email}
                 />
-                {errors.email && touched.email && errors.email}
+                <ErrorMessage
+                  component="div"
+                  name="email"
+                  style={{ fontSize: "18px", color: "red" }}
+                  className={s.errorMessage}
+                />
                 <label className={s.inputLabel} htmlFor="password">
                   Пароль <span className={s.spanStar}>*</span>
                 </label>
@@ -76,11 +71,15 @@ const LoginPage = () => {
                   onBlur={handleBlur}
                   value={values.password}
                 />
-                {errors.password && touched.password && errors.password}
+                <ErrorMessage
+                  component="div"
+                  name="password"
+                  className={s.errorMessagePass}
+                />
                 <button
                   className={s.btnSubmit}
                   type="submit"
-                  disabled={isSubmitting}
+                  // disabled={isSubmitting}
                 >
                   Увiйти
                 </button>
