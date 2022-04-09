@@ -1,18 +1,20 @@
 .item {
-    display: flex;
-    align-items: center;
-    
-    margin: 0;
-    
-    
-    background: var (--primary-bg-color);
-    box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+  display: flex;
+  align-items: center;
+
+  margin: 0;
+
+
+  background-color: var (--primary-bg-color);
+  box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+
   @media screen and (max-width: 767px) {
-  position: relative;
-  width: auto;
-  height: 178px;
-  margin-top: 28px;
+    position: relative;
+    width: 270px;
+    height: 272px;
+    margin-top: 28px;
   }
+
   @media screen and (min-width: 768px) {
     margin-top: 14px;
     height: 62px;
@@ -21,122 +23,153 @@
 
 
 
-  a {
-    text-decoration: none;
-  }
+a {
+  text-decoration: none;
+}
 
 
-  button{
-    background: transparent;
-    outline: none;
-    border: none;
-  }
+button {
+  background: transparent;
+  outline: none;
+  border: none;
+}
 
-.iconTitle{
+.iconTitle {
   display: flex;
-@media screen and (max-width: 767px) {
 
-align-items: center;
-position: absolute;
-bottom: 86%;
-left: 7%;
+  @media screen and (max-width: 767px) {
+
+    align-items: center;
+    position: absolute;
+    bottom: 74%;
+    left: 7%;
+  }
+
+  @media screen and (min-width: 768px) {
+    align-items: center;
+  }
+
 }
-@media screen and (min-width: 768px) {
-align-items: center;
-}
-}
-.bookInfo{
+
+.bookInfo {
   padding-left: 55px;
 }
-.bookTitle{
+
+.bookTitle {
   margin-left: 14px;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.25;
   color: #242A37;
-    @media screen and (min-width: 768px) {
-      font-size: 14px;
-      line-height: 0.8;
-      width: 252px;
-    }
-    @media screen and (min-width: 1280px) {
-      font-size: 14px;
-      line-height: 2.71;
-      width: 545px;
-    }
-}
-.navIcon{
-@media screen and (min-width: 768px) {
-  margin-left: 20px;
-  margin-right: 20px;
-}
-  
-}
-.bookMoreInfo{
-  margin-left: 30px;
+  width: 154px;
+
   @media screen and (min-width: 768px) {
-    display: flex;
+    width: 255px;
+
+    font-size: 14px;
+    line-height: 1.5;
+
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 500px;
+    margin-right: 60px;
+    font-size: 14px;
+    line-height: 2.71;
+
   }
 }
-.bookInfoText{
+
+.navIcon {
+  width: 40px;
+
+  @media screen and (min-width: 768px) {
+    margin-left: 20px;
+    margin-right: 20px;
+
+  }
+
+}
+
+.bookMoreInfo {
+  margin-left: 30px;
+margin-top: 5px;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.bookInfoText {
   font-weight: 500;
   font-size: 12px;
   line-height: 3.17;
+  
   color: #898F9F;
+
+  @media screen and (min-width: 768px) {}
+}
+
+.bookMoreInfoAuthor {
+font-weight: 500;
+font-size: 12px;
+line-height: 1.17;
+color: #242A37;
+
+
   @media screen and (min-width: 768px) {
-    
+    width: 160px;
+    font-size: 14px;
+    line-height: 0.8;
+
+
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 190px;
+    margin-right: 150px;
+    font-size: 14px;
+    line-height: 1.5;
   }
 }
 
-.bookMoreInfoAuthor{
-font-weight: 500;
-font-size: 12px;
-line-height: 3.17;
-color: #242A37;
+.bookMoreInfoYear {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 3.17;
+  color: #242A37;
 
-@media screen and (min-width: 768px) {
-  font-size: 14px;
-  line-height: 0.8;
-      width: 150px;
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+    line-height: 0.8;
+    width: 40px;
+    margin-right: 40px;
+  }
 
-}
-@media screen and (min-width: 1280px) {
-  width: 330px;
+  @media screen and (min-width: 1280px) {
+    margin-right: 95px;
+
     font-size: 14px;
     line-height: 2.71;
+  }
 }
-}
-.bookMoreInfoYear{
-font-weight: 500;
-font-size: 12px;
-line-height: 3.17;
-color: #242A37;
 
-@media screen and (min-width: 768px) {
-  font-size: 14px;
-  line-height: 0.8;
-    width: 120px;
-}
-@media screen and (min-width: 1280px) {
-  width: 148px;
+.bookMoreInfoPage {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 3.17;
+  color: #242A37;
+
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+    line-height: 0.8;
+
+  }
+
+  @media screen and (min-width: 1280px) {
+
+
     font-size: 14px;
     line-height: 2.71;
-}
-}
-.bookMoreInfoPage{
-font-weight: 500;
-font-size: 12px;
-line-height: 3.17;
-color: #242A37;
-
-@media screen and (min-width: 768px) {
-  font-size: 14px;
-  line-height: 0.8;
- 
-}
-@media screen and (min-width: 1280px) {
-  
-  font-size: 14px;
-  line-height: 2.71;
-}
+  }
 }
