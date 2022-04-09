@@ -61,6 +61,7 @@ button {
   font-size: 12px;
   line-height: 1.25;
   color: #242A37;
+  width: 154px;
 
   @media screen and (min-width: 768px) {
     width: 255px;
@@ -92,9 +93,10 @@ button {
 
 .bookMoreInfo {
   margin-left: 30px;
-
+margin-top: 5px;
   @media screen and (min-width: 768px) {
     display: flex;
+    align-items: center;
   }
 }
 
@@ -102,16 +104,18 @@ button {
   font-weight: 500;
   font-size: 12px;
   line-height: 3.17;
+  
   color: #898F9F;
 
   @media screen and (min-width: 768px) {}
 }
 
 .bookMoreInfoAuthor {
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 3.17;
-  color: #242A37;
+font-weight: 500;
+font-size: 12px;
+line-height: 1.17;
+color: #242A37;
+
 
   @media screen and (min-width: 768px) {
     width: 160px;
@@ -122,10 +126,10 @@ button {
   }
 
   @media screen and (min-width: 1280px) {
-    width: 140px;
-    margin-right: 200px;
+    width: 190px;
+    margin-right: 150px;
     font-size: 14px;
-    line-height: 2.71;
+    line-height: 1.5;
   }
 }
 
