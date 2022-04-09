@@ -1,12 +1,14 @@
 import React from "react";
 import { ErrorMessage, Formik } from "formik";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { register } from "../redux/auth/authOperations";
 import s from "./RegisterPage.module.scss";
 import { regValidationSchema } from "../validation/RegisterValid";
+import { getTheme } from "../redux/theme/themeSelector";
 
 const RegisterPage = () => {
   const dispatch = useDispatch();
+  const theme = useSelector(getTheme);
   return (
     <div className={s.regForm}>
       <div className={s.LoginRegDiv}>
@@ -136,10 +138,14 @@ const RegisterPage = () => {
       </div>
       <div className={s.textRegist}>
         <div className={s.textRegistDiv}>
-          <h2 className={s.regFormTitleMain}>Books Reading</h2>
+          <h2 className={s.regFormTitleMain} style={{
+      color: theme === "light" ? "var(--title-text-color)" : "white",
+    }}>Books Reading</h2>
           <div>
             <div className={s.regFormTitleText}>
-              <h3 className={s.regFormTitle}>Допоможе вам</h3> 
+              <h3 className={s.regFormTitle} style={{
+      color: theme === "light" ? "var(--title-text-color)" : "white",
+    }}>Допоможе вам</h3> 
               <div className={s.regFormSpanText}>
                 <span className={s.spanArrow}>&#62;</span><p className={s.textFontRegistr}>Швидше сформулювати свою ціль і розпочати читати</p>
               </div>  
@@ -151,7 +157,9 @@ const RegisterPage = () => {
               </div>
             </div>
             <div className={s.regFormTitleText}>
-              <h3 className={s.regFormTitle}>Також ви зможете</h3>
+              <h3 className={s.regFormTitle} style={{
+      color: theme === "light" ? "var(--title-text-color)" : "white",
+    }}>Також ви зможете</h3>
               <div className={s.regFormSpanText}>
                 <span className={s.spanArrow}>&#62;</span><p className={s.textFontRegistr}>Формувати особисту думку незалежну від інших</p>
               </div>

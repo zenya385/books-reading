@@ -22,6 +22,7 @@ import {
 } from "../../redux/training/trainingSelectors";
 import { addPlaningTraning } from "../../redux/training/trainingOperations";
 import { Formik } from "formik";
+import { getTheme } from "../../redux/theme/themeSelector";
 
 const MyTrainingPlaining = () => {
   const [startDateOrigin, setStartDateOrigin] = useState(new Date());
@@ -87,10 +88,12 @@ const MyTrainingPlaining = () => {
 
   console.log(booksLibrary[0].title);
   console.log(valueIdBook);
-
+  const theme = useSelector(getTheme);
   return (
     <form onSubmit={handleSubmitBookForRead}>
-      <h2>Моє тренування</h2>
+      <h2 style={{
+      color: theme === "light" ? "var(--title-text-color)" : "white",
+    }}>Моє тренування</h2>
       <div className={s.datePicker}>
         <DatePicker
           dateFormat="dd.MM.yyyy"

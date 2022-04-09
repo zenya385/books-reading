@@ -25,7 +25,7 @@ export default function App() {
       backgroundColor:
         theme === "light" ? "var(--light-theme)" : "var(--dark-theme)",
       color: theme === "light" ? "black" : "white",
-      
+      // height: "100vh"
     }}
     >
       <AppBar />

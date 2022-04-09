@@ -9,7 +9,10 @@ const MyPurposeToRead = ({ books }) => {
   const theme = useSelector(getTheme);
 
   return (
-    <div className={s.myPurposeToRead}>
+    <div className={s.myPurposeToRead} style={{
+      backgroundColor:
+        theme === "light" ? "white" : "var(--dark-header)",
+    }}>
       <h2>Моя мета прочитати</h2>
       <div
         className={s.numbersPurpose}
@@ -18,9 +21,21 @@ const MyPurposeToRead = ({ books }) => {
           // height: "100vh",
         }}
       >
-        <span>{books.length}</span>
-        <span> {duration}</span>
-        <span> {books.length}</span>
+        <span style={{
+      backgroundColor:
+        theme === "light" ? "var(--third-bg-color)" : "var(--dark-theme)",
+        color: theme === "light" ? "black" : 'var(--dark-text)'
+    }}>{books.length}</span>
+        <span style={{
+      backgroundColor:
+        theme === "light" ? "var(--third-bg-color)" : "var(--dark-theme)",
+        color: theme === "light" ? "black" : 'var(--dark-text)'
+    }}> {duration}</span>
+        <span style={{
+      backgroundColor:
+        theme === "light" ? "var(--third-bg-color)" : "var(--dark-theme)",
+        color: theme === "light" ? "black" : 'var(--dark-text)'
+    }}> {books.length}</span>
       </div>
     </div>
   );
