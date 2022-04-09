@@ -15,9 +15,8 @@ h2{
 	height: 200px;
 }
 .nextBtn{
-	position: absolute;
-	top: 14%;
-	left: 20%;
+margin: 0 auto 30px ;
+
 	display: block;
 	text-align: center;
 	background: var(--accent-primary-color);
@@ -51,8 +50,9 @@ h2{
 	
 	border-radius: 50%;
 	position: fixed;
-	left: 44%;
-	bottom: 40px;
+		bottom: 10%;
+		left: 50%;
+		transform: translate(-50%, -50%);
 	z-index: 1;
 		-webkit-transition-duration: 0.4s;
 		transition-duration: 0.4s;
