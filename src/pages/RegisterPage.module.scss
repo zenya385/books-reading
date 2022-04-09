@@ -1,16 +1,11 @@
 .errorMessage {
+  position: absolute;
+  top: 45%;
+  right: 3%;
   font-size: 18px;
   color: red;
   text-align: center;
   font-style: italic;
-}
-.errorMessagePass {
-  font-size: 18px;
-  color: red;
-  text-align: center;
-  font-style: italic;
-    font-style: italic;
-    margin: -10px 0 15px;
 }
 .regForm {
   @media screen and (min-width: 320px) {
@@ -119,6 +114,7 @@
 }
 
 .inputLabel {
+  position: relative;
   height: 40px;
   font-weight: 600;
   font-size: 14px;
