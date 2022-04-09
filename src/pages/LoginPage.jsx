@@ -1,12 +1,15 @@
 import React from "react";
 import { ErrorMessage, Formik } from "formik";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "../redux/auth/authOperations";
 import s from "./LoginPage.module.scss";
+import { getTheme } from "../redux/theme/themeSelector";
 import { loginValidationSchema } from "../validation/LoginValid";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
+  const theme = useSelector(getTheme);
+
   return (
     <div className={s.regForm}>
       <div className={s.LoginRegDiv}>
@@ -25,6 +28,7 @@ const LoginPage = () => {
             onSubmit={(values, { resetForm }) => {
               dispatch(login(values));
               resetForm();
+              // console.log("values", values);
             }}
           >
             {({
@@ -88,12 +92,27 @@ const LoginPage = () => {
         </div>
       </div>
       <div className={s.textLogin}>
-        <p className={s.textFont}>
+        <p
+          className={s.textFont}
+          // style={{
+          //   color: theme === "light" ? "black" : "white",
+          // }}
+        >
           Книги — это корабли мысли, странствующие по волнам времени и бережно
           несущие свой драгоценный груз от поколения к поколению.{" "}
         </p>
         <div className={s.lineBefore}>
-          <p className={s.textAuthor}>Бэкон Ф.</p>
+          <p
+            className={s.textAuthor}
+            // style={{
+            //   color:
+            //     theme === "light"
+            //       ? "var(--seconadry-text-color)"
+            //       : "var(--seconadry-text-color)",
+            // }}
+          >
+            Бэкон Ф.
+          </p>
         </div>
       </div>
     </div>
