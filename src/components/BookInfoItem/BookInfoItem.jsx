@@ -2,7 +2,10 @@ import React from "react";
 import Icons from "../../images/symbol-defs.svg";
 import s from "./BookInfoItem.module.scss";
 import MediaQuery from "react-responsive";
+import { getTheme } from "../../redux/theme/themeSelector";
+import { useSelector } from "react-redux";
 import Summary from "../Summary/Summary";
+
 const BookInfoItem = ({
   title,
   author,
@@ -12,8 +15,15 @@ const BookInfoItem = ({
   review,
   bookId,
 }) => {
+  const theme = useSelector(getTheme);
   return (
-    <>
+    <div
+      style={{
+        backgroundColor:
+          theme === "light" ? "var(--light-theme)" : "var(--dark-theme)",
+        // color: theme === "light" ? "black" : "white",
+      }}
+    >
       <li className={s.item}>
         <div className={s.iconTitle}>
           <svg className={s.navIcon} width="22px" height="17px">
@@ -46,7 +56,7 @@ const BookInfoItem = ({
       </button> */}
       </li>
       {/* </MediaQuery> */}
-    </>
+    </div>
   );
 };
 

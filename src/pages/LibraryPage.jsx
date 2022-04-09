@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import BookForm from "../components/BookForm/BookForm";
 import {
@@ -16,9 +16,12 @@ import InstructionModal from "../components/InstructionModal/InstructionModal";
 import SuccessModal from "../components/FinishTrainingModal/SuccessModal";
 import FailModal from "../components/FinishTrainingModal/FailModal";
 import ReviewModal from "../components/ReviewModal/ReviewModal";
-
+import MediaQuery from "react-responsive";
 import { Link } from "react-router-dom";
 import { getPlaningTraning } from "../redux/training/trainingOperations";
+import { BsPlusLg } from "react-icons/bs";
+import s from "./LibraryPage.module.scss";
+import AddBookModal from "../components/AddBookModal/AddBookModal";
 
 // const booksLibrary = [
 //   {
@@ -43,6 +46,7 @@ import { getPlaningTraning } from "../redux/training/trainingOperations";
 
 const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
   // const fullArray = useSelector(getGoingToRead);
+
   const loggedIn = useSelector(getIsLoggedIn);
   const booksGoingToRead = useSelector(getBooksGoingToReadState);
   const booksFinishedReading = useSelector(getBooksFinishedReadingState);
@@ -62,54 +66,85 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
       //  setTimeout( (dispatch(getPlaningTraning())),0)
     }, []);
 
+  console.log(booksCurrentlyReading);
+  const [modalOpen, setModalOpen] = React.useState(false);
+  console.log(modalOpen);
+  const onModalOpen = () => {
+    setModalOpen(true);
+  };
+
+  const onModalClose = (e) => {
+    setModalOpen(false);
+  };
+
   return (
     <>
-      <BookForm />
-      {booksFinishedReading && Boolean(booksFinishedReading.length) && (
-        <h2>Прочитано</h2>
-      )}
-      {booksFinishedReading && Boolean(booksFinishedReading.length) && (
-        <BookInfoList
-          booksLibrary={booksFinishedReading}
-          colorIcon="dark-grey"
-          review={review}
-        />
-      )}
-      {booksCurrentlyReading && Boolean(booksCurrentlyReading.length) && (
-        <h2>Читаю</h2>
-      )}
-      {booksCurrentlyReading && Boolean(booksCurrentlyReading.length) && (
-        <BookInfoList
-          booksLibrary={booksCurrentlyReading}
-          colorIcon="accent"
-          review={0}
-        />
-      )}
-      {booksGoingToRead && Boolean(booksGoingToRead.length) && (
-        <h2>Маю намір прочитати</h2>
-      )}
-      {booksGoingToRead && Boolean(booksGoingToRead.length) && (
-        <BookInfoList
-          booksLibrary={booksGoingToRead}
-          colorIcon="grey"
-          review={0}
-        />
-      )}
+      <section className={s.section}>
+        <MediaQuery maxWidth={767}>
+          <AddBookModal modalOpen={modalOpen} modalClose={onModalClose} />
+        </MediaQuery>
 
-      {!booksIsLoading && booksGoingToRead.length === 0 && <InstructionModal />}
+        <MediaQuery minWidth={768}>
+          <BookForm />
+        </MediaQuery>
 
-      {/* {!booksIsLoading && booksGoingToRead.length === 0 && <SuccessModal />} */}
-      {/* {!booksIsLoading && booksGoingToRead.length === 0 && <FailModal />} */}
+        {booksFinishedReading && Boolean(booksFinishedReading.length) && (
+          <h2>Прочитано</h2>
+        )}
+        {booksFinishedReading && Boolean(booksFinishedReading.length) && (
+          <BookInfoList
+            booksLibrary={booksFinishedReading}
+            colorIcon="dark-grey"
+            review={review}
+          />
+        )}
+        {booksCurrentlyReading && Boolean(booksCurrentlyReading.length) && (
+          <h2>Читаю</h2>
+        )}
+        {booksCurrentlyReading && Boolean(booksCurrentlyReading.length) && (
+          <BookInfoList
+            booksLibrary={booksCurrentlyReading}
+            colorIcon="accent"
+            review={0}
+          />
+        )}
+        {booksGoingToRead && Boolean(booksGoingToRead.length) && (
+          <h2>Маю намір прочитати</h2>
+        )}
+        {booksGoingToRead && Boolean(booksGoingToRead.length) && (
+          <BookInfoList
+            booksLibrary={booksGoingToRead}
+            colorIcon="grey"
+            review={0}
+          />
+        )}
 
-      <a href="/training">Далі</a>
+        {!booksIsLoading && booksGoingToRead.length === 0 && (
+          <InstructionModal />
+        )}
 
-      {/* {loggedIn && (
+        {/* {!booksIsLoading && booksGoingToRead.length === 0 && <SuccessModal />} */}
+        {/* {!booksIsLoading && booksGoingToRead.length === 0 && <FailModal />} */}
+        <div className={s.nextBtnWrapper}>
+          <Link to="/training" className={s.nextBtn}>
+            Далі
+          </Link>
+        </div>
+
+        <MediaQuery maxWidth={767}>
+          <button onClick={onModalOpen} className={s.modalOpenBtn}>
+            <BsPlusLg style={{ width: "18px", height: "18px" }} />
+          </button>
+        </MediaQuery>
+
+        {/* {loggedIn && (
         <ul>
           {fullArray.map((el) => (
             <li key={el._id}>{el.title}</li>
           ))}
         </ul>
       )} */}
+      </section>
     </>
   );
 };
