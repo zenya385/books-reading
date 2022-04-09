@@ -23,6 +23,8 @@ import { getPlaningTraning } from "../redux/training/trainingOperations";
 import { BsPlusLg } from "react-icons/bs";
 import s from "./LibraryPage.module.scss";
 import AddBookModal from "../components/AddBookModal/AddBookModal";
+import BookReviewItem from "../components/BookReviewItem/BookReviewItem";
+import BookReviewList from "../components/BookReviewList/BookReviewList";
 
 // const booksLibrary = [
 //   {
@@ -90,15 +92,20 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
           <BookForm />
         </MediaQuery>
 
-        {booksFinishedReading && Boolean(booksFinishedReading.length) && (
+        {/* {booksFinishedReading && Boolean(booksFinishedReading.length) && (
           <h2>Прочитано</h2>
-        )}
+        )} */}
         {booksFinishedReading && Boolean(booksFinishedReading.length) && (
-          <BookInfoList
+          <BookReviewList
             booksLibrary={booksFinishedReading}
             colorIcon="dark-grey"
             review={review}
           />
+          // <BookInfoList
+          //   booksLibrary={booksFinishedReading}
+          //   colorIcon="dark-grey"
+          //   review={review}
+          // />
         )}
         {booksCurrentlyReading && Boolean(booksCurrentlyReading.length) && (
           <h2>Читаю</h2>

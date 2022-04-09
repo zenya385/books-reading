@@ -3,7 +3,6 @@ import Rating from "@mui/material/Rating";
 import ReviewModal from "../ReviewModal/ReviewModal";
 import s from "./Summary.module.scss";
 import MediaQuery from "react-responsive";
-// import s from "./ReviewModal.module.scss";
 
 const Summary = ({ bookId, rating, feedback }) => {
   const [modalOpen, setModalOpen] = React.useState(false);
@@ -18,22 +17,9 @@ const Summary = ({ bookId, rating, feedback }) => {
   return (
     <>
       <MediaQuery minWidth={768}>
-        {/* <div className={s.wrapper}> */}
-        {/* <div className={s.ratingWrepper}> */}
-        {/* <p className={s.ratingText}>Рейтинг : </p> */}
-        {/* <Rating
-          name="half-rating-read"
-          size="small"
-          value={rating}
-          precision={0.5}
-          readOnly
-        /> */}
-        {/* </div> */}
-
         <button onClick={onModalOpen} className={s.reviewBtn}>
           Резюме
         </button>
-        {/* </div> */}
       </MediaQuery>
 
       <MediaQuery maxWidth={767}>
@@ -48,10 +34,11 @@ const Summary = ({ bookId, rating, feedback }) => {
               readOnly
             />
           </div>
-
-          <button onClick={onModalOpen} className={s.reviewBtn}>
-            Резюме
-          </button>
+          <div className={s.reviewBtnWrepper}>
+            <button onClick={onModalOpen} className={s.reviewBtn}>
+              Резюме
+            </button>
+          </div>
         </div>
       </MediaQuery>
 

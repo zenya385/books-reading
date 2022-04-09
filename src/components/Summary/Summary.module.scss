@@ -1,7 +1,5 @@
 .wrapper {
-// display: flex;
-// flex-direction: column;
-margin-bottom: 30px;
+    margin-bottom: 30px;
 }
 .ratingWrepper {
     display: flex;
@@ -38,14 +36,19 @@ margin-bottom: 30px;
 
     @media screen and (min-width: 768px) {
         width: 80px;
-        height: 40px;
+
         margin-left: 20px;
     
     }
+
+    @media screen and (min-width: 1280px) {
+        width: 130px;
+        margin-right: 0;
+        margin-left: 50px;
     
-    // @media screen and (min-width: 1280px) {
+    }
     
-    //     font-size: 14px;
-    //     line-height: 2.71;
-    // }
+}
+.reviewBtnWrepper {
+    height: 70px;
 }
