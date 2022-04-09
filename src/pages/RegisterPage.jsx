@@ -122,25 +122,46 @@ const RegisterPage = () => {
                 >
                   Зареєструватися
                 </button>
-                <p className={s.btnRegisterLogin}>
-                  Вже з нами?
+                <div className={s.regFormRegistrText}>
+                  <p className={s.btnRegisterSmallText}>Вже з нами?</p>
                   <a className={s.btnRegisterLogin} href="/login">
                     Увiйти
                   </a>
-                </p>
+                </div>
+               
               </form>
             )}
           </Formik>
         </div>
       </div>
-      <div className={s.textLogin}>
-        <div className={s.regFormText}>
-          <p className={s.textFont}>
-            Книги — это корабли мысли, странствующие по волнам времени и бережно
-            несущие свой драгоценный груз от поколения к поколению.{" "}
-          </p>
-          <div className={s.lineBefore}>
-            <p className={s.textAuthor}>Бэкон Ф.</p>
+      <div className={s.textRegist}>
+        <div className={s.textRegistDiv}>
+          <h2 className={s.regFormTitleMain}>Books Reading</h2>
+          <div>
+            <div className={s.regFormTitleText}>
+              <h3 className={s.regFormTitle}>Допоможе вам</h3> 
+              <div className={s.regFormSpanText}>
+                <span className={s.spanArrow}>&#62;</span><p className={s.textFontRegistr}>Швидше сформулювати свою ціль і розпочати читати</p>
+              </div>  
+              <div className={s.regFormSpanText}>
+                <span className={s.spanArrow}>&#62;</span><p className={s.textFontRegistr}>Пропорційно розподілити навантаження на кожний день</p>
+              </div>
+              <div className={s.regFormSpanText}>
+                <span className={s.spanArrow}>&#62;</span><p className={s.textFontRegistr}>Відстежувати особистий успіх</p>
+              </div>
+            </div>
+            <div className={s.regFormTitleText}>
+              <h3 className={s.regFormTitle}>Також ви зможете</h3>
+              <div className={s.regFormSpanText}>
+                <span className={s.spanArrow}>&#62;</span><p className={s.textFontRegistr}>Формувати особисту думку незалежну від інших</p>
+              </div>
+              <div className={s.regFormSpanText}>
+                <span className={s.spanArrow}>&#62;</span><p className={s.textFontRegistr}>Підвищити свої професійні якості опираючись на нові знання</p>
+              </div>
+              <div className={s.regFormSpanText}>
+                <span className={s.spanArrow}>&#62;</span><p className={s.textFontRegistr}>Стати цікавим співрозмовником</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

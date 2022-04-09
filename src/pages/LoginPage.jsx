@@ -99,17 +99,11 @@ const LoginPage = () => {
           // }}
         >
           Книги — это корабли мысли, странствующие по волнам времени и бережно
-          несущие свой драгоценный груз от поколения к поколению.{" "}
+          несущие свой драгоценный груз от поколения к поколению.
         </p>
         <div className={s.lineBefore}>
           <p
             className={s.textAuthor}
-            // style={{
-            //   color:
-            //     theme === "light"
-            //       ? "var(--seconadry-text-color)"
-            //       : "var(--seconadry-text-color)",
-            // }}
           >
             Бэкон Ф.
           </p>
