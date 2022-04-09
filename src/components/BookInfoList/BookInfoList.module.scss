@@ -1,39 +1,60 @@
-p{
+p {
 	font-weight: 500;
 	font-size: 14px;
 	line-height: 2.71;
 	color: #898F9F;
+
 	@media screen and (min-width: 768px) {
 		font-size: 14px;
 		line-height: 2.71;
 	}
 }
-.bookInfo{
-display: flex;
+
+.bookInfo {
+	display: flex;
 
 
 }
-.bookList{
+
+.bookList {
+	background-color: #fff;
 	display: flex;
 	flex-direction: column;
-		
+
+	@media screen and (max-width: 767px) {
+		width: 270px;
+		margin: 0 auto;
+	}
+
 }
-.title{
-width: 460px;
-@media screen and (min-width: 1280px) {
-	width: 650px;
-}
-}
-.author{
-	width: 200px;
+
+.title {
+	@media screen and (min-width: 767px) {
+		margin-right: 296px;
+	}
+
 	@media screen and (min-width: 1280px) {
-		width: 330px;
+		margin-right: 602px;
 	}
 }
-.year{
-	width: 146px;
-		
+
+.author {
+	@media screen and (min-width: 767px) {
+		margin-right: 120px;
+	}
+
+	@media screen and (min-width: 1280px) {
+		margin-right: 300px;
+	}
 }
-.page{
-	width: 68px;
+
+.year {
+	@media screen and (min-width: 767px) {
+		margin-right: 62px;
+	}
+
+	@media screen and (min-width: 1280px) {
+		margin-right: 113px;
+	}
 }
+

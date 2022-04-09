@@ -5,7 +5,7 @@ import { addBook } from "../../redux/books/booksOperations";
 import { addBookValidationSchema } from "../../validation/BookFormValid";
 import s from "../BookForm/BookForm.module.scss";
 
-export default function BookForm() {
+export default function BookForm({ onHandleClose }) {
   const dispatch = useDispatch();
 
   return (
@@ -18,11 +18,12 @@ export default function BookForm() {
           pagesTotal: "",
         }}
         validationSchema={addBookValidationSchema}
-        onSubmit={(values, { resetForm }) => {
+        onSubmit={(values, { resetForm }, onModalClose) => {
           console.log("values", values);
           dispatch(addBook(values));
           resetForm();
           console.log("values", values);
+          onHandleClose();
         }}
       >
         {({
