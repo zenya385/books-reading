@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
 import {
   persistStore,
@@ -13,6 +13,7 @@ import {
 import storage from "redux-persist/lib/storage";
 import authReducer from "./auth/authSlice";
 import booksReducer from "./books/booksSlice";
+import themeReducer from "./theme/themeSlice";
 import trainingReducer from "./training/trainingSlice";
 
 const authPersistConfig = {
@@ -22,12 +23,23 @@ const authPersistConfig = {
 };
 const authPersistedReducer = persistReducer(authPersistConfig, authReducer);
 
+const rootPersistConfig = {
+  key: "root",
+  storage,
+  whitelist: ["theme"],
+};
+
+const rootReducer = combineReducers({
+  books: booksReducer,
+  auth: authPersistedReducer,
+  training: trainingReducer,
+  theme: themeReducer,
+});
+
+const rootPersistedReducer = persistReducer(rootPersistConfig, rootReducer);
+
 const store = configureStore({
-  reducer: {
-    auth: authPersistedReducer,
-    books: booksReducer,
-    training: trainingReducer,
-  },
+  reducer: rootPersistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {

@@ -22,7 +22,7 @@ import {
   // getStartDate,
   getTrainingBooks,
 } from "../redux/training/trainingSelectors";
-import StatisticsResults from "../components/AllStatistics/StatisticsResults/StatisticsResults"
+import StatisticsResults from "../components/AllStatistics/StatisticsResults/StatisticsResults";
 import Timer from "../components/Timer/Timer";
 import { getBooksCurrentlyReadingState } from "../redux/books/booksSelectors";
 
@@ -87,7 +87,7 @@ const TrainingPage = () => {
   const books = useSelector(getTrainingBooks);
   const booksCurrentlyReading =useSelector(getBooksCurrentlyReadingState)
 
-  const dispatch = useDispatch();  
+  const dispatch = useDispatch();
 
   const isTrain=Boolean(booksCurrentlyReading.length)
 

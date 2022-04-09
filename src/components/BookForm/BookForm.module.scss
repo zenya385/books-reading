@@ -1,3 +1,12 @@
+.errorMessage {
+position: absolute;
+top: 40%;
+right: 3%;
+font-size: 18px;
+color: red;
+text-align: center;
+font-style: italic;
+}
 .form{
 	display: flex;
 	margin-top: 30px;
@@ -18,6 +27,7 @@
 		}
 	}
 	&__label{
+		position: relative;
 		font-weight: 500;
 		font-size: 14px;
 		line-height: 2.71;

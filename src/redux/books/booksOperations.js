@@ -31,7 +31,7 @@ export const getBooks = createAsyncThunk(
       const books = await getUserBooksApi(accessToken);
       const training = await getPlanningApi(accessToken).catch((error) => {
         if (error.request.status === 403) {
-          console.log(error.request);
+          // console.log(error.request);
           return null; // {planning:{books:[]}};
         } else {
           throw error;
