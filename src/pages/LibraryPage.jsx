@@ -19,7 +19,6 @@ import ReviewModal from "../components/ReviewModal/ReviewModal";
 import MediaQuery from "react-responsive";
 import { Link } from "react-router-dom";
 import { getPlaningTraning } from "../redux/training/trainingOperations";
-
 import { BsPlusLg } from "react-icons/bs";
 import s from "./LibraryPage.module.scss";
 import AddBookModal from "../components/AddBookModal/AddBookModal";

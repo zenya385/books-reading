@@ -15,8 +15,13 @@ import {
   getBooksGoingToReadState,
 } from "../../redux/books/booksSelectors";
 import BookInfoList from "../BookInfoList/BookInfoList";
-import { getEndDate, getStartDate, getTrainingBooks } from "../../redux/training/trainingSelectors";
+import {
+  getEndDate,
+  getStartDate,
+  getTrainingBooks,
+} from "../../redux/training/trainingSelectors";
 import { addPlaningTraning } from "../../redux/training/trainingOperations";
+import { Formik } from "formik";
 
 const MyTrainingPlaining = () => {
   const [startDateOrigin, setStartDateOrigin] = useState(new Date());
