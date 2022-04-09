@@ -69,9 +69,9 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
       //  setTimeout( (dispatch(getPlaningTraning())),0)
     }, [ratingChange.feedback, ratingChange.rating]);
 
-  console.log(booksCurrentlyReading);
+  // console.log(booksCurrentlyReading);
   const [modalOpen, setModalOpen] = React.useState(false);
-  console.log(modalOpen);
+  // console.log(modalOpen);
   const onModalOpen = () => {
     setModalOpen(true);
   };

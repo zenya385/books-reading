@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "../redux/auth/authOperations";
 import s from "./LoginPage.module.scss";
 import { getTheme } from "../redux/theme/themeSelector";
-import { loginValidationSchema } from "../validation/LoginValid";
+import { loginValidationSchema } from "../utils/validation/LoginValid";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -43,39 +43,41 @@ const LoginPage = () => {
               <form onSubmit={handleSubmit}>
                 <label className={s.inputLabel} htmlFor="email">
                   Електронна адреса <span className={s.spanStar}>*</span>
+                  <input
+                    className={s.inputEmail}
+                    type="email"
+                    name="email"
+                    placeholder="your@email.com"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.email}
+                  />
+                  {/* {touched.email && errors.email && alert(errors.email)} */}
+                  <ErrorMessage
+                    component="div"
+                    name="email"
+                    className={s.errorMessage}
+                  />
                 </label>
-                <input
-                  className={s.inputEmail}
-                  type="email"
-                  name="email"
-                  placeholder="your@email.com"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.email}
-                />
-                <ErrorMessage
-                  component="div"
-                  name="email"
-                  style={{ fontSize: "18px", color: "red" }}
-                  className={s.errorMessage}
-                />
+
                 <label className={s.inputLabel} htmlFor="password">
                   Пароль <span className={s.spanStar}>*</span>
+                  <input
+                    className={s.inputPassword}
+                    type="password"
+                    name="password"
+                    placeholder="..."
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.password}
+                  />
+                  {/* {touched.password && errors.password && alert(errors.password)} */}
+                  <ErrorMessage
+                    component="div"
+                    name="password"
+                    className={s.errorMessage}
+                  />
                 </label>
-                <input
-                  className={s.inputPassword}
-                  type="password"
-                  name="password"
-                  placeholder="..."
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.password}
-                />
-                <ErrorMessage
-                  component="div"
-                  name="password"
-                  className={s.errorMessagePass}
-                />
                 <button
                   className={s.btnSubmit}
                   type="submit"
@@ -102,11 +104,7 @@ const LoginPage = () => {
           несущие свой драгоценный груз от поколения к поколению.
         </p>
         <div className={s.lineBefore}>
-          <p
-            className={s.textAuthor}
-          >
-            Бэкон Ф.
-          </p>
+          <p className={s.textAuthor}>Бэкон Ф.</p>
         </div>
       </div>
     </div>
