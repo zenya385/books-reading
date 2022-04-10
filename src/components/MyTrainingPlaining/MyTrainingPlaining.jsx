@@ -21,6 +21,8 @@ import {
   getStartDate,
   getTrainingBooks,
 } from "../../redux/training/trainingSelectors";
+import { getLang } from "../../redux/lang/langSelector";
+import { langOptionsMyTrainPlan } from "../../assets/langOptionsMyTrainPlan";
 import { addPlaningTraining } from "../../redux/training/trainingOperations";
 import { Formik } from "formik";
 import PurposeToReadList from "../PurposeToReadList/PurposeToReadList";
@@ -31,12 +33,14 @@ const MyTrainingPlaining = () => {
   const books = useSelector(getTrainingBooks);
   const startDate = useSelector(getStartDate);
   const endDate = useSelector(getEndDate);
+  const lang = useSelector(getLang);
+  const { training, startTraining, btn } = langOptionsMyTrainPlan;
 
   const [startDateOrigin, setStartDateOrigin] = useState(new Date());
   const [endDateOrigin, setEndDateOrigin] = useState(new Date());
   const [curReadBooks, setCurReadBooks] = useState([]);
   const [bookForTraining, setBookForTraining] = useState(booksLibrary);
-  const [valueIdBook, setValueIdBook] = useState(bookForTraining[0]._id);
+  const [valueIdBook, setValueIdBook] = useState("default");
 
   const dispatch = useDispatch();
 
@@ -76,37 +80,38 @@ const MyTrainingPlaining = () => {
 
   const handleSubmitBookForRead = (e) => {
     e.preventDefault();
-
-    !curReadBooks.filter((book) => book._id === valueIdBook).length &&
-      setCurReadBooks((prev) => [
-        ...prev,
-        ...booksLibrary.filter((book) => book._id === valueIdBook),
-      ]);
-
-    setBookForTraining((prev) =>
-      prev.filter((book) => book._id !== valueIdBook)
-    );
-
-    setValueIdBook(bookForTraining[0]._id);
-
-    !books.filter((id) => id === valueIdBook).length &&
-      dispatch(addBookForTraining({ valueIdBook }));
+    setCurReadBooks((prev) => {
+      console.log("prev setCurReadBooks :>> ", prev);
+      return [...prev, booksLibrary.find((book) => book._id === valueIdBook)];
+    });
+    setBookForTraining((prev) => {
+      console.log("prev setBookForTraining :>> ", prev);
+      return prev.filter((book) => book._id !== valueIdBook);
+    });
+    setValueIdBook("default");
   };
 
   const handleSubmitBookForTraining = (e) => {
     e.preventDefault();
     console.log(books);
-    dispatch(addPlaningTraining({ startDate, endDate, books }));
+
+    dispatch(
+      addPlaningTraining({
+        startDate,
+        endDate,
+        books: curReadBooks.map((el) => el._id),
+      })
+    );
   };
 
-  console.log("bookForTraining>>>", bookForTraining);
-  console.log("curReadBooks>>>", curReadBooks);
-  console.log("books>>>", books);
-  console.log("valueIdBook>>>", valueIdBook);
+  // console.log("bookForTraining>>>", bookForTraining);
+  // console.log("curReadBooks>>>", curReadBooks);
+  // console.log("books>>>", books);
+  // console.log("valueIdBook>>>", valueIdBook);
 
   return (
     <form onSubmit={handleSubmitBookForRead}>
-      <h2>Моє тренування</h2>
+      <h2>{training[lang]}</h2>
       <div className={s.datePicker}>
         <DatePicker
           dateFormat="dd.MM.yyyy"
@@ -121,14 +126,18 @@ const MyTrainingPlaining = () => {
       </div>
       {Boolean(bookForTraining.length) && (
         <>
-          <select onChange={handleChangeValue}>
+          <select
+            disabled={bookForTraining.length ? false : true}
+            onChange={handleChangeValue}
+          >
+            <option value="default">...</option>
             {bookForTraining.map((book) => (
               <option key={book._id} value={book._id}>
                 {book.title}
               </option>
             ))}
           </select>
-          <input type="submit" value="Додати" />
+          <button type="submit"> {btn[lang]}</button>
         </>
       )}
       {/* лист с чекбоксом после прописания логики можно удалить */}
@@ -149,7 +158,7 @@ const MyTrainingPlaining = () => {
       )}
       {Boolean(curReadBooks.length) && (
         <button type="submit" onClick={handleSubmitBookForTraining}>
-          Почати тренування
+          {startTraining[lang]}
         </button>
       )}
     </form>

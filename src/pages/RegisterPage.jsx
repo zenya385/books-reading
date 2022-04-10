@@ -1,12 +1,33 @@
 import React from "react";
 import { ErrorMessage, Formik } from "formik";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { register } from "../redux/auth/authOperations";
 import s from "./RegisterPage.module.scss";
-import { regValidationSchema } from "../validation/RegisterValid";
+import { regValidationSchema } from "../utils/validation/RegisterValid";
+import { getLang } from "../redux/lang/langSelector";
+import { langOptionsRegister } from "../assets/langOptionsRegister";
 
 const RegisterPage = () => {
   const dispatch = useDispatch();
+  const lang = useSelector(getLang);
+  const {
+    title,
+    inputEmail,
+    inputPass,
+    inputPassConf,
+    buttonReg,
+    question,
+    linkLog,
+    textTitle1,
+    text1_1,
+    text1_2,
+    text1_3,
+    textTitle2,
+    text2_1,
+    text2_2,
+    text2_3,
+  } = langOptionsRegister;
+
   return (
     <div className={s.regForm}>
       <div className={s.LoginRegDiv}>
@@ -44,103 +65,134 @@ const RegisterPage = () => {
             }) => (
               <form onSubmit={handleSubmit}>
                 <label className={s.inputLabel} htmlFor="name">
-                  Iм'я <span className={s.spanStar}>*</span>
+                  {title[lang]}
+                  <span className={s.spanStar}>*</span>
+                  <input
+                    className={s.inputEmail}
+                    type="name"
+                    name="name"
+                    placeholder="..."
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.name}
+                  />
+                  {/* {errors.email && touched.email && errors.email} */}
+                  <ErrorMessage
+                    component="div"
+                    name="name"
+                    className={s.errorMessage}
+                  />
                 </label>
-                <input
-                  className={s.inputEmail}
-                  type="name"
-                  name="name"
-                  placeholder="..."
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.name}
-                />
-                {/* {errors.email && touched.email && errors.email} */}
-                <ErrorMessage
-                  component="div"
-                  name="name"
-                  className={s.errorMessage}
-                />
+
                 <label className={s.inputLabel} htmlFor="email">
-                  Електронна адреса <span className={s.spanStar}>*</span>
+                  {inputEmail[lang]} <span className={s.spanStar}>*</span>
+                  <input
+                    className={s.inputEmail}
+                    type="email"
+                    name="email"
+                    placeholder="your@email.com"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.email}
+                  />
+                  {/* {errors.email && touched.email && errors.email} */}
+                  <ErrorMessage
+                    component="div"
+                    name="email"
+                    className={s.errorMessage}
+                  />
                 </label>
-                <input
-                  className={s.inputEmail}
-                  type="email"
-                  name="email"
-                  placeholder="your@email.com"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.email}
-                />
-                {/* {errors.email && touched.email && errors.email} */}
-                <ErrorMessage
-                  component="div"
-                  name="email"
-                  className={s.errorMessage}
-                />
+
                 <label className={s.inputLabel} htmlFor="password">
-                  Пароль <span className={s.spanStar}>*</span>
+                  {inputPass[lang]} <span className={s.spanStar}>*</span>
+                  <input
+                    className={s.inputEmail}
+                    type="password"
+                    name="password"
+                    placeholder="..."
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.password}
+                  />
+                  {/* {errors.password && touched.password && errors.password} */}
+                  <ErrorMessage
+                    component="div"
+                    name="password"
+                    className={s.errorMessage}
+                  />
                 </label>
-                <input
-                  className={s.inputEmail}
-                  type="password"
-                  name="password"
-                  placeholder="..."
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.password}
-                />
-                {/* {errors.password && touched.password && errors.password} */}
-                <ErrorMessage
-                  component="div"
-                  name="password"
-                  className={s.errorMessage}
-                />
+
                 <label className={s.inputLabel} htmlFor="passwordRepeat">
-                  Пiдтвердити пароль <span className={s.spanStar}>*</span>
+                  {inputPassConf[lang]} <span className={s.spanStar}>*</span>
+                  <input
+                    className={s.inputPassword}
+                    type="password"
+                    name="confirmPassword"
+                    placeholder="..."
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.confirmPassword}
+                  />
+                  {/* {errors.password && touched.password && errors.password} */}
+                  <ErrorMessage
+                    component="div"
+                    name="confirmPassword"
+                    className={s.errorMessage}
+                  />
                 </label>
-                <input
-                  className={s.inputPassword}
-                  type="password"
-                  name="confirmPassword"
-                  placeholder="..."
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.confirmPassword}
-                />
-                {/* {errors.password && touched.password && errors.password} */}
-                <ErrorMessage
-                  component="div"
-                  name="confirmPassword"
-                  className={s.errorMessagePass}
-                />
+
                 <button
                   className={s.btnSubmit}
                   type="submit"
                   disabled={isSubmitting}
                 >
-                  Зареєструватися
+                  {buttonReg[lang]}
                 </button>
-                <p className={s.btnRegisterLogin}>
-                  Вже з нами?
+                <div className={s.regFormRegistrText}>
+                  <p className={s.btnRegisterSmallText}>{question[lang]}</p>
                   <a className={s.btnRegisterLogin} href="/login">
-                    Увiйти
+                    {linkLog[lang]}
                   </a>
-                </p>
+                </div>
               </form>
             )}
           </Formik>
         </div>
       </div>
-      <div className={s.textLogin}>
-        <div className={s.regFormText}>
-          <p className={s.textFont}>
-            Книги — это корабли мысли, странствующие по волнам времени и бережно
-            несущие свой драгоценный груз от поколения к поколению.{" "}
-          </p>
-          <div className={s.lineBefore}>
-            <p className={s.textAuthor}>Бэкон Ф.</p>
+      <div className={s.textRegist}>
+        <div className={s.textRegistDiv}>
+          <h2 className={s.regFormTitleMain}>Books Reading</h2>
+          <div>
+            <div className={s.regFormTitleText}>
+              <h3 className={s.regFormTitle}>{textTitle1[lang]}</h3>
+              <div className={s.regFormSpanText}>
+                <span className={s.spanArrow}>&#62;</span>
+                <p className={s.textFontRegistr}>{text1_1[lang]}</p>
+              </div>
+              <div className={s.regFormSpanText}>
+                <span className={s.spanArrow}>&#62;</span>
+                <p className={s.textFontRegistr}>{text1_2[lang]}</p>
+              </div>
+              <div className={s.regFormSpanText}>
+                <span className={s.spanArrow}>&#62;</span>
+                <p className={s.textFontRegistr}>{text1_3[lang]}</p>
+              </div>
+            </div>
+            <div className={s.regFormTitleText}>
+              <h3 className={s.regFormTitle}>{textTitle2[lang]}</h3>
+              <div className={s.regFormSpanText}>
+                <span className={s.spanArrow}>&#62;</span>
+                <p className={s.textFontRegistr}>{text2_1[lang]}</p>
+              </div>
+              <div className={s.regFormSpanText}>
+                <span className={s.spanArrow}>&#62;</span>
+                <p className={s.textFontRegistr}>{text2_2[lang]}</p>
+              </div>
+              <div className={s.regFormSpanText}>
+                <span className={s.spanArrow}>&#62;</span>
+                <p className={s.textFontRegistr}>{text2_3[lang]}</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

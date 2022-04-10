@@ -28,9 +28,9 @@ const PurposeToReadList = ({ booksLibrary, colorIcon, review }) => {
           <span className={s.bookInfoLine}></span>
         </MediaQuery>
         {booksLibrary.map((book) => (
-          <div className={s.itemLineWrepper}>
+          <div key={book._id} className={s.itemLineWrepper}>
             <span className={s.itemLine}></span>
-            <li className={s.item} key={book._id}>
+            <li className={s.item} >
               <div className={s.iconTitle}>
                 <svg className={s.navIcon} width="22px" height="17px">
                   <use xlinkHref={`${Icons}#icon-flat-${colorIcon}`} />

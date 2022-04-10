@@ -15,6 +15,7 @@ import authReducer from "./auth/authSlice";
 import booksReducer from "./books/booksSlice";
 import themeReducer from "./theme/themeSlice";
 import trainingReducer from "./training/trainingSlice";
+import langReducer from "./lang/langSlice";
 
 const authPersistConfig = {
   key: "auth",
@@ -26,7 +27,7 @@ const authPersistedReducer = persistReducer(authPersistConfig, authReducer);
 const rootPersistConfig = {
   key: "root",
   storage,
-  whitelist: ["theme"],
+  whitelist: ["theme", "lang"],
 };
 
 const rootReducer = combineReducers({
@@ -34,6 +35,7 @@ const rootReducer = combineReducers({
   auth: authPersistedReducer,
   training: trainingReducer,
   theme: themeReducer,
+  lang: langReducer,
 });
 
 const rootPersistedReducer = persistReducer(rootPersistConfig, rootReducer);

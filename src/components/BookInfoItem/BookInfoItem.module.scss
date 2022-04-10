@@ -54,6 +54,11 @@ button {
 .bookInfo {
   padding-left: 55px;
 }
+.bookInfoWrapper{
+  @media screen and (max-width: 767px) {display: flex;
+  align-items: flex-end;}
+ 
+}
 
 .bookTitle {
   margin-left: 14px;
@@ -115,12 +120,12 @@ font-weight: 500;
 font-size: 12px;
 line-height: 1.17;
 color: #242A37;
-
+height: 26px;
 
   @media screen and (min-width: 768px) {
     width: 160px;
     font-size: 14px;
-    line-height: 0.8;
+   line-height: 1.5;
 
 
   }
