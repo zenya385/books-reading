@@ -8,6 +8,17 @@ import { BsCheck } from "react-icons/bs";
 import { Checkbox } from "@mui/material";
 // import Checkbox from "react-custom-checkbox";
 
+// {  вызов компонента
+
+//   Boolean(curReadBooks.length) && (
+//     <ReadListWithCheckBox
+//       booksLibrary={curReadBooks}
+//       colorIcon="grey"
+//       review={0}
+//     />
+//   );
+// }
+
 const ReadListWithCheckBox = ({ booksLibrary, colorIcon, review }) => {
   const theme = useSelector(getTheme);
 
@@ -33,42 +44,18 @@ const ReadListWithCheckBox = ({ booksLibrary, colorIcon, review }) => {
           <span className={s.bookInfoLine}></span>
         </MediaQuery>
         {booksLibrary.map((book) => (
-          <div className={s.itemLineWrepper}>
+          <div className={s.itemLineWrepper} key={book._id}>
             <span className={s.itemLine}></span>
-            <li className={s.item} key={book._id}>
+            <li className={s.item}>
               <div className={s.iconTitle}>
-                <div className={s.checkBoxWrepper}>
-                  <Checkbox
-                    {...label}
-                    defaultChecked
-                    sx={{
-                      color: "#A6ABB9",
-                      "&.Mui-checked": {
-                        color: "red",
-                      },
-                    }}
-                  />
-
-                  {/* <Checkbox
-                    icon={<BsCheck color="#174A41" size={14} />}
-                    name="my-input"
-                    checked={true}
-                    // onChange={(value) => {
-                    //   let p = {
-                    //     isTrue: value,
-                    //   };
-                    //   return alert(value);
-                    // }}
-                    borderColor="#A6ABB9"
-                    style={{
-                      cursor: "pointer",
-                      width: "15",
-                      height: "15",
-                      borderRadius: "0",
-                    }}
-                  /> */}
-                  <p className={s.bookTitle}>{book.title}</p>
-                </div>
+                {/* проверка для рендера checkBox */}
+                {/* {если все то чекнутый ? <div className={s.checkBoxWrepper}>
+                  <svg className={s.checkBoxIcon} width="15px" height="15px">
+                    <use xlinkHref={`${Icons}#icon-checkBox`} />
+                  </svg>
+                </div>} */}
+                <div className={s.checkBox}></div>
+                <p className={s.bookTitle}>{book.title}</p>
               </div>
               <MediaQuery maxWidth={767}>
                 <div className={s.bookInfo}>
