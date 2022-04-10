@@ -24,7 +24,9 @@ import {
 import { getLang } from "../../redux/lang/langSelector";
 import { langOptionsMyTrainPlan } from "../../assets/langOptionsMyTrainPlan";
 import { addPlaningTraining } from "../../redux/training/trainingOperations";
-import PurposeToReadList from "../PurposeToRead/PurposeToRead";
+import { Formik } from "formik";
+import PurposeToReadList from "../PurposeToReadList/PurposeToReadList";
+import ReadListWithCheckBox from "../ReadListWithCheckBox/ReadListWithCheckBox";
 
 const MyTrainingPlaining = () => {
   const booksLibrary = useSelector(getBooksGoingToReadState);
@@ -79,13 +81,11 @@ const MyTrainingPlaining = () => {
   const handleSubmitBookForRead = (e) => {
     e.preventDefault();
     setCurReadBooks((prev) => {
-      console.log('prev setCurReadBooks :>> ', prev);
-      return [
-      ...prev,
-      booksLibrary.find((book) => book._id === valueIdBook),
-    ]});
+      console.log("prev setCurReadBooks :>> ", prev);
+      return [...prev, booksLibrary.find((book) => book._id === valueIdBook)];
+    });
     setBookForTraining((prev) => {
-      console.log('prev setBookForTraining :>> ', prev);
+      console.log("prev setBookForTraining :>> ", prev);
       return prev.filter((book) => book._id !== valueIdBook);
     });
     setValueIdBook("default");
@@ -140,6 +140,15 @@ const MyTrainingPlaining = () => {
           <button type="submit"> {btn[lang]}</button>
         </>
       )}
+      {/* лист с чекбоксом после прописания логики можно удалить */}
+
+      {/* {Boolean(curReadBooks.length) && (
+        <ReadListWithCheckBox
+          booksLibrary={curReadBooks}
+          colorIcon="grey"
+          review={0}
+        />
+      )} */}
       {Boolean(curReadBooks.length) && (
         <PurposeToReadList
           booksLibrary={curReadBooks}
