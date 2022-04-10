@@ -3,9 +3,9 @@ export const langOptionsLogin = {
     ua: "Електронна адреса",
     en: "Email",
   },
-  inputPass: {
+  inputPassword: {
     ua: "Пароль",
-    en: " Password",
+    en: "Password",
   },
   buttonLogin: {
     ua: "Увійти",

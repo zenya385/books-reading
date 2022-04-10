@@ -83,21 +83,7 @@ const RegisterPage = () => {
                     className={s.errorMessage}
                   />
                 </label>
-                <input
-                  className={s.inputEmail}
-                  type="name"
-                  name="name"
-                  placeholder="..."
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.name}
-                />
-                {/* {errors.email && touched.email && errors.email} */}
-                <ErrorMessage
-                  component="div"
-                  name="name"
-                  className={s.errorMessage}
-                />
+
                 <label className={s.inputLabel} htmlFor="email">
                   {inputEmail[lang]} <span className={s.spanStar}>*</span>
                   <input
@@ -116,21 +102,7 @@ const RegisterPage = () => {
                     className={s.errorMessage}
                   />
                 </label>
-                <input
-                  className={s.inputEmail}
-                  type="email"
-                  name="email"
-                  placeholder="your@email.com"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.email}
-                />
-                {/* {errors.email && touched.email && errors.email} */}
-                <ErrorMessage
-                  component="div"
-                  name="email"
-                  className={s.errorMessage}
-                />
+
                 <label className={s.inputLabel} htmlFor="password">
                   {inputPass[lang]} <span className={s.spanStar}>*</span>
                   <input
@@ -149,21 +121,7 @@ const RegisterPage = () => {
                     className={s.errorMessage}
                   />
                 </label>
-                <input
-                  className={s.inputEmail}
-                  type="password"
-                  name="password"
-                  placeholder="..."
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.password}
-                />
-                {/* {errors.password && touched.password && errors.password} */}
-                <ErrorMessage
-                  component="div"
-                  name="password"
-                  className={s.errorMessage}
-                />
+
                 <label className={s.inputLabel} htmlFor="passwordRepeat">
                   {inputPassConf[lang]} <span className={s.spanStar}>*</span>
                   <input
@@ -182,21 +140,7 @@ const RegisterPage = () => {
                     className={s.errorMessage}
                   />
                 </label>
-                <input
-                  className={s.inputPassword}
-                  type="password"
-                  name="confirmPassword"
-                  placeholder="..."
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.confirmPassword}
-                />
-                {/* {errors.password && touched.password && errors.password} */}
-                <ErrorMessage
-                  component="div"
-                  name="confirmPassword"
-                  className={s.errorMessagePass}
-                />
+
                 <button
                   className={s.btnSubmit}
                   type="submit"
@@ -209,7 +153,7 @@ const RegisterPage = () => {
                   <a className={s.btnRegisterLogin} href="/login">
                     {linkLog[lang]}
                   </a>
-                </p>
+                </div>
               </form>
             )}
           </Formik>

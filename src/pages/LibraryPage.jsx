@@ -7,7 +7,7 @@ import {
   getBooksGoingToReadState,
   getBooksState,
   // getBooksState,
-  getIsLoading,  
+  getIsLoading,
 } from "../redux/books/booksSelectors";
 import BookInfoList from "../components/BookInfoList/BookInfoList";
 import { getBooks } from "../redux/books/booksOperations";
@@ -19,13 +19,10 @@ import { getPlaningTraning } from "../redux/training/trainingOperations";
 import { BsPlusLg } from "react-icons/bs";
 import s from "./LibraryPage.module.scss";
 import AddBookModal from "../components/AddBookModal/AddBookModal";
-<<<<<<< HEAD
 import { langOptionsLibPage } from "../assets/langOptionsLibPage";
 import { getLang } from "../redux/lang/langSelector";
-=======
 import BookReviewItem from "../components/BookReviewItem/BookReviewItem";
 import BookReviewList from "../components/BookReviewList/BookReviewList";
->>>>>>> dev
 
 // const booksLibrary = [
 //   {
@@ -95,15 +92,9 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
           <BookForm />
         </MediaQuery>
 
-<<<<<<< HEAD
-        {booksFinishedReading && Boolean(booksFinishedReading.length) && (
-          <h2>{titleDone[lang]}</h2>
-        )}
-=======
         {/* {booksFinishedReading && Boolean(booksFinishedReading.length) && (
           <h2>Прочитано</h2>
         )} */}
->>>>>>> dev
         {booksFinishedReading && Boolean(booksFinishedReading.length) && (
           <BookReviewList
             booksLibrary={booksFinishedReading}
