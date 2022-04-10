@@ -5,13 +5,14 @@ import "react-datepicker/dist/react-datepicker.css";
 import s from "./MyTrainingPlaining.module.scss";
 import {
   addBookForTraining,
+  addCurBookForTraining,
   changeDateEnd,
   changeDateStart,
   getDuration,
 } from "../../redux/training/trainingSlice";
 import { formatISO, intervalToDuration } from "date-fns";
 import {
-  getBooksCurrentlyReadingState,
+  // getBooksCurrentlyReadingState,
   getBooksGoingToReadState,
 } from "../../redux/books/booksSelectors";
 import BookInfoList from "../BookInfoList/BookInfoList";
@@ -20,21 +21,24 @@ import {
   getStartDate,
   getTrainingBooks,
 } from "../../redux/training/trainingSelectors";
-import { addPlaningTraning } from "../../redux/training/trainingOperations";
 import { getLang } from "../../redux/lang/langSelector";
 import { langOptionsMyTrainPlan } from "../../assets/langOptionsMyTrainPlan";
+import { addPlaningTraining } from "../../redux/training/trainingOperations";
+import PurposeToReadList from "../PurposeToRead/PurposeToRead";
 
 const MyTrainingPlaining = () => {
-  const [startDateOrigin, setStartDateOrigin] = useState(new Date());
-  const [endDateOrigin, setEndDateOrigin] = useState(new Date());
-  const [valueIdBook, setValueIdBook] = useState("");
   const booksLibrary = useSelector(getBooksGoingToReadState);
-  const booksCurrentlyReading = useSelector(getBooksCurrentlyReadingState);
   const books = useSelector(getTrainingBooks);
   const startDate = useSelector(getStartDate);
   const endDate = useSelector(getEndDate);
   const lang = useSelector(getLang);
   const { training, startTraining, btn } = langOptionsMyTrainPlan;
+
+  const [startDateOrigin, setStartDateOrigin] = useState(new Date());
+  const [endDateOrigin, setEndDateOrigin] = useState(new Date());
+  const [curReadBooks, setCurReadBooks] = useState([]);
+  const [bookForTraining, setBookForTraining] = useState(booksLibrary);
+  const [valueIdBook, setValueIdBook] = useState(bookForTraining[0]._id);
 
   const dispatch = useDispatch();
 
@@ -55,12 +59,6 @@ const MyTrainingPlaining = () => {
   }, [endDateOrigin]);
 
   useEffect(() => {
-    console.log(
-      intervalToDuration({
-        start: startDateOrigin,
-        end: endDateOrigin,
-      }).days
-    );
     dispatch(
       getDuration(
         Number(
@@ -74,22 +72,39 @@ const MyTrainingPlaining = () => {
   }, [startDateOrigin, endDateOrigin]);
 
   const handleChangeValue = (e) => {
+    // console.log(e.target.value);
     setValueIdBook(e.target.value);
   };
 
   const handleSubmitBookForRead = (e) => {
     e.preventDefault();
-    dispatch(addBookForTraining({ valueIdBook }));
+
+    !curReadBooks.filter((book) => book._id === valueIdBook).length &&
+      setCurReadBooks((prev) => [
+        ...prev,
+        ...booksLibrary.filter((book) => book._id === valueIdBook),
+      ]);
+
+    setBookForTraining((prev) =>
+      prev.filter((book) => book._id !== valueIdBook)
+    );
+
+    setValueIdBook(bookForTraining[0]._id);
+
+    !books.filter((id) => id === valueIdBook).length &&
+      dispatch(addBookForTraining({ valueIdBook }));
   };
 
   const handleSubmitBookForTraining = (e) => {
     e.preventDefault();
     console.log(books);
-    dispatch(addPlaningTraning({ startDate, endDate, books }));
+    dispatch(addPlaningTraining({ startDate, endDate, books }));
   };
 
-  console.log(booksLibrary[0].title);
-  console.log(valueIdBook);
+  console.log("bookForTraining>>>", bookForTraining);
+  console.log("curReadBooks>>>", curReadBooks);
+  console.log("books>>>", books);
+  console.log("valueIdBook>>>", valueIdBook);
 
   return (
     <form onSubmit={handleSubmitBookForRead}>
@@ -106,19 +121,26 @@ const MyTrainingPlaining = () => {
           onChange={(date) => setEndDateOrigin(date)}
         />
       </div>
-      <select value={valueIdBook} onChange={handleChangeValue}>
-        {booksLibrary.map((book) => (
-          <option key={book._id} value={book._id}>
-            {book.title}
-          </option>
-        ))}
-      </select>
-      <button type="submit"> {btn[lang]}</button>
-      {/* <button type="button" onClick={()=>insertBookForRead()}>Додати</button> */}
-      {Boolean(books.length) && (
-        <BookInfoList booksLibrary={books} colorIcon="grey" review={0} />
+      {Boolean(bookForTraining.length) && (
+        <>
+          <select onChange={handleChangeValue}>
+            {bookForTraining.map((book) => (
+              <option key={book._id} value={book._id}>
+                {book.title}
+              </option>
+            ))}
+          </select>
+          <button type="submit"> {btn[lang]}</button>
+        </>
       )}
-      {Boolean(books.length) && (
+      {Boolean(curReadBooks.length) && (
+        <PurposeToReadList
+          booksLibrary={curReadBooks}
+          colorIcon="grey"
+          review={0}
+        />
+      )}
+      {Boolean(curReadBooks.length) && (
         <button type="submit" onClick={handleSubmitBookForTraining}>
           {startTraining[lang]}
         </button>

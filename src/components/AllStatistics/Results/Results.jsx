@@ -2,8 +2,9 @@ import React from "react";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { langOptionsResults } from "../../../assets/langOptionsResults";
+import { addPages } from "../../../redux/training/trainingOperations";
 import { getLang } from "../../../redux/lang/langSelector";
 import s from "./Results.module.scss";
 
@@ -13,17 +14,14 @@ const Results = ({ arr, setArr }) => {
   const lang = useSelector(getLang);
   const { date, numPages, addRes } = langOptionsResults;
 
+  const dispatch = useDispatch();
+
   const onSubmitForm = (e) => {
     e.preventDefault();
-    setArr([
-      ...arr,
-      {
-        date: startDate,
-        pages: pages,
-      },
-    ]);
-    console.log(arr);
+    console.log({ pages: Number(pages) });
+    dispatch(addPages({ pages: Number(pages) }));
   };
+
   return (
     <>
       <form className={s.form_res} action="" onSubmit={onSubmitForm}>

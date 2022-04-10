@@ -46,7 +46,7 @@ export default function App() {
               <TrainingPage />
             </PrivateRoute>
           </Container>
-          <Redirect to="/" />
+          {/* <Redirect to="/" /> */}
         </Switch>
       </Suspense>
     </div>

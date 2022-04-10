@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import BookForm from "../components/BookForm/BookForm";
 import {
@@ -6,24 +6,26 @@ import {
   getBooksFinishedReadingState,
   getBooksGoingToReadState,
   getBooksState,
-  getIsLoading,
-  // getGoingToRead,
+  // getBooksState,
+  getIsLoading,  
 } from "../redux/books/booksSelectors";
 import BookInfoList from "../components/BookInfoList/BookInfoList";
 import { getBooks } from "../redux/books/booksOperations";
 import { getIsLoggedIn } from "../redux/auth/authSelectors";
 import InstructionModal from "../components/InstructionModal/InstructionModal";
-import SuccessModal from "../components/FinishTrainingModal/SuccessModal";
-import FailModal from "../components/FinishTrainingModal/FailModal";
-import ReviewModal from "../components/ReviewModal/ReviewModal";
 import MediaQuery from "react-responsive";
 import { Link } from "react-router-dom";
 import { getPlaningTraning } from "../redux/training/trainingOperations";
 import { BsPlusLg } from "react-icons/bs";
 import s from "./LibraryPage.module.scss";
 import AddBookModal from "../components/AddBookModal/AddBookModal";
+<<<<<<< HEAD
 import { langOptionsLibPage } from "../assets/langOptionsLibPage";
 import { getLang } from "../redux/lang/langSelector";
+=======
+import BookReviewItem from "../components/BookReviewItem/BookReviewItem";
+import BookReviewList from "../components/BookReviewList/BookReviewList";
+>>>>>>> dev
 
 // const booksLibrary = [
 //   {
@@ -54,6 +56,7 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
   const booksFinishedReading = useSelector(getBooksFinishedReadingState);
   const booksCurrentlyReading = useSelector(getBooksCurrentlyReadingState);
   const booksIsLoading = useSelector(getIsLoading);
+  const ratingChange = useSelector(getBooksState);
   const dispatch = useDispatch();
   const lang = useSelector(getLang);
   const { titleDone, titleNow, titleFuture, btn } = langOptionsLibPage;
@@ -68,7 +71,7 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
     useEffect(() => {
       dispatch(getBooks());
       //  setTimeout( (dispatch(getPlaningTraning())),0)
-    }, []);
+    }, [ratingChange.feedback, ratingChange.rating]);
 
   // console.log(booksCurrentlyReading);
   const [modalOpen, setModalOpen] = React.useState(false);
@@ -92,15 +95,26 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
           <BookForm />
         </MediaQuery>
 
+<<<<<<< HEAD
         {booksFinishedReading && Boolean(booksFinishedReading.length) && (
           <h2>{titleDone[lang]}</h2>
         )}
+=======
+        {/* {booksFinishedReading && Boolean(booksFinishedReading.length) && (
+          <h2>Прочитано</h2>
+        )} */}
+>>>>>>> dev
         {booksFinishedReading && Boolean(booksFinishedReading.length) && (
-          <BookInfoList
+          <BookReviewList
             booksLibrary={booksFinishedReading}
             colorIcon="dark-grey"
             review={review}
           />
+          // <BookInfoList
+          //   booksLibrary={booksFinishedReading}
+          //   colorIcon="dark-grey"
+          //   review={review}
+          // />
         )}
         {booksCurrentlyReading && Boolean(booksCurrentlyReading.length) && (
           <h2>{titleNow[lang]}</h2>

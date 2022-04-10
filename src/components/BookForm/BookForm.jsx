@@ -7,7 +7,7 @@ import { getLang } from "../../redux/lang/langSelector";
 import { addBookValidationSchema } from "../../utils/validation/BookFormValid";
 import s from "../BookForm/BookForm.module.scss";
 
-export default function BookForm() {
+export default function BookForm({ onHandleClose }) {
   const dispatch = useDispatch();
   const lang = useSelector(getLang);
   const {
@@ -33,6 +33,7 @@ export default function BookForm() {
           dispatch(addBook(values));
           resetForm();
           console.log("values", values);
+          onHandleClose();
         }}
       >
         {({

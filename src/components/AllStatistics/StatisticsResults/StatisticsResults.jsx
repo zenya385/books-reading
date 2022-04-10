@@ -23,7 +23,7 @@ const StatisticsResults = () => {
       </div>
       <div className={s.scroll_block}>
         <ul className={s.stat_list}>
-          <Statistics arr={arr} />
+          <Statistics />
         </ul>
       </div>
     </div>
@@ -31,7 +31,3 @@ const StatisticsResults = () => {
 };
 
 export default StatisticsResults;
-
-{
-  /* <StatisticsResults/> */
-}

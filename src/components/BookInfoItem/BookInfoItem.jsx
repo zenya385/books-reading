@@ -16,6 +16,8 @@ const BookInfoItem = ({
   colorIcon,
   review,
   bookId,
+  rating,
+  feedback,
 }) => {
   const lang = useSelector(getLang);
   const { authorItem, yearItem, pagesItem } = langOptionsBookInfoItem;
@@ -44,8 +46,12 @@ const BookInfoItem = ({
           <p className={s.bookMoreInfoPage}>{pagesTotal}</p>
         </div>
         {/* {review&&<zirochki >Резюме</zirochki>} */}
+
         {/* {Boolean(review) && <button>Резюме</button>} */}
-        {Boolean(review) && <Summary bookId={bookId} />}
+
+        {/* {Boolean(review) && (
+          <Summary bookId={bookId} rating={rating} feedback={feedback} />
+        )} */}
 
         {/* <button>
         <svg className="nav__icon" width="14px" height="18px">

@@ -70,7 +70,21 @@ const LoginPage = () => {
                     className={s.errorMessage}
                   />
                 </label>
-
+                <input
+                  className={s.inputEmail}
+                  type="email"
+                  name="email"
+                  placeholder="your@email.com"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.email}
+                />
+                <ErrorMessage
+                  component="div"
+                  name="email"
+                  style={{ fontSize: "18px", color: "red" }}
+                  className={s.errorMessage}
+                />
                 <label className={s.inputLabel} htmlFor="password">
                   {inputPass[lang]} <span className={s.spanStar}>*</span>
                   <input
@@ -89,6 +103,20 @@ const LoginPage = () => {
                     className={s.errorMessage}
                   />
                 </label>
+                <input
+                  className={s.inputPassword}
+                  type="password"
+                  name="password"
+                  placeholder="..."
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.password}
+                />
+                <ErrorMessage
+                  component="div"
+                  name="password"
+                  className={s.errorMessagePass}
+                />
                 <button
                   className={s.btnSubmit}
                   type="submit"

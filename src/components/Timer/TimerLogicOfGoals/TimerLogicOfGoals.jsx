@@ -2,21 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import classnames from "classnames";
 import s from "./TimerLogicOfGoals.module.scss";
-import {
-  getDurationPeriod,
-  getEndDate,
-  getStartDate,
-} from "../../../redux/training/trainingSelectors";
-import { getDuration } from "../../../redux/training/trainingSlice";
+import { getEndDate } from "../../../redux/training/trainingSelectors";
 
 const TimerLogicOfGoals = () => {
-  // const startDate = useSelector(getStartDate);
-  const endDate = useSelector(getEndDate); // вставить trainingSelectors (Время отсчета),
-  // const duration = useSelector(getDurationPeriod);
-  console.log(endDate);
+  const endDate = useSelector(getEndDate);
   const oneDay = 86400000;
-  const goal = new Date(endDate).getTime(); // вставить endDate
-  console.log(goal);
+  const goal = new Date(endDate).getTime();
+
   const [, setDateTime] = useState(new Date());
 
   const diff = goal + oneDay - new Date().getTime();

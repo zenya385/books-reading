@@ -33,7 +33,7 @@ export async function logoutUserApi(persistedToken) {
   token.set(persistedToken);
   const { data } = await axios.post("/auth/logout", persistedToken);
   token.unset();
-  console.log("logoutUserApi :>> ", data);
+  // console.log("logoutUserApi :>> ", data);
   return data;
 }
 
@@ -48,19 +48,15 @@ export async function refreshUserTokenApi({ refreshToken, sid }) {
 
 export async function addBookApi(newBook, persistedToken) {
   token.set(persistedToken);
-  const { data } = await axios.post("/book", newBook);
-  // const {
-  //   newAccessToken: accessToken,
-  //   newRefreshToken: refreshToken,
-  //   newSid: sid,
-  // } = data;
+  const { data } = await axios.post("/book", newBook);  
   // console.log("fetchAddBook :>> ", data);
   return data;
 }
 
 export async function addBookReviewApi({ bookId, form }) {
-  const { data } = await axios.patch(`/book/review/${bookId.bookId}`, form);
-  console.log("fetchAddBookReview :>> ", data);
+  // console.log(form);
+  const { data } = await axios.patch(`/book/review/${bookId}`, form);
+  // console.log("fetchAddBookReview :>> ", data);
   return data;
 }
 
@@ -75,14 +71,14 @@ export async function addPlanningApi(form, accessToken) {
 
 export async function addPagesApi(num) {
   const { data } = await axios.patch("/planning", num);
-  // console.log("fetchAddPages :>> ", data);
-  return data;
+  // console.log("addPagesApi :>> ", data);
+  return data.planning;
 }
 
 export async function getPlanningApi(accessToken) {
   token.set(accessToken);
   const { data } = await axios.get("/planning");
-  console.log("getPlanningApi :>> ", data);
+  // console.log("getPlanningApi :>> ", data.planning);
   return data;
 }
 
