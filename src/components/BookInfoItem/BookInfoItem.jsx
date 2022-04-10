@@ -14,6 +14,8 @@ const BookInfoItem = ({
   colorIcon,
   review,
   bookId,
+  rating,
+  feedback,
 }) => {
   const theme = useSelector(getTheme);
   return (
@@ -29,11 +31,14 @@ const BookInfoItem = ({
           <svg className={s.navIcon} width="22px" height="17px">
             <use xlinkHref={`${Icons}#icon-flat-${colorIcon}`} />
           </svg>
-          <a href="" className="link nav__link-contact">
+
+
+          <div className="link nav__link-contact">
             <p className={s.bookTitle} style={{
         color: theme === "light" ? "#242A37" : "var(--dark-text)",
       }}>{title}</p>
-          </a>
+          </div>
+
         </div>
         <MediaQuery maxWidth={767}>
           <div className={s.bookInfo}>
@@ -54,8 +59,12 @@ const BookInfoItem = ({
       }}>{pagesTotal}</p>
         </div>
         {/* {review&&<zirochki >Резюме</zirochki>} */}
+
         {/* {Boolean(review) && <button>Резюме</button>} */}
-        {Boolean(review) && <Summary bookId={bookId} />}
+
+        {/* {Boolean(review) && (
+          <Summary bookId={bookId} rating={rating} feedback={feedback} />
+        )} */}
 
         {/* <button>
         <svg className="nav__icon" width="14px" height="18px">

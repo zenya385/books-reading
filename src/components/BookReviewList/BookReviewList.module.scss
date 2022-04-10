@@ -1,0 +1,49 @@
+.bookList {
+    width: 270px;
+    margin: 0 auto;
+
+    @media screen and (min-width: 480px) {
+        width: 300px;
+}
+
+    @media screen and (min-width: 768px) {
+    box-shadow: none;
+    width: 678px;
+    }
+
+    @media screen and (min-width: 1280px) {
+    box-shadow: none;
+    width: 1200px;
+    }
+}
+.bookInfo {
+    margin-top: 10px;
+
+    @media screen and (min-width: 768px) {
+        display: flex;
+    }
+}
+.title {
+    margin-right: 140px;
+    @media screen and (min-width: 1280px) {
+       margin-right: 276px;
+    }
+}
+.author {
+    margin-right: 75px;
+    @media screen and (min-width: 1280px) {
+       margin-right: 185px;
+    }
+}
+.year {
+    margin-right: 50px;
+    @media screen and (min-width: 1280px) {
+       margin-right: 80px;
+    }
+}
+.page {
+    margin-right: 21px;
+    @media screen and (min-width: 1280px) {
+        margin-right: 110px;
+    }
+}

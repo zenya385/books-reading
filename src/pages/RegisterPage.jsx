@@ -124,21 +124,21 @@ const RegisterPage = () => {
                 >
                   Зареєструватися
                 </button>
-                <div className={s.regFormRegistrText}>
-                  <p className={s.btnRegisterSmallText}>Вже з нами?</p>
+                <p className={s.btnRegisterLogin}>
+                  Вже з нами?
                   <a className={s.btnRegisterLogin} href="/login">
                     Увiйти
                   </a>
-                </div>
-               
+                </p>
               </form>
             )}
           </Formik>
         </div>
       </div>
-      <div className={s.textRegist}>
-        <div className={s.textRegistDiv}>
-          <h2 className={s.regFormTitleMain} style={{
+
+       {/* <div className={s.textRegist}>
+         <div className={s.textRegistDiv}>
+           <h2 className={s.regFormTitleMain} style={{
       color: theme === "light" ? "var(--title-text-color)" : "white",
     }}>Books Reading</h2>
           <div>
@@ -169,7 +169,17 @@ const RegisterPage = () => {
               <div className={s.regFormSpanText}>
                 <span className={s.spanArrow}>&#62;</span><p className={s.textFontRegistr}>Стати цікавим співрозмовником</p>
               </div>
-            </div>
+            </div> */}
+
+      <div className={s.textLogin}>
+        <div className={s.regFormText}>
+          <p className={s.textFont}>
+            Книги — это корабли мысли, странствующие по волнам времени и бережно
+            несущие свой драгоценный груз от поколения к поколению.{" "}
+          </p>
+          <div className={s.lineBefore}>
+            <p className={s.textAuthor}>Бэкон Ф.</p>
+
           </div>
         </div>
       </div>

@@ -1,11 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { getDurationPeriod, getRemaindBooks } from "../../redux/training/trainingSelectors";
 import { getTheme } from "../../redux/theme/themeSelector";
-import { getDurationPeriod } from "../../redux/training/trainingSelectors";
 import s from "./MyPurposeToRead.module.scss";
 
-const MyPurposeToRead = ({ books }) => {
+const MyPurposeToRead = ({ books,isTrain }) => {
   const duration = useSelector(getDurationPeriod);
+  const remaindBooks = useSelector(getRemaindBooks);
   const theme = useSelector(getTheme);
 
   return (
@@ -31,11 +32,19 @@ const MyPurposeToRead = ({ books }) => {
         theme === "light" ? "var(--third-bg-color)" : "var(--dark-theme)",
         color: theme === "light" ? "black" : 'var(--dark-text)'
     }}> {duration}</span>
-        <span style={{
+        {/* <span style={{
       backgroundColor:
         theme === "light" ? "var(--third-bg-color)" : "var(--dark-theme)",
         color: theme === "light" ? "black" : 'var(--dark-text)'
     }}> {books.length}</span>
+======= */}
+        
+       {isTrain&& <span style={{
+      backgroundColor:
+        theme === "light" ? "var(--third-bg-color)" : "var(--dark-theme)",
+        color: theme === "light" ? "black" : 'var(--dark-text)'
+    }}> {remaindBooks.length}</span>}
+
       </div>
     </div>
   );

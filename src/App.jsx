@@ -9,6 +9,7 @@ import Container from "./components/Share/Container";
 import GoogleLogin from "./components/Google/GoogleLogin";
 import { useSelector } from "react-redux";
 import { getTheme } from "./redux/theme/themeSelector";
+import { Redirect } from "react-router-dom";
 
 const LoginPage = lazy(() => import("./pages/LoginPage.jsx"));
 const RegisterPage = lazy(() => import("./pages/RegisterPage.jsx"));
