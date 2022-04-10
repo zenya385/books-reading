@@ -61,21 +61,21 @@ export const options = {
   },
 };
 
-let labels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+let labels = [0,1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 export const data = {
   labels,
   datasets: [
     {
       label: "plan",
-      data: [8, 10, 10, 10, 10, 10, 10, 10, 10, 10],
+      data: [10,10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
       // data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
       borderColor: "rgb(0, 0, 0)",
       backgroundColor: "rgba(0, 0, 0, 0.8)",
     },
     {
       label: "fact",
-      data: [10, 12, 13, 15, 18, 10, 12, 15, 10, 12],
+      data: [0,10, 12, 13, 15, 18, 10, 12, 15, 10, 12],
 
       // data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
       borderColor: "#FF6B08",
