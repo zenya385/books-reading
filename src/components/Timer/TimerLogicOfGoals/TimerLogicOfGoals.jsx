@@ -57,7 +57,7 @@ const TimerLogicOfGoals = () => {
   }, []);
 
   const theme = useSelector(getTheme);
-
+  console.log(time);
   return (
     <div className={s.box} style={{
       backgroundColor:

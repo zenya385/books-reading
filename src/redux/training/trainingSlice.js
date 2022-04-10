@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addPlaningTraining, getPlaningTraining } from "./trainingOperations";
+import { addPages, addPlaningTraining, getPlaningTraining } from "./trainingOperations";
 
 const trainingSlice = createSlice({
   name: "training",
@@ -11,8 +11,23 @@ const trainingSlice = createSlice({
     pagesPerDay: 0,
     stats: [],
     _id: null,
+    error:null,
+    isTrain:false,
   },
   reducers: {
+    resetTrain(state) {
+      return {       
+        books: [],
+        startDate: "", //new Date()
+        endDate: "", //new Date()
+        duration: 0,
+        pagesPerDay: 0,
+        stats: [],
+        _id: null,
+        isTrain: false,
+      };
+    },
+
     changeDateStart(state, { payload }) {
       return {
         ...state,
@@ -64,11 +79,16 @@ const trainingSlice = createSlice({
       pagesPerDay: payload.pagesPerDay,
       stats: payload.stats,
       _id: payload._id,
+      isTrain:true,
     }),
     [addPlaningTraining.rejected]: (state, { payload }) => ({
       ...state,
 
       error: payload,
+    }),
+    [getPlaningTraining.pending]: (state) => ({
+      ...state,
+      error: null,
     }),
     [getPlaningTraining.fulfilled]: (state, { payload }) => ({
       ...state,
@@ -79,6 +99,20 @@ const trainingSlice = createSlice({
       ...state,
       error: payload,
     }),
+    [addPages.pending]: (state) => ({
+      ...state,
+      error: null,
+    }),
+    [addPages.fulfilled]: (state, { payload }) => ({
+      ...state,
+      books:[payload.book],
+      stats:[...payload.planning.stats],
+      error: null,
+    }),
+    [addPages.rejected]: (state, { payload }) => ({
+      ...state,
+      error: payload,
+    }),  
   },
 });
 
@@ -91,4 +125,5 @@ export const {
   getDuration,
   addBookForTraining,
   addCurBookForTraining,
+  resetTrain,
 } = trainingSlice.actions;

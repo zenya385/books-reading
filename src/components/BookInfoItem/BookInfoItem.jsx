@@ -40,23 +40,25 @@ const BookInfoItem = ({
       }}>{title}</p>
           </a>
         </div>
-        <MediaQuery maxWidth={767}>
-          <div className={s.bookInfo}>
-            <p className={s.bookInfoText}>{authorItem[lang]}</p>
-            <p className={s.bookInfoText}>{yearItem[lang]}</p>
-            <p className={s.bookInfoText}>{pagesItem[lang]}</p>
-          </div>
-        </MediaQuery>
-        <div className={s.bookMoreInfo}>
-          <p className={s.bookMoreInfoAuthor} style={{
+        <div className={s.bookInfoWrapper}>
+          <MediaQuery maxWidth={767}>
+            <div className={s.bookInfo}>
+              <p className={s.bookInfoText}>{authorItem[lang]}</p>
+              <p className={s.bookInfoText}>{yearItem[lang]}</p>
+              <p className={s.bookInfoText}>{pagesItem[lang]}</p>
+            </div>
+          </MediaQuery>
+          <div className={s.bookMoreInfo}>
+            <p className={s.bookMoreInfoAuthor} style={{
         color: theme === "light" ? "#242A37" : "var(--dark-text)",
       }}>{author}</p>
-          <p className={s.bookMoreInfoYear} style={{
+            <p className={s.bookMoreInfoYear} style={{
         color: theme === "light" ? "#242A37" : "var(--dark-text)",
       }}>{publishYear}</p>
-          <p className={s.bookMoreInfoPage} style={{
+            <p className={s.bookMoreInfoPage} style={{
         color: theme === "light" ? "#242A37" : "var(--dark-text)",
       }}>{pagesTotal}</p>
+          </div>
         </div>
         {/* {review&&<zirochki >Резюме</zirochki>} */}
 
