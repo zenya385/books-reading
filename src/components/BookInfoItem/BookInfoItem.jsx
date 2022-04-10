@@ -33,17 +33,19 @@ const BookInfoItem = ({
             <p className={s.bookTitle}>{title}</p>
           </a>
         </div>
-        <MediaQuery maxWidth={767}>
-          <div className={s.bookInfo}>
-            <p className={s.bookInfoText}>{authorItem[lang]}</p>
-            <p className={s.bookInfoText}>{yearItem[lang]}</p>
-            <p className={s.bookInfoText}>{pagesItem[lang]}</p>
+        <div className={s.bookInfoWrapper}>
+          <MediaQuery maxWidth={767}>
+            <div className={s.bookInfo}>
+              <p className={s.bookInfoText}>{authorItem[lang]}</p>
+              <p className={s.bookInfoText}>{yearItem[lang]}</p>
+              <p className={s.bookInfoText}>{pagesItem[lang]}</p>
+            </div>
+          </MediaQuery>
+          <div className={s.bookMoreInfo}>
+            <p className={s.bookMoreInfoAuthor}>{author}</p>
+            <p className={s.bookMoreInfoYear}>{publishYear}</p>
+            <p className={s.bookMoreInfoPage}>{pagesTotal}</p>
           </div>
-        </MediaQuery>
-        <div className={s.bookMoreInfo}>
-          <p className={s.bookMoreInfoAuthor}>{author}</p>
-          <p className={s.bookMoreInfoYear}>{publishYear}</p>
-          <p className={s.bookMoreInfoPage}>{pagesTotal}</p>
         </div>
         {/* {review&&<zirochki >Резюме</zirochki>} */}
 
