@@ -30,6 +30,7 @@ import { getPlaningTraining } from "../redux/training/trainingOperations";
 import BookInfoList from "../components/BookInfoList/BookInfoList";
 import { useHistory } from "react-router-dom";
 import { resetTrain } from "../redux/training/trainingSlice";
+import MediaQuery from "react-responsive";
 
 ChartJS.register(
   CategoryScale,
@@ -61,21 +62,21 @@ export const options = {
   },
 };
 
-let labels = [0,1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+let labels = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 export const data = {
   labels,
   datasets: [
     {
       label: "plan",
-      data: [10,10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
+      data: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
       // data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
       borderColor: "rgb(0, 0, 0)",
       backgroundColor: "rgba(0, 0, 0, 0.8)",
     },
     {
       label: "fact",
-      data: [0,10, 12, 13, 15, 18, 10, 12, 15, 10, 12],
+      data: [0, 10, 12, 13, 15, 18, 10, 12, 15, 10, 12],
 
       // data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
       borderColor: "#FF6B08",
@@ -93,13 +94,13 @@ const TrainingPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("UseEffect")
-    dispatch(getBooks())
+    console.log("UseEffect");
+    dispatch(getBooks());
     if (!trainingBooks.length) return;
     const { pagesTotal, pagesFinished } = trainingBooks[
       trainingBooks.length - 1
     ];
-    if (pagesTotal-pagesFinished  <= 0) {
+    if (pagesTotal - pagesFinished <= 0) {
       dispatch(resetTrain());
     }
   }, [trainingBooks]);
@@ -144,20 +145,46 @@ const TrainingPage = () => {
     }, []);
 
   return (
-    <div className={s.TrainingPage}>
-      {isTrain && <Timer />}
-      {!isTrain && <MyTrainingPlaining />}
-      {isTrain && (
-        <BookInfoList
-          booksLibrary={infoTraining.books}
-          colorIcon="grey"
-          review={0}
-        />
-      )}
-      <MyPurposeToRead books={books} isTrain={isTrain} />
-      <Line options={options} data={data} />
-      {isTrain && <StatisticsResults />}
-    </div>
+    <>
+      <MediaQuery maxWidth={1279}>
+        <div className={s.TrainingPage}>
+          {isTrain && <Timer />}
+          <MyPurposeToRead books={books} isTrain={isTrain} />
+          {isTrain && (
+            <BookInfoList
+              booksLibrary={infoTraining.books}
+              colorIcon="grey"
+              review={0}
+            />
+          )}
+          <Line options={options} data={data} className={s.line} />
+          {isTrain && <StatisticsResults />}
+          {!isTrain && <MyTrainingPlaining />}
+        </div>
+      </MediaQuery>
+
+      <MediaQuery minWidth={1280}>
+        <div className={s.TrainingPage}>
+          <div className={s.timerTrainingLine}>
+            {isTrain && <Timer />}
+            {!isTrain && <MyTrainingPlaining />}
+            {isTrain && (
+              <BookInfoList
+                booksLibrary={infoTraining.books}
+                colorIcon="grey"
+                review={0}
+              />
+            )}
+
+            <Line options={options} data={data} />
+          </div>
+          <div className={s.statisticMeta}>
+            <MyPurposeToRead books={books} isTrain={isTrain} />
+            {isTrain && <StatisticsResults />}
+          </div>
+        </div>
+      </MediaQuery>
+    </>
   );
 };
 

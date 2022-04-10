@@ -22,9 +22,13 @@ p {
 	flex-direction: column;
 
 	@media screen and (max-width: 767px) {
-		width: 270px;
 		margin: 0 auto;
 	}
+@media screen and (min-width: 1280px) {
+	padding: 10px 25px 25px 0;
+	margin-bottom: 40px;
+}
+	
 
 }
 

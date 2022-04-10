@@ -64,13 +64,16 @@
 .box {
   padding: 5px;
   position: relative;
-
+   margin-bottom: 45px;
   width: 290px;
   height: 60px;
 
   background-color: white;
   box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
   // margin-right: 70px;
+  @media screen and (min-width: 1280px) {
+    margin-bottom: 0;
+  }
 }
 
 .box::before {
@@ -78,7 +81,7 @@
 
   position: absolute;
   top: -38px;
-  left: 60%;
+  left: 55%;
   transform: translateX(-50%);
 
   line-height: 2.71;

@@ -3,3 +3,23 @@ body{
    padding: 0;
 
 }
+.TrainingPage{
+@media screen and (min-width: 1280px) {
+display: flex;
+}
+   
+}
+.timerTrainingLine{
+    @media screen and (min-width: 1280px) {
+        margin-right: 40px;
+        width: 886px;
+    }
+
+
+}
+.statisticMeta{
+        @media screen and (min-width: 1280px) {
+            margin-top: 50px;
+        }
+   
+}
