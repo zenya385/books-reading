@@ -11,7 +11,6 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { useDispatch, useSelector } from "react-redux";
-// import { getBooksGoingToReadState } from "../redux/books/booksSelectors";
 import { getIsLoggedIn } from "../redux/auth/authSelectors";
 import { getBooks } from "../redux/books/booksOperations";
 import MyPurposeToRead from "../components/MyPurposeToRead/MyPurposeToRead";
@@ -19,14 +18,14 @@ import s from "./TrainingPage.module.scss";
 import MyTrainingPlaining from "../components/MyTrainingPlaining/MyTrainingPlaining";
 import {
   getDurationPeriod,
-  // getEndDate,
-  // getStartDate,
   getTrainingBooks,
 } from "../redux/training/trainingSelectors";
 import StatisticsResults from "../components/AllStatistics/StatisticsResults/StatisticsResults";
 import Timer from "../components/Timer/Timer";
 import { getBooksCurrentlyReadingState } from "../redux/books/booksSelectors";
 import { duration } from "@mui/material";
+import { getPlaningTraining } from "../redux/training/trainingOperations";
+import BookInfoList from "../components/BookInfoList/BookInfoList";
 
 ChartJS.register(
   CategoryScale,
@@ -82,20 +81,20 @@ export const data = {
 };
 
 const TrainingPage = () => {
-const stateInfo=useSelector(state=>state)
+const stateInfo=useSelector(state=>state);
+const infoTraining=useSelector(state=>state.training);
 
-console.log(stateInfo);
+useEffect(() => {
+  dispatch(getPlaningTraining());  
+}, []);
 
   const duration=useSelector(getDurationPeriod)
   for (let i = 0; i < duration; i += 1) {
     labels[i] = i;
   }
-  console.log(labels);
+  // console.log(labels);
 
-  const loggedIn = useSelector(getIsLoggedIn);
-  // const booksLibrary = useSelector(getBooksGoingToReadState);
-  // const startDate = useSelector(getStartDate);
-  // const endDate = useSelector(getEndDate);
+  const loggedIn = useSelector(getIsLoggedIn); 
   const books = useSelector(getTrainingBooks);
   const booksCurrentlyReading =useSelector(getBooksCurrentlyReadingState)
 
@@ -112,6 +111,7 @@ console.log(stateInfo);
     <div className={s.TrainingPage}>
        {isTrain&&<Timer />}
        {!isTrain&& <MyTrainingPlaining  />}
+       {isTrain&&<BookInfoList booksLibrary={infoTraining.books} colorIcon="grey" review={0} />}
       <MyPurposeToRead books={books} isTrain={isTrain} />
       <Line options={options} data={data} />
       {isTrain && <StatisticsResults />}
