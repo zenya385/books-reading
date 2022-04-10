@@ -38,7 +38,7 @@ const theme = useSelector(getTheme);
             {func(JSON.stringify(new Date(stat.time).getSeconds()))}
           </p>
           <p className={s.stat_pages_text} style={{color:theme === "light" ? "#242A37" : "var(--dark-text)",}}>
-            {stat.pagesCount} <span className="stat_pages_span">стор.</span>{" "}
+            {stat.pagesCount} <span className="stat_pages_span" style={{color:theme === "light" ? "#898F9F" : "#898F9F)",}}>стор.</span>{" "}
           </p>
         </li>
       ))}

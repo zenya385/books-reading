@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { changeTheme } from "../../redux/theme/themeSlice";
 import { getTheme } from "../../redux/theme/themeSelector";
-import style from "./SwitchTheme.module.css";
+import style from "./SwitchTheme.module.scss";
 
 const SwitchTheme = () => {
   const dispatch = useDispatch();

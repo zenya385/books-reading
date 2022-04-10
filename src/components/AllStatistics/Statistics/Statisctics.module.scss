@@ -11,7 +11,7 @@
     line-height: 38px;
     text-transform: uppercase;
     color: #242A37;
-    margin-right: auto;
+    margin-right: 30px;
     width: 65px;
     text-align: center;
     @media screen and (max-width: 1280px) {
@@ -26,7 +26,7 @@
     line-height: 38px;
     text-transform: uppercase;
     color: #898F9F;
-    margin-right: auto;
+    // margin-right: auto;
     width: 55px;
     text-align: center;
 }
@@ -37,8 +37,8 @@
     font-size: 14px;
     line-height: 38px;
     color: #242A37;
-    width: 62px;
-    text-align: center;
+    width: 100%;
+    text-align: right;
 }
 
 .stat_pages_span {
