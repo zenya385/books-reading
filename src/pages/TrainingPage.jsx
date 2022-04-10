@@ -57,21 +57,21 @@ export const options = {
   },
 };
 
-let labels = [1,2,3,4,5,6,7,8,9,10];
+let labels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 export const data = {
   labels,
   datasets: [
     {
       label: "plan",
-      data: [10, 10,10, 10,10, 10,10, 10,10, 10],
+      data: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
       // data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
       borderColor: "rgb(0, 0, 0)",
       backgroundColor: "rgba(0, 0, 0, 0.8)",
     },
     {
       label: "fact",
-      data: [10, 12,13, 15, 18, 10, 12,15,10,12],
+      data: [10, 12, 13, 15, 18, 10, 12, 15, 10, 12],
 
       // data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
       borderColor: "#FF6B08",
@@ -81,26 +81,26 @@ export const data = {
 };
 
 const TrainingPage = () => {
-const stateInfo=useSelector(state=>state);
-const infoTraining=useSelector(state=>state.training);
+  const stateInfo = useSelector((state) => state);
+  const infoTraining = useSelector((state) => state.training);
 
-useEffect(() => {
-  dispatch(getPlaningTraining());  
-}, []);
+  useEffect(() => {
+    dispatch(getPlaningTraining());
+  }, []);
 
-  const duration=useSelector(getDurationPeriod)
+  const duration = useSelector(getDurationPeriod);
   for (let i = 0; i < duration; i += 1) {
     labels[i] = i;
   }
   // console.log(labels);
 
-  const loggedIn = useSelector(getIsLoggedIn); 
+  const loggedIn = useSelector(getIsLoggedIn);
   const books = useSelector(getTrainingBooks);
-  const booksCurrentlyReading =useSelector(getBooksCurrentlyReadingState)
+  const booksCurrentlyReading = useSelector(getBooksCurrentlyReadingState);
 
   const dispatch = useDispatch();
 
-  const isTrain=Boolean(booksCurrentlyReading.length)
+  const isTrain = Boolean(booksCurrentlyReading.length);
 
   loggedIn &&
     useEffect(() => {
@@ -109,9 +109,15 @@ useEffect(() => {
 
   return (
     <div className={s.TrainingPage}>
-       {isTrain&&<Timer />}
-       {!isTrain&& <MyTrainingPlaining  />}
-       {isTrain&&<BookInfoList booksLibrary={infoTraining.books} colorIcon="grey" review={0} />}
+      {isTrain && <Timer />}
+      {!isTrain && <MyTrainingPlaining />}
+      {isTrain && (
+        <BookInfoList
+          booksLibrary={infoTraining.books}
+          colorIcon="grey"
+          review={0}
+        />
+      )}
       <MyPurposeToRead books={books} isTrain={isTrain} />
       <Line options={options} data={data} />
       {isTrain && <StatisticsResults />}
