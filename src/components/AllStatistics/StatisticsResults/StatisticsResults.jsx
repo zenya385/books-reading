@@ -1,26 +1,33 @@
-import React from 'react';
-import Results from '../Results/Results';
-import Statistics from '../Statistics/Statistics';
-import s from './StatisticsResults.module.scss';
-
+import React from "react";
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { langOptionsStatisticsRes } from "../../../assets/langOptionsStatisticsRes";
+import { getLang } from "../../../redux/lang/langSelector";
+import Results from "../Results/Results";
+import Statistics from "../Statistics/Statistics";
+import s from "./StatisticsResults.module.scss";
 
 const StatisticsResults = () => {
-    return (
-        <div className={s.div_all}>
-            <h3 className={s.result_text}>Результати</h3>
-                <Results />
-                <div className={s.stat_block}>
-                    <div className={s.stat_block_before}></div>
-            <h3 className={s.stat_text}>СТАТИСТИКА</h3>
-                    <div className={s.stat_block_after}></div>
-                </div>
-            <div className={s.scroll_block}>
-                <ul className={s.stat_list}>
-                    <Statistics />
-                </ul>
-            </div>
-        </div>   
-    );
-}
+  const [arr, setArr] = useState([]);
+  const lang = useSelector(getLang);
+  const { results, stats } = langOptionsStatisticsRes;
+
+  return (
+    <div className={s.div_all}>
+      <h3 className={s.result_text}> {results[lang]}</h3>
+      <Results arr={arr} setArr={setArr} />
+      <div className={s.stat_block}>
+        <div className={s.stat_block_before}></div>
+        <h3 className={s.stat_text}>{stats[lang]}</h3>
+        <div className={s.stat_block_after}></div>
+      </div>
+      <div className={s.scroll_block}>
+        <ul className={s.stat_list}>
+          <Statistics />
+        </ul>
+      </div>
+    </div>
+  );
+};
 
 export default StatisticsResults;

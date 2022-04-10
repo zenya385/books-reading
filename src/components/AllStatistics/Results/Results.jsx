@@ -2,27 +2,32 @@ import React from "react";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { langOptionsResults } from "../../../assets/langOptionsResults";
 import { addPages } from "../../../redux/training/trainingOperations";
+import { getLang } from "../../../redux/lang/langSelector";
 import s from "./Results.module.scss";
 
-const Results = () => {
+const Results = ({ arr, setArr }) => {
   const [startDate, setStartDate] = useState(new Date());
   const [pages, setPages] = useState("");
+  const lang = useSelector(getLang);
+  const { date, numPages, addRes } = langOptionsResults;
 
   const dispatch = useDispatch();
 
   const onSubmitForm = (e) => {
     e.preventDefault();
-    console.log({"pages":Number(pages)})
-    dispatch(addPages({"pages":Number(pages)}))
+    console.log({ pages: Number(pages) });
+    dispatch(addPages({ pages: Number(pages) }));
   };
+
   return (
     <>
       <form className={s.form_res} action="" onSubmit={onSubmitForm}>
         <div className={s.inputs_div}>
           <div>
-            <p className={s.data_text}>Дата</p>
+            <p className={s.data_text}>{date[lang]}</p>
             <DatePicker
               className={s.input_date}
               selected={startDate}
@@ -34,7 +39,7 @@ const Results = () => {
             />
           </div>
           <div>
-            <p className={s.pages_text}>Кількість сторінок</p>
+            <p className={s.pages_text}>{numPages[lang]}</p>
             <input
               type="text"
               className={s.input_pages}
@@ -47,7 +52,7 @@ const Results = () => {
           </div>
         </div>
         <button className={s.add_res_btn} type="submit">
-          Додати результат
+          {addRes[lang]}
         </button>
       </form>
     </>

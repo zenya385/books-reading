@@ -1,9 +1,11 @@
 .errorMessage {
-	font-size: 18px;
-	color: red;
-	text-align: center;
-	font-style: italic;
-	margin-top: -15px;
+position: absolute;
+top: 80%;
+right: 2%;
+font-size: 15px;
+color: red;
+text-align: center;
+font-style: italic;
 }
 .form{
 	display: flex;

@@ -21,8 +21,9 @@ import {
   getStartDate,
   getTrainingBooks,
 } from "../../redux/training/trainingSelectors";
+import { getLang } from "../../redux/lang/langSelector";
+import { langOptionsMyTrainPlan } from "../../assets/langOptionsMyTrainPlan";
 import { addPlaningTraining } from "../../redux/training/trainingOperations";
-import { Formik } from "formik";
 import PurposeToReadList from "../PurposeToRead/PurposeToRead";
 
 const MyTrainingPlaining = () => {
@@ -30,6 +31,8 @@ const MyTrainingPlaining = () => {
   const books = useSelector(getTrainingBooks);
   const startDate = useSelector(getStartDate);
   const endDate = useSelector(getEndDate);
+  const lang = useSelector(getLang);
+  const { training, startTraining, btn } = langOptionsMyTrainPlan;
 
   const [startDateOrigin, setStartDateOrigin] = useState(new Date());
   const [endDateOrigin, setEndDateOrigin] = useState(new Date());
@@ -105,7 +108,7 @@ const MyTrainingPlaining = () => {
 
   return (
     <form onSubmit={handleSubmitBookForRead}>
-      <h2>Моє тренування</h2>
+      <h2>{training[lang]}</h2>
       <div className={s.datePicker}>
         <DatePicker
           dateFormat="dd.MM.yyyy"
@@ -127,7 +130,7 @@ const MyTrainingPlaining = () => {
               </option>
             ))}
           </select>
-          <input type="submit" value="Додати" />
+          <button type="submit"> {btn[lang]}</button>
         </>
       )}
       {Boolean(curReadBooks.length) && (
@@ -139,7 +142,7 @@ const MyTrainingPlaining = () => {
       )}
       {Boolean(curReadBooks.length) && (
         <button type="submit" onClick={handleSubmitBookForTraining}>
-          Почати тренування
+          {startTraining[lang]}
         </button>
       )}
     </form>
