@@ -8,7 +8,7 @@ export const langOptionsBookReviewList = {
     en: "Book title",
   },
   author: {
-    ua: "Автор ",
+    ua: "Автор",
     en: "Author",
   },
   publishYear: {
