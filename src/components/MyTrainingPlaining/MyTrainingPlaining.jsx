@@ -80,13 +80,11 @@ const MyTrainingPlaining = () => {
   const handleSubmitBookForRead = (e) => {
     e.preventDefault();
     setCurReadBooks((prev) => {
-      console.log('prev setCurReadBooks :>> ', prev);
-      return [
-      ...prev,
-      booksLibrary.find((book) => book._id === valueIdBook),
-    ]});
+      console.log("prev setCurReadBooks :>> ", prev);
+      return [...prev, booksLibrary.find((book) => book._id === valueIdBook)];
+    });
     setBookForTraining((prev) => {
-      console.log('prev setBookForTraining :>> ', prev);
+      console.log("prev setBookForTraining :>> ", prev);
       return prev.filter((book) => book._id !== valueIdBook);
     });
     setValueIdBook("default");
@@ -118,6 +116,7 @@ const MyTrainingPlaining = () => {
           dateFormat="dd.MM.yyyy"
           selected={startDateOrigin}
           onChange={(date) => setStartDateOrigin(date)}
+          disabled
         />
         <DatePicker
           dateFormat="dd.MM.yyyy"
