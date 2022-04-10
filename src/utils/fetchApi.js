@@ -70,9 +70,10 @@ export async function addPlanningApi(form, accessToken) {
 }
 
 export async function addPagesApi(num) {
+  console.log("num---",num)
   const { data } = await axios.patch("/planning", num);
-  // console.log("addPagesApi :>> ", data);
-  return data.planning;
+  console.log("addPagesApi :>> ", data);
+  return data;
 }
 
 export async function getPlanningApi(accessToken) {
