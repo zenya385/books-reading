@@ -31,6 +31,7 @@ import BookInfoList from "../components/BookInfoList/BookInfoList";
 import { useHistory } from "react-router-dom";
 import { resetTrain } from "../redux/training/trainingSlice";
 import MediaQuery from "react-responsive";
+import ReadListWithCheckBox from "../components/ReadListWithCheckBox/ReadListWithCheckBox";
 
 ChartJS.register(
   CategoryScale,
@@ -151,12 +152,13 @@ const TrainingPage = () => {
           {isTrain && <Timer />}
           <MyPurposeToRead books={books} isTrain={isTrain} />
           {isTrain && (
-            <BookInfoList
+            <ReadListWithCheckBox
               booksLibrary={infoTraining.books}
               colorIcon="grey"
               review={0}
             />
           )}
+          {/* лист с чекбоксом после прописания логики можно удалить */}
           <Line options={options} data={data} className={s.line} />
           {isTrain && <StatisticsResults />}
           {!isTrain && <MyTrainingPlaining />}
@@ -169,12 +171,13 @@ const TrainingPage = () => {
             {isTrain && <Timer />}
             {!isTrain && <MyTrainingPlaining />}
             {isTrain && (
-              <BookInfoList
+              <ReadListWithCheckBox
                 booksLibrary={infoTraining.books}
                 colorIcon="grey"
                 review={0}
               />
             )}
+            {/* лист с чекбоксом после прописания логики можно удалить */}
 
             <Line options={options} data={data} />
           </div>
