@@ -23,7 +23,8 @@ import {
 } from "../../redux/training/trainingSelectors";
 import { addPlaningTraining } from "../../redux/training/trainingOperations";
 import { Formik } from "formik";
-import PurposeToReadList from "../PurposeToRead/PurposeToRead";
+import PurposeToReadList from "../PurposeToReadList/PurposeToReadList";
+import ReadListWithCheckBox from "../ReadListWithCheckBox/ReadListWithCheckBox";
 
 const MyTrainingPlaining = () => {
   const booksLibrary = useSelector(getBooksGoingToReadState);
@@ -131,12 +132,19 @@ const MyTrainingPlaining = () => {
         </>
       )}
       {Boolean(curReadBooks.length) && (
-        <PurposeToReadList
+        <ReadListWithCheckBox
           booksLibrary={curReadBooks}
           colorIcon="grey"
           review={0}
         />
       )}
+      {/* {Boolean(curReadBooks.length) && (
+        <PurposeToReadList
+          booksLibrary={curReadBooks}
+          colorIcon="grey"
+          review={0}
+        />
+      )} */}
       {Boolean(curReadBooks.length) && (
         <button type="submit" onClick={handleSubmitBookForTraining}>
           Почати тренування

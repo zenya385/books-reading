@@ -1,12 +1,17 @@
 import React from "react";
-import s from "./PurposeToRead.module.scss";
+import s from "./ReadListWithCheckBox.module.scss";
 import MediaQuery from "react-responsive";
 import Icons from "../../images/symbol-defs.svg";
 import { getTheme } from "../../redux/theme/themeSelector";
 import { useSelector } from "react-redux";
+import { BsCheck } from "react-icons/bs";
+import { Checkbox } from "@mui/material";
+// import Checkbox from "react-custom-checkbox";
 
-const PurposeToReadList = ({ booksLibrary, colorIcon, review }) => {
+const ReadListWithCheckBox = ({ booksLibrary, colorIcon, review }) => {
   const theme = useSelector(getTheme);
+
+  const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
   return (
     <>
@@ -32,11 +37,38 @@ const PurposeToReadList = ({ booksLibrary, colorIcon, review }) => {
             <span className={s.itemLine}></span>
             <li className={s.item} key={book._id}>
               <div className={s.iconTitle}>
-                <svg className={s.navIcon} width="22px" height="17px">
-                  <use xlinkHref={`${Icons}#icon-flat-${colorIcon}`} />
-                </svg>
+                <div className={s.checkBoxWrepper}>
+                  <Checkbox
+                    {...label}
+                    defaultChecked
+                    sx={{
+                      color: "#A6ABB9",
+                      "&.Mui-checked": {
+                        color: "red",
+                      },
+                    }}
+                  />
 
-                <p className={s.bookTitle}>{book.title}</p>
+                  {/* <Checkbox
+                    icon={<BsCheck color="#174A41" size={14} />}
+                    name="my-input"
+                    checked={true}
+                    // onChange={(value) => {
+                    //   let p = {
+                    //     isTrue: value,
+                    //   };
+                    //   return alert(value);
+                    // }}
+                    borderColor="#A6ABB9"
+                    style={{
+                      cursor: "pointer",
+                      width: "15",
+                      height: "15",
+                      borderRadius: "0",
+                    }}
+                  /> */}
+                  <p className={s.bookTitle}>{book.title}</p>
+                </div>
               </div>
               <MediaQuery maxWidth={767}>
                 <div className={s.bookInfo}>
@@ -50,11 +82,6 @@ const PurposeToReadList = ({ booksLibrary, colorIcon, review }) => {
                 <p className={s.bookMoreInfoYear}>{book.publishYear}</p>
                 <p className={s.bookMoreInfoPage}>{book.pagesTotal}</p>
               </div>
-              <button className={s.delBtn}>
-                <svg className={s.delBtnIcon} width="14px" height="18px">
-                  <use xlinkHref={`${Icons}#icon-delete`} />
-                </svg>
-              </button>
             </li>
           </div>
         ))}
@@ -63,4 +90,4 @@ const PurposeToReadList = ({ booksLibrary, colorIcon, review }) => {
   );
 };
 
-export default PurposeToReadList;
+export default ReadListWithCheckBox;
