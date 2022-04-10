@@ -42,7 +42,6 @@ export function UserMenu() {
         type="button"
         className={styles.logout_btb}
         onClick={(e) => dispatch(logout())}
-        //  history.push("/login");
       >
         {btn[lang]}
       </Link>

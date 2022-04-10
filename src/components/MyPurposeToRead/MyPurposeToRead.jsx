@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { langOptionsPurposeToRead } from "../../assets/langOptionsPurposeToRead";
+import { langOptionsMyPurposeToRead } from "../../assets/langOptionsMyPurposeToRead";
 import { getLang } from "../../redux/lang/langSelector";
 import {
   getDurationPeriod,
@@ -11,7 +11,7 @@ import s from "./MyPurposeToRead.module.scss";
 const MyPurposeToRead = ({ books, isTrain }) => {
   const duration = useSelector(getDurationPeriod);
   const lang = useSelector(getLang);
-  const { goal } = langOptionsPurposeToRead;
+  const { goal } = langOptionsMyPurposeToRead;
   const remaindBooks = useSelector(getRemaindBooks);
 
   return (

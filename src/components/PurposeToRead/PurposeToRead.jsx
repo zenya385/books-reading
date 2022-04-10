@@ -4,26 +4,30 @@ import MediaQuery from "react-responsive";
 import Icons from "../../images/symbol-defs.svg";
 import { getTheme } from "../../redux/theme/themeSelector";
 import { useSelector } from "react-redux";
+import { getLang } from "../../redux/lang/langSelector";
+import { langOptionsMyPurposeToRead } from "../../assets/langOptionsMyPurposeToRead";
 
 const PurposeToReadList = ({ booksLibrary, colorIcon, review }) => {
   const theme = useSelector(getTheme);
+  const lang = useSelector(getLang);
+  const { title, author, publishYear, pagesTotal } = langOptionsMyPurposeToRead;
 
   return (
     <>
       <ul
         className={s.bookList}
-        style={{
-          backgroundColor:
-            theme === "light" ? "var(--light-theme)" : "var(--light-theme)",
-          color: theme === "light" ? "black" : "white",
-        }}
+        // style={{
+        //   backgroundColor:
+        //     theme === "light" ? "var(--light-theme)" : "var(--light-theme)",
+        //   color: theme === "light" ? "black" : "white",
+        // }}
       >
         <MediaQuery minWidth={768}>
           <div className={s.bookInfo}>
-            <p className={s.title}>Назва книги</p>
-            <p className={s.author}>Автор</p>
-            <p className={s.year}>Рік</p>
-            <p className={s.page}>Стор.</p>
+            <p className={s.title}>{title[lang]}</p>
+            <p className={s.author}>{author[lang]}</p>
+            <p className={s.year}>{publishYear[lang]}</p>
+            <p className={s.page}>{pagesTotal[lang]}</p>
           </div>
           <span className={s.bookInfoLine}></span>
         </MediaQuery>
@@ -40,9 +44,9 @@ const PurposeToReadList = ({ booksLibrary, colorIcon, review }) => {
               </div>
               <MediaQuery maxWidth={767}>
                 <div className={s.bookInfo}>
-                  <p className={s.bookInfoText}>Автор:</p>
-                  <p className={s.bookInfoText}>Рік:</p>
-                  <p className={s.bookInfoText}>Стор:</p>
+                  <p className={s.bookInfoText}>{author[lang]}:</p>
+                  <p className={s.bookInfoText}>{publishYear[lang]}:</p>
+                  <p className={s.bookInfoText}>{pagesTotal[lang]}:</p>
                 </div>
               </MediaQuery>
               <div className={s.bookMoreInfo}>
