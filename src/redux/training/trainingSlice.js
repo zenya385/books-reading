@@ -11,8 +11,23 @@ const trainingSlice = createSlice({
     pagesPerDay: 0,
     stats: [],
     _id: null,
+    error:null,
+    isTrain:false,
   },
   reducers: {
+    resetTrain(state) {
+      return {       
+        books: [],
+        startDate: "", //new Date()
+        endDate: "", //new Date()
+        duration: 0,
+        pagesPerDay: 0,
+        stats: [],
+        _id: null,
+        isTrain: false,
+      };
+    },
+
     changeDateStart(state, { payload }) {
       return {
         ...state,
@@ -64,6 +79,7 @@ const trainingSlice = createSlice({
       pagesPerDay: payload.pagesPerDay,
       stats: payload.stats,
       _id: payload._id,
+      isTrain:true,
     }),
     [addPlaningTraining.rejected]: (state, { payload }) => ({
       ...state,
@@ -89,7 +105,8 @@ const trainingSlice = createSlice({
     }),
     [addPages.fulfilled]: (state, { payload }) => ({
       ...state,
-      ...payload,
+      books:[payload.book],
+      stats:[...payload.planning.stats],
       error: null,
     }),
     [addPages.rejected]: (state, { payload }) => ({
@@ -108,4 +125,5 @@ export const {
   getDuration,
   addBookForTraining,
   addCurBookForTraining,
+  resetTrain,
 } = trainingSlice.actions;

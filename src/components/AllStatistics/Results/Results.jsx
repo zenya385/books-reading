@@ -4,11 +4,11 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useSelector, useDispatch } from "react-redux";
 import { langOptionsResults } from "../../../assets/langOptionsResults";
-import { addPages } from "../../../redux/training/trainingOperations";
+import { addPages, getPlaningTraining } from "../../../redux/training/trainingOperations";
 import { getLang } from "../../../redux/lang/langSelector";
 import s from "./Results.module.scss";
 
-const Results = ({ arr, setArr }) => {
+const Results = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [pages, setPages] = useState("");
   const lang = useSelector(getLang);
@@ -20,6 +20,7 @@ const Results = ({ arr, setArr }) => {
     e.preventDefault();
     console.log({ pages: Number(pages) });
     dispatch(addPages({ pages: Number(pages) }));
+   // dispatch(getPlaningTraining());
   };
 
   return (
