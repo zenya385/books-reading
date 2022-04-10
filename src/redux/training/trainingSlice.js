@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addPlaningTraining, getPlaningTraining } from "./trainingOperations";
+import { addPages, addPlaningTraining, getPlaningTraining } from "./trainingOperations";
 
 const trainingSlice = createSlice({
   name: "training",
@@ -70,6 +70,10 @@ const trainingSlice = createSlice({
 
       error: payload,
     }),
+    [getPlaningTraining.pending]: (state) => ({
+      ...state,
+      error: null,
+    }),
     [getPlaningTraining.fulfilled]: (state, { payload }) => ({
       ...state,
       ...payload.planning,
@@ -79,6 +83,19 @@ const trainingSlice = createSlice({
       ...state,
       error: payload,
     }),
+    [addPages.pending]: (state) => ({
+      ...state,
+      error: null,
+    }),
+    [addPages.fulfilled]: (state, { payload }) => ({
+      ...state,
+      ...payload,
+      error: null,
+    }),
+    [addPages.rejected]: (state, { payload }) => ({
+      ...state,
+      error: payload,
+    }),  
   },
 });
 
