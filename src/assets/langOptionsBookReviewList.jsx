@@ -17,7 +17,7 @@ export const langOptionsBookReviewList = {
   },
   pagesTotal: {
     ua: "Стор.",
-    en: "Pages.",
+    en: "Pages",
   },
   rating: {
     ua: "Рейтинг",

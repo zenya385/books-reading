@@ -25,6 +25,7 @@ import { getLang } from "../../redux/lang/langSelector";
 import { langOptionsMyTrainPlan } from "../../assets/langOptionsMyTrainPlan";
 import { addPlaningTraining } from "../../redux/training/trainingOperations";
 import PurposeToReadList from "../PurposeToRead/PurposeToRead";
+import { ErrorMessage } from "formik";
 
 const MyTrainingPlaining = () => {
   const booksLibrary = useSelector(getBooksGoingToReadState);
