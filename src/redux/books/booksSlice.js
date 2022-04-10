@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
   // addPlaningTraning,
-  getPlaningTraning,
+  getPlaningTraining,
 } from "../training/trainingOperations";
 import { addBook, getBooks, reviewBook } from "./booksOperations";
 const booksSlice = createSlice({
@@ -72,7 +72,7 @@ const booksSlice = createSlice({
     //   currentlyReading: [...payload.books],
     // }),
 
-    [getPlaningTraning.fulfilled]: (state, { payload }) => ({
+    [getPlaningTraining.fulfilled]: (state, { payload }) => ({
       ...state,
       currentlyReading: payload.planning.books,
     }),

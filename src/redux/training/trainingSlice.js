@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addPlaningTraning, getPlaningTraning } from "./trainingOperations";
+import { addPlaningTraining, getPlaningTraining } from "./trainingOperations";
 
 const trainingSlice = createSlice({
   name: "training",
@@ -52,11 +52,11 @@ const trainingSlice = createSlice({
     },
   },
   extraReducers: {
-    [addPlaningTraning.pending]: (state) => ({
+    [addPlaningTraining.pending]: (state) => ({
       ...state,
       error: null,
     }),
-    [addPlaningTraning.fulfilled]: (state, { payload }) => ({
+    [addPlaningTraining.fulfilled]: (state, { payload }) => ({
       ...state,
       startDate: payload.startDate,
       endDate: payload.endDate,
@@ -65,17 +65,17 @@ const trainingSlice = createSlice({
       stats: payload.stats,
       _id: payload._id,
     }),
-    [addPlaningTraning.rejected]: (state, { payload }) => ({
+    [addPlaningTraining.rejected]: (state, { payload }) => ({
       ...state,
 
       error: payload,
     }),
-    [getPlaningTraning.fulfilled]: (state, { payload }) => ({
+    [getPlaningTraining.fulfilled]: (state, { payload }) => ({
       ...state,
-      payload,
+      ...payload.planning,
       error: null,
     }),
-    [getPlaningTraning.rejected]: (state, { payload }) => ({
+    [getPlaningTraining.rejected]: (state, { payload }) => ({
       ...state,
       error: payload,
     }),
