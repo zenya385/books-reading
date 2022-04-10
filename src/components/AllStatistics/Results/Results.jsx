@@ -2,22 +2,20 @@ import React from "react";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useDispatch } from "react-redux";
+import { addPages } from "../../../redux/training/trainingOperations";
 import s from "./Results.module.scss";
 
-const Results = ({ arr, setArr }) => {
+const Results = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [pages, setPages] = useState("");
 
+  const dispatch = useDispatch();
+
   const onSubmitForm = (e) => {
     e.preventDefault();
-    setArr([
-      ...arr,
-      {
-        date: startDate,
-        pages: pages,
-      },
-    ]);
-    console.log(arr);
+    console.log({"pages":Number(pages)})
+    dispatch(addPages({"pages":Number(pages)}))
   };
   return (
     <>
