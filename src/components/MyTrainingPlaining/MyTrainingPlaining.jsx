@@ -24,6 +24,8 @@ import {
 import { addPlaningTraining } from "../../redux/training/trainingOperations";
 import { Formik } from "formik";
 import { getTheme } from "../../redux/theme/themeSelector";
+import PurposeToReadList from "../PurposeToRead/PurposeToRead";
+
 
 const MyTrainingPlaining = () => {
   const booksLibrary = useSelector(getBooksGoingToReadState);
@@ -134,7 +136,11 @@ const MyTrainingPlaining = () => {
         </>
       )}
       {Boolean(curReadBooks.length) && (
-        <BookInfoList booksLibrary={curReadBooks} colorIcon="grey" review={0} />
+        <PurposeToReadList
+          booksLibrary={curReadBooks}
+          colorIcon="grey"
+          review={0}
+        />
       )}
       {Boolean(curReadBooks.length) && (
         <button type="submit" onClick={handleSubmitBookForTraining}>

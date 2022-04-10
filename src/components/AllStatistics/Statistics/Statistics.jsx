@@ -19,7 +19,7 @@ const Statistics = () => {
       return num;
     }
   };
-
+console.log(arr);
 const theme = useSelector(getTheme);
   return (
     <>
@@ -27,9 +27,9 @@ const theme = useSelector(getTheme);
         <li key={index} className={s.stat_item}>
 
           <p className={s.stat_date_text} style={{color:theme === "light" ? "#242A37" : "var(--dark-text)",}}>
-            {func(JSON.stringify(new Date(stat.date).getDate()))}.
-            {func(JSON.stringify(new Date(stat.date).getMonth() + 1))}.
-            {JSON.stringify(new Date(stat.date).getFullYear())}
+            {func(JSON.stringify(new Date(stat.time).getDate()))}.
+            {func(JSON.stringify(new Date(stat.time).getMonth() + 1))}.
+            {JSON.stringify(new Date(stat.time).getFullYear())}
 
           </p>
           <p className={s.stat_time_text}>

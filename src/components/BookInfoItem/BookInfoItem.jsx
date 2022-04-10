@@ -20,25 +20,22 @@ const BookInfoItem = ({
   const theme = useSelector(getTheme);
   return (
     <div
-      style={{
-        backgroundColor:
-          theme === "light" ? "white" : "var(--dark-header)",
-        color: theme === "light" ? "black" : "var(--dark-text)",
-      }}
+      
     >
-      <li className={s.item}>
+      <li className={s.item} style={{
+          backgroundColor:
+            theme === "light" ? "white" : "var(--dark-header)"
+        }}>
         <div className={s.iconTitle}>
           <svg className={s.navIcon} width="22px" height="17px">
             <use xlinkHref={`${Icons}#icon-flat-${colorIcon}`} />
           </svg>
 
-
-          <div className="link nav__link-contact">
+          <a href="" className="link nav__link-contact">
             <p className={s.bookTitle} style={{
         color: theme === "light" ? "#242A37" : "var(--dark-text)",
       }}>{title}</p>
-          </div>
-
+          </a>
         </div>
         <MediaQuery maxWidth={767}>
           <div className={s.bookInfo}>
