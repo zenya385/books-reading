@@ -117,6 +117,7 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
             review={0}
           />
         )}
+
         {booksGoingToRead && Boolean(booksGoingToRead.length) && (
           <h2> {titleFuture[lang]}</h2>
         )}
