@@ -9,15 +9,18 @@ const SwitchTheme = () => {
   const theme = useSelector(getTheme);
 
   return (
-    <select
-      name="theme"
-      value={theme}
-      className={style.select}
-      onChange={(e) => dispatch(changeTheme(e.target.value))}
-    >
-      <option value="light">light</option>
-      <option value="dark">dark</option>
-    </select>
+    // <select
+    //   name="theme"
+    //   value={theme}
+    //   className={style.select}
+    //   onChange={(e) => dispatch(changeTheme(e.target.value))}
+    // >
+    //   <option value="light">light</option>
+    //   <option value="dark">dark</option>
+    // </select>
+    <>
+  {theme === "light" ? <button style={{color: 'black', fontSize: "20px", background:"transparent", border: "none"}} onClick={() => dispatch(changeTheme("dark"))}>&#127774;</button> : <button onClick={() => dispatch(changeTheme("light"))} style={{color: 'white', fontSize: "20px", background:"transparent", border: "none"}}>&#127769;</button>}
+    </>
   );
 };
 
