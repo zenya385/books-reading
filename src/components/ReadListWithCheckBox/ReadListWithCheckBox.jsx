@@ -19,7 +19,7 @@ import { Checkbox } from "@mui/material";
 //   );
 // }
 
-const ReadListWithCheckBox = ({ booksLibrary, colorIcon, review }) => {
+const ReadListWithCheckBox = ({ booksLibrary }) => {
   const theme = useSelector(getTheme);
 
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
@@ -53,10 +53,15 @@ const ReadListWithCheckBox = ({ booksLibrary, colorIcon, review }) => {
                   <svg className={s.checkBoxIcon} width="15px" height="15px">
                     <use xlinkHref={`${Icons}#icon-checkBox`} />
                   </svg>
-                </div>} */}
+                </div>}:  <div className={s.checkBox}></div>
+                <p className={s.bookTitle}>{book.title}</p>
+              </div>*/}
+
+                {/* что ниже потом удалить */}
                 <div className={s.checkBox}></div>
                 <p className={s.bookTitle}>{book.title}</p>
               </div>
+
               <MediaQuery maxWidth={767}>
                 <div className={s.bookInfo}>
                   <p className={s.bookInfoText}>Автор:</p>

@@ -131,20 +131,22 @@ const MyTrainingPlaining = () => {
           <input type="submit" value="Додати" />
         </>
       )}
-      {Boolean(curReadBooks.length) && (
+      {/* лист с чекбоксом после прописания логики можно удалить */}
+
+      {/* {Boolean(curReadBooks.length) && (
         <ReadListWithCheckBox
           booksLibrary={curReadBooks}
           colorIcon="grey"
           review={0}
         />
-      )}
-      {/* {Boolean(curReadBooks.length) && (
+      )} */}
+      {Boolean(curReadBooks.length) && (
         <PurposeToReadList
           booksLibrary={curReadBooks}
           colorIcon="grey"
           review={0}
         />
-      )} */}
+      )}
       {Boolean(curReadBooks.length) && (
         <button type="submit" onClick={handleSubmitBookForTraining}>
           Почати тренування
