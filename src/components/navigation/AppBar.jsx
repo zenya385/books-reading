@@ -6,6 +6,7 @@ import { UserMenu } from "./UserMenu";
 import styles from "./AppBar.module.scss";
 import SwitchTheme from "../SwitchTheme/SwitchTheme";
 import { getTheme } from "../../redux/theme/themeSelector";
+import SwitchLang from "../SwitchLang/SwitchLang";
 
 const AppBar = () => {
   const isLoggedIn = useSelector(getIsLoggedIn);
@@ -52,6 +53,7 @@ const AppBar = () => {
         </div>
       )}
       <SwitchTheme />
+      <SwitchLang />
     </header>
   );
 };

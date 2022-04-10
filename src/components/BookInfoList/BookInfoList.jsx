@@ -6,25 +6,29 @@ import MediaQuery from "react-responsive";
 import Icons from "../../images/symbol-defs.svg";
 import { getTheme } from "../../redux/theme/themeSelector";
 import { useSelector } from "react-redux";
+import { langOptionsBookInfoList } from "../../assets/langOptionsBookInfoList";
+import { getLang } from "../../redux/lang/langSelector";
+
 const BookInfoList = ({ booksLibrary, colorIcon, review }) => {
   console.log(booksLibrary);
   const theme = useSelector(getTheme);
+  const lang = useSelector(getLang);
+  const { title, author, publishYear, pagesTotal } = langOptionsBookInfoList;
+
   return (
     <>
-      <ul
-        className={s.bookList}
-        style={{
+      <ul className={s.bookList} style={{
           backgroundColor:
             theme === "light" ? "var(--light-theme)" : "var(--dark-theme)"
-        }}
-      >
+        }}>
+
         <MediaQuery minWidth={768}>
           <div className={s.bookInfo}>
-            <p className={s.title}>Назва книги</p>
+            <p className={s.title}>{title[lang]}</p>
 
-            <p className={s.author}>Автор</p>
-            <p className={s.year}>Рік</p>
-            <p className={s.page}>Стор.</p>
+            <p className={s.author}>{author[lang]}</p>
+            <p className={s.year}>{publishYear[lang]}</p>
+            <p className={s.page}>{pagesTotal[lang]}</p>
           </div>
         </MediaQuery>
         {booksLibrary.map((book) => (

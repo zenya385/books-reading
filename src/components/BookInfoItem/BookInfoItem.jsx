@@ -5,6 +5,8 @@ import MediaQuery from "react-responsive";
 import { getTheme } from "../../redux/theme/themeSelector";
 import { useSelector } from "react-redux";
 import Summary from "../Summary/Summary";
+import { getLang } from "../../redux/lang/langSelector";
+import { langOptionsBookInfoItem } from "../../assets/langOptionsBookInfoItem";
 
 const BookInfoItem = ({
   title,
@@ -17,15 +19,16 @@ const BookInfoItem = ({
   rating,
   feedback,
 }) => {
+  const lang = useSelector(getLang);
+  const { authorItem, yearItem, pagesItem } = langOptionsBookInfoItem;
   const theme = useSelector(getTheme);
   return (
-    <div
-      
-    >
+    <div>
       <li className={s.item} style={{
           backgroundColor:
             theme === "light" ? "white" : "var(--dark-header)"
         }}>
+
         <div className={s.iconTitle}>
           <svg className={s.navIcon} width="22px" height="17px">
             <use xlinkHref={`${Icons}#icon-flat-${colorIcon}`} />
@@ -39,9 +42,9 @@ const BookInfoItem = ({
         </div>
         <MediaQuery maxWidth={767}>
           <div className={s.bookInfo}>
-            <p className={s.bookInfoText}>Автор:</p>
-            <p className={s.bookInfoText}>Рік:</p>
-            <p className={s.bookInfoText}>Стор:</p>
+            <p className={s.bookInfoText}>{authorItem[lang]}</p>
+            <p className={s.bookInfoText}>{yearItem[lang]}</p>
+            <p className={s.bookInfoText}>{pagesItem[lang]}</p>
           </div>
         </MediaQuery>
         <div className={s.bookMoreInfo}>

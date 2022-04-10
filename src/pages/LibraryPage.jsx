@@ -7,7 +7,7 @@ import {
   getBooksGoingToReadState,
   getBooksState,
   // getBooksState,
-  getIsLoading,  
+  getIsLoading,
 } from "../redux/books/booksSelectors";
 import BookInfoList from "../components/BookInfoList/BookInfoList";
 import { getBooks } from "../redux/books/booksOperations";
@@ -19,6 +19,8 @@ import { getPlaningTraning } from "../redux/training/trainingOperations";
 import { BsPlusLg } from "react-icons/bs";
 import s from "./LibraryPage.module.scss";
 import AddBookModal from "../components/AddBookModal/AddBookModal";
+import { langOptionsLibPage } from "../assets/langOptionsLibPage";
+import { getLang } from "../redux/lang/langSelector";
 import { getTheme } from "../redux/theme/themeSelector"
 import BookReviewItem from "../components/BookReviewItem/BookReviewItem";
 import BookReviewList from "../components/BookReviewList/BookReviewList";
@@ -55,6 +57,8 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
   const booksIsLoading = useSelector(getIsLoading);
   const ratingChange = useSelector(getBooksState);
   const dispatch = useDispatch();
+  const lang = useSelector(getLang);
+  const { titleDone, titleNow, titleFuture, btn } = langOptionsLibPage;
 
   // console.log(Boolean(booksFinishedReading.length));
   // console.log(booksGoingToRead.length);
@@ -112,7 +116,8 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
         {booksCurrentlyReading && Boolean(booksCurrentlyReading.length) && (
           <h2 style={{
             color: theme === "light" ? "black" : "white",
-          }}>Читаю</h2>
+          }}>{titleNow[lang]}</h2>
+
         )}
         {booksCurrentlyReading && Boolean(booksCurrentlyReading.length) && (
           <BookInfoList
@@ -124,7 +129,8 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
         {booksGoingToRead && Boolean(booksGoingToRead.length) && (
           <h2 style={{
             color: theme === "light" ? "black" : "white",
-          }}>Маю намір прочитати</h2>
+          }}> {titleFuture[lang]}</h2>
+
         )}
         {booksGoingToRead && Boolean(booksGoingToRead.length) && (
           <BookInfoList
@@ -142,7 +148,7 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
         {/* {!booksIsLoading && booksGoingToRead.length === 0 && <FailModal />} */}
         <div className={s.nextBtnWrapper}>
           <Link to="/training" className={s.nextBtn}>
-            Далі
+            {btn[lang]}
           </Link>
         </div>
 

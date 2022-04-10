@@ -3,9 +3,14 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Icons from "../../images/symbol-defs.svg";
 import s from "./FinishTrainingModal.module.scss";
+import { useSelector } from "react-redux";
+import { getLang } from "../../redux/lang/langSelector";
+import { langOptionsFailModal } from "../../assets/langOptionsFailModal";
 
 export default function FailModal() {
   const [open, setOpen] = React.useState(true);
+  const lang = useSelector(getLang);
+  const { text, btn } = langOptionsFailModal;
 
   const handleClose = () => setOpen(false);
 
@@ -21,12 +26,9 @@ export default function FailModal() {
           <svg className={s.failModal_icon} width="54px" height="54px">
             <use xlinkHref={`${Icons}#icon-like`} />
           </svg>
-          <p className={s.failModal_description}>
-            Ти молодчина, але потрібно швидше! Наступного разу тобі все
-            вдасться)
-          </p>
+          <p className={s.failModal_description}>{text[lang]}</p>
           <button onClick={handleClose} className={s.failModal_btn}>
-            Ок
+            {btn[lang]}
           </button>
         </Box>
       </Modal>

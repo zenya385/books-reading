@@ -1,11 +1,19 @@
 import * as React from "react";
 import Rating from "@mui/material/Rating";
 import ReviewModal from "../ReviewModal/ReviewModal";
+import { useSelector } from "react-redux";
+import { getLang } from "../../redux/lang/langSelector";
+import { langOptionsSummary } from "../../assets/langOptionsSummary";
+// import s from "./ReviewModal.module.scss";
 import s from "./Summary.module.scss";
 import MediaQuery from "react-responsive";
 
 const Summary = ({ bookId, rating, feedback }) => {
   const [modalOpen, setModalOpen] = React.useState(false);
+  // const [bookId, setBookId] = React.useState(null);
+  const [retingValue, setRetingValue] = React.useState(null);
+  const lang = useSelector(getLang);
+  const { resume } = langOptionsSummary;
 
   const onModalOpen = () => {
     setModalOpen(true);
@@ -18,7 +26,7 @@ const Summary = ({ bookId, rating, feedback }) => {
     <>
       <MediaQuery minWidth={768}>
         <button onClick={onModalOpen} className={s.reviewBtn}>
-          Резюме
+          {resume[lang]}
         </button>
       </MediaQuery>
 
@@ -36,7 +44,7 @@ const Summary = ({ bookId, rating, feedback }) => {
           </div>
           <div className={s.reviewBtnWrepper}>
             <button onClick={onModalOpen} className={s.reviewBtn}>
-              Резюме
+              {resume[lang]}
             </button>
           </div>
         </div>
