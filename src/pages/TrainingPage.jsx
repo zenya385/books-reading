@@ -1,6 +1,4 @@
-import React, { useEffect } from "react";
-
-import { Line } from "react-chartjs-2";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getIsLoggedIn } from "../redux/auth/authSelectors";
 import { getBooks } from "../redux/books/booksOperations";
@@ -9,91 +7,71 @@ import s from "./TrainingPage.module.scss";
 import MyTrainingPlaining from "../components/MyTrainingPlaining/MyTrainingPlaining";
 import {
   getDurationPeriod,
-  getError,
   getIsTrain,
   getTrainingBooks,
 } from "../redux/training/trainingSelectors";
 import StatisticsResults from "../components/AllStatistics/StatisticsResults/StatisticsResults";
 import Timer from "../components/Timer/Timer";
 import { getBooksCurrentlyReadingState } from "../redux/books/booksSelectors";
-import { duration } from "@mui/material";
 import { getPlaningTraining } from "../redux/training/trainingOperations";
-import BookInfoList from "../components/BookInfoList/BookInfoList";
-import { useHistory } from "react-router-dom";
 import { resetTrain } from "../redux/training/trainingSlice";
 import MediaQuery from "react-responsive";
 import ReadListWithCheckBox from "../components/ReadListWithCheckBox/ReadListWithCheckBox";
-import AddTrainingModal from "../components/AddTrainingModal/AddTrainingModal";
+import FailModal from "../components/FinishTrainingModal/FailModal";
+
+const getIsTrainingFinished = (trainingBooks) => {
+  if (!trainingBooks.length) return false;
+  const { pagesTotal, pagesFinished } = trainingBooks[trainingBooks.length - 1];
+  return pagesTotal === pagesFinished;
+};
 
 const TrainingPage = () => {
+  const dispatch = useDispatch();
   const trainingBooks = useSelector(getTrainingBooks);
-  const infoTraining = useSelector((state) => state.training);
-  // const error=useSelector(getError);
+  // const trainingBooks = useSelector(getBooksCurrentlyReadingState);
+  // const infoTraining = useSelector((state) => state.training);
+  const loggedIn = useSelector(getIsLoggedIn);
   const isTrain = useSelector(getIsTrain);
 
-  const dispatch = useDispatch();
+  const [isOpenModal, setIsOpenModal] = useState(false);
+
+  const toggleModal = () => {
+    setIsOpenModal((prev) => !prev);
+  };
 
   useEffect(() => {
-    console.log("UseEffect");
-    dispatch(getBooks());
-    if (!trainingBooks.length) return;
-    const { pagesTotal, pagesFinished } = trainingBooks[
-      trainingBooks.length - 1
-    ];
-    if (pagesTotal - pagesFinished <= 0) {
-      dispatch(resetTrain());
+    // dispatch(getBooks());
+    if (!isOpenModal && getIsTrainingFinished(trainingBooks)) {
+      toggleModal();
+      // dispatch(resetTrain());
     }
   }, [trainingBooks]);
-
-  // .map((book) => book.pagesTotal - book.pagesFinished)
-  // .reduce((num, sum) => (sum += num), 0);
-
-  // {
-  //   Boolean(trainingBooks.length) && pages === 0 && dispatch(resetTrain());
-  // }
 
   useEffect(() => {
     isTrain && dispatch(getPlaningTraining());
   }, [isTrain]);
-
-  const duration = useSelector(getDurationPeriod);
-  // for (let i = 0; i < duration; i += 1) {
-  //   labels[i] = i;
-  // }
-  // console.log(labels);
-
-  const loggedIn = useSelector(getIsLoggedIn);
-  const books = useSelector(getTrainingBooks);
-  const booksCurrentlyReading = useSelector(getBooksCurrentlyReadingState);
-
-  // console.log(
-  //   "Boolean(booksCurrentlyReading.length)>>>>",
-  //   Boolean(booksCurrentlyReading.length),
-  //   booksCurrentlyReading
-  // );
-  // console.log(
-  //   "Boolean(trainingBooks.length)>>>>",
-  //   Boolean(trainingBooks.length),
-  //   trainingBooks
-  // );
-
-  //const isTrain=Boolean(booksCurrentlyReading.length)//&&Boolean(trainingBooks.length)
 
   loggedIn &&
     useEffect(() => {
       dispatch(getBooks());
     }, []);
 
+  useEffect(() => {
+    if (!isOpenModal && getIsTrainingFinished(trainingBooks)) {
+      dispatch(resetTrain());
+    }
+  }, [isOpenModal]);
+
   return (
     <>
       <MediaQuery maxWidth={1279}>
         <div className={s.TrainingPage}>
           {isTrain && <Timer />}
-          <MyPurposeToRead books={books} isTrain={isTrain} />
-          {!isTrain && <MyTrainingPlaining />}
+          <MyPurposeToRead books={trainingBooks} isTrain={isTrain} />
+          <MyTrainingPlaining />
           {isTrain && (
             <ReadListWithCheckBox
-              booksLibrary={infoTraining.books}
+              booksLibrary={trainingBooks}
               colorIcon="grey"
               review={0}
             />
@@ -103,15 +81,14 @@ const TrainingPage = () => {
           {isTrain && <StatisticsResults />}
         </div>
       </MediaQuery>
-
       <MediaQuery minWidth={1280}>
         <div className={s.TrainingPage}>
           <div className={s.timerTrainingLine}>
             {isTrain && <Timer />}
-            {!isTrain && <MyTrainingPlaining />}
+            <MyTrainingPlaining />
             {isTrain && (
               <ReadListWithCheckBox
-                booksLibrary={infoTraining.books}
+                booksLibrary={trainingBooks}
                 colorIcon="grey"
                 review={0}
               />
@@ -119,11 +96,14 @@ const TrainingPage = () => {
             {/* лист с чекбоксом после прописания логики можно удалить */}
           </div>
           <div className={s.statisticMeta}>
-            <MyPurposeToRead books={books} isTrain={isTrain} />
+            <MyPurposeToRead books={trainingBooks} isTrain={isTrain} />
             {isTrain && <StatisticsResults />}
           </div>
         </div>
       </MediaQuery>
+      {isOpenModal && (
+        <FailModal isOpenModal={isOpenModal} handleClose={toggleModal} />
+      )}
     </>
   );
 };

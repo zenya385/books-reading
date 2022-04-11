@@ -1,8 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  addPages,
+  addPlaningTraining,
   // addPlaningTraning,
   getPlaningTraining,
 } from "../training/trainingOperations";
+import { resetTrain } from "../training/trainingSlice";
 import { addBook, getBooks, reviewBook } from "./booksOperations";
 const booksSlice = createSlice({
   name: "books",
@@ -76,6 +79,20 @@ const booksSlice = createSlice({
       ...state,
       currentlyReading: payload.planning.books,
     }),
+
+    [addPlaningTraining.fulfilled]: (state, { payload }) => ({
+      ...state,
+      currentlyReading: payload.books,
+    }),
+    [addPages.fulfilled]: (state, { payload }) => ({
+      ...state,
+      currentlyReading: state.currentlyReading.map((book) =>
+        book._id === payload.book._id ? payload.book : book
+      ),
+    }),
+    [resetTrain]: (state) => {
+      state.currentlyReading = [];
+    },
   },
 });
 

@@ -31,37 +31,38 @@ const PurposeToReadList = ({ booksLibrary, colorIcon, review }) => {
           </div>
           <span className={s.bookInfoLine}></span>
         </MediaQuery>
-        {booksLibrary.map((book) => (
-          <div key={book._id} className={s.itemLineWrepper}>
-            <span className={s.itemLine}></span>
-            <li className={s.item}>
-              <div className={s.iconTitle}>
-                <svg className={s.navIcon} width="22px" height="17px">
-                  <use xlinkHref={`${Icons}#icon-flat-${colorIcon}`} />
-                </svg>
+        {booksLibrary.length &&
+          booksLibrary.map((book) => (
+            <div className={s.itemLineWrepper}>
+              <span className={s.itemLine}></span>
+              <li className={s.item} key={book._id}>
+                <div className={s.iconTitle}>
+                  <svg className={s.navIcon} width="22px" height="17px">
+                    <use xlinkHref={`${Icons}#icon-flat-${colorIcon}`} />
+                  </svg>
 
-                <p className={s.bookTitle}>{book.title}</p>
-              </div>
-              <MediaQuery maxWidth={767}>
-                <div className={s.bookInfo}>
-                  <p className={s.bookInfoText}>{author[lang]}:</p>
-                  <p className={s.bookInfoText}>{publishYear[lang]}:</p>
-                  <p className={s.bookInfoText}>{pagesTotal[lang]}:</p>
+                  <p className={s.bookTitle}>{book.title}</p>
                 </div>
-              </MediaQuery>
-              <div className={s.bookMoreInfo}>
-                <p className={s.bookMoreInfoAuthor}>{book.author}</p>
-                <p className={s.bookMoreInfoYear}>{book.publishYear}</p>
-                <p className={s.bookMoreInfoPage}>{book.pagesTotal}</p>
-              </div>
-              <button className={s.delBtn}>
-                <svg className={s.delBtnIcon} width="14px" height="18px">
-                  <use xlinkHref={`${Icons}#icon-delete`} />
-                </svg>
-              </button>
-            </li>
-          </div>
-        ))}
+                <MediaQuery maxWidth={767}>
+                  <div className={s.bookInfo}>
+                    <p className={s.bookInfoText}>{author[lang]}:</p>
+                    <p className={s.bookInfoText}>{publishYear[lang]}:</p>
+                    <p className={s.bookInfoText}>{pagesTotal[lang]}:</p>
+                  </div>
+                </MediaQuery>
+                <div className={s.bookMoreInfo}>
+                  <p className={s.bookMoreInfoAuthor}>{book.author}</p>
+                  <p className={s.bookMoreInfoYear}>{book.publishYear}</p>
+                  <p className={s.bookMoreInfoPage}>{book.pagesTotal}</p>
+                </div>
+                <button className={s.delBtn}>
+                  <svg className={s.delBtnIcon} width="14px" height="18px">
+                    <use xlinkHref={`${Icons}#icon-delete`} />
+                  </svg>
+                </button>
+              </li>
+            </div>
+          ))}
       </ul>
     </>
   );

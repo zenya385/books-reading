@@ -19,7 +19,14 @@ const TrainingPage = lazy(() => import("./pages/TrainingPage.jsx"));
 export default function App() {
   const dispatch = useDispatch();
   const theme = useSelector(getTheme);
+
   GoogleLogin();
+
+  //   useEffect(() => {
+  //    if err = 401     сплит через пробел абрать цыфры и привести к числу
+  //    dispatch(logaut());
+
+  //  }, [eror1...]);
 
   useEffect(() => {
     dispatch(getBooks());

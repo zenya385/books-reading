@@ -110,7 +110,9 @@ const trainingSlice = createSlice({
     }),
     [addPages.fulfilled]: (state, { payload }) => ({
       ...state,
-      books: [payload.book],
+      books: state.books.map((book) =>
+        book._id === payload.book._id ? payload.book : book
+      ),
       stats: [...payload.planning.stats],
       error: null,
     }),

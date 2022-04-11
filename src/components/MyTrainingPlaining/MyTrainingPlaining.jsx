@@ -18,6 +18,7 @@ import {
 import BookInfoList from "../BookInfoList/BookInfoList";
 import {
   getEndDate,
+  getIsTrain,
   getStartDate,
   getTrainingBooks,
 } from "../../redux/training/trainingSelectors";
@@ -42,6 +43,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import ChartLine from "../ChartLine/ChartLine";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -106,6 +108,7 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
   const startDate = useSelector(getStartDate);
   const endDate = useSelector(getEndDate);
   const lang = useSelector(getLang);
+  const isTrain = useSelector(getIsTrain);
   const { training, startTraining, btn } = langOptionsMyTrainPlan;
 
   const [startDateOrigin, setStartDateOrigin] = useState(new Date());
@@ -123,6 +126,10 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
   const onModalClose = (e) => {
     setModalOpen(false);
   };
+
+  useEffect(() => {
+    isTrain && setCurReadBooks([]);
+  }, [isTrain]);
 
   useEffect(() => {
     dispatch(
@@ -188,67 +195,66 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
   const handleSubmitBookForTraining = (e) => {
     e.preventDefault();
     console.log(books);
-    onHandleClose();
+    // onHandleClose();
     dispatch(
       addPlaningTraining({
         startDate,
         endDate,
-
         books: curReadBooks.map((el) => el._id),
       })
     );
   };
 
-  // console.log("bookForTraining>>>", bookForTraining);
-  // console.log("curReadBooks>>>", curReadBooks);
+  console.log("bookForTraining>>>", bookForTraining);
+  console.log("curReadBooks>>>", curReadBooks);
   // console.log("books>>>", books);
   // console.log("valueIdBook>>>", valueIdBook);
-
+  const isCurReadBooks = Boolean(curReadBooks.length);
+  const isBookForTraining = Boolean(bookForTraining.length);
   return (
     <>
       <MediaQuery minWidth={768}>
-        <form onSubmit={handleSubmitBookForRead}>
-          <h2>{training[lang]}</h2>
-          <div className={s.datePicker}>
-            <DatePicker
-              dateFormat="dd.MM.yyyy"
-              selected={startDateOrigin}
-              disabled
-              onChange={(date) => setStartDateOrigin(date)}
-            />
-            <DatePicker
-              dateFormat="dd.MM.yyyy"
-              selected={endDateOrigin}
-              onChange={(date) => setEndDateOrigin(date)}
-            />
-          </div>
-          {Boolean(bookForTraining.length) && (
-            <>
-              <select
-                disabled={bookForTraining.length ? false : true}
-                onChange={handleChangeValue}
-              >
-                <option value="default">...</option>
-                {bookForTraining.map((book) => (
-                  <option key={book._id} value={book._id}>
-                    {book.title}
-                  </option>
-                ))}
-              </select>
-              <button type="submit"> {btn[lang]}</button>
-            </>
-          )}
+        {!isTrain && (
+          <form onSubmit={handleSubmitBookForRead}>
+            <h2>{training[lang]}</h2>
+            <div className={s.datePicker}>
+              <DatePicker
+                dateFormat="dd.MM.yyyy"
+                selected={startDateOrigin}
+                disabled
+                onChange={(date) => setStartDateOrigin(date)}
+              />
+              <DatePicker
+                dateFormat="dd.MM.yyyy"
+                selected={endDateOrigin}
+                onChange={(date) => setEndDateOrigin(date)}
+              />
+            </div>
 
-          {/* лист с чекбоксом после прописания логики можно удалить */}
+            <select
+              disabled={bookForTraining.length ? false : true}
+              onChange={handleChangeValue}
+            >
+              <option value="default">...</option>
+              {bookForTraining.map((book) => (
+                <option key={book._id} value={book._id}>
+                  {book.title}
+                </option>
+              ))}
+            </select>
+            <button type="submit"> {btn[lang]}</button>
 
-          {/* {Boolean(curReadBooks.length) && (
+            {/* лист с чекбоксом после прописания логики можно удалить */}
+
+            {/* {Boolean(curReadBooks.length) && (
         <ReadListWithCheckBox
           booksLibrary={curReadBooks}
           colorIcon="grey"
           review={0}
         />
       )} */}
-        </form>
+          </form>
+        )}
       </MediaQuery>
       <MediaQuery maxWidth={767}>
         <AddTrainingModal
@@ -262,19 +268,19 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
           <BsPlusLg style={{ width: "18px", height: "18px" }} />
         </button>
       </MediaQuery>
-      {Boolean(curReadBooks.length) && (
+      {isCurReadBooks && (
         <PurposeToReadList
           booksLibrary={curReadBooks}
           colorIcon="grey"
           review={0}
         />
       )}
-      {Boolean(curReadBooks.length) && (
-        <button type="submit" onClick={handleSubmitBookForRead}>
+      {isCurReadBooks && (
+        <button type="submit" onClick={handleSubmitBookForTraining}>
           {startTraining[lang]}
         </button>
       )}
-      <Line options={options} data={data} className={s.line} />
+      <ChartLine curReadBooks={curReadBooks} />
     </>
   );
 };
