@@ -54,48 +54,48 @@ ChartJS.register(
   Legend
 );
 
-export const options = {
-  backgroundColor: "#FF6B08",
-  cubicInterpolationMode: "monotone",
-  responsive: true,
-  plugins: {
-    legend: {
-      position: "top",
-      align: "end",
-      display: true,
-      labels: {
-        color: "rgb(255, 99, 132)",
-      },
-    },
-    title: {
-      display: false,
-      text: "Кількість сторінок за день",
-    },
-  },
-};
+// export const options = {
+//   backgroundColor: "#FF6B08",
+//   cubicInterpolationMode: "monotone",
+//   responsive: true,
+//   plugins: {
+//     legend: {
+//       position: "top",
+//       align: "end",
+//       display: true,
+//       labels: {
+//         color: "rgb(255, 99, 132)",
+//       },
+//     },
+//     title: {
+//       display: false,
+//       text: "Кількість сторінок за день",
+//     },
+//   },
+// };
 
-let labels = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// let labels = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: "plan",
-      data: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
-      // data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-      borderColor: "rgb(0, 0, 0)",
-      backgroundColor: "rgba(0, 0, 0, 0.8)",
-    },
-    {
-      label: "fact",
-      data: [0, 10, 12, 13, 15, 18, 10, 12, 15, 10, 12],
+// export const data = {
+//   labels,
+//   datasets: [
+//     {
+//       label: "plan",
+//       data: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
+//       // data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
+//       borderColor: "rgb(0, 0, 0)",
+//       backgroundColor: "rgba(0, 0, 0, 0.8)",
+//     },
+//     {
+//       label: "fact",
+//       data: [0, 10, 12, 13, 15, 18, 10, 12, 15, 10, 12],
 
-      // data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-      borderColor: "#FF6B08",
-      backgroundColor: "#FF6B08",
-    },
-  ],
-};
+//       // data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
+//       borderColor: "#FF6B08",
+//       backgroundColor: "#FF6B08",
+//     },
+//   ],
+// };
 const curDate = new Date();
 const nextDay = [
   curDate.getFullYear(),
@@ -293,7 +293,7 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
           {startTraining[lang]}
         </button>
       )}
-      <ChartLine curReadBooks={curReadBooks} />
+      <ChartLine curReadBooks={!isTrain?curReadBooks:books} />
     </>
   );
 };
