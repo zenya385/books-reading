@@ -14,6 +14,7 @@ import { getError } from "./redux/training/trainingSelectors";
 import { getIsError } from "./redux/books/booksSelectors";
 import { getIsErrorAuth } from "./redux/auth/authSelectors";
 import { logout } from "./redux/auth/authOperations";
+import Loader from "./components/Loader/Loader";
 
 const LoginPage = lazy(() => import("./pages/LoginPage.jsx"));
 const RegisterPage = lazy(() => import("./pages/RegisterPage.jsx"));
@@ -62,7 +63,7 @@ export default function App() {
       }}
     >
       <AppBar />
-      <Suspense fallback={<h1>Wait a second, please =)</h1>}>
+      <Suspense fallback={<Loader />}>
         <Switch>
           <PublicRoute path="/register" redirectTo="/library" restricted>
             <RegisterPage />
