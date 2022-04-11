@@ -33,7 +33,7 @@ export default function AddTrainingModal({
       >
         <Box
           sx={{
-            backgroundColor: "#ffffff",
+            backgroundColor: "#F6F7FB",
             height: "100%",
           }}
         >

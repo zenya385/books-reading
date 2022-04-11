@@ -229,7 +229,9 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
                   </option>
                 ))}
               </select>
-              <button type="submit"> {btn[lang]}</button>
+              <button className={s.submitBtn} type="submit">
+                {btn[lang]}
+              </button>
             </>
           )}
 
@@ -264,7 +266,11 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
         />
       )}
       {Boolean(curReadBooks.length) && (
-        <button type="submit" onClick={handleSubmitBookForRead}>
+        <button
+          className={s.startTrainingBtn}
+          type="submit"
+          onClick={handleSubmitBookForRead}
+        >
           {startTraining[lang]}
         </button>
       )}
