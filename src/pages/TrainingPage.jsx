@@ -30,6 +30,7 @@ import { getPlaningTraining } from "../redux/training/trainingOperations";
 import BookInfoList from "../components/BookInfoList/BookInfoList";
 import { useHistory } from "react-router-dom";
 import { resetTrain } from "../redux/training/trainingSlice";
+import ChartLine, { data, options } from "../components/ChartLine/ChartLine";
 
 ChartJS.register(
   CategoryScale,
@@ -41,55 +42,16 @@ ChartJS.register(
   Legend
 );
 
-export const options = {
-  backgroundColor: "#FF6B08",
-  cubicInterpolationMode: "monotone",
-  responsive: true,
-  plugins: {
-    legend: {
-      position: "top",
-      align: "end",
-      display: true,
-      labels: {
-        color: "rgb(255, 99, 132)",
-      },
-    },
-    title: {
-      display: false,
-      text: "Кількість сторінок за день",
-    },
-  },
-};
-
-let labels = [0,1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: "plan",
-      data: [10,10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
-      // data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-      borderColor: "rgb(0, 0, 0)",
-      backgroundColor: "rgba(0, 0, 0, 0.8)",
-    },
-    {
-      label: "fact",
-      data: [0,10, 12, 13, 15, 18, 10, 12, 15, 10, 12],
-
-      // data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-      borderColor: "#FF6B08",
-      backgroundColor: "#FF6B08",
-    },
-  ],
-};
 
 const TrainingPage = () => {
   const trainingBooks = useSelector(getTrainingBooks);
   const infoTraining = useSelector((state) => state.training);
+  const loggedIn = useSelector(getIsLoggedIn);
+  const books = useSelector(getTrainingBooks);
+  const booksCurrentlyReading = useSelector(getBooksCurrentlyReadingState);
   // const error=useSelector(getError);
   const isTrain = useSelector(getIsTrain);
-
+  const duration = useSelector(getDurationPeriod);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -103,40 +65,11 @@ const TrainingPage = () => {
       dispatch(resetTrain());
     }
   }, [trainingBooks]);
-
-  // .map((book) => book.pagesTotal - book.pagesFinished)
-  // .reduce((num, sum) => (sum += num), 0);
-
-  // {
-  //   Boolean(trainingBooks.length) && pages === 0 && dispatch(resetTrain());
-  // }
+ 
 
   useEffect(() => {
     isTrain && dispatch(getPlaningTraining());
   }, [isTrain]);
-
-  const duration = useSelector(getDurationPeriod);
-  for (let i = 0; i < duration; i += 1) {
-    labels[i] = i;
-  }
-  // console.log(labels);
-
-  const loggedIn = useSelector(getIsLoggedIn);
-  const books = useSelector(getTrainingBooks);
-  const booksCurrentlyReading = useSelector(getBooksCurrentlyReadingState);
-
-  console.log(
-    "Boolean(booksCurrentlyReading.length)>>>>",
-    Boolean(booksCurrentlyReading.length),
-    booksCurrentlyReading
-  );
-  console.log(
-    "Boolean(trainingBooks.length)>>>>",
-    Boolean(trainingBooks.length),
-    trainingBooks
-  );
-
-  //const isTrain=Boolean(booksCurrentlyReading.length)//&&Boolean(trainingBooks.length)
 
   loggedIn &&
     useEffect(() => {
@@ -146,7 +79,7 @@ const TrainingPage = () => {
   return (
     <div className={s.TrainingPage}>
       {isTrain && <Timer />}
-      {!isTrain && <MyTrainingPlaining />}
+      <MyTrainingPlaining />
       {isTrain && (
         <BookInfoList
           booksLibrary={infoTraining.books}
@@ -154,8 +87,7 @@ const TrainingPage = () => {
           review={0}
         />
       )}
-      <MyPurposeToRead books={books} isTrain={isTrain} />
-      <Line options={options} data={data} />
+      <MyPurposeToRead books={books} isTrain={isTrain} />  
       {isTrain && <StatisticsResults />}
     </div>
   );

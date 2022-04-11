@@ -18,6 +18,7 @@ import {
 import BookInfoList from "../BookInfoList/BookInfoList";
 import {
   getEndDate,
+  getIsTrain,
   getStartDate,
   getTrainingBooks,
 } from "../../redux/training/trainingSelectors";
@@ -27,6 +28,7 @@ import { addPlaningTraining } from "../../redux/training/trainingOperations";
 import { Formik } from "formik";
 import PurposeToReadList from "../PurposeToReadList/PurposeToReadList";
 import ReadListWithCheckBox from "../ReadListWithCheckBox/ReadListWithCheckBox";
+import ChartLine from "../ChartLine/ChartLine";
 
 const MyTrainingPlaining = () => {
   const booksLibrary = useSelector(getBooksGoingToReadState);
@@ -34,6 +36,7 @@ const MyTrainingPlaining = () => {
   const startDate = useSelector(getStartDate);
   const endDate = useSelector(getEndDate);
   const lang = useSelector(getLang);
+  const isTrain = useSelector(getIsTrain);
   const { training, startTraining, btn } = langOptionsMyTrainPlan;
 
   const [startDateOrigin, setStartDateOrigin] = useState(new Date());
@@ -104,13 +107,16 @@ const MyTrainingPlaining = () => {
     );
   };
 
+  
+
   // console.log("bookForTraining>>>", bookForTraining);
   // console.log("curReadBooks>>>", curReadBooks);
   // console.log("books>>>", books);
   // console.log("valueIdBook>>>", valueIdBook);
 
   return (
-    <form onSubmit={handleSubmitBookForRead}>
+    <>
+    {!isTrain&& <form onSubmit={handleSubmitBookForRead}>
       <h2>{training[lang]}</h2>
       <div className={s.datePicker}>
         <DatePicker
@@ -161,7 +167,14 @@ const MyTrainingPlaining = () => {
           {startTraining[lang]}
         </button>
       )}
-    </form>
+    </form>}
+<div>
+    <ChartLine curReadBooks={curReadBooks} />
+
+</div>
+    </>
+   
+    
   );
 };
 
