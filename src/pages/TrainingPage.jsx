@@ -71,13 +71,6 @@ const TrainingPage = () => {
           <MyPurposeToRead books={trainingBooks} isTrain={isTrain} />
 
           <MyTrainingPlaining />
-          {isTrain && (
-            <ReadListWithCheckBox
-              booksLibrary={trainingBooks}
-              colorIcon="grey"
-              review={0}
-            />
-          )}
 
           {isTrain && <StatisticsResults />}
           {/* лист с чекбоксом после прописания логики можно удалить */}

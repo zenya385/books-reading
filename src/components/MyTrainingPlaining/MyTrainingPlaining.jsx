@@ -236,7 +236,7 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
             />
           </div>
           <select
-            disabled={bookForTraining.length ? false : true}
+            disabled={bookForTraining.length && !isTrain ? false : true}
             onChange={handleChangeValue}
             className={s.select}
           >
@@ -247,7 +247,11 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
               </option>
             ))}
           </select>
-          <button className={s.submitBtn} type="submit">
+          <button
+            className={s.submitBtn}
+            disabled={!isTrain ? false : true}
+            type="submit"
+          >
             {btn[lang]}
           </button>
         </form>
@@ -266,15 +270,21 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
           <BsPlusLg style={{ width: "18px", height: "18px" }} />
         </button>
       </MediaQuery>
-      {isCurReadBooks && (
+      {isCurReadBooks && !isTrain && (
         <PurposeToReadList
           booksLibrary={curReadBooks}
           colorIcon="grey"
           review={0}
         />
       )}
-
-      {isCurReadBooks && (
+      {isTrain && (
+        <ReadListWithCheckBox
+          booksLibrary={books}
+          colorIcon="grey"
+          review={0}
+        />
+      )}
+      {isCurReadBooks && !isTrain && (
         <button
           type="submit"
           className={s.startTrainingBtn}

@@ -94,4 +94,8 @@
 		height: 42px;
 		margin-right: 20px;
 		margin-bottom: 40px;
+		@media screen and (min-width: 1280px) {
+			width: 669px;
+		margin-right: 46px;
+		}
 }
