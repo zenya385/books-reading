@@ -63,40 +63,42 @@ const TimerLogicOfGoals = () => {
       backgroundColor:
         theme === "light" ? "white" : "var(--dark-header)",  
     }}>
+      <p className={s.boxText}>До досягнення мети залишилось</p>
+
       <div className={s.dateGroup}>
-        <div className={classnames(s.date, s.days)} style={{
+        <div className={s.date} style={{
       color:
         theme === "light" ? "#091e3f" : "var(--dark-text)",  
-    }}>{`${time.days ||
-          "00"}`}</div>
+    }}>{`${time.days || "00"}`}</div>
         <div className={s.date} style={{
       color:
         theme === "light" ? "#091e3f" : "var(--dark-text)",  
     }}>{`:`}</div>
-        <div className={classnames(s.date, s.hours)} style={{
+        <div className={s.date} style={{
       color:
         theme === "light" ? "#091e3f" : "var(--dark-text)",  
-    }}>{`${time.hours ||
-          "00"}`}</div>
+    }}>{`${time.hours || "00"}`}</div>
         <div className={s.date} style={{
       color:
         theme === "light" ? "#091e3f" : "var(--dark-text)",  
     }}>{`:`}</div>
-        <div className={classnames(s.date, s.minutes)} style={{
-      color:
-        theme === "light" ? "#091e3f" : "var(--dark-text)",  
-    }}>{`${time.minutes ||
-          "00"}`}</div>
         <div className={s.date} style={{
       color:
         theme === "light" ? "#091e3f" : "var(--dark-text)",  
-    }}>{`:`}</div>
-        <div className={classnames(s.date, s.seconds)} style={{
+    }}>{`${time.minutes || "00"}`}</div>
+        <div className={s.date}style={{
       color:
         theme === "light" ? "#091e3f" : "var(--dark-text)",  
-    }}>{`${time.seconds ||
-          "00"}`}</div>
+    }}>{`:`}</div>
+        <div className={s.date}style={{
+      color:
+        theme === "light" ? "#091e3f" : "var(--dark-text)",  
+    }}>{`${time.seconds || "00"}`}</div>{" "}
       </div>
+      <span className={s.days}>ДН</span>
+      <span className={s.hours}>ГОД</span>
+      <span className={s.minutes}>ХВ</span>
+      <span className={s.seconds}>СЕК</span>
     </div>
   );
 };
