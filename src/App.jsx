@@ -30,13 +30,23 @@ export default function App() {
   GoogleLogin();
 
   useEffect(() => {
-    const err = authError;
-    // && authError.slice(0, -3);
-    console.log("err :>> ", err);
-    // if (err === 401)
-    //   //сплит через пробел абрать цыфры и привести к числу
-    //   dispatch(logout());
-  }, [trainError, booksError, authError]);
+    const errArrAuth = authError && authError.split(" ");
+    const Auth = errArrAuth && errArrAuth[errArrAuth.length - 1];
+    console.log("Auth", Auth);
+
+    const errArrTr = trainError && trainError.split(" ");
+    const Train = errArrTr && errArrTr[errArrTr.length - 1];
+    console.log("Train", Train);
+
+    const errArrBook = booksError && booksError.split(" ");
+    const Book = errArrBook && errArrBook[errArrBook.length - 1];
+    console.log("Book", Book);
+
+    if (Number(Auth) === 401 || Number(Train) === 401 || Number(Book) === 401) {
+      dispatch(logout());
+      // console.log("first");
+    }
+  }, [authError, trainError, booksError]);
 
   useEffect(() => {
     dispatch(getBooks());
@@ -52,7 +62,7 @@ export default function App() {
     // }}
     >
       <AppBar />
-      <Suspense fallback={<h1>Wait a second, please =</h1>}>
+      <Suspense fallback={<h1>Wait a second, please =)</h1>}>
         <Switch>
           <PublicRoute path="/register" redirectTo="/library" restricted>
             <RegisterPage />
