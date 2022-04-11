@@ -18,7 +18,7 @@ const SwitchLang = () => {
       name="lang"
       value={lang}
     >
-      <option value={"en"}>EN</option>
+      <option value={"en"}>ENG</option>
       <option value={"ua"}>УКР</option>
     </select>
   );

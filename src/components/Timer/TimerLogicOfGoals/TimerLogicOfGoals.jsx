@@ -5,11 +5,11 @@ import s from "./TimerLogicOfGoals.module.scss";
 import { getEndDate } from "../../../redux/training/trainingSelectors";
 import { getTheme } from "../../../redux/theme/themeSelector";
 import { getLang } from "../../../redux/lang/langSelector";
-import { langOptionsTimerLogicOf } from "../../../assets/langOptionsTimerLogicOf";
+import { langOptionsTimerLogicOfGoals } from "../../../assets/langOptionsTimerLogicOfGoals.jsx";
 
 const TimerLogicOfGoals = () => {
   const lang = useSelector(getLang);
-  const { dayL, hourL, minL, secL } = langOptionsTimerLogicOf;
+  const { titleL, dayL, hourL, minL, secL } = langOptionsTimerLogicOfGoals;
   const endDate = useSelector(getEndDate);
   const oneDay = 86400000;
   const goal = new Date(endDate).getTime();
@@ -62,46 +62,62 @@ const TimerLogicOfGoals = () => {
   const theme = useSelector(getTheme);
   console.log(time);
   return (
-    <div className={s.box} style={{
-      backgroundColor:
-        theme === "light" ? "white" : "var(--dark-header)",  
-    }}>
-      <p className={s.boxText}>До досягнення мети залишилось</p>
+    <div
+      className={s.box}
+      style={{
+        backgroundColor: theme === "light" ? "white" : "var(--dark-header)",
+      }}
+    >
+      <p className={s.boxText}>{titleL[lang]}</p>
 
       <div className={s.dateGroup}>
-        <div className={s.date} style={{
-      color:
-        theme === "light" ? "#091e3f" : "var(--dark-text)",  
-    }}>{`${time.days || "00"}`}</div>
-        <div className={s.date} style={{
-      color:
-        theme === "light" ? "#091e3f" : "var(--dark-text)",  
-    }}>{`:`}</div>
-        <div className={s.date} style={{
-      color:
-        theme === "light" ? "#091e3f" : "var(--dark-text)",  
-    }}>{`${time.hours || "00"}`}</div>
-        <div className={s.date} style={{
-      color:
-        theme === "light" ? "#091e3f" : "var(--dark-text)",  
-    }}>{`:`}</div>
-        <div className={s.date} style={{
-      color:
-        theme === "light" ? "#091e3f" : "var(--dark-text)",  
-    }}>{`${time.minutes || "00"}`}</div>
-        <div className={s.date}style={{
-      color:
-        theme === "light" ? "#091e3f" : "var(--dark-text)",  
-    }}>{`:`}</div>
-        <div className={s.date}style={{
-      color:
-        theme === "light" ? "#091e3f" : "var(--dark-text)",  
-    }}>{`${time.seconds || "00"}`}</div>{" "}
+        <div
+          className={s.date}
+          style={{
+            color: theme === "light" ? "#091e3f" : "var(--dark-text)",
+          }}
+        >{`${time.days || "00"}`}</div>
+        <div
+          className={s.date}
+          style={{
+            color: theme === "light" ? "#091e3f" : "var(--dark-text)",
+          }}
+        >{`:`}</div>
+        <div
+          className={s.date}
+          style={{
+            color: theme === "light" ? "#091e3f" : "var(--dark-text)",
+          }}
+        >{`${time.hours || "00"}`}</div>
+        <div
+          className={s.date}
+          style={{
+            color: theme === "light" ? "#091e3f" : "var(--dark-text)",
+          }}
+        >{`:`}</div>
+        <div
+          className={s.date}
+          style={{
+            color: theme === "light" ? "#091e3f" : "var(--dark-text)",
+          }}
+        >{`${time.minutes || "00"}`}</div>
+        <div
+          className={s.date}
+          style={{
+            color: theme === "light" ? "#091e3f" : "var(--dark-text)",
+          }}
+        >{`:`}</div>
+        <div
+          className={s.date}
+          style={{
+            color: theme === "light" ? "#091e3f" : "var(--dark-text)",
+          }}
+        >{`${time.seconds || "00"}`}</div>{" "}
       </div>
-      <span className={s.days}>ДН</span>
-      <span className={s.hours}>ГОД</span>
-      <span className={s.minutes}>ХВ</span>
-      <span className={s.seconds}>СЕК</span>
+      <span className={s.days}>{dayL[lang]}</span>
+      <span className={s.hours}>{hourL[lang]}</span>
+      <span className={s.minutes}>{minL[lang]}</span>
+      <span className={s.seconds}>{secL[lang]}</span>
     </div>
   );
 };
