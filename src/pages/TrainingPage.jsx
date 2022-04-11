@@ -82,18 +82,13 @@ const TrainingPage = () => {
       <MediaQuery maxWidth={1279}>
         <div className={s.TrainingPage}>
           {isTrain && <Timer />}
+
           <MyPurposeToRead books={trainingBooks} isTrain={isTrain} />
+
           <MyTrainingPlaining />
-          {isTrain && (
-            <ReadListWithCheckBox
-              booksLibrary={trainingBooks}
-              colorIcon="grey"
-              review={0}
-            />
-          )}
-          {/* лист с чекбоксом после прописания логики можно удалить */}
 
           {isTrain && <StatisticsResults />}
+          {/* лист с чекбоксом после прописания логики можно удалить */}
         </div>
       </MediaQuery>
       <MediaQuery minWidth={1280}>
@@ -101,13 +96,7 @@ const TrainingPage = () => {
           <div className={s.timerTrainingLine}>
             {isTrain && <Timer />}
             <MyTrainingPlaining />
-            {isTrain && (
-              <ReadListWithCheckBox
-                booksLibrary={trainingBooks}
-                colorIcon="grey"
-                review={0}
-              />
-            )}
+
             {/* лист с чекбоксом после прописания логики можно удалить */}
           </div>
           <div className={s.statisticMeta}>
