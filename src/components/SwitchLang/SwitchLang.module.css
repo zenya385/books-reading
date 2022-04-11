@@ -19,4 +19,6 @@
   background-color: inherit;
   border-radius: 3px;
   border: 1px solid inherit;
+  position: absolute;
+  right: 200px;
 }

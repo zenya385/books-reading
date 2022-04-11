@@ -6,6 +6,7 @@ import styles from "./UserMenu.module.scss";
 import Icons from "../../images/symbol-defs.svg";
 import { getLang } from "../../redux/lang/langSelector";
 import { langOptionsUserMenu } from "../../assets/langOptionsUserMenu";
+// import { setLabels } from "react-chartjs-2/dist/utils";
 
 export function UserMenu() {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ export function UserMenu() {
           <use xlinkHref={`${Icons}#icon-icon-home`} />
         </svg>
       </NavLink>
+
       <span className={styles.line}></span>
       <button
         type="button"
