@@ -25,26 +25,12 @@
 .itemLineWrepper {
     width: 100%;
     margin: 0 auto;
-    height: 130px;
-    overflow-y: scroll;
+    height: 40px;
+    
    
     
 }
-.itemLineWrepper::-webkit-scrollbar {
-    width: 5px;
-    background: rgba(177, 181, 194, 0.25);;
-}
 
-.itemLineWrepper::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background-color: var(--secondary-bg-color);
-}
-
-.itemLineWrepper::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    background: rgba(177, 181, 194, 0.25);
-}
 
 .itemLine {
     width: 100%;
