@@ -10,6 +10,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { getTheme } from "./redux/theme/themeSelector";
 import { Redirect } from "react-router-dom";
 import { getBooks } from "./redux/books/booksOperations";
+import { getError } from "./redux/training/trainingSelectors";
+import { getIsError } from "./redux/books/booksSelectors";
+import { getIsErrorAuth } from "./redux/auth/authSelectors";
+import { logout } from "./redux/auth/authOperations";
 
 const LoginPage = lazy(() => import("./pages/LoginPage.jsx"));
 const RegisterPage = lazy(() => import("./pages/RegisterPage.jsx"));
@@ -19,14 +23,20 @@ const TrainingPage = lazy(() => import("./pages/TrainingPage.jsx"));
 export default function App() {
   const dispatch = useDispatch();
   const theme = useSelector(getTheme);
+  const trainError = useSelector(getError);
+  const booksError = useSelector(getIsError);
+  const authError = useSelector(getIsErrorAuth);
 
   GoogleLogin();
 
-  //   useEffect(() => {
-  //    if err = 401     сплит через пробел абрать цыфры и привести к числу
-  //    dispatch(logaut());
-
-  //  }, [eror1...]);
+  useEffect(() => {
+    const err = authError;
+    // && authError.slice(0, -3);
+    console.log("err :>> ", err);
+    // if (err === 401)
+    //   //сплит через пробел абрать цыфры и привести к числу
+    //   dispatch(logout());
+  }, [trainError, booksError, authError]);
 
   useEffect(() => {
     dispatch(getBooks());

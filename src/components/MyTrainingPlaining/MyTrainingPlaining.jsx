@@ -194,7 +194,7 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
 
   const handleSubmitBookForTraining = (e) => {
     e.preventDefault();
-    console.log(books);
+    // console.log(books);
     // onHandleClose();
     dispatch(
       addPlaningTraining({
@@ -205,8 +205,8 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
     );
   };
 
-  console.log("bookForTraining>>>", bookForTraining);
-  console.log("curReadBooks>>>", curReadBooks);
+  // console.log("bookForTraining>>>", bookForTraining);
+  // console.log("curReadBooks>>>", curReadBooks);
   // console.log("books>>>", books);
   // console.log("valueIdBook>>>", valueIdBook);
   const isCurReadBooks = Boolean(curReadBooks.length);
