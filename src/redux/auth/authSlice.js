@@ -104,7 +104,7 @@ const authSlice = createSlice({
     [getBooks.fulfilled](state, { payload }) {
       state.user.name = payload.name;
       state.user.email = payload.email;
-      // state.isLoggedIn = true;
+      state.isLoggedIn = true;
     },
   },
 });

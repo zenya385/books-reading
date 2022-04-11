@@ -6,12 +6,14 @@ import styles from "./UserMenu.module.scss";
 import Icons from "../../images/symbol-defs.svg";
 import { getLang } from "../../redux/lang/langSelector";
 import { langOptionsUserMenu } from "../../assets/langOptionsUserMenu";
-// import { setLabels } from "react-chartjs-2/dist/utils";
+import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 export function UserMenu() {
   const dispatch = useDispatch();
   const lang = useSelector(getLang);
   const { btn } = langOptionsUserMenu;
+  const history = useHistory();
 
   return (
     <div className={styles.user_menu}>
@@ -35,13 +37,15 @@ export function UserMenu() {
       </NavLink>
 
       <span className={styles.line}></span>
-      <button
+
+      <Link
+        to="/login"
         type="button"
         className={styles.logout_btb}
         onClick={(e) => dispatch(logout())}
       >
         {btn[lang]}
-      </button>
+      </Link>
     </div>
   );
 }

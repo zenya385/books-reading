@@ -120,6 +120,28 @@
         }
 }
 .textAreaDescr {
+    position: relative;
     display: flex;
     flex-direction: column;
+}
+
+.errorMessage {
+    position: absolute;
+    top: -10%;
+    left: 25%;
+    font-weight: 500;
+    font-size: 18px;
+    color: red;
+    text-align: center;
+    font-style: italic;
+}
+.errorMessageReview {
+    position: absolute;
+    top: 20%;
+    left: 25%;
+    font-weight: 500;
+    font-size: 18px;
+    color: red;
+    text-align: center;
+    font-style: italic;
 }

@@ -1,10 +1,14 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { langOptionsStatistics } from "../../../assets/langOptionsStatistics";
+import { getLang } from "../../../redux/lang/langSelector";
 import { getStats } from "../../../redux/training/trainingSelectors";
 import s from "./Statisctics.module.scss";
 
 const Statistics = () => {
-  const arr = useSelector(getStats); 
+  const arr = useSelector(getStats);
+  const lang = useSelector(getLang);
+  const { pages } = langOptionsStatistics;
 
   const func = (num) => {
     if (num < 10) {
@@ -29,7 +33,8 @@ const Statistics = () => {
             {func(JSON.stringify(new Date(stat.time).getSeconds()))}
           </p>
           <p className={s.stat_pages_text}>
-            {stat.pagesCount} <span className="stat_pages_span">стор.</span>{" "}
+            {stat.pagesCount}{" "}
+            <span className="stat_pages_span">{pages[lang]}</span>{" "}
           </p>
         </li>
       ))}

@@ -91,3 +91,13 @@
         height: 42px;
     }
 }
+.errorMessage {
+    position: absolute;
+    top: 100%;
+    right: 15%;
+    font-weight: 500;
+    font-size: 15px;
+    color: red;
+    text-align: center;
+    font-style: italic;
+}
