@@ -1,8 +1,14 @@
 .switch_theme_div {
   position: absolute;
-  right: 90px;
+  right: 150px;
   top: 17px;
-  @media screen and (max-width: 768px) {
-    visibility: hidden;
+  @media screen and (min-width: 480px) {
+    right: 175px;
+  }
+  @media screen and (min-width: 768px) {
+    right: 147px;
+  }
+  @media screen and (min-width: 1280px) {
+    right: 147px;
   }
 }
