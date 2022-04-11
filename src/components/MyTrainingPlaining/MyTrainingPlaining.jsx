@@ -25,7 +25,8 @@ import { getLang } from "../../redux/lang/langSelector";
 import { langOptionsMyTrainPlan } from "../../assets/langOptionsMyTrainPlan";
 import { addPlaningTraining } from "../../redux/training/trainingOperations";
 import PurposeToReadList from "../PurposeToRead/PurposeToRead";
-import { ErrorMessage } from "formik";
+import PurposeToReadList from "../PurposeToReadList/PurposeToReadList";
+import ReadListWithCheckBox from "../ReadListWithCheckBox/ReadListWithCheckBox";
 
 const MyTrainingPlaining = () => {
   const booksLibrary = useSelector(getBooksGoingToReadState);
@@ -140,6 +141,15 @@ const MyTrainingPlaining = () => {
           <button type="submit"> {btn[lang]}</button>
         </>
       )}
+      {/* лист с чекбоксом после прописания логики можно удалить */}
+
+      {/* {Boolean(curReadBooks.length) && (
+        <ReadListWithCheckBox
+          booksLibrary={curReadBooks}
+          colorIcon="grey"
+          review={0}
+        />
+      )} */}
       {Boolean(curReadBooks.length) && (
         <PurposeToReadList
           booksLibrary={curReadBooks}

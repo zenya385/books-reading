@@ -1,5 +1,5 @@
 import React from "react";
-import s from "./PurposeToRead.module.scss";
+import s from "./PurposeToReadList.module.scss";
 import MediaQuery from "react-responsive";
 import Icons from "../../images/symbol-defs.svg";
 import { getTheme } from "../../redux/theme/themeSelector";

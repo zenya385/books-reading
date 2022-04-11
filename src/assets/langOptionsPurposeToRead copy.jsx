@@ -1,4 +1,4 @@
-export const langOptionsMyPurposeToRead = {
+export const langOptionsPurposeToRead = {
   title: {
     ua: "Назва книги",
     en: "Book title",
