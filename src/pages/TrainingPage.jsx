@@ -81,13 +81,7 @@ const TrainingPage = () => {
           <div className={s.timerTrainingLine}>
             {isTrain && <Timer />}
             <MyTrainingPlaining />
-            {isTrain && (
-              <ReadListWithCheckBox
-                booksLibrary={trainingBooks}
-                colorIcon="grey"
-                review={0}
-              />
-            )}
+
             {/* лист с чекбоксом после прописания логики можно удалить */}
           </div>
           <div className={s.statisticMeta}>
