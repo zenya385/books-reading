@@ -96,7 +96,12 @@ export const data = {
     },
   ],
 };
-
+const curDate = new Date();
+const nextDay = [
+  curDate.getFullYear(),
+  curDate.getMonth(),
+  curDate.getDate() + 1,
+];
 const MyTrainingPlaining = ({ onHandleClose }) => {
   const booksLibrary = useSelector(getBooksGoingToReadState);
   const books = useSelector(getTrainingBooks);
@@ -107,7 +112,7 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
   const { training, startTraining, btn } = langOptionsMyTrainPlan;
 
   const [startDateOrigin, setStartDateOrigin] = useState(new Date());
-  const [endDateOrigin, setEndDateOrigin] = useState(new Date());
+  const [endDateOrigin, setEndDateOrigin] = useState(new Date(...nextDay));
   const [curReadBooks, setCurReadBooks] = useState([]);
   const [bookForTraining, setBookForTraining] = useState(booksLibrary);
   const [valueIdBook, setValueIdBook] = useState("default");
@@ -121,6 +126,10 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
   const onModalClose = (e) => {
     setModalOpen(false);
   };
+
+  useEffect(() => {
+    isTrain && setCurReadBooks([]);
+  }, [isTrain]);
 
   useEffect(() => {
     dispatch(
@@ -215,6 +224,7 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
             <DatePicker
               dateFormat="dd.MM.yyyy"
               selected={startDateOrigin}
+              disabled
               onChange={(date) => setStartDateOrigin(date)}
               className={s.datePickerInput}
             />

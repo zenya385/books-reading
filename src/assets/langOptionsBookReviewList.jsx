@@ -1,4 +1,8 @@
-export const langOptionsPurposeToRead = {
+export const langOptionsBookReviewList = {
+  done: {
+    ua: "Прочитано",
+    en: "Already read",
+  },
   title: {
     ua: "Назва книги",
     en: "Book title",
@@ -14,5 +18,9 @@ export const langOptionsPurposeToRead = {
   pagesTotal: {
     ua: "Стор.",
     en: "Pages",
+  },
+  rating: {
+    ua: "Рейтинг",
+    en: "Rating",
   },
 };

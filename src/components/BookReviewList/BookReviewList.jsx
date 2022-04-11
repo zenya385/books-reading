@@ -3,10 +3,21 @@ import BookReviewItem from "../BookReviewItem/BookReviewItem";
 import s from "./BookReviewList.module.scss";
 import MediaQuery from "react-responsive";
 import { getBooks } from "../../redux/books/booksOperations";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getLang } from "../../redux/lang/langSelector";
+import { langOptionsBookReviewList } from "../../assets/langOptionsBookReviewList";
 
 const BookReviewList = ({ booksLibrary, colorIcon, review }) => {
   const dispatch = useDispatch();
+  const lang = useSelector(getLang);
+  const {
+    done,
+    title,
+    author,
+    publishYear,
+    pagesTotal,
+    rating,
+  } = langOptionsBookReviewList;
 
   useEffect(() => {
     dispatch(getBooks());
@@ -16,15 +27,15 @@ const BookReviewList = ({ booksLibrary, colorIcon, review }) => {
     <div>
       <div>
         <ul className={s.bookList}>
-          <h2>Прочитано</h2>
+          <h2>{done[lang]}</h2>
           <MediaQuery minWidth={768}>
             <div className={s.bookInfo}>
-              <p className={s.title}>Назва книги</p>
+              <p className={s.title}>{title[lang]}</p>
 
-              <p className={s.author}>Автор</p>
-              <p className={s.year}>Рік</p>
-              <p className={s.page}>Стор.</p>
-              <p className={s.bookInfoText}>Рейтинг</p>
+              <p className={s.author}>{author[lang]}</p>
+              <p className={s.year}>{publishYear[lang]}</p>
+              <p className={s.page}>{pagesTotal[lang]}</p>
+              <p className={s.bookInfoText}>{rating[lang]}</p>
             </div>
           </MediaQuery>
           {booksLibrary.map((book) => (
