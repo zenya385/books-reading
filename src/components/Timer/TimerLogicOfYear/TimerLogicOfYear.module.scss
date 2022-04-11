@@ -27,13 +27,53 @@
   position: relative;
 }
 
-.days:before,
-.hours:before,
-.minutes:before,
-.seconds:before {
+.days {
+  display: inline-block;
   position: absolute;
-  top: 25px;
-  left: 50%;
+  top: 30px;
+  left: 21%;
+  transform: translateX(-50%);
+
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 3.8;
+
+  color: #898f9f;
+}
+.hours {
+  display: inline-block;
+  position: absolute;
+  top: 30px;
+  left: 43%;
+  transform: translateX(-50%);
+
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 3.8;
+
+  color: #898f9f;
+}
+.minutes {
+  display: inline-block;
+  position: absolute;
+  top: 30px;
+  left: 62%;
+  transform: translateX(-50%);
+
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 3.8;
+
+  color: #898f9f;
+}
+.seconds {
+  display: inline-block;
+  position: absolute;
+  top: 30px;
+  left: 81%;
   transform: translateX(-50%);
 
   font-family: Montserrat;
@@ -44,28 +84,28 @@
   color: #898f9f;
 }
 
-.days:before {
-  content: "ДН";
-}
+// .days:before {
+//   content: "ДН";
+// }
 
-.hours:before {
-  content: "ГОД";
-}
+// .hours:before {
+//   content: "ГОД";
+// }
 
-.minutes:before {
-  content: "ХВ";
-}
+// .minutes:before {
+//   content: "ХВ";
+// }
 
-.seconds:before {
-  content: "СЕК";
-}
+// .seconds:before {
+//   content: "СЕК";
+// }
 
 .box {
   position: relative;
   padding: 5px;
   width: 290px;
   height: 60px;
-
+  margin-bottom: 50px;
   background-color: white;
   box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
 
@@ -77,17 +117,17 @@
     margin-right: 70px;
   }
   @media screen and (min-width: 1280px) {
+    margin-bottom: 0;
   }
 }
 
-.box::before {
-  content: "До закінчення року залишилось";
-
+.boxText {
+  display: inline-block;
   position: absolute;
   top: -38px;
-  left: 60%;
+  left: 55%;
   transform: translateX(-50%);
-
+  
   line-height: 2.71;
   font-size: 14px;
   font-weight: 500;

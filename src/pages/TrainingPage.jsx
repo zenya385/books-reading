@@ -1,14 +1,5 @@
 import React, { useEffect } from "react";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
+
 import { Line } from "react-chartjs-2";
 import { useDispatch, useSelector } from "react-redux";
 import { getIsLoggedIn } from "../redux/auth/authSelectors";
@@ -30,18 +21,9 @@ import { getPlaningTraining } from "../redux/training/trainingOperations";
 import BookInfoList from "../components/BookInfoList/BookInfoList";
 import { useHistory } from "react-router-dom";
 import { resetTrain } from "../redux/training/trainingSlice";
-import ChartLine, { data, options } from "../components/ChartLine/ChartLine";
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-);
-
+import MediaQuery from "react-responsive";
+import ReadListWithCheckBox from "../components/ReadListWithCheckBox/ReadListWithCheckBox";
+import AddTrainingModal from "../components/AddTrainingModal/AddTrainingModal";
 
 const TrainingPage = () => {
   const trainingBooks = useSelector(getTrainingBooks);
@@ -55,13 +37,13 @@ const TrainingPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("UseEffect")
-    dispatch(getBooks())
+    console.log("UseEffect");
+    dispatch(getBooks());
     if (!trainingBooks.length) return;
     const { pagesTotal, pagesFinished } = trainingBooks[
       trainingBooks.length - 1
     ];
-    if (pagesTotal-pagesFinished  <= 0) {
+    if (pagesTotal - pagesFinished <= 0) {
       dispatch(resetTrain());
     }
   }, [trainingBooks]);
@@ -71,25 +53,75 @@ const TrainingPage = () => {
     isTrain && dispatch(getPlaningTraining());
   }, [isTrain]);
 
+  const duration = useSelector(getDurationPeriod);
+  // for (let i = 0; i < duration; i += 1) {
+  //   labels[i] = i;
+  // }
+  // console.log(labels);
+
+  const loggedIn = useSelector(getIsLoggedIn);
+  const books = useSelector(getTrainingBooks);
+  const booksCurrentlyReading = useSelector(getBooksCurrentlyReadingState);
+
+  console.log(
+    "Boolean(booksCurrentlyReading.length)>>>>",
+    Boolean(booksCurrentlyReading.length),
+    booksCurrentlyReading
+  );
+  console.log(
+    "Boolean(trainingBooks.length)>>>>",
+    Boolean(trainingBooks.length),
+    trainingBooks
+  );
+
+  //const isTrain=Boolean(booksCurrentlyReading.length)//&&Boolean(trainingBooks.length)
+
   loggedIn &&
     useEffect(() => {
       dispatch(getBooks());
     }, []);
 
   return (
-    <div className={s.TrainingPage}>
-      {isTrain && <Timer />}
-      <MyTrainingPlaining />
-      {isTrain && (
-        <BookInfoList
-          booksLibrary={infoTraining.books}
-          colorIcon="grey"
-          review={0}
-        />
-      )}
-      <MyPurposeToRead books={books} isTrain={isTrain} />  
-      {isTrain && <StatisticsResults />}
-    </div>
+    <>
+      <MediaQuery maxWidth={1279}>
+        <div className={s.TrainingPage}>
+          {isTrain && <Timer />}
+          <MyPurposeToRead books={books} isTrain={isTrain} />
+          {!isTrain && <MyTrainingPlaining />}
+          {isTrain && (
+            <ReadListWithCheckBox
+              booksLibrary={infoTraining.books}
+              colorIcon="grey"
+              review={0}
+            />
+          )}
+          {/* лист с чекбоксом после прописания логики можно удалить */}
+
+          {isTrain && <StatisticsResults />}
+        </div>
+      </MediaQuery>
+
+      <MediaQuery minWidth={1280}>
+        <div className={s.TrainingPage}>
+          <div className={s.timerTrainingLine}>
+            {isTrain && <Timer />}
+            {!isTrain && <MyTrainingPlaining />}
+            {isTrain && (
+              <ReadListWithCheckBox
+                booksLibrary={infoTraining.books}
+                colorIcon="grey"
+                review={0}
+              />
+            )}
+            {/* лист с чекбоксом после прописания логики можно удалить */}
+          </div>
+          <div className={s.statisticMeta}>
+            <MyPurposeToRead books={books} isTrain={isTrain} />
+            {isTrain && <StatisticsResults />}
+          </div>
+        </div>
+      </MediaQuery>
+    </>
   );
 };
 
