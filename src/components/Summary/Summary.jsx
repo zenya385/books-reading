@@ -11,7 +11,7 @@ import MediaQuery from "react-responsive";
 const Summary = ({ bookId, rating, feedback }) => {
   const [modalOpen, setModalOpen] = React.useState(false);
   // const [bookId, setBookId] = React.useState(null);
-  const [retingValue, setRetingValue] = React.useState(null);
+  // const [retingValue, setRetingValue] = React.useState(null);
   const lang = useSelector(getLang);
   const { resume } = langOptionsSummary;
 
@@ -34,13 +34,23 @@ const Summary = ({ bookId, rating, feedback }) => {
         <div className={s.wrapper}>
           <div className={s.ratingWrepper}>
             <p className={s.ratingText}>Рейтинг : </p>
-            <Rating
-              name="half-rating-read"
-              size="small"
-              value={rating}
-              precision={0.5}
-              readOnly
-            />
+            {rating ? (
+              <Rating
+                name="half-rating-read"
+                size="small"
+                value={rating}
+                precision={0.5}
+                readOnly
+              />
+            ) : (
+              <Rating
+                name="half-rating-read"
+                size="small"
+                value={0}
+                precision={0.5}
+                readOnly
+              />
+            )}
           </div>
           <div className={s.reviewBtnWrepper}>
             <button onClick={onModalOpen} className={s.reviewBtn}>
