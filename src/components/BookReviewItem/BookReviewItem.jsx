@@ -54,25 +54,49 @@ const BookReviewItem = ({
       }}>{pagesTotal}</p>
           </div>
           <MediaQuery minWidth={1280}>
-            <Rating
-              name="half-rating-read"
-              size="large"
-              value={rating}
-              precision={0.5}
-              readOnly
-              className={s.ratingStar}
-            />
+            {rating ? (
+              <Rating
+                name="half-rating-read"
+                size="large"
+                value={rating}
+                precision={0.5}
+                readOnly
+                className={s.ratingStar}
+              />
+            ) : (
+              <Rating
+                name="half-rating-read"
+                size="large"
+                value={0}
+                precision={0.5}
+                readOnly
+                className={s.ratingStar}
+              />
+            )}
             <Summary bookId={bookId} rating={rating} feedback={feedback} />
           </MediaQuery>
           <MediaQuery minWidth={768} maxWidth={1279}>
-            <Rating
-              name="half-rating-read"
-              size="medium"
-              value={rating}
-              precision={0.5}
-              readOnly
-              className={s.ratingStar}
-            />
+            {rating ? (
+              <Rating
+                name="half-rating-read"
+                size="medium"
+                sizeMedium
+                value={rating}
+                precision={0.5}
+                readOnly
+                className={s.ratingStar}
+              />
+            ) : (
+              <Rating
+                name="half-rating-read"
+                size="medium"
+                sizeMedium
+                value={0}
+                precision={0.5}
+                readOnly
+                className={s.ratingStar}
+              />
+            )}
             <Summary bookId={bookId} rating={rating} feedback={feedback} />
           </MediaQuery>
         </li>

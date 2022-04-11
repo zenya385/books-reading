@@ -10,7 +10,7 @@ import { langOptionsBookInfoList } from "../../assets/langOptionsBookInfoList";
 import { getLang } from "../../redux/lang/langSelector";
 
 const BookInfoList = ({ booksLibrary, colorIcon, review }) => {
-  console.log(booksLibrary);
+  // console.log(booksLibrary);
   const theme = useSelector(getTheme);
   const lang = useSelector(getLang);
   const { title, author, publishYear, pagesTotal } = langOptionsBookInfoList;

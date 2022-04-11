@@ -141,9 +141,10 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
           />
         )}
 
-        {!booksIsLoading && booksGoingToRead.length === 0 && (
-          <InstructionModal />
-        )}
+        {!booksIsLoading &&
+          booksGoingToRead.length &&
+          booksCurrentlyReading.length &&
+          booksFinishedReading.length && <InstructionModal />}
 
         {/* {!booksIsLoading && booksGoingToRead.length === 0 && <SuccessModal />} */}
         {/* {!booksIsLoading && booksGoingToRead.length === 0 && <FailModal />} */}
