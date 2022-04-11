@@ -109,9 +109,9 @@ const LoginPage = () => {
       <div className={s.textLogin}>
         <p
           className={s.textFont}
-          // style={{
-          //   color: theme === "light" ? "black" : "white",
-          // }}
+          style={{
+            color: theme === "light" ? "var(--title-text-color)" : "white",
+          }}
         >
           {text[lang]}
         </p>

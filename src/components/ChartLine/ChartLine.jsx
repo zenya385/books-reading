@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import {
   getDurationPeriod,
   getIsTrain,
+  getStats,
 } from "../../redux/training/trainingSelectors";
 
 export const options = {
@@ -28,17 +29,20 @@ export const options = {
 };
 
 const ChartLine = ({ curReadBooks }) => {
+  const statsArr = useSelector(getStats);
   const isTrain = useSelector(getIsTrain);
   const duration = useSelector(getDurationPeriod);
+
+  console.log("statsArr", statsArr);
 
   let dateNow = new Date();
   const labels = [];
 
-  for (let i = 0; i <= duration; i += 1) {
+  for (let i = 0; i <= duration+1; i += 1) {
     let k = new Date(Date.now(dateNow) + i * (3600 * 1000 * 24));
     labels[i] = formatISO(new Date(k), { representation: "date" });
   }
-  
+
   const planData = [];
   let pages = 0;
 
@@ -48,11 +52,21 @@ const ChartLine = ({ curReadBooks }) => {
 
   let pagesForDay = Math.ceil(pages / duration);
 
-  for (let i = 0; i <= duration; i += 1) {
+  for (let i = 0; i <= duration+1; i += 1) {
     planData[i] = pagesForDay;
   }
 
-  const data = {
+  const factData = [0];
+//   const factData = statsArr.forEach((el) => {
+//       el.pagesCount
+//   });
+
+for (let i=0; i<statsArr.length;i+=1){
+    console.log('statsArr[i]', statsArr[i])
+    factData[i+1]= statsArr[i].pagesCount
+}
+console.log('factData', factData)
+const data = {
     labels,
     datasets: [
       {
@@ -63,7 +77,7 @@ const ChartLine = ({ curReadBooks }) => {
       },
       isTrain && {
         label: "fact",
-        data: [0, 10, 12, 13, 15, 18, 10, 12, 15, 10, 12],
+        data: factData,
         borderColor: "#FF6B08",
         backgroundColor: "#FF6B08",
       },

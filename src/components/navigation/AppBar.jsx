@@ -17,7 +17,7 @@ const AppBar = () => {
     <header
       className={styles.header}
       style={{
-        backgroundColor: theme === "light" ? "white" : "black",
+        backgroundColor: theme === "light" ? "white" : "var(--dark-header)",
         color: theme === "light" ? "black" : "white",
       }}
     >
@@ -27,9 +27,9 @@ const AppBar = () => {
           exact
           className={styles.link}
           activeClassName={styles.activLink}
-          // style={{
-          //   color: theme === "light" ? "black" : "white",
-          // }}
+          style={{
+            color: theme === "light" ? "black" : "white",
+          }}
         >
           BR
         </NavLink>
@@ -52,7 +52,7 @@ const AppBar = () => {
           <UserMenu />
         </div>
       )}
-      {/* <SwitchTheme /> */}
+      <SwitchTheme />
       <SwitchLang />
     </header>
   );

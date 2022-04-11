@@ -25,6 +25,7 @@ import {
 import { getLang } from "../../redux/lang/langSelector";
 import { langOptionsMyTrainPlan } from "../../assets/langOptionsMyTrainPlan";
 import { addPlaningTraining } from "../../redux/training/trainingOperations";
+import { getTheme } from "../../redux/theme/themeSelector";
 import { Formik } from "formik";
 import PurposeToReadList from "../PurposeToReadList/PurposeToReadList";
 import ReadListWithCheckBox from "../ReadListWithCheckBox/ReadListWithCheckBox";
@@ -54,48 +55,49 @@ ChartJS.register(
   Legend
 );
 
-export const options = {
-  backgroundColor: "#FF6B08",
-  cubicInterpolationMode: "monotone",
-  responsive: true,
-  plugins: {
-    legend: {
-      position: "top",
-      align: "end",
-      display: true,
-      labels: {
-        color: "rgb(255, 99, 132)",
-      },
-    },
-    title: {
-      display: false,
-      text: "Кількість сторінок за день",
-    },
-  },
-};
 
-let labels = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// export const options = {
+//   backgroundColor: "#FF6B08",
+//   cubicInterpolationMode: "monotone",
+//   responsive: true,
+//   plugins: {
+//     legend: {
+//       position: "top",
+//       align: "end",
+//       display: true,
+//       labels: {
+//         color: "rgb(255, 99, 132)",
+//       },
+//     },
+//     title: {
+//       display: false,
+//       text: "Кількість сторінок за день",
+//     },
+//   },
+// };
 
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: "plan",
-      data: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
-      // data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-      borderColor: "rgb(0, 0, 0)",
-      backgroundColor: "rgba(0, 0, 0, 0.8)",
-    },
-    {
-      label: "fact",
-      data: [0, 10, 12, 13, 15, 18, 10, 12, 15, 10, 12],
+// let labels = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-      // data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-      borderColor: "#FF6B08",
-      backgroundColor: "#FF6B08",
-    },
-  ],
-};
+// export const data = {
+//   labels,
+//   datasets: [
+//     {
+//       label: "plan",
+//       data: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
+//       // data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
+//       borderColor: "rgb(0, 0, 0)",
+//       backgroundColor: "rgba(0, 0, 0, 0.8)",
+//     },
+//     {
+//       label: "fact",
+//       data: [0, 10, 12, 13, 15, 18, 10, 12, 15, 10, 12],
+
+//       // data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
+//       borderColor: "#FF6B08",
+//       backgroundColor: "#FF6B08",
+//     },
+//   ],
+// };
 const curDate = new Date();
 const nextDay = [
   curDate.getFullYear(),
@@ -205,6 +207,8 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
     );
   };
 
+
+const theme = useSelector(getTheme);
   // console.log("bookForTraining>>>", bookForTraining);
   // console.log("curReadBooks>>>", curReadBooks);
   // console.log("books>>>", books);
@@ -212,14 +216,18 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
   const isCurReadBooks = Boolean(curReadBooks.length);
   const isBookForTraining = Boolean(bookForTraining.length);
   return (
+
     <>
       <MediaQuery minWidth={768}>
+
         {/* {!isTrain && ( */}
         <form
           className={isTrain ? s.visuallyHidden : s.form}
           onSubmit={handleSubmitBookForRead}
         >
-          <h2 className={s.title}>{training[lang]}</h2>
+          <h2 className={s.title} style={{
+      color: theme === "light" ? "var(--title-text-color)" : "white",
+    }}>{training[lang]}</h2>
           <div className={s.datePicker}>
             <DatePicker
               dateFormat="dd.MM.yyyy"
@@ -293,7 +301,7 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
           {startTraining[lang]}
         </button>
       )}
-      <ChartLine curReadBooks={curReadBooks} />
+      <ChartLine curReadBooks={!isTrain?curReadBooks:books} />
     </>
   );
 };
