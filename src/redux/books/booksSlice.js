@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  addPlaningTraining,
   // addPlaningTraning,
   getPlaningTraining,
 } from "../training/trainingOperations";
@@ -76,6 +77,11 @@ const booksSlice = createSlice({
       ...state,
       currentlyReading: payload.planning.books,
     }),
+
+    [addPlaningTraining.fulfilled]:(state,{payload})=>({
+      ...state,
+      currentlyReading: payload.books,
+    })
   },
 });
 

@@ -7,7 +7,8 @@ import { useSelector } from "react-redux";
 
 const PurposeToReadList = ({ booksLibrary, colorIcon, review }) => {
   const theme = useSelector(getTheme);
-
+  console.log('booksLibrary :>> ', booksLibrary);
+  
   return (
     <>
       <ul
@@ -27,10 +28,10 @@ const PurposeToReadList = ({ booksLibrary, colorIcon, review }) => {
           </div>
           <span className={s.bookInfoLine}></span>
         </MediaQuery>
-        {booksLibrary.map((book) => (
-          <div key={book._id} className={s.itemLineWrepper}>
+        {booksLibrary.length&& booksLibrary.map((book) => (
+          <div  className={s.itemLineWrepper}>
             <span className={s.itemLine}></span>
-            <li className={s.item} >
+            <li className={s.item} key={book._id}>
               <div className={s.iconTitle}>
                 <svg className={s.navIcon} width="22px" height="17px">
                   <use xlinkHref={`${Icons}#icon-flat-${colorIcon}`} />
