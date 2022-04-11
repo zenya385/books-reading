@@ -30,7 +30,7 @@ const ReadListWithCheckBox = ({ booksLibrary }) => {
         className={s.bookList}
         style={{
           backgroundColor:
-            theme === "light" ? "var(--light-theme)" : "var(--light-theme)",
+            theme === "light" ? "var(--light-theme)" : "var(--dark-theme)",
           color: theme === "light" ? "black" : "white",
         }}
       >
@@ -59,7 +59,9 @@ const ReadListWithCheckBox = ({ booksLibrary }) => {
 
                 {/* что ниже потом удалить */}
                 <div className={s.checkBox}></div>
-                <p className={s.bookTitle}>{book.title}</p>
+                <p className={s.bookTitle} style={{
+          color: theme === "light" ? "#242A37" : "#cecfd2",
+        }}>{book.title}</p>
               </div>
 
               <MediaQuery maxWidth={767}>
@@ -70,9 +72,15 @@ const ReadListWithCheckBox = ({ booksLibrary }) => {
                 </div>
               </MediaQuery>
               <div className={s.bookMoreInfo}>
-                <p className={s.bookMoreInfoAuthor}>{book.author}</p>
-                <p className={s.bookMoreInfoYear}>{book.publishYear}</p>
-                <p className={s.bookMoreInfoPage}>{book.pagesTotal}</p>
+                <p className={s.bookMoreInfoAuthor} style={{
+          color: theme === "light" ? "#242A37" : "#cecfd2",
+        }}>{book.author}</p>
+                <p className={s.bookMoreInfoYear} style={{
+          color: theme === "light" ? "#242A37" : "#cecfd2",
+        }}>{book.publishYear}</p>
+                <p className={s.bookMoreInfoPage} style={{
+          color: theme === "light" ? "#242A37" : "#cecfd2",
+        }}>{book.pagesTotal}</p>
               </div>
             </li>
           </div>
