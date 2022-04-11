@@ -85,7 +85,7 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
   const theme = useSelector(getTheme);
   return (
     <>
-      <section className={s.section}>
+      <section className={s.section} >
         <MediaQuery maxWidth={767}>
           <AddBookModal modalOpen={modalOpen} modalClose={onModalClose} />
         </MediaQuery>
