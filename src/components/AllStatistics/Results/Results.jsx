@@ -35,7 +35,7 @@ const Results = () => {
       const lastsPages = getIsValidPages({ trainingBooks });
       pages = Number(pages);
       if (pages > lastsPages) {
-        formik.setErrors({ pages: "Last only  " + lastsPages });
+        formik.setErrors({ pages: "Lasts only  " + lastsPages });
         return;
       }
       dispatch(
