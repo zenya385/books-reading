@@ -77,6 +77,8 @@ const TrainingPage = () => {
     }
   }, [isOpenModal]);
 
+  
+
   return (
     <>
       <MediaQuery maxWidth={1279}>
@@ -100,7 +102,7 @@ const TrainingPage = () => {
             {/* лист с чекбоксом после прописания логики можно удалить */}
           </div>
           <div className={s.statisticMeta}>
-            <MyPurposeToRead books={trainingBooks} isTrain={isTrain} />
+            <MyPurposeToRead books={trainingBooks} isTrain={isTrain}  />
             {isTrain && <StatisticsResults />}
           </div>
         </div>

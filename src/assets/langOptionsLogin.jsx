@@ -17,7 +17,7 @@ export const langOptionsLogin = {
   },
   text: {
     ua:
-      "Книги — это корабли мысли, странствующие по волнам времени и бережно несущие свой драгоценный груз от поколения к поколению.",
+      "Книги - це кораблі думки, що мандрують хвилями часу і дбайливо несуть свій дорогоцінний вантаж від покоління до покоління",
     en:
       "Books are ships of thought, traveling the waves of time and carefully carrying their precious cargo from generation to generation.",
   },
