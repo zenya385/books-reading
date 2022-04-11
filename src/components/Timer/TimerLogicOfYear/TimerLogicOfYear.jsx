@@ -4,6 +4,7 @@ import s from "./TimerLogicOfYear.module.scss";
 import { langOptionsTimerLogicOfYear } from "../../../assets/langOptionsTimerLogicOfYear";
 import { getLang } from "../../../redux/lang/langSelector";
 import { useSelector } from "react-redux";
+import { getTheme } from "../../../redux/theme/themeSelector";
 
 const TimerLogicOfYear = () => {
   const lang = useSelector(getLang);
@@ -59,17 +60,58 @@ const TimerLogicOfYear = () => {
     };
   }, []);
 
+  const theme = useSelector(getTheme);
   return (
-    <div className={s.box}>
+    <div
+      className={s.box}
+      style={{
+        backgroundColor: theme === "light" ? "white" : "var(--dark-header)",
+      }}
+    >
       <p className={s.boxText}>{titleL[lang]}</p>
       <div className={s.dateGroup}>
-        <div className={s.date}>{`${time.days || "00"}`}</div>
-        <div className={s.date}>{`:`}</div>
-        <div className={s.date}>{`${time.hours || "00"}`}</div>
-        <div className={s.date}>{`:`}</div>
-        <div className={s.date}>{`${time.minutes || "00"}`}</div>
-        <div className={s.date}>{`:`}</div>
-        <div className={s.date}>{`${time.seconds || "00"}`}</div>
+        <div
+          className={s.date}
+          style={{
+            color: theme === "light" ? "#091e3f" : "var(--dark-text)",
+          }}
+        >{`${time.days || "00"}`}</div>
+        <div
+          className={s.date}
+          style={{
+            color: theme === "light" ? "#091e3f" : "var(--dark-text)",
+          }}
+        >{`:`}</div>
+        <div
+          className={s.date}
+          style={{
+            color: theme === "light" ? "#091e3f" : "var(--dark-text)",
+          }}
+        >{`${time.hours || "00"}`}</div>
+        <div
+          className={s.date}
+          style={{
+            color: theme === "light" ? "#091e3f" : "var(--dark-text)",
+          }}
+        >{`:`}</div>
+        <div
+          className={s.date}
+          style={{
+            color: theme === "light" ? "#091e3f" : "var(--dark-text)",
+          }}
+        >{`${time.minutes || "00"}`}</div>
+        <div
+          className={s.date}
+          style={{
+            color: theme === "light" ? "#091e3f" : "var(--dark-text)",
+          }}
+        >{`:`}</div>
+        <div
+          className={s.date}
+          style={{
+            color: theme === "light" ? "#091e3f" : "var(--dark-text)",
+          }}
+        >{`${time.seconds || "00"}`}</div>{" "}
       </div>
       <span className={s.days}>{dayL[lang]}</span>
       <span className={s.hours}>{hourL[lang]}</span>

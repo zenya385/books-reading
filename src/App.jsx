@@ -54,12 +54,12 @@ export default function App() {
 
   return (
     <div
-    // style={{
-    //   backgroundColor:
-    //     theme === "light" ? "var(--light-theme)" : "var(--dark-theme)",
-    //   color: theme === "light" ? "black" : "white",
-    //   height: "100vh",
-    // }}
+      style={{
+        backgroundColor:
+          theme === "light" ? "var(--light-theme)" : "var(--dark-theme)",
+        color: theme === "light" ? "black" : "white",
+        // height: "100%",
+      }}
     >
       <AppBar />
       <Suspense fallback={<h1>Wait a second, please =)</h1>}>

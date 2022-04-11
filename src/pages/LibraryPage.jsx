@@ -21,6 +21,7 @@ import s from "./LibraryPage.module.scss";
 import AddBookModal from "../components/AddBookModal/AddBookModal";
 import { langOptionsLibPage } from "../assets/langOptionsLibPage";
 import { getLang } from "../redux/lang/langSelector";
+import { getTheme } from "../redux/theme/themeSelector";
 import BookReviewItem from "../components/BookReviewItem/BookReviewItem";
 import BookReviewList from "../components/BookReviewList/BookReviewList";
 
@@ -80,7 +81,7 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
   const onModalClose = (e) => {
     setModalOpen(false);
   };
-
+  const theme = useSelector(getTheme);
   return (
     <>
       <section className={s.section}>
@@ -91,8 +92,11 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
           <BookForm />
         </MediaQuery>
         {/* {booksFinishedReading && Boolean(booksFinishedReading.length) && (
-          <h2>Прочитано</h2>
+          <h2 style={{
+            color: theme === "light" ? "black" : "white",
+          }}>Прочитано</h2>
         )} */}
+
         {booksFinishedReading && Boolean(booksFinishedReading.length) && (
           <BookReviewList
             booksLibrary={booksFinishedReading}
@@ -106,7 +110,13 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
           // />
         )}
         {booksCurrentlyReading && Boolean(booksCurrentlyReading.length) && (
-          <h2>{titleNow[lang]}</h2>
+          <h2
+            style={{
+              color: theme === "light" ? "black" : "white",
+            }}
+          >
+            {titleNow[lang]}
+          </h2>
         )}
         {booksCurrentlyReading && Boolean(booksCurrentlyReading.length) && (
           <BookInfoList
@@ -116,7 +126,14 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
           />
         )}
         {booksGoingToRead && Boolean(booksGoingToRead.length) && (
-          <h2> {titleFuture[lang]}</h2>
+          <h2
+            style={{
+              color: theme === "light" ? "black" : "white",
+            }}
+          >
+            {" "}
+            {titleFuture[lang]}
+          </h2>
         )}
         {booksGoingToRead && Boolean(booksGoingToRead.length) && (
           <BookInfoList
