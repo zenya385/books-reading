@@ -21,16 +21,23 @@ const BookInfoItem = ({
 }) => {
   const lang = useSelector(getLang);
   const { authorItem, yearItem, pagesItem } = langOptionsBookInfoItem;
-
+  const theme = useSelector(getTheme);
   return (
     <div>
-      <li className={s.item}>
+      <li className={s.item} style={{
+          backgroundColor:
+            theme === "light" ? "white" : "var(--dark-header)"
+        }}>
+
         <div className={s.iconTitle}>
           <svg className={s.navIcon} width="22px" height="17px">
             <use xlinkHref={`${Icons}#icon-flat-${colorIcon}`} />
           </svg>
+
           <a href="" className="link nav__link-contact">
-            <p className={s.bookTitle}>{title}</p>
+            <p className={s.bookTitle} style={{
+        color: theme === "light" ? "#242A37" : "var(--dark-text)",
+      }}>{title}</p>
           </a>
         </div>
         <div className={s.bookInfoWrapper}>
@@ -42,9 +49,15 @@ const BookInfoItem = ({
             </div>
           </MediaQuery>
           <div className={s.bookMoreInfo}>
-            <p className={s.bookMoreInfoAuthor}>{author}</p>
-            <p className={s.bookMoreInfoYear}>{publishYear}</p>
-            <p className={s.bookMoreInfoPage}>{pagesTotal}</p>
+            <p className={s.bookMoreInfoAuthor} style={{
+        color: theme === "light" ? "#242A37" : "var(--dark-text)",
+      }}>{author}</p>
+            <p className={s.bookMoreInfoYear} style={{
+        color: theme === "light" ? "#242A37" : "var(--dark-text)",
+      }}>{publishYear}</p>
+            <p className={s.bookMoreInfoPage} style={{
+        color: theme === "light" ? "#242A37" : "var(--dark-text)",
+      }}>{pagesTotal}</p>
           </div>
         </div>
         {/* {review&&<zirochki >Резюме</zirochki>} */}

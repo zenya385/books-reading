@@ -8,7 +8,7 @@
     padding-bottom: 13px;
     font-family: 'Montserrat';
     background-color: #fff;
-    @media screen and (max-width: 1280px) {
+    @media screen and (max-width: 1279px) {
         width: 678px;
         height: 306px;
         padding-left: 84px;
@@ -36,7 +36,7 @@
     text-transform: uppercase;
     color: #242A37;
 
-    @media screen and (max-width: 1280px) {
+    @media screen and (max-width: 1279px) {
         font-size: 14px;
         line-height: 38px;
     }
@@ -59,7 +59,7 @@
     width: 87px;
     margin-left: 5px;
     margin-right: 5px;
-    @media screen and (max-width: 1280px) {
+    @media screen and (max-width: 1279px) {
         font-weight: 700;
         font-size: 14px;
         line-height: 38px;
@@ -78,10 +78,10 @@
 }
 
 .scroll_block { 
-    height: 100px !important;
+    height: 95px !important;
 
    
-    @media screen and (max-width: 1280px) {
+    @media screen and (max-width: 1279px) {
         height: 110px !important;
     }
 }
@@ -89,9 +89,9 @@
 .stat_list {
     margin: 0;
     padding: 0;
-    height: 100px;
+    height: 95px;
     overflow-y: scroll;
-    @media screen and (max-width: 1280px) {
+    @media screen and (max-width: 1279px) {
         height: 110px;
         width: 240px;
     }
@@ -111,7 +111,7 @@
     border: 1px solid #E0E5EB;
     height: 0px;
     
-    @media screen and (max-width: 1280px) {
+    @media screen and (max-width: 1279px) {
         width: 0px;
         border: none;
     }
@@ -126,7 +126,7 @@
     width: 100%;
     border: 1px solid #E0E5EB;
 
-    @media screen and (max-width: 1280px) {
+    @media screen and (max-width: 1279px) {
         width: 128px;
     }
     @media screen and (max-width: 767px) {

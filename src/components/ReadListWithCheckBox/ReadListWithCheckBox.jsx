@@ -6,6 +6,8 @@ import { getTheme } from "../../redux/theme/themeSelector";
 import { useSelector } from "react-redux";
 import { BsCheck } from "react-icons/bs";
 import { Checkbox } from "@mui/material";
+import { langOptionsReadList } from "../../assets/langOptionsReadList";
+import { getLang } from "../../redux/lang/langSelector";
 // import Checkbox from "react-custom-checkbox";
 
 // {  вызов компонента
@@ -21,6 +23,8 @@ import { Checkbox } from "@mui/material";
 
 const ReadListWithCheckBox = ({ booksLibrary }) => {
   const theme = useSelector(getTheme);
+  const lang = useSelector(getLang);
+  const { title, author, publishYear, pagesTotal } = langOptionsReadList;
 
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
@@ -30,16 +34,16 @@ const ReadListWithCheckBox = ({ booksLibrary }) => {
         className={s.bookList}
         style={{
           backgroundColor:
-            theme === "light" ? "var(--light-theme)" : "var(--light-theme)",
+            theme === "light" ? "var(--light-theme)" : "var(--dark-theme)",
           color: theme === "light" ? "black" : "white",
         }}
       >
         <MediaQuery minWidth={768}>
           <div className={s.bookInfo}>
-            <p className={s.title}>Назва книги</p>
-            <p className={s.author}>Автор</p>
-            <p className={s.year}>Рік</p>
-            <p className={s.page}>Стор.</p>
+            <p className={s.title}>{title[lang]}</p>
+            <p className={s.author}>{author[lang]}</p>
+            <p className={s.year}>{publishYear[lang]}</p>
+            <p className={s.page}>{pagesTotal[lang]}</p>
           </div>
           <span className={s.bookInfoLine}></span>
         </MediaQuery>
@@ -59,20 +63,28 @@ const ReadListWithCheckBox = ({ booksLibrary }) => {
 
                 {/* что ниже потом удалить */}
                 <div className={s.checkBox}></div>
-                <p className={s.bookTitle}>{book.title}</p>
+                <p className={s.bookTitle} style={{
+          color: theme === "light" ? "#242A37" : "#cecfd2",
+        }}>{book.title}</p>
               </div>
 
               <MediaQuery maxWidth={767}>
                 <div className={s.bookInfo}>
-                  <p className={s.bookInfoText}>Автор:</p>
-                  <p className={s.bookInfoText}>Рік:</p>
-                  <p className={s.bookInfoText}>Стор:</p>
+                  <p className={s.bookInfoText}>{author[lang]}:</p>
+                  <p className={s.bookInfoText}>{publishYear[lang]}:</p>
+                  <p className={s.bookInfoText}>{pagesTotal[lang]}:</p>
                 </div>
               </MediaQuery>
               <div className={s.bookMoreInfo}>
-                <p className={s.bookMoreInfoAuthor}>{book.author}</p>
-                <p className={s.bookMoreInfoYear}>{book.publishYear}</p>
-                <p className={s.bookMoreInfoPage}>{book.pagesTotal}</p>
+                <p className={s.bookMoreInfoAuthor} style={{
+          color: theme === "light" ? "#242A37" : "#cecfd2",
+        }}>{book.author}</p>
+                <p className={s.bookMoreInfoYear} style={{
+          color: theme === "light" ? "#242A37" : "#cecfd2",
+        }}>{book.publishYear}</p>
+                <p className={s.bookMoreInfoPage} style={{
+          color: theme === "light" ? "#242A37" : "#cecfd2",
+        }}>{book.pagesTotal}</p>
               </div>
             </li>
           </div>
