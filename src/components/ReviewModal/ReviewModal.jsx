@@ -17,7 +17,7 @@ export default function ReviewModal({
   coment,
 }) {
   const [open, setOpen] = React.useState(modalOpen);
-  const [review, setReview] = React.useState("");
+  // const [review, setReview] = React.useState("");
   const [rating, setRaiting] = React.useState(bookRating);
   const [feedback, setFeedback] = React.useState(coment);
   const lang = useSelector(getLang);
@@ -41,6 +41,7 @@ export default function ReviewModal({
   };
 
   const handleSave = (e) => {
+    // console.log({ form: { feedback, rating }, bookId });
     dispatch(reviewBook({ form: { feedback, rating }, bookId }));
     handleReset();
     onModalClose(false);
@@ -61,13 +62,7 @@ export default function ReviewModal({
           <Typography id="modal-modal-title" variant="h6" component="h2">
             <p className={s.rating}>{text[lang]}</p>
           </Typography>
-          <Rating
-            name="half-rating"
-            size="size-medium"
-            sizeMedium
-            precision={0.5}
-            onClick={onRatihgChange}
-          />
+          <Rating name="half-rating" precision={0.5} onClick={onRatihgChange} />
           <Typography className={s.textAreaDescr}>
             <label className={s.textAreaTitle}>{resume[lang]}</label>
             <textarea
