@@ -34,7 +34,7 @@ const ChartLine = ({ curReadBooks }) => {
   let dateNow = new Date();
   const labels = [];
 
-  for (let i = 0; i <= duration + 1; i += 1) {
+  for (let i = 0; i <= duration; i += 1) {
     let k = new Date(Date.now(dateNow) + i * (3600 * 1000 * 24));
     labels[i] = formatISO(new Date(k), { representation: "date" });
   }
@@ -48,7 +48,7 @@ const ChartLine = ({ curReadBooks }) => {
 
   let pagesForDay = Math.ceil(pages / duration);
 
-  for (let i = 0; i <= duration + 1; i += 1) {
+  for (let i = 0; i <= duration; i += 1) {
     planData[i] = pagesForDay;
   }
 
