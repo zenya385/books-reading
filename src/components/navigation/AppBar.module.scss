@@ -75,10 +75,11 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    right: 77px;
+    right: 55px;
     top: 15px;
   }
   @media screen and (min-width: 480px) {
+    right: 60px;
   }
   @media screen and (min-width: 768px) {
     position: sticky;
@@ -126,4 +127,9 @@
   width: calc(100vw - 50%);
   display: flex;
   justify-content: space-between;
+  @media screen and (min-width: 768px) {
+    justify-content: space-between;
+  }
+  @media screen and (min-width: 1280px) {
+  }
 }

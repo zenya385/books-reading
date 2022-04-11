@@ -11,11 +11,11 @@
     text-underline-position: under;
     color: #242a37;
     padding: 0;
-    margin-left: 15px;
     cursor: pointer;
-    margin-left: 60px;
+    margin-left: 135px;
   }
   @media screen and (min-width: 480px) {
+    margin-left: 150px;
   }
   @media screen and (min-width: 768px) {
     margin-left: 15px;
@@ -28,6 +28,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    width: 200px;
   }
   @media screen and (min-width: 480px) {
   }
@@ -63,15 +64,18 @@
 
 .line {
   @media screen and (min-width: 320px) {
+    display: none;
+  }
+  @media screen and (min-width: 480px) {
+    display: inline-block;
     height: 33px;
     border: 1px solid #e0e5eb;
     margin-left: 15px;
   }
-  @media screen and (min-width: 480px) {
-  }
   @media screen and (min-width: 768px) {
-    margin-left: 10px;
+    margin-left: 100px;
   }
   @media screen and (min-width: 1280px) {
+    margin-left: 100px;
   }
 }

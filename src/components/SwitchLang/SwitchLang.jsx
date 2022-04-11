@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { changeLang } from "../../redux/lang/langSlice";
 import { getLang } from "../../redux/lang/langSelector";
-import style from "./SwitchLang.module.css";
+import style from "./SwitchLang.module.scss";
 
 const SwitchLang = () => {
   const dispatch = useDispatch();
