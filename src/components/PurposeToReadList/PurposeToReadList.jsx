@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { getLang } from "../../redux/lang/langSelector";
 import { langOptionsPurposeToRead } from "../../assets/langOptionsPurposeToRead";
 
-const PurposeToReadList = ({ booksLibrary, colorIcon, review }) => {
+const PurposeToReadList = ({ booksLibrary, colorIcon, review,handleDeleteBook }) => {
   const theme = useSelector(getTheme);
   const lang = useSelector(getLang);
   const { title, author, publishYear, pagesTotal } = langOptionsPurposeToRead;
@@ -55,7 +55,7 @@ const PurposeToReadList = ({ booksLibrary, colorIcon, review }) => {
                   <p className={s.bookMoreInfoYear}>{book.publishYear}</p>
                   <p className={s.bookMoreInfoPage}>{book.pagesTotal}</p>
                 </div>
-                <button className={s.delBtn}>
+                <button className={s.delBtn} onClick={handleDeleteBook}>
                   <svg className={s.delBtnIcon} width="14px" height="18px">
                     <use xlinkHref={`${Icons}#icon-delete`} />
                   </svg>
