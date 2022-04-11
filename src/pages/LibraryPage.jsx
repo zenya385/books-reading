@@ -87,11 +87,9 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
         <MediaQuery maxWidth={767}>
           <AddBookModal modalOpen={modalOpen} modalClose={onModalClose} />
         </MediaQuery>
-
         <MediaQuery minWidth={768}>
           <BookForm />
         </MediaQuery>
-
         {/* {booksFinishedReading && Boolean(booksFinishedReading.length) && (
           <h2>Прочитано</h2>
         )} */}
@@ -117,7 +115,6 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
             review={0}
           />
         )}
-
         {booksGoingToRead && Boolean(booksGoingToRead.length) && (
           <h2> {titleFuture[lang]}</h2>
         )}
@@ -128,11 +125,10 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
             review={0}
           />
         )}
-
         {!booksIsLoading &&
-          booksGoingToRead.length &&
-          booksCurrentlyReading.length &&
-          booksFinishedReading.length && <InstructionModal />}
+          booksGoingToRead.length < 1 &&
+          booksCurrentlyReading.length < 1 &&
+          booksFinishedReading.length < 1 && <InstructionModal />}
 
         {/* {!booksIsLoading && booksGoingToRead.length === 0 && <SuccessModal />} */}
         {/* {!booksIsLoading && booksGoingToRead.length === 0 && <FailModal />} */}
@@ -141,13 +137,11 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
             {btn[lang]}
           </Link>
         </div>
-
         <MediaQuery maxWidth={767}>
           <button onClick={onModalOpen} className={s.modalOpenBtn}>
             <BsPlusLg style={{ width: "18px", height: "18px" }} />
           </button>
         </MediaQuery>
-
         {/* {loggedIn && (
         <ul>
           {fullArray.map((el) => (
