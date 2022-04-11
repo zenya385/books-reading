@@ -8,12 +8,14 @@
 
   @media screen and (min-width: 480px) {
     flex-wrap: nowrap;
+    
+    flex-direction: column;
+    }
+    @media screen and (min-width: 768px) {
+      flex-direction: row
+    }
   }
 
-  @media screen and (min-width: 768px) {
-  }
-  @media screen and (min-width: 1280px) {
-    margin-bottom: 45px;
-    margin-top: 65px;
-  }
-}
+ 
+  
+
