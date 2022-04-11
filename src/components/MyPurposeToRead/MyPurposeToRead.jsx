@@ -17,11 +17,20 @@ const MyPurposeToRead = ({ books, isTrain }) => {
   const { goal, booksNum, days, read } = langOptionsMyPurposeToRead;
 
   return (
-    <div className={isTrain ? s.myPurposeToRead_complete : s.myPurposeToRead}>
+    <div className={isTrain ? s.myPurposeToRead_complete : s.myPurposeToRead} style={{
+      backgroundColor:
+        theme === "light" ? "white" : "var(--dark-header)",
+    }}>
       <h2 className={isTrain ? s.title_complete : s.title}>{goal[lang]}</h2>
-      <div className={isTrain ? s.numbersPurpose_complete : s.numbersPurpose}>
+      <div className={isTrain ? s.numbersPurpose_complete : s.numbersPurpose} style={{
+          color: theme === "light" ? "black" : "black",
+        }}>
         <div className={isTrain ? s.numbers_complete : s.numbers}>
-          <span className={isTrain ? s.wrapper_complete : s.wrapper}>
+          <span className={isTrain ? s.wrapper_complete : s.wrapper} style={{
+      backgroundColor:
+        theme === "light" ? "var(--third-bg-color)" : "var(--dark-theme)",
+        color: theme === "light" ? "black" : 'var(--dark-text)'
+    }}>
             {books.length}
           </span>
           <p className={isTrain ? s.numbers_text_complete : s.numbers_text}>
@@ -29,7 +38,11 @@ const MyPurposeToRead = ({ books, isTrain }) => {
           </p>
         </div>
         <div className={isTrain ? s.numbers_complete : s.numbers}>
-          <span className={isTrain ? s.wrapper_complete : s.wrapper}>
+          <span className={isTrain ? s.wrapper_complete : s.wrapper} style={{
+      backgroundColor:
+        theme === "light" ? "var(--third-bg-color)" : "var(--dark-theme)",
+        color: theme === "light" ? "black" : 'var(--dark-text)'
+    }}>
             {duration}
           </span>
           <p className={isTrain ? s.numbers_text_complete : s.numbers_text}>
@@ -39,7 +52,11 @@ const MyPurposeToRead = ({ books, isTrain }) => {
 
         {isTrain && (
           <div className={s.numbers_complete}>
-            <span className={s.wrapper_complete_last}>
+            <span className={s.wrapper_complete_last} style={{
+      backgroundColor:
+        theme === "light" ? "var(--third-bg-color)" : "var(--dark-theme)",
+        color: theme === "light" ? "black" : 'var(--dark-text)'
+    }}>
               {remaindBooks.length}
             </span>
             <p className={s.numbers_text_complete}>{read[lang]}</p>

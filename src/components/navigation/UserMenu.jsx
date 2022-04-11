@@ -6,14 +6,18 @@ import styles from "./UserMenu.module.scss";
 import Icons from "../../images/symbol-defs.svg";
 import { getLang } from "../../redux/lang/langSelector";
 import { langOptionsUserMenu } from "../../assets/langOptionsUserMenu";
+import { getTheme } from "../../redux/theme/themeSelector"; 
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+
 
 export function UserMenu() {
   const dispatch = useDispatch();
   const lang = useSelector(getLang);
   const { btn } = langOptionsUserMenu;
+  const theme = useSelector(getTheme);
   const history = useHistory();
+
 
   return (
     <div className={styles.user_menu}>
@@ -42,6 +46,11 @@ export function UserMenu() {
         type="button"
         className={styles.logout_btb}
         onClick={(e) => dispatch(logout())}
+        style={{
+          backgroundColor:
+            theme === "light" ? "white" : "var(--dark-header)",
+          color: theme === "light" ? "#242a37" : "white",
+        }}
       >
         {btn[lang]}
       </Link>
