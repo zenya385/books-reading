@@ -10,14 +10,31 @@
 
         @media screen and (min-width: 768px) {
             width: 678px;
-            height: 60px;
+            height: 168px;
             margin: 11px auto 0;
               
             align-items: center;
             flex-direction: column;
+        overflow-y: scroll;
         }
         @media screen and (min-width: 1280px) {
          width: 100%;
+        }
+        &::-webkit-scrollbar {
+            width: 5px;
+            background: rgba(177, 181, 194, 0.25);
+            ;
+        }
+        
+        &::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background-color: var(--secondary-bg-color);
+        }
+        
+        &::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            background: rgba(177, 181, 194, 0.25);
         }
 }
 .itemLineWrepper {
@@ -85,7 +102,7 @@
         @media screen and (min-width: 1280px) {
             width: 240px;
             max-height: 40px;
-            line-height: 2.71;
+            line-height: 1.5;
         }
 }
 

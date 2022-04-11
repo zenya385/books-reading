@@ -27,7 +27,7 @@ export default function InstructionModal({ modalOpen, modalClose }) {
       >
         <Box
           sx={{
-            backgroundColor: "#ffffff",
+            backgroundColor: "#F6F7FB",
             height: "100%",
           }}
         >

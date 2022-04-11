@@ -25,6 +25,7 @@ import {
 import { getLang } from "../../redux/lang/langSelector";
 import { langOptionsMyTrainPlan } from "../../assets/langOptionsMyTrainPlan";
 import { addPlaningTraining } from "../../redux/training/trainingOperations";
+import { getTheme } from "../../redux/theme/themeSelector";
 import { Formik } from "formik";
 import PurposeToReadList from "../PurposeToReadList/PurposeToReadList";
 import ReadListWithCheckBox from "../ReadListWithCheckBox/ReadListWithCheckBox";
@@ -53,6 +54,7 @@ ChartJS.register(
   Tooltip,
   Legend
 );
+
 
 // export const options = {
 //   backgroundColor: "#FF6B08",
@@ -210,6 +212,8 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
     // console.log('e.currentTarget', e.currentTarget.value)
   };
 
+
+const theme = useSelector(getTheme);
   // console.log("bookForTraining>>>", bookForTraining);
   // console.log("curReadBooks>>>", curReadBooks);
   // console.log("books>>>", books);
@@ -217,14 +221,18 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
   const isCurReadBooks = Boolean(curReadBooks.length);
   const isBookForTraining = Boolean(bookForTraining.length);
   return (
+
     <>
       <MediaQuery minWidth={768}>
+
         {/* {!isTrain && ( */}
         <form
           className={isTrain ? s.visuallyHidden : s.form}
           onSubmit={handleSubmitBookForRead}
         >
-          <h2 className={s.title}>{training[lang]}</h2>
+          <h2 className={s.title} style={{
+      color: theme === "light" ? "var(--title-text-color)" : "white",
+    }}>{training[lang]}</h2>
           <div className={s.datePicker}>
             <DatePicker
               dateFormat="dd.MM.yyyy"

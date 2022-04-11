@@ -68,7 +68,7 @@ const Results = () => {
               disabled
               onChange={(date) => {
                 setStartDate(date);
-                console.log(startDate);
+                // console.log(startDate);
               }}
               dateFormat="dd.MM.yyyy"
             />
@@ -78,6 +78,7 @@ const Results = () => {
             <input
               name="pages"
               type="text"
+              autoComplete="off"
               className={s.input_pages}
               value={formik.values.pages}
               onChange={formik.handleChange}

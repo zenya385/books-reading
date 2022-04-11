@@ -6,10 +6,12 @@ import s from "./RegisterPage.module.scss";
 import { regValidationSchema } from "../utils/validation/RegisterValid";
 import { getLang } from "../redux/lang/langSelector";
 import { langOptionsRegister } from "../assets/langOptionsRegister";
+import { getTheme } from "../redux/theme/themeSelector";
 
 const RegisterPage = () => {
   const dispatch = useDispatch();
   const lang = useSelector(getLang);
+  const theme = useSelector(getTheme);
   const {
     title,
     inputEmail,
@@ -159,12 +161,17 @@ const RegisterPage = () => {
           </Formik>
         </div>
       </div>
+
       <div className={s.textRegist}>
         <div className={s.textRegistDiv}>
-          <h2 className={s.regFormTitleMain}>Books Reading</h2>
+          <h2 className={s.regFormTitleMain} style={{
+              color:
+              theme === "light" ? "var(--title-text-color)" : "white",}}>Books Reading</h2>
           <div>
             <div className={s.regFormTitleText}>
-              <h3 className={s.regFormTitle}>{textTitle1[lang]}</h3>
+              <h3 className={s.regFormTitle} style={{
+              color:
+              theme === "light" ? "var(--title-text-color)" : "white",}}>{textTitle1[lang]}</h3>
               <div className={s.regFormSpanText}>
                 <span className={s.spanArrow}>&#62;</span>
                 <p className={s.textFontRegistr}>{text1_1[lang]}</p>
@@ -179,7 +186,9 @@ const RegisterPage = () => {
               </div>
             </div>
             <div className={s.regFormTitleText}>
-              <h3 className={s.regFormTitle}>{textTitle2[lang]}</h3>
+              <h3 className={s.regFormTitle} style={{
+              color:
+              theme === "light" ? "var(--title-text-color)" : "white",}}>{textTitle2[lang]}</h3>
               <div className={s.regFormSpanText}>
                 <span className={s.spanArrow}>&#62;</span>
                 <p className={s.textFontRegistr}>{text2_1[lang]}</p>
