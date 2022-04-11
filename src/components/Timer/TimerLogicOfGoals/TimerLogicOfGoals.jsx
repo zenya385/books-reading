@@ -4,9 +4,12 @@ import classnames from "classnames";
 import s from "./TimerLogicOfGoals.module.scss";
 import { getEndDate } from "../../../redux/training/trainingSelectors";
 import { getTheme } from "../../../redux/theme/themeSelector";
-
+import { getLang } from "../../../redux/lang/langSelector";
+import { langOptionsTimerLogicOf } from "../../../assets/langOptionsTimerLogicOf";
 
 const TimerLogicOfGoals = () => {
+  const lang = useSelector(getLang);
+  const { dayL, hourL, minL, secL } = langOptionsTimerLogicOf;
   const endDate = useSelector(getEndDate);
   const oneDay = 86400000;
   const goal = new Date(endDate).getTime();
