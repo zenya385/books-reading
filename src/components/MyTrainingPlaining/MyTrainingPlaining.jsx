@@ -98,7 +98,12 @@ export const data = {
     },
   ],
 };
-
+const curDate = new Date();
+const nextDay = [
+  curDate.getFullYear(),
+  curDate.getMonth(),
+  curDate.getDate() + 1,
+];
 const MyTrainingPlaining = ({ onHandleClose }) => {
   const booksLibrary = useSelector(getBooksGoingToReadState);
   const books = useSelector(getTrainingBooks);
@@ -109,7 +114,7 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
   const { training, startTraining, btn } = langOptionsMyTrainPlan;
 
   const [startDateOrigin, setStartDateOrigin] = useState(new Date());
-  const [endDateOrigin, setEndDateOrigin] = useState(new Date());
+  const [endDateOrigin, setEndDateOrigin] = useState(new Date(...nextDay));
   const [curReadBooks, setCurReadBooks] = useState([]);
   const [bookForTraining, setBookForTraining] = useState(booksLibrary);
   const [valueIdBook, setValueIdBook] = useState("default");
@@ -123,6 +128,10 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
   const onModalClose = (e) => {
     setModalOpen(false);
   };
+
+  useEffect(() => {
+    isTrain && setCurReadBooks([]);
+  }, [isTrain]);
 
   useEffect(() => {
     dispatch(
@@ -187,7 +196,7 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
 
   const handleSubmitBookForTraining = (e) => {
     e.preventDefault();
-    console.log(books);
+    // console.log(books);
     // onHandleClose();
     dispatch(
       addPlaningTraining({
@@ -198,61 +207,65 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
     );
   };
 
+
 const theme = useSelector(getTheme);
-  console.log("bookForTraining>>>", bookForTraining);
-  console.log("curReadBooks>>>", curReadBooks);
+  // console.log("bookForTraining>>>", bookForTraining);
+  // console.log("curReadBooks>>>", curReadBooks);
   // console.log("books>>>", books);
   // console.log("valueIdBook>>>", valueIdBook);
-const isCurReadBooks=Boolean(curReadBooks.length)
-const isBookForTraining =Boolean(bookForTraining.length)
-
+  const isCurReadBooks = Boolean(curReadBooks.length);
+  const isBookForTraining = Boolean(bookForTraining.length);
   return (
 
     <>
       <MediaQuery minWidth={768}>
 
-     { !isTrain&&<form onSubmit={handleSubmitBookForRead}>
-          <h2 style={{
+        {/* {!isTrain && ( */}
+        <form
+          className={isTrain ? s.visuallyHidden : s.form}
+          onSubmit={handleSubmitBookForRead}
+        >
+          <h2 className={s.title} style={{
       color: theme === "light" ? "var(--title-text-color)" : "white",
     }}>{training[lang]}</h2>
-
           <div className={s.datePicker}>
             <DatePicker
               dateFormat="dd.MM.yyyy"
               selected={startDateOrigin}
+              disabled
               onChange={(date) => setStartDateOrigin(date)}
+              className={s.datePickerInput}
             />
             <DatePicker
               dateFormat="dd.MM.yyyy"
               selected={endDateOrigin}
               onChange={(date) => setEndDateOrigin(date)}
+              className={s.datePickerInput}
             />
           </div>
-          
-              <select
-                disabled={bookForTraining.length ? false : true}
-                onChange={handleChangeValue}
-              >
-                <option value="default">...</option>
-                {bookForTraining.map((book) => (
-                  <option key={book._id} value={book._id}>
-                    {book.title}
-                  </option>
-                ))}
-              </select>
-              <button type="submit"> {btn[lang]}</button>          
-
-          {/* лист с чекбоксом после прописания логики можно удалить */}
-
-          {/* {Boolean(curReadBooks.length) && (
-        <ReadListWithCheckBox
-          booksLibrary={curReadBooks}
-          colorIcon="grey"
-          review={0}
-        />
-      )} */}
-        </form>}
+          <select
+            disabled={bookForTraining.length && !isTrain ? false : true}
+            onChange={handleChangeValue}
+            className={s.select}
+          >
+            <option value="default">...</option>
+            {bookForTraining.map((book) => (
+              <option key={book._id} value={book._id}>
+                {book.title}
+              </option>
+            ))}
+          </select>
+          <button
+            className={s.submitBtn}
+            disabled={!isTrain ? false : true}
+            type="submit"
+          >
+            {btn[lang]}
+          </button>
+        </form>
+        {/* )} */}
       </MediaQuery>
+
       <MediaQuery maxWidth={767}>
         <AddTrainingModal
           modalOpen={modalOpen}
@@ -265,20 +278,31 @@ const isBookForTraining =Boolean(bookForTraining.length)
           <BsPlusLg style={{ width: "18px", height: "18px" }} />
         </button>
       </MediaQuery>
-      {isCurReadBooks && (
+      {isCurReadBooks && !isTrain && (
         <PurposeToReadList
           booksLibrary={curReadBooks}
           colorIcon="grey"
           review={0}
         />
       )}
-      {isCurReadBooks && (
-        <button type="submit" onClick={handleSubmitBookForTraining}>
+      {isTrain && (
+        <ReadListWithCheckBox
+          booksLibrary={books}
+          colorIcon="grey"
+          review={0}
+        />
+      )}
+      {isCurReadBooks && !isTrain && (
+        <button
+          type="submit"
+          className={s.startTrainingBtn}
+          onClick={handleSubmitBookForTraining}
+        >
           {startTraining[lang]}
         </button>
       )}
-      <ChartLine curReadBooks={curReadBooks} /> 
-      </>
+      <ChartLine curReadBooks={curReadBooks} />
+    </>
   );
 };
 

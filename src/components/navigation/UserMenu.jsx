@@ -7,12 +7,17 @@ import Icons from "../../images/symbol-defs.svg";
 import { getLang } from "../../redux/lang/langSelector";
 import { langOptionsUserMenu } from "../../assets/langOptionsUserMenu";
 import { getTheme } from "../../redux/theme/themeSelector"; 
+import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+
 
 export function UserMenu() {
   const dispatch = useDispatch();
   const lang = useSelector(getLang);
   const { btn } = langOptionsUserMenu;
   const theme = useSelector(getTheme);
+  const history = useHistory();
+
 
   return (
     <div className={styles.user_menu}>
@@ -35,7 +40,9 @@ export function UserMenu() {
         </svg>
       </NavLink>
       <span className={styles.line}></span>
-      <button
+
+      <Link
+        to="/login"
         type="button"
         className={styles.logout_btb}
         onClick={(e) => dispatch(logout())}
@@ -46,7 +53,7 @@ export function UserMenu() {
         }}
       >
         {btn[lang]}
-      </button>
+      </Link>
     </div>
   );
 }

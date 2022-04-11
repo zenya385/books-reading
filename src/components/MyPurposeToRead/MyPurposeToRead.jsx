@@ -1,5 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { langOptionsMyPurposeToRead } from "../../assets/langOptionsMyPurposeToRead";
+import { getLang } from "../../redux/lang/langSelector";
 import {
   getDurationPeriod,
   getRemaindBooks,
@@ -9,17 +11,17 @@ import s from "./MyPurposeToRead.module.scss";
 
 const MyPurposeToRead = ({ books, isTrain }) => {
   const duration = useSelector(getDurationPeriod);
-  const remaindBooks = useSelector(getRemaindBooks); 
+  const remaindBooks = useSelector(getRemaindBooks);
   const theme = useSelector(getTheme);
+  const lang = useSelector(getLang);
+  const { goal, booksNum, days, read } = langOptionsMyPurposeToRead;
 
   return (
     <div className={isTrain ? s.myPurposeToRead_complete : s.myPurposeToRead} style={{
       backgroundColor:
         theme === "light" ? "white" : "var(--dark-header)",
     }}>
-      <h2 className={isTrain ? s.title_complete : s.title}>
-        Моя мета прочитати
-      </h2>
+      <h2 className={isTrain ? s.title_complete : s.title}>{goal[lang]}</h2>
       <div className={isTrain ? s.numbersPurpose_complete : s.numbersPurpose} style={{
           color: theme === "light" ? "black" : "black",
         }}>
@@ -32,7 +34,7 @@ const MyPurposeToRead = ({ books, isTrain }) => {
             {books.length}
           </span>
           <p className={isTrain ? s.numbers_text_complete : s.numbers_text}>
-            Кількість книжок
+            {booksNum[lang]}
           </p>
         </div>
         <div className={isTrain ? s.numbers_complete : s.numbers}>
@@ -44,7 +46,7 @@ const MyPurposeToRead = ({ books, isTrain }) => {
             {duration}
           </span>
           <p className={isTrain ? s.numbers_text_complete : s.numbers_text}>
-            Кількість днів
+            {days[lang]}
           </p>
         </div>
 
@@ -57,7 +59,7 @@ const MyPurposeToRead = ({ books, isTrain }) => {
     }}>
               {remaindBooks.length}
             </span>
-            <p className={s.numbers_text_complete}>Залишилось книжок</p>
+            <p className={s.numbers_text_complete}>{read[lang]}</p>
           </div>
         )}
       </div>

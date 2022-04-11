@@ -6,6 +6,9 @@ import Summary from "../Summary/Summary";
 import { Rating } from "@mui/material";
 import { getTheme } from "../../redux/theme/themeSelector";
 import { useSelector } from "react-redux";
+import { getLang } from "../../redux/lang/langSelector";
+import { langOptionReviewItem } from "../../assets/langOptionsReviewItem";
+
 
 const BookReviewItem = ({
   title,
@@ -18,6 +21,9 @@ const BookReviewItem = ({
   feedback,
 }) => {
   const theme = useSelector(getTheme);
+  const lang = useSelector(getLang);
+  const { authorItem, yearItem, pagesItem } = langOptionReviewItem;
+
   return (
     <>
       <div className={s.bookReviewItemWrapper}>
@@ -37,9 +43,9 @@ const BookReviewItem = ({
           </div>
           <MediaQuery maxWidth={767}>
             <div className={s.bookInfo}>
-              <p className={s.bookInfoText}>Автор:</p>
-              <p className={s.bookInfoText}>Рік:</p>
-              <p className={s.bookInfoText}>Стор:</p>
+              <p className={s.bookInfoText}>{authorItem[lang]}:</p>
+              <p className={s.bookInfoText}>{yearItem[lang]}:</p>
+              <p className={s.bookInfoText}>{pagesItem[lang]}:</p>
             </div>
           </MediaQuery>
           <div className={s.bookMoreInfo}>
@@ -54,49 +60,28 @@ const BookReviewItem = ({
       }}>{pagesTotal}</p>
           </div>
           <MediaQuery minWidth={1280}>
-            {rating ? (
-              <Rating
-                name="half-rating-read"
-                size="large"
-                value={rating}
-                precision={0.5}
-                readOnly
-                className={s.ratingStar}
-              />
-            ) : (
-              <Rating
-                name="half-rating-read"
-                size="large"
-                value={0}
-                precision={0.5}
-                readOnly
-                className={s.ratingStar}
-              />
-            )}
+            <Rating
+              name="half-rating-read"
+              size="large"
+              value={rating ? rating : 0}
+              precision={0.5}
+              readOnly
+              className={s.ratingStar}
+            />
+
             <Summary bookId={bookId} rating={rating} feedback={feedback} />
           </MediaQuery>
           <MediaQuery minWidth={768} maxWidth={1279}>
-            {rating ? (
-              <Rating
-                name="half-rating-read"
-                size="medium"
-                sizeMedium
-                value={rating}
-                precision={0.5}
-                readOnly
-                className={s.ratingStar}
-              />
-            ) : (
-              <Rating
-                name="half-rating-read"
-                size="medium"
-                sizeMedium
-                value={0}
-                precision={0.5}
-                readOnly
-                className={s.ratingStar}
-              />
-            )}
+            <Rating
+              name="half-rating-read"
+              size="medium"
+              sizeMedium
+              value={rating ? rating : 0}
+              precision={0.5}
+              readOnly
+              className={s.ratingStar}
+            />
+
             <Summary bookId={bookId} rating={rating} feedback={feedback} />
           </MediaQuery>
         </li>
