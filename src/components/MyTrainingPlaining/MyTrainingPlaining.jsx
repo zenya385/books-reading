@@ -205,39 +205,45 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
   return (
     <>
       <MediaQuery minWidth={768}>
-        {!isTrain && (
-          <form onSubmit={handleSubmitBookForRead}>
-            <h2>{training[lang]}</h2>
-            <div className={s.datePicker}>
-              <DatePicker
-                dateFormat="dd.MM.yyyy"
-                selected={startDateOrigin}
-                onChange={(date) => setStartDateOrigin(date)}
-              />
-              <DatePicker
-                dateFormat="dd.MM.yyyy"
-                selected={endDateOrigin}
-                onChange={(date) => setEndDateOrigin(date)}
-              />
-            </div>
-            <select
-              disabled={bookForTraining.length ? false : true}
-              onChange={handleChangeValue}
-            >
-              <option value="default">...</option>
-              {bookForTraining.map((book) => (
-                <option key={book._id} value={book._id}>
-                  {book.title}
-                </option>
-              ))}
-            </select>
-            <button className={s.submitBtn} type="submit">
-              {btn[lang]}
-            </button>
-            )}
-          </form>
-        )}
+        {/* {!isTrain && ( */}
+        <form
+          className={isTrain ? s.visuallyHidden : s.form}
+          onSubmit={handleSubmitBookForRead}
+        >
+          <h2 className={s.title}>{training[lang]}</h2>
+          <div className={s.datePicker}>
+            <DatePicker
+              dateFormat="dd.MM.yyyy"
+              selected={startDateOrigin}
+              onChange={(date) => setStartDateOrigin(date)}
+              className={s.datePickerInput}
+            />
+            <DatePicker
+              dateFormat="dd.MM.yyyy"
+              selected={endDateOrigin}
+              onChange={(date) => setEndDateOrigin(date)}
+              className={s.datePickerInput}
+            />
+          </div>
+          <select
+            disabled={bookForTraining.length ? false : true}
+            onChange={handleChangeValue}
+            className={s.select}
+          >
+            <option value="default">...</option>
+            {bookForTraining.map((book) => (
+              <option key={book._id} value={book._id}>
+                {book.title}
+              </option>
+            ))}
+          </select>
+          <button className={s.submitBtn} type="submit">
+            {btn[lang]}
+          </button>
+        </form>
+        {/* )} */}
       </MediaQuery>
+
       <MediaQuery maxWidth={767}>
         <AddTrainingModal
           modalOpen={modalOpen}

@@ -1,3 +1,37 @@
+.form{
+	
+}
+.visuallyHidden {
+	@media screen and (min-width: 1280px) {
+			position: absolute;
+			white-space: nowrap;
+			width: 1px;
+			height: 1px;
+			overflow: hidden;
+			border: 0;
+			padding: 0;
+			clip: rect(0 0 0 0);
+			clip-path: inset(50%);
+			margin: -1px;
+	
+	}
+
+}
+.title{
+	display: flex;
+	background-color: var(--secondary-bg-color);
+	color: var(--primary-bg-color);
+	width: 678px;
+	height: 60px;
+	margin-bottom: 30px;
+	justify-content: center;
+	align-items: center;
+	@media screen and (min-width: 1280px) {
+		width: 886px;
+	
+	}
+}
+
 .modalOpenBtn {
 	color: var(--primary-bg-color);
 	width: 52px;
@@ -50,4 +84,14 @@
 }
 .datePicker{
 	display: flex;
+	text-align: center;
+}
+.datePickerInput{
+	width: 250px;
+}
+.select{
+		width: 482px;
+		height: 42px;
+		margin-right: 20px;
+		margin-bottom: 40px;
 }

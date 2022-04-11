@@ -39,12 +39,11 @@ const TrainingPage = () => {
       dispatch(resetTrain());
     }
   }, [trainingBooks]);
- 
 
   useEffect(() => {
     isTrain && dispatch(getPlaningTraining());
-  }, [isTrain]); 
-  
+  }, [isTrain]);
+
   loggedIn &&
     useEffect(() => {
       dispatch(getBooks());
@@ -56,7 +55,7 @@ const TrainingPage = () => {
         <div className={s.TrainingPage}>
           {isTrain && <Timer />}
           <MyPurposeToRead books={books} isTrain={isTrain} />
-           <MyTrainingPlaining />
+          <MyTrainingPlaining />
           {isTrain && (
             <ReadListWithCheckBox
               booksLibrary={infoTraining.books}
@@ -64,9 +63,9 @@ const TrainingPage = () => {
               review={0}
             />
           )}
-          {/* лист с чекбоксом после прописания логики можно удалить */}
 
           {isTrain && <StatisticsResults />}
+          {/* лист с чекбоксом после прописания логики можно удалить */}
         </div>
       </MediaQuery>
 
@@ -74,7 +73,7 @@ const TrainingPage = () => {
         <div className={s.TrainingPage}>
           <div className={s.timerTrainingLine}>
             {isTrain && <Timer />}
-             <MyTrainingPlaining />
+            <MyTrainingPlaining />
             {isTrain && (
               <ReadListWithCheckBox
                 booksLibrary={infoTraining.books}
