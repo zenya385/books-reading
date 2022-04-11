@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
 import classnames from "classnames";
 import s from "./TimerLogicOfYear.module.scss";
+import { langOptionsTimerLogicOfYear } from "../../../assets/langOptionsTimerLogicOfYear";
+import { getLang } from "../../../redux/lang/langSelector";
+import { useSelector } from "react-redux";
 
 const TimerLogicOfYear = () => {
+  const lang = useSelector(getLang);
+  const { titleL, dayL, hourL, minL, secL } = langOptionsTimerLogicOfYear;
   const year = new Date(new Date().getFullYear() + 1, 0, 1).getTime();
 
   const [, setDateTime] = useState(new Date());
@@ -56,7 +61,7 @@ const TimerLogicOfYear = () => {
 
   return (
     <div className={s.box}>
-      <p className={s.boxText}>До закінчення року залишилось</p>
+      <p className={s.boxText}>{titleL[lang]}</p>
       <div className={s.dateGroup}>
         <div className={s.date}>{`${time.days || "00"}`}</div>
         <div className={s.date}>{`:`}</div>
@@ -64,12 +69,12 @@ const TimerLogicOfYear = () => {
         <div className={s.date}>{`:`}</div>
         <div className={s.date}>{`${time.minutes || "00"}`}</div>
         <div className={s.date}>{`:`}</div>
-        <div className={s.date}>{`${time.seconds || "00"}`}</div>{" "}
+        <div className={s.date}>{`${time.seconds || "00"}`}</div>
       </div>
-      <span className={s.days}>ДН</span>
-      <span className={s.hours}>ГОД</span>
-      <span className={s.minutes}>ХВ</span>
-      <span className={s.seconds}>СЕК</span>
+      <span className={s.days}>{dayL[lang]}</span>
+      <span className={s.hours}>{hourL[lang]}</span>
+      <span className={s.minutes}>{minL[lang]}</span>
+      <span className={s.seconds}>{secL[lang]}</span>
     </div>
   );
 };

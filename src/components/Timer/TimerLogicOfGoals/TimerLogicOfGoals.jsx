@@ -4,11 +4,11 @@ import classnames from "classnames";
 import s from "./TimerLogicOfGoals.module.scss";
 import { getEndDate } from "../../../redux/training/trainingSelectors";
 import { getLang } from "../../../redux/lang/langSelector";
-import { langOptionsTimerLogicOf } from "../../../assets/langOptionsTimerLogicOf";
+import { langOptionsTimerLogicOfGoals } from "../../../assets/langOptionsTimerLogicOfGoals.jsx";
 
 const TimerLogicOfGoals = () => {
   const lang = useSelector(getLang);
-  const { dayL, hourL, minL, secL } = langOptionsTimerLogicOf;
+  const { titleL, dayL, hourL, minL, secL } = langOptionsTimerLogicOfGoals;
   const endDate = useSelector(getEndDate);
   const oneDay = 86400000;
   const goal = new Date(endDate).getTime();
@@ -60,7 +60,7 @@ const TimerLogicOfGoals = () => {
 
   return (
     <div className={s.box}>
-      <p className={s.boxText}>До досягнення мети залишилось</p>
+      <p className={s.boxText}>{titleL[lang]}</p>
 
       <div className={s.dateGroup}>
         <div className={s.date}>{`${time.days || "00"}`}</div>
@@ -71,10 +71,10 @@ const TimerLogicOfGoals = () => {
         <div className={s.date}>{`:`}</div>
         <div className={s.date}>{`${time.seconds || "00"}`}</div>{" "}
       </div>
-      <span className={s.days}>ДН</span>
-      <span className={s.hours}>ГОД</span>
-      <span className={s.minutes}>ХВ</span>
-      <span className={s.seconds}>СЕК</span>
+      <span className={s.days}>{dayL[lang]}</span>
+      <span className={s.hours}>{hourL[lang]}</span>
+      <span className={s.minutes}>{minL[lang]}</span>
+      <span className={s.seconds}>{secL[lang]}</span>
     </div>
   );
 };
