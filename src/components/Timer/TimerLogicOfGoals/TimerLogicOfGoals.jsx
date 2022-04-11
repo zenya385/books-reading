@@ -56,19 +56,21 @@ const TimerLogicOfGoals = () => {
 
   return (
     <div className={s.box}>
+      <p className={s.boxText}>До досягнення мети залишилось</p>
+
       <div className={s.dateGroup}>
-        <div className={classnames(s.date, s.days)}>{`${time.days ||
-          "00"}`}</div>
+        <div className={s.date}>{`${time.days || "00"}`}</div>
         <div className={s.date}>{`:`}</div>
-        <div className={classnames(s.date, s.hours)}>{`${time.hours ||
-          "00"}`}</div>
+        <div className={s.date}>{`${time.hours || "00"}`}</div>
         <div className={s.date}>{`:`}</div>
-        <div className={classnames(s.date, s.minutes)}>{`${time.minutes ||
-          "00"}`}</div>
+        <div className={s.date}>{`${time.minutes || "00"}`}</div>
         <div className={s.date}>{`:`}</div>
-        <div className={classnames(s.date, s.seconds)}>{`${time.seconds ||
-          "00"}`}</div>
+        <div className={s.date}>{`${time.seconds || "00"}`}</div>{" "}
       </div>
+      <span className={s.days}>ДН</span>
+      <span className={s.hours}>ГОД</span>
+      <span className={s.minutes}>ХВ</span>
+      <span className={s.seconds}>СЕК</span>
     </div>
   );
 };
