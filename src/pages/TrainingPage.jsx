@@ -93,7 +93,7 @@ const TrainingPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("UseEffect");
+    // console.log("UseEffect");
     dispatch(getBooks());
     if (!trainingBooks.length) return;
     const { pagesTotal, pagesFinished } = trainingBooks[
@@ -125,16 +125,16 @@ const TrainingPage = () => {
   const books = useSelector(getTrainingBooks);
   const booksCurrentlyReading = useSelector(getBooksCurrentlyReadingState);
 
-  console.log(
-    "Boolean(booksCurrentlyReading.length)>>>>",
-    Boolean(booksCurrentlyReading.length),
-    booksCurrentlyReading
-  );
-  console.log(
-    "Boolean(trainingBooks.length)>>>>",
-    Boolean(trainingBooks.length),
-    trainingBooks
-  );
+  // console.log(
+  //   "Boolean(booksCurrentlyReading.length)>>>>",
+  //   Boolean(booksCurrentlyReading.length),
+  //   booksCurrentlyReading
+  // );
+  // console.log(
+  //   "Boolean(trainingBooks.length)>>>>",
+  //   Boolean(trainingBooks.length),
+  //   trainingBooks
+  // );
 
   //const isTrain=Boolean(booksCurrentlyReading.length)//&&Boolean(trainingBooks.length)
 

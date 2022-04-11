@@ -5,12 +5,12 @@ import Icons from "../../images/symbol-defs.svg";
 import { getTheme } from "../../redux/theme/themeSelector";
 import { useSelector } from "react-redux";
 import { getLang } from "../../redux/lang/langSelector";
-import { langOptionsMyPurposeToRead } from "../../assets/langOptionsMyPurposeToRead";
+import { langOptionsPurposeToRead } from "../../assets/langOptionsPurposeToRead";
 
 const PurposeToReadList = ({ booksLibrary, colorIcon, review }) => {
   const theme = useSelector(getTheme);
   const lang = useSelector(getLang);
-  const { title, author, publishYear, pagesTotal } = langOptionsMyPurposeToRead;
+  const { title, author, publishYear, pagesTotal } = langOptionsPurposeToRead;
 
   return (
     <>
@@ -34,7 +34,7 @@ const PurposeToReadList = ({ booksLibrary, colorIcon, review }) => {
         {booksLibrary.map((book) => (
           <div key={book._id} className={s.itemLineWrepper}>
             <span className={s.itemLine}></span>
-            <li className={s.item} >
+            <li className={s.item}>
               <div className={s.iconTitle}>
                 <svg className={s.navIcon} width="22px" height="17px">
                   <use xlinkHref={`${Icons}#icon-flat-${colorIcon}`} />

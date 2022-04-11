@@ -10,7 +10,7 @@ import {
   changeDateStart,
   getDuration,
 } from "../../redux/training/trainingSlice";
-import { formatISO, intervalToDuration } from "date-fns";
+import { addDays, formatISO, intervalToDuration } from "date-fns";
 import {
   // getBooksCurrentlyReadingState,
   getBooksGoingToReadState,
@@ -24,9 +24,16 @@ import {
 import { getLang } from "../../redux/lang/langSelector";
 import { langOptionsMyTrainPlan } from "../../assets/langOptionsMyTrainPlan";
 import { addPlaningTraining } from "../../redux/training/trainingOperations";
-import PurposeToReadList from "../PurposeToRead/PurposeToRead";
+// import PurposeToReadList from "../PurposeToRead/PurposeToRead";
 import PurposeToReadList from "../PurposeToReadList/PurposeToReadList";
 import ReadListWithCheckBox from "../ReadListWithCheckBox/ReadListWithCheckBox";
+
+const curDate = new Date();
+const nextDay = [
+  curDate.getFullYear(),
+  curDate.getMonth(),
+  curDate.getDate() + 1,
+];
 
 const MyTrainingPlaining = () => {
   const booksLibrary = useSelector(getBooksGoingToReadState);
@@ -37,7 +44,7 @@ const MyTrainingPlaining = () => {
   const { training, startTraining, btn } = langOptionsMyTrainPlan;
 
   const [startDateOrigin, setStartDateOrigin] = useState(new Date());
-  const [endDateOrigin, setEndDateOrigin] = useState(new Date());
+  const [endDateOrigin, setEndDateOrigin] = useState(new Date(...nextDay));
   const [curReadBooks, setCurReadBooks] = useState([]);
   const [bookForTraining, setBookForTraining] = useState(booksLibrary);
   const [valueIdBook, setValueIdBook] = useState("default");
@@ -81,11 +88,11 @@ const MyTrainingPlaining = () => {
   const handleSubmitBookForRead = (e) => {
     e.preventDefault();
     setCurReadBooks((prev) => {
-      console.log("prev setCurReadBooks :>> ", prev);
+      // console.log("prev setCurReadBooks :>> ", prev);
       return [...prev, booksLibrary.find((book) => book._id === valueIdBook)];
     });
     setBookForTraining((prev) => {
-      console.log("prev setBookForTraining :>> ", prev);
+      // console.log("prev setBookForTraining :>> ", prev);
       return prev.filter((book) => book._id !== valueIdBook);
     });
     setValueIdBook("default");
@@ -93,7 +100,7 @@ const MyTrainingPlaining = () => {
 
   const handleSubmitBookForTraining = (e) => {
     e.preventDefault();
-    console.log(books);
+    // console.log(books);
 
     dispatch(
       addPlaningTraining({
@@ -122,6 +129,7 @@ const MyTrainingPlaining = () => {
         <DatePicker
           dateFormat="dd.MM.yyyy"
           selected={endDateOrigin}
+          excludeDates={[addDays(new Date(), -1), addDays(new Date(), 0)]}
           onChange={(date) => setEndDateOrigin(date)}
         />
       </div>
@@ -158,7 +166,11 @@ const MyTrainingPlaining = () => {
         />
       )}
       {Boolean(curReadBooks.length) && (
-        <button type="submit" onClick={handleSubmitBookForTraining}>
+        <button
+          type="submit"
+          onClick={handleSubmitBookForTraining}
+          // disabled={false}
+        >
           {startTraining[lang]}
         </button>
       )}

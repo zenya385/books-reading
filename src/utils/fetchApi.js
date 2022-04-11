@@ -48,7 +48,7 @@ export async function refreshUserTokenApi({ refreshToken, sid }) {
 
 export async function addBookApi(newBook, persistedToken) {
   token.set(persistedToken);
-  const { data } = await axios.post("/book", newBook);  
+  const { data } = await axios.post("/book", newBook);
   // console.log("fetchAddBook :>> ", data);
   return data;
 }
@@ -70,9 +70,9 @@ export async function addPlanningApi(form, accessToken) {
 }
 
 export async function addPagesApi(num) {
-  console.log("num---",num)
+  // console.log("num---",num)
   const { data } = await axios.patch("/planning", num);
-  console.log("addPagesApi :>> ", data);
+  // console.log("addPagesApi :>> ", data);
   return data;
 }
 
