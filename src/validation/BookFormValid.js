@@ -12,10 +12,12 @@ export const addBookValidationSchema = Yup.object().shape({
     .typeError("Letters only"),
   publishYear: Yup.number()
     .required("Fill the gap")
-    .max(2023, "Something from the future?!")
+    .min(1400, "To young!")
+    // .moreThan(1000, "Are you sure?")
+    .max(2023, "Future comes?!")
     .typeError("Only a number"),
   pagesTotal: Yup.number()
     .required("Fill the gap")
     .moreThan(0, "Are you sure?")
-    .lessThan(5001, "Ohh..Are you sure? Need less then 5000"),
+    .lessThan(5001, "Ohh...Max 5000"),
 });
