@@ -4,8 +4,11 @@ body{
 
 }
 .TrainingPage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 @media screen and (min-width: 1280px) {
-display: flex;
+flex-direction: row;
 }
    
 }
@@ -24,22 +27,3 @@ display: flex;
    
 }
 
-.modalOpenBtn {
-    color: var(--primary-bg-color);
-    width: 52px;
-    height: 52px;
-    background: rgba(255, 107, 8, 0.782);
-
-    border-radius: 50%;
-    position: fixed;
-    bottom: 10%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-    -webkit-transition-duration: 0.4s;
-    transition-duration: 0.4s;
-
-    &:hover {
-        background-color: var(--accent-primary-color);
-    }
-}

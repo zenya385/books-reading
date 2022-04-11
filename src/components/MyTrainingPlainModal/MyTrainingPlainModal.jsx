@@ -72,47 +72,53 @@ const MyTrainingPlainModal = ({
 
   return (
     <>
-      <form onSubmit={cbAddBtn} className={s.form}>
-        <h2 className={s.title}>{training[lang]}</h2>
-        <div className={s.datePicker}>
-          <DatePicker
-            dateFormat="dd.MM.yyyy"
-            selected={startDateOrigin}
-            onChange={(date) => setStartDateOrigin(date)}
-          />
-          <DatePicker
-            dateFormat="dd.MM.yyyy"
-            selected={endDateOrigin}
-            onChange={(date) => setEndDateOrigin(date)}
-          />
-        </div>
-        {Boolean(bookForTraining.length) && (
-          <>
-            <select
-              disabled={bookForTraining.length ? false : true}
-              onChange={handleChangeValue}
-              className={s.select}
-            >
-              <option value="default">...</option>
-              {bookForTraining.map((book) => (
-                <option key={book._id} value={book._id}>
-                  {book.title}
-                </option>
-              ))}
-            </select>
-            <button type="submit"> {btn[lang]}</button>
-          </>
-        )}
-        {/* лист с чекбоксом после прописания логики можно удалить */}
+      <div className={s.wrrapper}>
+        <form onSubmit={cbAddBtn} className={s.form}>
+          <h2 className={s.title}>{training[lang]}</h2>
+          <div className={s.datePicker}>
+            <DatePicker
+              dateFormat="dd.MM.yyyy"
+              selected={startDateOrigin}
+              onChange={(date) => setStartDateOrigin(date)}
+              className={s.datePickerInput}
+            />
+            <DatePicker
+              dateFormat="dd.MM.yyyy"
+              selected={endDateOrigin}
+              onChange={(date) => setEndDateOrigin(date)}
+              className={s.datePickerInput}
+            />
+          </div>
+          {Boolean(bookForTraining.length) && (
+            <>
+              <select
+                disabled={bookForTraining.length ? false : true}
+                onChange={handleChangeValue}
+                className={s.select}
+              >
+                <option value="default">...</option>
+                {bookForTraining.map((book) => (
+                  <option key={book._id} value={book._id}>
+                    {book.title}
+                  </option>
+                ))}
+              </select>
+              <button type="submit" className={s.submitBtn}>
+                {btn[lang]}
+              </button>
+            </>
+          )}
+          {/* лист с чекбоксом после прописания логики можно удалить */}
 
-        {/* {Boolean(curReadBooks.length) && (
+          {/* {Boolean(curReadBooks.length) && (
         <ReadListWithCheckBox
           booksLibrary={curReadBooks}
           colorIcon="grey"
           review={0}
         />
       )} */}
-      </form>
+        </form>
+      </div>
     </>
   );
 };

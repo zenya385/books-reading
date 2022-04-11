@@ -214,48 +214,50 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
   return (
     <>
       <MediaQuery minWidth={768}>
-        {!isTrain && (
-          <form onSubmit={handleSubmitBookForRead}>
-            <h2>{training[lang]}</h2>
-            <div className={s.datePicker}>
-              <DatePicker
-                dateFormat="dd.MM.yyyy"
-                selected={startDateOrigin}
-                disabled
-                onChange={(date) => setStartDateOrigin(date)}
-              />
-              <DatePicker
-                dateFormat="dd.MM.yyyy"
-                selected={endDateOrigin}
-                onChange={(date) => setEndDateOrigin(date)}
-              />
-            </div>
-
-            <select
-              disabled={bookForTraining.length ? false : true}
-              onChange={handleChangeValue}
-            >
-              <option value="default">...</option>
-              {bookForTraining.map((book) => (
-                <option key={book._id} value={book._id}>
-                  {book.title}
-                </option>
-              ))}
-            </select>
-            <button type="submit"> {btn[lang]}</button>
-
-            {/* лист с чекбоксом после прописания логики можно удалить */}
-
-            {/* {Boolean(curReadBooks.length) && (
-        <ReadListWithCheckBox
-          booksLibrary={curReadBooks}
-          colorIcon="grey"
-          review={0}
-        />
-      )} */}
-          </form>
-        )}
+        {/* {!isTrain && ( */}
+        <form
+          className={isTrain ? s.visuallyHidden : s.form}
+          onSubmit={handleSubmitBookForRead}
+        >
+          <h2 className={s.title}>{training[lang]}</h2>
+          <div className={s.datePicker}>
+            <DatePicker
+              dateFormat="dd.MM.yyyy"
+              selected={startDateOrigin}
+              disabled
+              onChange={(date) => setStartDateOrigin(date)}
+              className={s.datePickerInput}
+            />
+            <DatePicker
+              dateFormat="dd.MM.yyyy"
+              selected={endDateOrigin}
+              onChange={(date) => setEndDateOrigin(date)}
+              className={s.datePickerInput}
+            />
+          </div>
+          <select
+            disabled={bookForTraining.length && !isTrain ? false : true}
+            onChange={handleChangeValue}
+            className={s.select}
+          >
+            <option value="default">...</option>
+            {bookForTraining.map((book) => (
+              <option key={book._id} value={book._id}>
+                {book.title}
+              </option>
+            ))}
+          </select>
+          <button
+            className={s.submitBtn}
+            disabled={!isTrain ? false : true}
+            type="submit"
+          >
+            {btn[lang]}
+          </button>
+        </form>
+        {/* )} */}
       </MediaQuery>
+
       <MediaQuery maxWidth={767}>
         <AddTrainingModal
           modalOpen={modalOpen}
@@ -268,15 +270,26 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
           <BsPlusLg style={{ width: "18px", height: "18px" }} />
         </button>
       </MediaQuery>
-      {isCurReadBooks && (
+      {isCurReadBooks && !isTrain && (
         <PurposeToReadList
           booksLibrary={curReadBooks}
           colorIcon="grey"
           review={0}
         />
       )}
-      {isCurReadBooks && (
-        <button type="submit" onClick={handleSubmitBookForTraining}>
+      {isTrain && (
+        <ReadListWithCheckBox
+          booksLibrary={books}
+          colorIcon="grey"
+          review={0}
+        />
+      )}
+      {isCurReadBooks && !isTrain && (
+        <button
+          type="submit"
+          className={s.startTrainingBtn}
+          onClick={handleSubmitBookForTraining}
+        >
           {startTraining[lang]}
         </button>
       )}
