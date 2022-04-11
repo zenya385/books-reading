@@ -160,23 +160,10 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
     );
   }, [startDateOrigin, endDateOrigin]);
 
-  const handleChangeValue = (e) => {
-    // console.log(e.target.value);
+  const handleChangeValue = (e) => { 
     setValueIdBook(e.target.value);
   };
-  // const handleSubmitBookForReadModal = (e) => {
-  //   e.preventDefault();
-  //   setValueIdBook(books[0]);
-  //   setCurReadBooks((prev) => {
-  //     console.log("prev setCurReadBooks :>> ", prev);
-  //     return [...prev, booksLibrary.find((book) => book._id === valueIdBook)];
-  //   });
-  //   setBookForTraining((prev) => {
-  //     console.log("prev setBookForTraining :>> ", prev);
-  //     return prev.filter((book) => book._id !== valueIdBook);
-  //   });
-  //   setValueIdBook("default");
-  // };
+  
 
   const handleSubmitBookForRead = (e) => {
     e.preventDefault();
@@ -203,6 +190,24 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
         books: curReadBooks.map((el) => el._id),
       })
     );
+  };
+
+  const handleDeleteBook = (e) => {
+    let idBook=e.currentTarget.value    
+    setValueIdBook(e.currentTarget);
+    setCurReadBooks((prev) => {      
+      return prev.filter((book) => book._id !== idBook);
+    });
+    setBookForTraining((prev) => {
+      
+      // console.log('booksLibrary.find)', booksLibrary.find((book) => book._id === idBook))
+      return [
+        ...prev,
+        booksLibrary.find((book) => book._id === idBook),
+      ];
+    });
+    setValueIdBook("default");
+    // console.log('e.currentTarget', e.currentTarget.value)
   };
 
   // console.log("bookForTraining>>>", bookForTraining);
@@ -275,6 +280,7 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
           booksLibrary={curReadBooks}
           colorIcon="grey"
           review={0}
+          handleDeleteBook={handleDeleteBook}
         />
       )}
       {isTrain && (
@@ -293,7 +299,7 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
           {startTraining[lang]}
         </button>
       )}
-      <ChartLine curReadBooks={!isTrain?curReadBooks:books} />
+      <ChartLine curReadBooks={!isTrain ? curReadBooks : books} />
     </>
   );
 };

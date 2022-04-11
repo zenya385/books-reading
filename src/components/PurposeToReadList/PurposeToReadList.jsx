@@ -7,7 +7,12 @@ import { useSelector } from "react-redux";
 import { getLang } from "../../redux/lang/langSelector";
 import { langOptionsPurposeToRead } from "../../assets/langOptionsPurposeToRead";
 
-const PurposeToReadList = ({ booksLibrary, colorIcon, review,handleDeleteBook }) => {
+const PurposeToReadList = ({
+  booksLibrary,
+  colorIcon,
+  review,
+  handleDeleteBook,
+}) => {
   const theme = useSelector(getTheme);
   const lang = useSelector(getLang);
   const { title, author, publishYear, pagesTotal } = langOptionsPurposeToRead;
@@ -33,9 +38,9 @@ const PurposeToReadList = ({ booksLibrary, colorIcon, review,handleDeleteBook })
         </MediaQuery>
         {booksLibrary.length &&
           booksLibrary.map((book) => (
-            <div className={s.itemLineWrepper}>
+            <div key={book._id} className={s.itemLineWrepper}>
               <span className={s.itemLine}></span>
-              <li className={s.item} key={book._id}>
+              <li className={s.item}>
                 <div className={s.iconTitle}>
                   <svg className={s.navIcon} width="22px" height="17px">
                     <use xlinkHref={`${Icons}#icon-flat-${colorIcon}`} />
@@ -55,7 +60,11 @@ const PurposeToReadList = ({ booksLibrary, colorIcon, review,handleDeleteBook })
                   <p className={s.bookMoreInfoYear}>{book.publishYear}</p>
                   <p className={s.bookMoreInfoPage}>{book.pagesTotal}</p>
                 </div>
-                <button className={s.delBtn} onClick={handleDeleteBook}>
+                <button
+                  className={s.delBtn}
+                  value={book._id}
+                  onClick={handleDeleteBook}
+                >
                   <svg className={s.delBtnIcon} width="14px" height="18px">
                     <use xlinkHref={`${Icons}#icon-delete`} />
                   </svg>

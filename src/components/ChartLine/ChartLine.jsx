@@ -33,7 +33,7 @@ const ChartLine = ({ curReadBooks }) => {
   const isTrain = useSelector(getIsTrain);
   const duration = useSelector(getDurationPeriod);
 
-  console.log("statsArr", statsArr);
+  // console.log("statsArr", statsArr);
 
   let dateNow = new Date();
   const labels = [];
@@ -62,10 +62,10 @@ const ChartLine = ({ curReadBooks }) => {
 //   });
 
 for (let i=0; i<statsArr.length;i+=1){
-    console.log('statsArr[i]', statsArr[i])
+    // console.log('statsArr[i]', statsArr[i])
     factData[i+1]= statsArr[i].pagesCount
 }
-console.log('factData', factData)
+// console.log('factData', factData)
 const data = {
     labels,
     datasets: [
@@ -75,7 +75,7 @@ const data = {
         borderColor: "rgb(0, 0, 0)",
         backgroundColor: "rgb(0, 0, 0)",
       },
-      isTrain && {
+       {
         label: "fact",
         data: factData,
         borderColor: "#FF6B08",
