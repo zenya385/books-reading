@@ -14,10 +14,16 @@ import StatisticsResults from "../components/AllStatistics/StatisticsResults/Sta
 import Timer from "../components/Timer/Timer";
 import { getBooksCurrentlyReadingState } from "../redux/books/booksSelectors";
 import { getPlaningTraining } from "../redux/training/trainingOperations";
-import { resetTrain } from "../redux/training/trainingSlice";
+import {
+  changeDateEnd,
+  changeDateStart,
+  resetTrain,
+} from "../redux/training/trainingSlice";
 import MediaQuery from "react-responsive";
 import ReadListWithCheckBox from "../components/ReadListWithCheckBox/ReadListWithCheckBox";
 import FailModal from "../components/FinishTrainingModal/FailModal";
+import { useHistory } from "react-router-dom";
+import { formatISO } from "date-fns";
 
 const getIsTrainingFinished = (trainingBooks) => {
   if (!trainingBooks.length) return false;
@@ -32,6 +38,7 @@ const TrainingPage = () => {
   // const infoTraining = useSelector((state) => state.training);
   const loggedIn = useSelector(getIsLoggedIn);
   const isTrain = useSelector(getIsTrain);
+  const history = useHistory();
 
   const [isOpenModal, setIsOpenModal] = useState(false);
 
@@ -59,6 +66,14 @@ const TrainingPage = () => {
   useEffect(() => {
     if (!isOpenModal && getIsTrainingFinished(trainingBooks)) {
       dispatch(resetTrain());
+      dispatch(
+        changeDateStart(formatISO(new Date(), { representation: "date" }))
+      );
+      dispatch(
+        changeDateEnd(formatISO(new Date(), { representation: "date" }))
+      );
+      // history.push("/library");
+      // history.push("/training");
     }
   }, [isOpenModal]);
 
