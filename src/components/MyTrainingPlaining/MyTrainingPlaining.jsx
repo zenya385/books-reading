@@ -31,6 +31,70 @@ import MediaQuery from "react-responsive";
 import MyTrainingPlainModal from "../MyTrainingPlainModal/MyTrainingPlainModal";
 import AddTrainingModal from "../AddTrainingModal/AddTrainingModal";
 import { BsPlusLg } from "react-icons/bs";
+import { Line } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
+export const options = {
+  backgroundColor: "#FF6B08",
+  cubicInterpolationMode: "monotone",
+  responsive: true,
+  plugins: {
+    legend: {
+      position: "top",
+      align: "end",
+      display: true,
+      labels: {
+        color: "rgb(255, 99, 132)",
+      },
+    },
+    title: {
+      display: false,
+      text: "Кількість сторінок за день",
+    },
+  },
+};
+
+let labels = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+export const data = {
+  labels,
+  datasets: [
+    {
+      label: "plan",
+      data: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
+      // data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
+      borderColor: "rgb(0, 0, 0)",
+      backgroundColor: "rgba(0, 0, 0, 0.8)",
+    },
+    {
+      label: "fact",
+      data: [0, 10, 12, 13, 15, 18, 10, 12, 15, 10, 12],
+
+      // data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
+      borderColor: "#FF6B08",
+      backgroundColor: "#FF6B08",
+    },
+  ],
+};
+
 const MyTrainingPlaining = ({ onHandleClose }) => {
   const booksLibrary = useSelector(getBooksGoingToReadState);
   const books = useSelector(getTrainingBooks);
@@ -192,7 +256,6 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
           <BsPlusLg style={{ width: "18px", height: "18px" }} />
         </button>
       </MediaQuery>
-
       {Boolean(curReadBooks.length) && (
         <PurposeToReadList
           booksLibrary={curReadBooks}
@@ -205,6 +268,7 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
           {startTraining[lang]}
         </button>
       )}
+      <Line options={options} data={data} className={s.line} />
     </>
   );
 };
