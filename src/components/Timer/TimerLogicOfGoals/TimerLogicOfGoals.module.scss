@@ -28,13 +28,11 @@
   position: relative;
 }
 
-.days:before,
-.hours:before,
-.minutes:before,
-.seconds:before {
+.days {
+  display: inline-block;
   position: absolute;
-  top: 25px;
-  left: 50%;
+  top: 30px;
+  left: 21%;
   transform: translateX(-50%);
 
   font-family: Montserrat;
@@ -44,21 +42,47 @@
 
   color: #898f9f;
 }
+.hours {
+  display: inline-block;
+  position: absolute;
+  top: 30px;
+  left: 41%;
+  transform: translateX(-50%);
 
-.days:before {
-  content: "ДН";
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 3.8;
+
+  color: #898f9f;
 }
+.minutes {
+  display: inline-block;
+  position: absolute;
+  top: 30px;
+  left: 60%;
+  transform: translateX(-50%);
 
-.hours:before {
-  content: "ГОД";
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 3.8;
+
+  color: #898f9f;
 }
+.seconds {
+  display: inline-block;
+  position: absolute;
+  top: 30px;
+  left: 79%;
+  transform: translateX(-50%);
 
-.minutes:before {
-  content: "ХВ";
-}
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 3.8;
 
-.seconds:before {
-  content: "СЕК";
+  color: #898f9f;
 }
 
 .box {
@@ -73,12 +97,12 @@
   // margin-right: 70px;
 }
 
-.box::before {
-  content: "До досягнення мети залишилось";
+.boxText {
+  display: inline-block;
 
   position: absolute;
   top: -38px;
-  left: 60%;
+  left: 55%;
   transform: translateX(-50%);
 
   line-height: 2.71;
