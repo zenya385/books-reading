@@ -24,10 +24,11 @@ import { getLang } from "../../redux/lang/langSelector";
 const ReadListWithCheckBox = ({ booksLibrary }) => {
   const theme = useSelector(getTheme);
   const lang = useSelector(getLang);
-  const { title, author, publishYear, pagesTotal } = langOptionsReadList;
+  const { titleL, authorL, publishYearL, pagesTotalL } = langOptionsReadList;
 
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
+ 
   return (
     <>
       <ul
@@ -40,54 +41,74 @@ const ReadListWithCheckBox = ({ booksLibrary }) => {
       >
         <MediaQuery minWidth={768}>
           <div className={s.bookInfo}>
-            <p className={s.title}>{title[lang]}</p>
-            <p className={s.author}>{author[lang]}</p>
-            <p className={s.year}>{publishYear[lang]}</p>
-            <p className={s.page}>{pagesTotal[lang]}</p>
+            <p className={s.title}>{titleL[lang]}</p>
+            <p className={s.author}>{authorL[lang]}</p>
+            <p className={s.year}>{publishYearL[lang]}</p>
+            <p className={s.page}>{pagesTotalL[lang]}</p>
           </div>
           <span className={s.bookInfoLine}></span>
         </MediaQuery>
-        {booksLibrary.map((book) => (
-          <div className={s.itemLineWrepper} key={book._id}>
+        {booksLibrary.map(({_id,pagesFinished,pagesTotal,title,author,publishYear}) => (
+          
+          <div key={_id} className={s.itemLineWrepper} >
             <span className={s.itemLine}></span>
             <li className={s.item}>
               <div className={s.iconTitle}>
                 {/* проверка для рендера checkBox */}
-                {/* {если все то чекнутый ? <div className={s.checkBoxWrepper}>
+                {(Number(pagesFinished)===Number(pagesTotal))&&
+               ( <>
+               <div className={s.checkBoxWrepper}>
                   <svg className={s.checkBoxIcon} width="15px" height="15px">
                     <use xlinkHref={`${Icons}#icon-checkBox`} />
                   </svg>
-                </div>}:  <div className={s.checkBox}></div>
+                  
+                </div><p className={s.bookTitle}>{title}</p>
+               </>)}
+              
+                {(Number(pagesFinished)!==Number(pagesTotal))&&(
+               <>
+                <div className={s.checkBox}></div>
+                <p className={s.bookTitle}>{title}</p>
+               </>)}
+                {/* {if (Number({book.pagesFinished})===Number({book.pagesTotal})) {
+                           <div className={s.checkBoxWrepper}>
+                  <svg className={s.checkBoxIcon} width="15px" height="15px">
+                    <use xlinkHref={`${Icons}#icon-checkBox`} />
+                  </svg>
+                </div>
+              }else  {
+                <div className={s.checkBox}></div>
                 <p className={s.bookTitle}>{book.title}</p>
-              </div>*/}
+              }} */}
+              </div>
 
                 {/* что ниже потом удалить */}
-                <div className={s.checkBox}></div>
+                {/* <div className={s.checkBox}></div>
                 <p className={s.bookTitle} style={{
-          color: theme === "light" ? "#242A37" : "#cecfd2",
-        }}>{book.title}</p>
-              </div>
+           color: theme === "light" ? "#242A37" : "#cecfd2",
+         }}>{book.title}</p>
+               </div> */}
 
               <MediaQuery maxWidth={767}>
                 <div className={s.bookInfo}>
-                  <p className={s.bookInfoText}>{author[lang]}:</p>
-                  <p className={s.bookInfoText}>{publishYear[lang]}:</p>
-                  <p className={s.bookInfoText}>{pagesTotal[lang]}:</p>
+                  <p className={s.bookInfoText}>{authorL[lang]}:</p>
+                  <p className={s.bookInfoText}>{publishYearL[lang]}:</p>
+                  <p className={s.bookInfoText}>{pagesTotalL[lang]}:</p>
                 </div>
               </MediaQuery>
               <div className={s.bookMoreInfo}>
                 <p className={s.bookMoreInfoAuthor} style={{
           color: theme === "light" ? "#242A37" : "#cecfd2",
-        }}>{book.author}</p>
+        }}>{author}</p>
                 <p className={s.bookMoreInfoYear} style={{
           color: theme === "light" ? "#242A37" : "#cecfd2",
-        }}>{book.publishYear}</p>
+        }}>{publishYear}</p>
                 <p className={s.bookMoreInfoPage} style={{
           color: theme === "light" ? "#242A37" : "#cecfd2",
-        }}>{book.pagesTotal}</p>
+        }}>{pagesTotal}</p>
               </div>
             </li>
-          </div>
+           </div>
         ))}
       </ul>
     </>
