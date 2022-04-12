@@ -46,7 +46,9 @@ const PurposeToReadList = ({
                     <use xlinkHref={`${Icons}#icon-flat-${colorIcon}`} />
                   </svg>
 
-                  <p className={s.bookTitle}>{book.title}</p>
+                  <p className={s.bookTitle} style={{
+          color: theme === "light" ? "#242A37" : "var(--dark-text)",
+        }}>{book.title}</p>
                 </div>
                 <MediaQuery maxWidth={767}>
                   <div className={s.bookInfo}>
@@ -56,9 +58,15 @@ const PurposeToReadList = ({
                   </div>
                 </MediaQuery>
                 <div className={s.bookMoreInfo}>
-                  <p className={s.bookMoreInfoAuthor}>{book.author}</p>
-                  <p className={s.bookMoreInfoYear}>{book.publishYear}</p>
-                  <p className={s.bookMoreInfoPage}>{book.pagesTotal}</p>
+                  <p className={s.bookMoreInfoAuthor} style={{
+          color: theme === "light" ? "#242A37" : "var(--dark-text)",
+        }}>{book.author}</p>
+                  <p className={s.bookMoreInfoYear} style={{
+          color: theme === "light" ? "#242A37" : "var(--dark-text)",
+        }}>{book.publishYear}</p>
+                  <p className={s.bookMoreInfoPage} style={{
+          color: theme === "light" ? "#242A37" : "var(--dark-text)",
+        }}>{book.pagesTotal}</p>
                 </div>
                 <button
                   className={s.delBtn}
