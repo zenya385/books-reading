@@ -1,17 +1,17 @@
 export const langOptionsReadList = {
-  title: {
+  titleL: {
     ua: "Назва книги",
     en: "Book title",
   },
-  author: {
+  authorL: {
     ua: "Автор",
     en: "Author",
   },
-  publishYear: {
+  publishYearL: {
     ua: "Рік",
     en: "Year",
   },
-  pagesTotal: {
+  pagesTotalL: {
     ua: "Стор.",
     en: "Pages",
   },
