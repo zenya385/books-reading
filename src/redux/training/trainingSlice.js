@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { logoutUser } from "../auth/authSlice";
 import {
   addPages,
   addPlaningTraining,
@@ -120,6 +121,17 @@ const trainingSlice = createSlice({
       ...state,
       error: payload,
     }),
+    [logoutUser]: (state) => {
+      state.books = [];
+      state.startDate = "";
+      state.endDate = "";
+      state.duration = 0;
+      state.pagesPerDay = 0;
+      state.stats = [];
+      state._id = null;
+      state.error = null;
+      state.isTrain = false;
+    },
   },
 });
 
