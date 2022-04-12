@@ -3,10 +3,12 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Icons from "../../images/symbol-defs.svg";
 import s from "./FinishTrainingModal.module.scss";
+import { useSelector } from "react-redux";
+import { getTheme } from "../../redux/theme/themeSelector";
 
 export default function SuccessModal() {
   const [open, setOpen] = React.useState(true);
-
+  const theme = useSelector(getTheme);
   const handleClose = () => setOpen(false);
 
   return (
@@ -17,7 +19,9 @@ export default function SuccessModal() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box className={s.modalSuccess} onClick={handleClose}>
+        <Box className={s.modalSuccess} onClick={handleClose} style={{ backgroundColor:
+                 theme === "light" ? "white" : "var(--modal-dark)",}}
+        >
           <svg className={s.modalSuccess_icon} width="54px" height="54px">
             <use xlinkHref={`${Icons}#icon-like`} />
           </svg>
