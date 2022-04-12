@@ -20,6 +20,15 @@ const authSlice = createSlice({
       state.sid = payload.sid;
       state.isLoggedIn = true;
     },
+    logoutUser(state) {
+      state.user = { name: null, email: null };
+      state.accessToken = null;
+      state.refreshToken = null;
+      state.sid = null;
+      state.isLoggedIn = false;
+      state.isLoading = false;
+      state.error = null;
+    },
   },
   extraReducers: {
     [register.pending](state) {
@@ -108,5 +117,5 @@ const authSlice = createSlice({
     },
   },
 });
-export const { setGoogleData } = authSlice.actions;
+export const { setGoogleData, logoutUser } = authSlice.actions;
 export default authSlice.reducer;
