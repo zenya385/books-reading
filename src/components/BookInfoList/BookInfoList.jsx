@@ -17,11 +17,13 @@ const BookInfoList = ({ booksLibrary, colorIcon, review }) => {
 
   return (
     <>
-      <ul className={s.bookList} style={{
+      <ul
+        className={s.bookList}
+        style={{
           backgroundColor:
-            theme === "light" ? "var(--light-theme)" : "var(--dark-theme)"
-        }}>
-
+            theme === "light" ? "var(--light-theme)" : "var(--dark-theme)",
+        }}
+      >
         <MediaQuery minWidth={768}>
           <div className={s.bookInfo}>
             <p className={s.title}>{title[lang]}</p>
