@@ -231,7 +231,7 @@ const theme = useSelector(getTheme);
           onSubmit={handleSubmitBookForRead}
         >
           <h2 className={s.title} style={{
-      color: theme === "light" ? "var(--title-text-color)" : "white",
+      color: theme === "light" ? "white" : "white",
     }}>{training[lang]}</h2>
           <div className={s.datePicker}>
             <DatePicker

@@ -133,7 +133,7 @@ button {
 
     @media screen and (min-width: 768px) {
        
-        margin-right: 52px;
+        width: 78px;
         font-size: 14px;
         line-height: 2.7;
     }
@@ -141,7 +141,7 @@ button {
     @media screen and (min-width: 1280px) {
         font-size: 14px;
         line-height: 2.71;
-        width: 48px;
+        width: 102px;
     }
 }
 
@@ -153,14 +153,14 @@ button {
 
     @media screen and (min-width: 768px) {
         
-        margin-right: 20px;
+        width: 50px;
         font-size: 14px;
         line-height: 2.7;
 
     }
 
     @media screen and (min-width: 1280px) {
-        width: 90px;
+        width: 112px;
         font-size: 14px;
         line-height: 2.71;
     }

@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { logoutUser } from "../auth/authSlice";
 import {
   addPages,
   addPlaningTraining,
@@ -92,6 +93,15 @@ const booksSlice = createSlice({
     }),
     [resetTrain]: (state) => {
       state.currentlyReading = [];
+    },
+    [logoutUser]: (state) => {
+      state.goingToRead = [];
+      state.currentlyReading = [];
+      state.finishedReading = [];
+      state.error = null;
+      state.isLoading = false;
+      state.feedback = "";
+      state.rating = null;
     },
   },
 });

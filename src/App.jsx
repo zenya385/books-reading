@@ -15,6 +15,8 @@ import { getIsError } from "./redux/books/booksSelectors";
 import { getIsErrorAuth } from "./redux/auth/authSelectors";
 import { logout } from "./redux/auth/authOperations";
 import Loader from "./components/Loader/Loader";
+import { logoutUserApi } from "./utils/fetchApi";
+import { logoutUser } from "./redux/auth/authSlice";
 
 const LoginPage = lazy(() => import("./pages/LoginPage.jsx"));
 const RegisterPage = lazy(() => import("./pages/RegisterPage.jsx"));
@@ -44,7 +46,7 @@ export default function App() {
     console.log("Book", Book);
 
     if (Number(Auth) === 401 || Number(Train) === 401 || Number(Book) === 401) {
-      // dispatch(logout());
+      dispatch(logoutUser());
       // console.log("first");
     }
   }, [authError, trainError, booksError]);
@@ -60,6 +62,7 @@ export default function App() {
           theme === "light" ? "var(--light-theme)" : "var(--dark-theme)",
         color: theme === "light" ? "black" : "white",
         // height: "100%",
+        minHeight: "100vh",
       }}
     >
       <AppBar />

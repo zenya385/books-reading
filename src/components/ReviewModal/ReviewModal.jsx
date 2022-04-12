@@ -10,6 +10,7 @@ import { getLang } from "../../redux/lang/langSelector";
 import { langOptionsReviewModal } from "../../assets/langOptionsReviewModal";
 import { useFormik } from "formik";
 import { getBooksFinishedReadingState } from "../../redux/books/booksSelectors";
+import { getTheme } from "../../redux/theme/themeSelector";
 
 export default function ReviewModal({
   bookId,
@@ -25,6 +26,7 @@ export default function ReviewModal({
   const { text, resume, btnBack, btnSave } = langOptionsReviewModal;
   const dispatch = useDispatch();
   const isBookUpdateRef = useRef(false);
+  const theme = useSelector(getTheme);
 
   useEffect(() => {
     isBookUpdateRef.current && onModalClose();
@@ -48,6 +50,7 @@ export default function ReviewModal({
       isBookUpdateRef.current = true;
     },
   });
+  
 
   return (
     <>
@@ -57,7 +60,8 @@ export default function ReviewModal({
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box className={s.modal}>
+        <Box className={s.modal} style={{ backgroundColor:
+                 theme === "light" ? "white" : "var(--modal-dark)",}}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
             <p className={s.rating}>{text[lang]}</p>
           </Typography>
@@ -68,7 +72,8 @@ export default function ReviewModal({
             onClick={formik.handleChange}
           />
           <Typography className={s.textAreaDescr}>
-            <label className={s.textAreaTitle}>{resume[lang]}</label>
+            <label className={s.textAreaTitle} style={{ backgroundColor:
+                 theme === "light" ? "white" : "var(--modal-dark)",}}>{resume[lang]}</label>
             <textarea
               className={s.textArea}
               name="review"
