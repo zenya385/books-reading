@@ -1,5 +1,6 @@
 import { ErrorMessage, Formik } from "formik";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { langOptionsBookForm } from "../../assets/langOptionsBookForm";
 import { addBook } from "../../redux/books/booksOperations";
@@ -31,8 +32,9 @@ export default function BookForm({ onHandleClose }) {
         onSubmit={(values, { resetForm }) => {
           console.log("values", values);
           dispatch(addBook(values));
+          toast.success("book adds to list");
           resetForm();
-          console.log("values", values);
+          // console.log("values", values);
           onHandleClose();
         }}
       >
