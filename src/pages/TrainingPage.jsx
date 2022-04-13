@@ -24,6 +24,7 @@ import ReadListWithCheckBox from "../components/ReadListWithCheckBox/ReadListWit
 import FailModal from "../components/FinishTrainingModal/FailModal";
 import { useHistory } from "react-router-dom";
 import { formatISO } from "date-fns";
+import Container from "../components/Share/Container";
 
 const getIsTrainingFinished = (trainingBooks) => {
   if (!trainingBooks.length) return false;
@@ -77,10 +78,8 @@ const TrainingPage = () => {
     }
   }, [isOpenModal]);
 
-  
-
   return (
-    <>
+    <Container>
       <MediaQuery maxWidth={1279}>
         <div className={s.TrainingPage}>
           {isTrain && <Timer />}
@@ -102,7 +101,7 @@ const TrainingPage = () => {
             {/* лист с чекбоксом после прописания логики можно удалить */}
           </div>
           <div className={s.statisticMeta}>
-            <MyPurposeToRead books={trainingBooks} isTrain={isTrain}  />
+            <MyPurposeToRead books={trainingBooks} isTrain={isTrain} />
             {isTrain && <StatisticsResults />}
           </div>
         </div>
@@ -110,7 +109,7 @@ const TrainingPage = () => {
       {isOpenModal && (
         <FailModal isOpenModal={isOpenModal} handleClose={toggleModal} />
       )}
-    </>
+    </Container>
   );
 };
 

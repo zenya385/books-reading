@@ -24,6 +24,7 @@ import { getLang } from "../redux/lang/langSelector";
 import { getTheme } from "../redux/theme/themeSelector";
 import BookReviewItem from "../components/BookReviewItem/BookReviewItem";
 import BookReviewList from "../components/BookReviewList/BookReviewList";
+import Container from "../components/Share/Container";
 
 // const booksLibrary = [
 //   {
@@ -83,7 +84,7 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
   };
   const theme = useSelector(getTheme);
   return (
-    <>
+    <Container>
       <section className={s.section}>
         <MediaQuery maxWidth={767}>
           <AddBookModal modalOpen={modalOpen} modalClose={onModalClose} />
@@ -167,7 +168,7 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
         </ul>
       )} */}
       </section>
-    </>
+    </Container>
   );
 };
 

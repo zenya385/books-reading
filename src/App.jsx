@@ -4,18 +4,15 @@ import { Switch } from "react-router-dom";
 import AppBar from "./components/navigation/AppBar";
 import PrivateRoute from "./components/Routs/PrivateRoute";
 import PublicRoute from "./components/Routs/PublicRoute";
-import Container from "./components/Share/Container";
 import GoogleLogin from "./components/Google/GoogleLogin";
+import RedirectNew from "./components/navigation/RedirectNew";
+import Loader from "./components/Loader/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { getTheme } from "./redux/theme/themeSelector";
-import { Redirect } from "react-router-dom";
 import { getBooks } from "./redux/books/booksOperations";
 import { getError } from "./redux/training/trainingSelectors";
 import { getIsError } from "./redux/books/booksSelectors";
 import { getIsErrorAuth } from "./redux/auth/authSelectors";
-import { logout } from "./redux/auth/authOperations";
-import Loader from "./components/Loader/Loader";
-import { logoutUserApi } from "./utils/fetchApi";
 import { logoutUser } from "./redux/auth/authSlice";
 
 const LoginPage = lazy(() => import("./pages/LoginPage.jsx"));
@@ -61,7 +58,6 @@ export default function App() {
         backgroundColor:
           theme === "light" ? "var(--light-theme)" : "var(--dark-theme)",
         color: theme === "light" ? "black" : "white",
-        // height: "100%",
         minHeight: "100vh",
       }}
     >
@@ -74,15 +70,15 @@ export default function App() {
           <PublicRoute path="/login" redirectTo="/library" restricted>
             <LoginPage />
           </PublicRoute>
-          <Container>
-            <PrivateRoute path="/library" redirectTo="/login">
-              <LibraryPage />
-            </PrivateRoute>
-            <PrivateRoute path="/training" redirectTo="/login">
-              <TrainingPage />
-            </PrivateRoute>
-          </Container>
-          {/* <Redirect to="/" /> */}
+
+          <PrivateRoute path="/library" redirectTo="/login">
+            <LibraryPage />
+          </PrivateRoute>
+          <PrivateRoute path="/training" redirectTo="/login">
+            <TrainingPage />
+          </PrivateRoute>
+
+          <RedirectNew />
         </Switch>
       </Suspense>
     </div>
