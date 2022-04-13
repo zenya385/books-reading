@@ -7,21 +7,28 @@ import { langOptionsSummary } from "../../assets/langOptionsSummary";
 // import s from "./ReviewModal.module.scss";
 import s from "./Summary.module.scss";
 import MediaQuery from "react-responsive";
+import { getTheme } from "../../redux/theme/themeSelector";
 
 const Summary = ({ bookId, rating, feedback }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const lang = useSelector(getLang);
   const { resume, ratingI } = langOptionsSummary;
 
+  const theme = useSelector(getTheme);
+
   const toggleModal = () => {
     setIsModalOpen((prev) => !prev);
-    console.log("isModalOpen :>> ", isModalOpen);
   };
 
   return (
     <>
       <MediaQuery maxWidth={767}>
-        <div className={s.wrapper}>
+        <div
+          className={s.wrapper}
+          style={{
+            backgroundColor: theme === "light" ? "white" : "var(--dark-header)",
+          }}
+        >
           <div className={s.ratingWrepper}>
             <p className={s.ratingText}>{ratingI[lang]} : </p>
             <Rating
@@ -29,13 +36,23 @@ const Summary = ({ bookId, rating, feedback }) => {
               size="small"
               value={rating ? rating : 0}
               precision={0.5}
+              style={
+                theme === "light"
+                  ? { troke: "none", strokeWidth: 0 }
+                  : { stroke: "#faaf00", strokeWidth: "0.4" }
+              }
               readOnly
             />
           </div>
         </div>
       </MediaQuery>
 
-      <div className={s.reviewBtnWrepper}>
+      <div
+        className={s.reviewBtnWrepper}
+        style={{
+          backgroundColor: theme === "light" ? "white" : "var(--dark-header)",
+        }}
+      >
         <button onClick={toggleModal} className={s.reviewBtn}>
           {resume[lang]}
         </button>

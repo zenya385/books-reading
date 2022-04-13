@@ -25,6 +25,13 @@
 .itemLineWrepper {
     width: 100%;
     margin: 0 auto;
+
+    @media screen and (min-width: 768px) {
+       
+        top: -20px;
+        position: absolute;
+    }
+        
 }
 .itemLine {
     width: 100%;
@@ -213,8 +220,8 @@
 
 .bookList {
     @media screen and (min-width:768px) {
-        border-top: 1px solid #E0E5EB;;
-        border-bottom: 1px solid #E0E5EB;;
+        border-top: 2px solid #E0E5EB;;
+        border-bottom: 2px solid #E0E5EB;;
     }
 
         @media screen and (min-width:1280px) {
