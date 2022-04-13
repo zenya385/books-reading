@@ -25,6 +25,8 @@ import { getTheme } from "../redux/theme/themeSelector";
 import BookReviewItem from "../components/BookReviewItem/BookReviewItem";
 import BookReviewList from "../components/BookReviewList/BookReviewList";
 import Container from "../components/Share/Container";
+import { Toaster } from "react-hot-toast";
+import Notification from "../components/Share/Notification";
 
 // const booksLibrary = [
 //   {
@@ -85,6 +87,7 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
   const theme = useSelector(getTheme);
   return (
     <Container>
+      <Notification />
       <section className={s.section}>
         <MediaQuery maxWidth={767}>
           <AddBookModal modalOpen={modalOpen} modalClose={onModalClose} />
