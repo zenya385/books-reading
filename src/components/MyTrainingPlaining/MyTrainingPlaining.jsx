@@ -39,6 +39,7 @@ import {
   Legend,
 } from "chart.js";
 import ChartLine from "../ChartLine/ChartLine";
+import toast from "react-hot-toast";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -119,10 +120,9 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
     );
   }, [startDateOrigin, endDateOrigin]);
 
-  const handleChangeValue = (e) => { 
+  const handleChangeValue = (e) => {
     setValueIdBook(e.target.value);
   };
-  
 
   const handleSubmitBookForRead = (e) => {
     e.preventDefault();
@@ -136,6 +136,7 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
       return prev.filter((book) => book._id !== valueIdBook);
     });
     setValueIdBook("default");
+    toast.success("book adds to list");
   };
 
   const handleSubmitBookForTraining = (e) => {
@@ -152,25 +153,21 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
   };
 
   const handleDeleteBook = (e) => {
-    let idBook=e.currentTarget.value    
+    let idBook = e.currentTarget.value;
     setValueIdBook(e.currentTarget);
-    setCurReadBooks((prev) => {      
+    setCurReadBooks((prev) => {
       return prev.filter((book) => book._id !== idBook);
     });
     setBookForTraining((prev) => {
-      
       // console.log('booksLibrary.find)', booksLibrary.find((book) => book._id === idBook))
-      return [
-        ...prev,
-        booksLibrary.find((book) => book._id === idBook),
-      ];
+      return [...prev, booksLibrary.find((book) => book._id === idBook)];
     });
     setValueIdBook("default");
     // console.log('e.currentTarget', e.currentTarget.value)
+    toast.error("book deletes from list");
   };
 
-
-const theme = useSelector(getTheme);
+  const theme = useSelector(getTheme);
   // console.log("bookForTraining>>>", bookForTraining);
   // console.log("curReadBooks>>>", curReadBooks);
   // console.log("books>>>", books);
@@ -183,18 +180,21 @@ const theme = useSelector(getTheme);
   console.log('endDate', endDate)
   duration>=0&&console.log('Duration', duration)  
   return (
-
     <>
       <MediaQuery minWidth={768}>
-
         {/* {!isTrain && ( */}
         <form
           className={isTrain ? s.visuallyHidden : s.form}
           onSubmit={handleSubmitBookForRead}
         >
-          <h2 className={s.title} style={{
-      color: theme === "light" ? "white" : "white",
-    }}>{training[lang]}</h2>
+          <h2
+            className={s.title}
+            style={{
+              color: theme === "light" ? "white" : "white",
+            }}
+          >
+            {training[lang]}
+          </h2>
           <div className={s.datePicker}>
             <DatePicker
               dateFormat="dd.MM.yyyy"

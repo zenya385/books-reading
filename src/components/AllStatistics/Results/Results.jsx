@@ -12,6 +12,8 @@ import { getLang } from "../../../redux/lang/langSelector";
 import s from "./Results.module.scss";
 import { useFormik } from "formik";
 import { getTrainingBooks } from "../../../redux/training/trainingSelectors";
+import toast from "react-hot-toast";
+import { getBooksCurrentlyReadingState } from "../../../redux/books/booksSelectors";
 
 const getIsValidPages = ({ trainingBooks }) => {
   const deltaPages = trainingBooks
@@ -21,11 +23,27 @@ const getIsValidPages = ({ trainingBooks }) => {
   return pagesToRead;
 };
 
+const getFinishedBook = ({ curReadBooks }) => {
+  const deltaPages = curReadBooks.filter(
+    (book) => book.pagesTotal - book.pagesFinished === 0
+  );
+  const finishedBook = deltaPages[deltaPages.length - 1];
+  return finishedBook;
+};
+const getNextdBookAfterFinishedBook = ({ curReadBooks }) => {
+  const deltaPages = curReadBooks.filter(
+    (book) => book.pagesTotal - book.pagesFinished !== 0
+  );
+  const notFinishedBook = deltaPages[0];
+  return notFinishedBook;
+};
+
 const Results = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [pages, setPages] = useState("");
   const lang = useSelector(getLang);
   const trainingBooks = useSelector(getTrainingBooks);
+  const curReadBooks = useSelector(getBooksCurrentlyReadingState);
   const dispatch = useDispatch();
   const { date, numPages, addRes } = langOptionsResults;
 
@@ -49,12 +67,19 @@ const Results = () => {
   useEffect(() => {
     formik.resetForm();
   }, [trainingBooks]);
-  // const onSubmitForm = (e) => {
-  //   e.preventDefault();
-  //   console.log({ pages: Number(pages) });
-  //   dispatch(addPages({ pages: Number(pages) }));
-  //   // dispatch(getPlaningTraining());
-  // };
+
+  useEffect(() => {
+    const finishedBookYet = getFinishedBook({ curReadBooks });
+    const notFinishedBookYet = getNextdBookAfterFinishedBook({ curReadBooks });
+    if (
+      finishedBookYet &&
+      notFinishedBookYet &&
+      notFinishedBookYet.pagesFinished === 0
+    ) {
+      console.log(finishedBookYet);
+      toast.success(`${finishedBookYet.title} + has already finished`);
+    }
+  }, [curReadBooks]);
 
   return (
     <>

@@ -25,6 +25,7 @@ import FailModal from "../components/FinishTrainingModal/FailModal";
 import { useHistory } from "react-router-dom";
 import { formatISO } from "date-fns";
 import Container from "../components/Share/Container";
+import Notification from "../components/Share/Notification";
 
 const getIsTrainingFinished = (trainingBooks) => {
   if (!trainingBooks.length) return false;
@@ -80,6 +81,7 @@ const TrainingPage = () => {
 
   return (
     <Container>
+      <Notification />
       <MediaQuery maxWidth={1279}>
         <div className={s.TrainingPage}>
           {isTrain && <Timer />}
