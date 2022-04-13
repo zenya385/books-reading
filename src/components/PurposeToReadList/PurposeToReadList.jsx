@@ -38,47 +38,67 @@ const PurposeToReadList = ({
         </MediaQuery>
         {booksLibrary.length &&
           booksLibrary.map((book) => (
-            <div key={book._id} className={s.itemLineWrepper}>
-              <span className={s.itemLine}></span>
-              <li className={s.item}>
-                <div className={s.iconTitle}>
-                  <svg className={s.navIcon} width="22px" height="17px">
-                    <use xlinkHref={`${Icons}#icon-flat-${colorIcon}`} />
-                  </svg>
+            <li className={s.item}>
+              <div key={book._id} className={s.itemLineWrepper}>
+                <span className={s.itemLine}></span>
+              </div>
+              <div className={s.iconTitle}>
+                <svg className={s.navIcon} width="22px" height="17px">
+                  <use xlinkHref={`${Icons}#icon-flat-${colorIcon}`} />
+                </svg>
 
-                  <p className={s.bookTitle} style={{
-          color: theme === "light" ? "#242A37" : "var(--dark-text)",
-        }}>{book.title}</p>
-                </div>
-                <MediaQuery maxWidth={767}>
-                  <div className={s.bookInfo}>
-                    <p className={s.bookInfoText}>{author[lang]}:</p>
-                    <p className={s.bookInfoText}>{publishYear[lang]}:</p>
-                    <p className={s.bookInfoText}>{pagesTotal[lang]}:</p>
-                  </div>
-                </MediaQuery>
-                <div className={s.bookMoreInfo}>
-                  <p className={s.bookMoreInfoAuthor} style={{
-          color: theme === "light" ? "#242A37" : "var(--dark-text)",
-        }}>{book.author}</p>
-                  <p className={s.bookMoreInfoYear} style={{
-          color: theme === "light" ? "#242A37" : "var(--dark-text)",
-        }}>{book.publishYear}</p>
-                  <p className={s.bookMoreInfoPage} style={{
-          color: theme === "light" ? "#242A37" : "var(--dark-text)",
-        }}>{book.pagesTotal}</p>
-                </div>
-                <button
-                  className={s.delBtn}
-                  value={book._id}
-                  onClick={handleDeleteBook}
+                <p
+                  className={s.bookTitle}
+                  style={{
+                    color: theme === "light" ? "#242A37" : "var(--dark-text)",
+                  }}
                 >
-                  <svg className={s.delBtnIcon} width="14px" height="18px">
-                    <use xlinkHref={`${Icons}#icon-delete`} />
-                  </svg>
-                </button>
-              </li>
-            </div>
+                  {book.title}
+                </p>
+              </div>
+              <MediaQuery maxWidth={767}>
+                <div className={s.bookInfo}>
+                  <p className={s.bookInfoText}>{author[lang]}:</p>
+                  <p className={s.bookInfoText}>{publishYear[lang]}:</p>
+                  <p className={s.bookInfoText}>{pagesTotal[lang]}:</p>
+                </div>
+              </MediaQuery>
+              <div className={s.bookMoreInfo}>
+                <p
+                  className={s.bookMoreInfoAuthor}
+                  style={{
+                    color: theme === "light" ? "#242A37" : "var(--dark-text)",
+                  }}
+                >
+                  {book.author}
+                </p>
+                <p
+                  className={s.bookMoreInfoYear}
+                  style={{
+                    color: theme === "light" ? "#242A37" : "var(--dark-text)",
+                  }}
+                >
+                  {book.publishYear}
+                </p>
+                <p
+                  className={s.bookMoreInfoPage}
+                  style={{
+                    color: theme === "light" ? "#242A37" : "var(--dark-text)",
+                  }}
+                >
+                  {book.pagesTotal}
+                </p>
+              </div>
+              <button
+                className={s.delBtn}
+                value={book._id}
+                onClick={handleDeleteBook}
+              >
+                <svg className={s.delBtnIcon} width="14px" height="18px">
+                  <use xlinkHref={`${Icons}#icon-delete`} />
+                </svg>
+              </button>
+            </li>
           ))}
       </ul>
     </>
