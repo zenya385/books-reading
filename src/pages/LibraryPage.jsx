@@ -135,7 +135,6 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
               color: theme === "light" ? "black" : "white",
             }}
           >
-            {" "}
             {titleFuture[lang]}
           </h2>
         )}
@@ -151,8 +150,6 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
           booksCurrentlyReading.length < 1 &&
           booksFinishedReading.length < 1 && <InstructionModal />}
 
-        {/* {!booksIsLoading && booksGoingToRead.length === 0 && <SuccessModal />} */}
-        {/* {!booksIsLoading && booksGoingToRead.length === 0 && <FailModal />} */}
         <div className={s.nextBtnWrapper}>
           <Link to="/training" className={s.nextBtn}>
             {btn[lang]}

@@ -28,7 +28,6 @@ const ReadListWithCheckBox = ({ booksLibrary }) => {
 
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
- 
   return (
     <>
       <ul
@@ -48,68 +47,91 @@ const ReadListWithCheckBox = ({ booksLibrary }) => {
           </div>
           <span className={s.bookInfoLine}></span>
         </MediaQuery>
-        {booksLibrary.map(({_id,pagesFinished,pagesTotal,title,author,publishYear}) => (
-          
-          <div key={_id} className={s.itemLineWrepper} >
-            <span className={s.itemLine}></span>
+        {booksLibrary.map(
+          ({ _id, pagesFinished, pagesTotal, title, author, publishYear }) => (
             <li className={s.item}>
-              <div className={s.iconTitle}>
-                {/* проверка для рендера checkBox */}
-                {(Number(pagesFinished)===Number(pagesTotal))&&
-               ( <>
-               <div className={s.checkBoxWrepper}>
-                  <svg className={s.checkBoxIcon} width="15px" height="15px">
-                    <use xlinkHref={`${Icons}#icon-checkBox`} />
-                  </svg>
-                  
-                </div><p className={s.bookTitle}>{title}</p>
-               </>)}
-              
-                {(Number(pagesFinished)!==Number(pagesTotal))&&(
-               <>
-                <div className={s.checkBox}></div>
-                <p className={s.bookTitle}>{title}</p>
-               </>)}
-                {/* {if (Number({book.pagesFinished})===Number({book.pagesTotal})) {
-                           <div className={s.checkBoxWrepper}>
-                  <svg className={s.checkBoxIcon} width="15px" height="15px">
-                    <use xlinkHref={`${Icons}#icon-checkBox`} />
-                  </svg>
-                </div>
-              }else  {
-                <div className={s.checkBox}></div>
-                <p className={s.bookTitle}>{book.title}</p>
-              }} */}
+              <div key={_id} className={s.itemLineWrepper}>
+                <span className={s.itemLine}></span>
               </div>
+              <div className={s.conteiner}>
+                <div className={s.iconTitle}>
+                  {Number(pagesFinished) === Number(pagesTotal) && (
+                    <div className={s.checkBoxWrepper}>
+                      <div className={s.checkBoxIconWrepper}>
+                        <svg
+                          className={s.checkBoxIcon}
+                          width="15px"
+                          height="15px"
+                        >
+                          <use xlinkHref={`${Icons}#icon-checkBox`} />
+                        </svg>
+                      </div>
+                      <div>
+                        <p
+                          className={s.bookTitle}
+                          style={{
+                            color: theme === "light" ? "#242A37" : "#cecfd2",
+                          }}
+                        >
+                          {title}
+                        </p>
+                      </div>
+                    </div>
+                  )}
 
-                {/* что ниже потом удалить */}
-                {/* <div className={s.checkBox}></div>
-                <p className={s.bookTitle} style={{
-           color: theme === "light" ? "#242A37" : "#cecfd2",
-         }}>{book.title}</p>
-               </div> */}
-
-              <MediaQuery maxWidth={767}>
-                <div className={s.bookInfo}>
-                  <p className={s.bookInfoText}>{authorL[lang]}:</p>
-                  <p className={s.bookInfoText}>{publishYearL[lang]}:</p>
-                  <p className={s.bookInfoText}>{pagesTotalL[lang]}:</p>
+                  {Number(pagesFinished) !== Number(pagesTotal) && (
+                    <div className={s.checkBoxWrepper}>
+                      <div className={s.checkBox}></div>
+                      <div>
+                        <p
+                          className={s.bookTitle}
+                          style={{
+                            color: theme === "light" ? "#242A37" : "#cecfd2",
+                          }}
+                        >
+                          {title}
+                        </p>
+                      </div>
+                    </div>
+                  )}
                 </div>
-              </MediaQuery>
-              <div className={s.bookMoreInfo}>
-                <p className={s.bookMoreInfoAuthor} style={{
-          color: theme === "light" ? "#242A37" : "#cecfd2",
-        }}>{author}</p>
-                <p className={s.bookMoreInfoYear} style={{
-          color: theme === "light" ? "#242A37" : "#cecfd2",
-        }}>{publishYear}</p>
-                <p className={s.bookMoreInfoPage} style={{
-          color: theme === "light" ? "#242A37" : "#cecfd2",
-        }}>{pagesTotal}</p>
+                <MediaQuery maxWidth={767}>
+                  <div className={s.bookInfo}>
+                    <p className={s.bookInfoText}>{authorL[lang]}:</p>
+                    <p className={s.bookInfoText}>{publishYearL[lang]}:</p>
+                    <p className={s.bookInfoText}>{pagesTotalL[lang]}:</p>
+                  </div>
+                </MediaQuery>
+                <div className={s.bookMoreInfo}>
+                  <p
+                    className={s.bookMoreInfoAuthor}
+                    style={{
+                      color: theme === "light" ? "#242A37" : "#cecfd2",
+                    }}
+                  >
+                    {author}
+                  </p>
+                  <p
+                    className={s.bookMoreInfoYear}
+                    style={{
+                      color: theme === "light" ? "#242A37" : "#cecfd2",
+                    }}
+                  >
+                    {publishYear}
+                  </p>
+                  <p
+                    className={s.bookMoreInfoPage}
+                    style={{
+                      color: theme === "light" ? "#242A37" : "#cecfd2",
+                    }}
+                  >
+                    {pagesTotal}
+                  </p>
+                </div>
               </div>
             </li>
-           </div>
-        ))}
+          )
+        )}
       </ul>
     </>
   );
