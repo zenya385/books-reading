@@ -77,7 +77,7 @@ const MyPurposeToRead = ({ books, isTrain }) => {
                 // color: theme === "light" ? "black" : 'var(--dark-text)'
               }}
             >
-              {remaindBooks.length}
+              {books.length}
             </span>
             <p className={s.numbers_text_complete}>{read[lang]}</p>
           </div>
