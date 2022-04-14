@@ -21,24 +21,6 @@ const Summary = ({ bookId, rating, feedback }) => {
   return (
     <>
       <MediaQuery maxWidth={767}>
-<<<<<<< Updated upstream
-        <div className={s.wrapper}>
-          <div className={s.ratingWrepper}>
-            <p className={s.ratingText}>{ratingI[lang]} : </p>
-            <Rating
-              name="half-rating-read"
-              size="small"
-              value={rating ? rating : 0}
-              precision={0.5}
-              // style={
-              //   theme === "light"
-              //     ? { troke: "none", strokeWidth: 0 }
-              //     : { stroke: "#faaf00", strokeWidth: "0.4" }
-              // }
-              readOnly
-            />
-          </div>
-=======
         <div className={s.ratingWrepper}>
           <p className={s.ratingText}>{ratingI[lang]} : </p>
           <Rating
@@ -48,7 +30,6 @@ const Summary = ({ bookId, rating, feedback }) => {
             precision={0.5}
             readOnly
           />
->>>>>>> Stashed changes
         </div>
       </MediaQuery>
       <button onClick={toggleModal} className={s.reviewBtn}>

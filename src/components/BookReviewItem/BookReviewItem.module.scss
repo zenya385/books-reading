@@ -1,26 +1,5 @@
 .item {
     position: relative;
-<<<<<<< Updated upstream
-    width: 270px;
-    min-height: 272px;
-
-    display: flex;
-    align-items: center;
-    box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
-
-    margin: 0;
-    @media screen and (max-width: 767px) {
-       
-        width: auto;
-    
-        margin-top: 28px;
-    }
-
-    @media screen and (min-width: 768px) {
-        margin-top: 14px;
-        height: 62px;
-    }
-=======
     min-height: 272px;
     margin: 0 auto 65px;
     width: 270px;
@@ -33,7 +12,6 @@
         @media screen and (min-width: 1280px) {
             width: 1200px;
         }
->>>>>>> Stashed changes
 }
 a {
     text-decoration: none;
@@ -41,27 +19,18 @@ a {
 
 .iconTitle {
     display: flex;
-<<<<<<< Updated upstream
-=======
     position: absolute;
 
     top: 20px;
     left: 15px;
 
->>>>>>> Stashed changes
     @media screen and (min-width: 480px) {
         margin-bottom: 10px;
         align-items: center;
       
     }
 
-<<<<<<< Updated upstream
-    @media screen and (min-width: 1280px) {
-        position:static;
-        align-items: center;
-=======
     @media screen and (min-width: 768px) {
->>>>>>> Stashed changes
     }
 }
 
