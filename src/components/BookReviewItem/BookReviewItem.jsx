@@ -46,7 +46,11 @@ const BookReviewItem = ({
         </a>
       </div>
       <MediaQuery maxWidth={767}>
+<<<<<<< Updated upstream
         <div className={s.bookInfo}>
+=======
+        <div className={s.bookInfoWrapper}>
+>>>>>>> Stashed changes
           <p className={s.bookInfoText}>{authorItem[lang]}:</p>
           <p className={s.bookInfoText}>{yearItem[lang]}:</p>
           <p className={s.bookInfoText}>{pagesItem[lang]}:</p>
@@ -79,6 +83,7 @@ const BookReviewItem = ({
         </p>
       </div>
       <MediaQuery minWidth={1280}>
+<<<<<<< Updated upstream
         <Rating
           name="half-rating-read"
           size="large"
@@ -113,6 +118,33 @@ const BookReviewItem = ({
         <Summary bookId={bookId} rating={rating} feedback={feedback} />
       </MediaQuery>
 
+=======
+        <div className={s.ratingStar}>
+          <Rating
+            name="half-rating-read"
+            size="large"
+            value={rating ? rating : 0}
+            precision={0.5}
+            readOnly
+          />
+        </div>
+        <Summary bookId={bookId} rating={rating} feedback={feedback} />
+      </MediaQuery>
+
+      <MediaQuery minWidth={768} maxWidth={1279}>
+        <div className={s.ratingStar}>
+          <Rating
+            name="half-rating-read"
+            size="medium"
+            sizeMedium
+            value={rating ? rating : 0}
+            precision={0.5}
+            readOnly
+          />
+        </div>
+        <Summary bookId={bookId} rating={rating} feedback={feedback} />
+      </MediaQuery>
+>>>>>>> Stashed changes
       <MediaQuery maxWidth={767}>
         <Summary bookId={bookId} rating={rating} feedback={feedback} />
       </MediaQuery>

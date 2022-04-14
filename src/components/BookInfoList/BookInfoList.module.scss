@@ -25,10 +25,11 @@ p {
 		margin: 0 auto;
 		width: 270px;
 	}
-@media screen and (min-width: 1280px) {
-	padding: 10px 25px 25px 0;
-	margin-bottom: 40px;
-}
+
+	@media screen and (min-width: 1280px) {
+		padding: 10px 0 25px 0;
+		margin-bottom: 40px;
+	}
 	
 
 }
@@ -50,7 +51,8 @@ p {
 	}
 
 	@media screen and (min-width: 1280px) {
-		width: 340px;
+		width: 130px;
+		margin-right: 200px;
 	}
 }
 
@@ -60,7 +62,8 @@ p {
 	}
 
 	@media screen and (min-width: 1280px) {
-	width: 135px;
+		width: 50px;
+		margin-right: 68px;
 	}
 }
 

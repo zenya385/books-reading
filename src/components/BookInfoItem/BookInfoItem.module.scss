@@ -183,3 +183,9 @@ height: 26px;
     line-height: 2.71;
   }
 }
+.bookInfoWrapper {
+  @media screen and (min-width: 768px) {
+   display: flex;
+  
+  }
+}

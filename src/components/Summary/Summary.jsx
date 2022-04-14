@@ -4,7 +4,6 @@ import ReviewModal from "../ReviewModal/ReviewModal";
 import { useSelector } from "react-redux";
 import { getLang } from "../../redux/lang/langSelector";
 import { langOptionsSummary } from "../../assets/langOptionsSummary";
-// import s from "./ReviewModal.module.scss";
 import s from "./Summary.module.scss";
 import MediaQuery from "react-responsive";
 import { getTheme } from "../../redux/theme/themeSelector";
@@ -22,6 +21,7 @@ const Summary = ({ bookId, rating, feedback }) => {
   return (
     <>
       <MediaQuery maxWidth={767}>
+<<<<<<< Updated upstream
         <div className={s.wrapper}>
           <div className={s.ratingWrepper}>
             <p className={s.ratingText}>{ratingI[lang]} : </p>
@@ -38,15 +38,22 @@ const Summary = ({ bookId, rating, feedback }) => {
               readOnly
             />
           </div>
+=======
+        <div className={s.ratingWrepper}>
+          <p className={s.ratingText}>{ratingI[lang]} : </p>
+          <Rating
+            name="half-rating-read"
+            size="small"
+            value={rating ? rating : 0}
+            precision={0.5}
+            readOnly
+          />
+>>>>>>> Stashed changes
         </div>
       </MediaQuery>
-
-      <div className={s.reviewBtnWrepper}>
-        <button onClick={toggleModal} className={s.reviewBtn}>
-          {resume[lang]}
-        </button>
-      </div>
-
+      <button onClick={toggleModal} className={s.reviewBtn}>
+        {resume[lang]}
+      </button>
       {isModalOpen && (
         <ReviewModal
           bookRating={rating}
