@@ -1,20 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { langOptionsMyPurposeToRead } from "../../assets/langOptionsMyPurposeToRead";
 import { getLang } from "../../redux/lang/langSelector";
 import {
   getDurationPeriod,
-  // getRemaindBooks,
 } from "../../redux/training/trainingSelectors";
 import { getTheme } from "../../redux/theme/themeSelector";
 import s from "./MyPurposeToRead.module.scss";
+import { getBooksCurrentlyReadingState } from "../../redux/books/booksSelectors";
 
 const MyPurposeToRead = ({ books, isTrain }) => {
   const duration = useSelector(getDurationPeriod);
-  // const remaindBooks = useSelector(getRemaindBooks);
+  const booksCurrentlyReading = useSelector(getBooksCurrentlyReadingState);
   const theme = useSelector(getTheme);
   const lang = useSelector(getLang);
   const { goal, booksNum, days, read } = langOptionsMyPurposeToRead;
+  
+  let booksToRead = 0;
+  
+      for (let i = 0; i < booksCurrentlyReading.length; i += 1) {
+      (Number(booksCurrentlyReading[i].pagesFinished) !==
+        Number(booksCurrentlyReading[i].pagesTotal) )&& (booksToRead += 1);
+      // console.log("alreadyRead", booksToRead);
+    }  
 
   return (
     <div
@@ -77,7 +85,7 @@ const MyPurposeToRead = ({ books, isTrain }) => {
                 // color: theme === "light" ? "black" : 'var(--dark-text)'
               }}
             >
-              {books.length}
+              {booksToRead}
             </span>
             <p className={s.numbers_text_complete}>{read[lang]}</p>
           </div>
