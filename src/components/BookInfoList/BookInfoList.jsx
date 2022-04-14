@@ -1,9 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import BookInfoItem from "../BookInfoItem/BookInfoItem";
-import BookReviewItem from "../BookReviewItem/BookReviewItem";
 import s from "./BookInfoList.module.scss";
 import MediaQuery from "react-responsive";
-import Icons from "../../images/symbol-defs.svg";
 import { getTheme } from "../../redux/theme/themeSelector";
 import { useSelector } from "react-redux";
 import { langOptionsBookInfoList } from "../../assets/langOptionsBookInfoList";
@@ -54,36 +52,6 @@ const BookInfoList = ({ booksLibrary, colorIcon, review, titleFuture }) => {
             feedback={book.feedback}
           />
         ))}
-
-        {/* {Boolean(review)
-          ? booksLibrary.map((book) => (
-              <BookReviewItem
-                key={book._id}
-                title={book.title}
-                author={book.author}
-                publishYear={book.publishYear}
-                pagesTotal={book.pagesTotal}
-                colorIcon={colorIcon}
-                review={review}
-                bookId={book._id}
-                rating={book.rating}
-                feedback={book.feedback}
-              />
-            ))
-          : booksLibrary.map((book) => (
-              <BookInfoItem
-                key={book._id}
-                title={book.title}
-                author={book.author}
-                publishYear={book.publishYear}
-                pagesTotal={book.pagesTotal}
-                colorIcon={colorIcon}
-                review={review}
-                bookId={book._id}
-                rating={book.rating}
-                feedback={book.feedback}
-              />
-            ))} */}
       </ul>
     </div>
   );
