@@ -86,6 +86,11 @@ const BookReviewItem = ({
             value={rating ? rating : 0}
             precision={0.5}
             readOnly
+            style={
+              theme === "light"
+                ? { troke: "none", strokeWidth: 0 }
+                : { stroke: "#faaf00", strokeWidth: "0.4" }
+            }
           />
         </div>
         <Summary bookId={bookId} rating={rating} feedback={feedback} />
@@ -100,6 +105,11 @@ const BookReviewItem = ({
             value={rating ? rating : 0}
             precision={0.5}
             readOnly
+            style={
+              theme === "light"
+                ? { troke: "none", strokeWidth: 0 }
+                : { stroke: "#faaf00", strokeWidth: "0.4" }
+            }
           />
         </div>
         <Summary bookId={bookId} rating={rating} feedback={feedback} />

@@ -129,19 +129,19 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
             review={0}
           />
         )}
-        {booksGoingToRead && Boolean(booksGoingToRead.length) && (
+        {/* {booksGoingToRead && Boolean(booksGoingToRead.length) && (
           <h2
             style={{
               color: theme === "light" ? "black" : "white",
             }}
           >
-            {" "}
-            {titleFuture[lang]}
+            {titleFuture[lang]} gjgh
           </h2>
-        )}
+        )} */}
         {booksGoingToRead && Boolean(booksGoingToRead.length) && (
           <BookInfoList
             booksLibrary={booksGoingToRead}
+            titleFuture={titleFuture}
             colorIcon="grey"
             review={0}
           />
@@ -151,13 +151,15 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
           booksCurrentlyReading.length < 1 &&
           booksFinishedReading.length < 1 && <InstructionModal />}
 
-        {/* {!booksIsLoading && booksGoingToRead.length === 0 && <SuccessModal />} */}
-        {/* {!booksIsLoading && booksGoingToRead.length === 0 && <FailModal />} */}
-        <div className={s.nextBtnWrapper}>
-          <Link to="/training" className={s.nextBtn}>
-            {btn[lang]}
-          </Link>
-        </div>
+        {booksGoingToRead.length !== 0 ||
+          booksCurrentlyReading.length !== 0 ||
+          (booksFinishedReading.length !== 0 && (
+            <div className={s.nextBtnWrapper}>
+              <Link to="/training" className={s.nextBtn}>
+                {btn[lang]}
+              </Link>
+            </div>
+          ))}
         <MediaQuery maxWidth={767}>
           <button onClick={onModalOpen} className={s.modalOpenBtn}>
             <BsPlusLg style={{ width: "18px", height: "18px" }} />

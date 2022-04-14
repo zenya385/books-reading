@@ -50,7 +50,6 @@ export default function ReviewModal({
       isBookUpdateRef.current = true;
     },
   });
-  
 
   return (
     <>
@@ -60,8 +59,12 @@ export default function ReviewModal({
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box className={s.modal} style={{ backgroundColor:
-                 theme === "light" ? "white" : "var(--modal-dark)",}}>
+        <Box
+          className={s.modal}
+          style={{
+            backgroundColor: theme === "light" ? "white" : "var(--modal-dark)",
+          }}
+        >
           <Typography id="modal-modal-title" variant="h6" component="h2">
             <p className={s.rating}>{text[lang]}</p>
           </Typography>
@@ -72,9 +75,20 @@ export default function ReviewModal({
             onClick={formik.handleChange}
           />
           <Typography className={s.textAreaDescr}>
-            <label className={s.textAreaTitle} style={{ backgroundColor:
-                 theme === "light" ? "white" : "var(--modal-dark)",}}>{resume[lang]}</label>
+            <label
+              className={s.textAreaTitle}
+              style={{
+                backgroundColor:
+                  theme === "light" ? "white" : "var(--modal-dark)",
+              }}
+            >
+              {resume[lang]}
+            </label>
             <textarea
+              style={{
+                backgroundColor:
+                  theme === "light" ? "white" : "var(--modal-dark)",
+              }}
               className={s.textArea}
               name="review"
               value={formik.values.review}
@@ -89,15 +103,22 @@ export default function ReviewModal({
               </div>
             )}
           </Typography>
-          <Typography className={s.btnWrepper}>
-            <button onClick={onModalClose} className={s.backBtn}>
+          <div className={s.btnWrepper}>
+            <button
+              onClick={onModalClose}
+              className={s.backBtn}
+              style={{
+                backgroundColor:
+                  theme === "light" ? "white" : "var(--modal-dark)",
+              }}
+            >
               {btnBack[lang]}
             </button>
 
             <button onClick={formik.handleSubmit} className={s.saveBtn}>
               {btnSave[lang]}
             </button>
-          </Typography>
+          </div>
         </Box>
       </Modal>
     </>

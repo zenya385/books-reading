@@ -29,6 +29,11 @@ const Summary = ({ bookId, rating, feedback }) => {
             value={rating ? rating : 0}
             precision={0.5}
             readOnly
+            style={
+              theme === "light"
+                ? { troke: "none", strokeWidth: 0 }
+                : { stroke: "#faaf00", strokeWidth: "0.4" }
+            }
           />
         </div>
       </MediaQuery>

@@ -26,40 +26,41 @@ const BookReviewList = ({ booksLibrary, colorIcon, review }) => {
   }, []);
 
   return (
-    <div>
-      <div>
-        <ul className={s.bookList}>
+    <section className={s.reviewListConteiner}>
+      <h2
+        style={{
+          color: theme === "light" ? "var(--title-text-color)" : "white",
+        }}
+      >
+        {done[lang]}
+      </h2>
+      <ul className={s.bookList}>
+        <MediaQuery minWidth={768}>
+          <div className={s.bookInfo}>
+            <p className={s.title}>{title[lang]}</p>
 
-          <h2 style={{
-          color:
-            theme === "light" ? "var(--title-text-color)" : "white"
-        }}>{done[lang]}</h2>
-          <MediaQuery minWidth={768}>
-            <div className={s.bookInfo}>
-              <p className={s.title}>{title[lang]}</p>
+            <p className={s.author}>{author[lang]}</p>
+            <p className={s.year}>{publishYear[lang]}</p>
+            <p className={s.page}>{pagesTotal[lang]}</p>
+            <p className={s.bookInfoText}>{rating[lang]}</p>
+          </div>
+        </MediaQuery>
+        {booksLibrary.map((book) => (
+          <BookReviewItem
+            key={book._id}
+            title={book.title}
+            author={book.author}
+            publishYear={book.publishYear}
+            pagesTotal={book.pagesTotal}
+            colorIcon={colorIcon}
+            review={review}
+            bookId={book._id}
+            rating={book.rating}
+            feedback={book.feedback}
+          />
+        ))}
 
-              <p className={s.author}>{author[lang]}</p>
-              <p className={s.year}>{publishYear[lang]}</p>
-              <p className={s.page}>{pagesTotal[lang]}</p>
-              <p className={s.bookInfoText}>{rating[lang]}</p>
-            </div>
-          </MediaQuery>
-          {booksLibrary.map((book) => (
-            <BookReviewItem
-              key={book._id}
-              title={book.title}
-              author={book.author}
-              publishYear={book.publishYear}
-              pagesTotal={book.pagesTotal}
-              colorIcon={colorIcon}
-              review={review}
-              bookId={book._id}
-              rating={book.rating}
-              feedback={book.feedback}
-            />
-          ))}
-
-          {/* {Boolean(review)
+        {/* {Boolean(review)
           ? booksLibrary.map((book) => (
               <BookReviewItem
                 key={book._id}
@@ -88,9 +89,8 @@ const BookReviewList = ({ booksLibrary, colorIcon, review }) => {
                 feedback={book.feedback}
               />
             ))} */}
-        </ul>
-      </div>
-    </div>
+      </ul>
+    </section>
   );
 };
 
