@@ -85,6 +85,10 @@ export default function ReviewModal({
               {resume[lang]}
             </label>
             <textarea
+              style={{
+                backgroundColor:
+                  theme === "light" ? "white" : "var(--modal-dark)",
+              }}
               className={s.textArea}
               name="review"
               value={formik.values.review}
@@ -99,15 +103,22 @@ export default function ReviewModal({
               </div>
             )}
           </Typography>
-          <Typography className={s.btnWrepper}>
-            <button onClick={onModalClose} className={s.backBtn}>
+          <div className={s.btnWrepper}>
+            <button
+              onClick={onModalClose}
+              className={s.backBtn}
+              style={{
+                backgroundColor:
+                  theme === "light" ? "white" : "var(--modal-dark)",
+              }}
+            >
               {btnBack[lang]}
             </button>
 
             <button onClick={formik.handleSubmit} className={s.saveBtn}>
               {btnSave[lang]}
             </button>
-          </Typography>
+          </div>
         </Box>
       </Modal>
     </>

@@ -5,8 +5,13 @@ background-color: white;
 .ratingWrepper {
     display: flex;
     align-items: center;
-    margin-left: 55px;
-    margin-bottom: 10px;
+    position: absolute;
+    bottom: 80px;
+    left: 55px;
+
+        @media screen and (min-width: 480px) {
+            left: 50px;
+        }
 }
 .ratingText {
     font-family: 'Montserrat';
@@ -19,8 +24,11 @@ background-color: white;
 }
 
 .reviewBtn {
-    display: block;
-    margin: 0 auto;
+    position: absolute;
+    bottom: 30px;
+    left: 72px;
+
+  
     width: 127px;
     height: 40px;
 
@@ -38,20 +46,16 @@ background-color: white;
     @media screen and (min-width: 768px) {
         width: 80px;
 
-        margin-left: 20px;
+        left: 580px;
+        top: 11px;
     
     }
 
     @media screen and (min-width: 1280px) {
         width: 130px;
-        margin-right: 0;
-        margin-left: 50px;
-    
-    }
-    
+        left: 987px;   
+    }   
 }
-
-
 .reviewBtnWrepper {
     background-color: white;
     height: 70px;

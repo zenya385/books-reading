@@ -4,7 +4,6 @@ import ReviewModal from "../ReviewModal/ReviewModal";
 import { useSelector } from "react-redux";
 import { getLang } from "../../redux/lang/langSelector";
 import { langOptionsSummary } from "../../assets/langOptionsSummary";
-// import s from "./ReviewModal.module.scss";
 import s from "./Summary.module.scss";
 import MediaQuery from "react-responsive";
 import { getTheme } from "../../redux/theme/themeSelector";
@@ -23,41 +22,25 @@ const Summary = ({ bookId, rating, feedback }) => {
   return (
     <>
       <MediaQuery maxWidth={767}>
-        <div
-          className={s.wrapper}
-          style={{
-            backgroundColor: theme === "light" ? "white" : "var(--dark-header)",
-          }}
-        >
-          <div className={s.ratingWrepper}>
-            <p className={s.ratingText}>{ratingI[lang]} : </p>
-            <Rating
-              name="half-rating-read"
-              size="small"
-              value={rating ? rating : 0}
-              precision={0.5}
-              style={
-                theme === "light"
-                  ? { troke: "none", strokeWidth: 0 }
-                  : { stroke: "#faaf00", strokeWidth: "0.4" }
-              }
-              readOnly
-            />
-          </div>
+        <div className={s.ratingWrepper}>
+          <p className={s.ratingText}>{ratingI[lang]} : </p>
+          <Rating
+            name="half-rating-read"
+            size="small"
+            value={rating ? rating : 0}
+            precision={0.5}
+            readOnly
+            style={
+              theme === "light"
+                ? { troke: "none", strokeWidth: 0 }
+                : { stroke: "#faaf00", strokeWidth: "0.4" }
+            }
+          />
         </div>
       </MediaQuery>
-
-      <div
-        className={s.reviewBtnWrepper}
-        style={{
-          backgroundColor: theme === "light" ? "white" : "var(--dark-header)",
-        }}
-      >
-        <button onClick={toggleModal} className={s.reviewBtn}>
-          {resume[lang]}
-        </button>
-      </div>
-
+      <button onClick={toggleModal} className={s.reviewBtn}>
+        {resume[lang]}
+      </button>
       {isModalOpen && (
         <ReviewModal
           bookRating={rating}

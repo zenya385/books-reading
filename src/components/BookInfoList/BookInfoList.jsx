@@ -7,13 +7,21 @@ import { useSelector } from "react-redux";
 import { langOptionsBookInfoList } from "../../assets/langOptionsBookInfoList";
 import { getLang } from "../../redux/lang/langSelector";
 
-const BookInfoList = ({ booksLibrary, colorIcon, review }) => {  
+const BookInfoList = ({ booksLibrary, colorIcon, review, titleFuture }) => {
+  // console.log(booksLibrary);
   const theme = useSelector(getTheme);
   const lang = useSelector(getLang);
   const { title, author, publishYear, pagesTotal } = langOptionsBookInfoList;
 
   return (
-    <>
+    <div className={s.infoListConteiner}>
+      <h2
+        style={{
+          color: theme === "light" ? "black" : "white",
+        }}
+      >
+        {titleFuture[lang]}
+      </h2>
       <ul
         className={s.bookList}
         style={{
@@ -43,9 +51,9 @@ const BookInfoList = ({ booksLibrary, colorIcon, review }) => {
             rating={book.rating}
             feedback={book.feedback}
           />
-        ))}       
+        ))}
       </ul>
-    </>
+    </div>
   );
 };
 

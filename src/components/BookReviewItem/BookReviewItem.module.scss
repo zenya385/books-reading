@@ -1,58 +1,47 @@
 .item {
-    display: flex;
-    align-items: center;
+    position: relative;
+    min-height: 272px;
+    margin: 0 auto 65px;
+    width: 270px;
 
-    margin: 0;
-    background: var (--primary-bg-color);
-    @media screen and (max-width: 767px) {
-        position: relative;
-        width: auto;
-        align-items: center;
-        margin-top: 28px;
-    }
-
-    @media screen and (min-width: 768px) {
-        margin-top: 14px;
-        height: 62px;
-    }
+        @media screen and (min-width: 768px) {
+            margin-bottom: 10px;
+            min-height: 60px;
+            width: 678px;
+        }
+        @media screen and (min-width: 1280px) {
+            width: 1200px;
+        }
 }
 a {
     text-decoration: none;
 }
-button {
-    background: transparent;
-    outline: none;
-    border: none;
-}
 
 .iconTitle {
     display: flex;
+    position: absolute;
 
-    @media screen and (max-width: 767px) {
-        position:static;
-        align-items: center;
-        position: absolute;
-        bottom: 75%;
-        left: 7%;
-    }
+    top: 20px;
+    left: 15px;
+
     @media screen and (min-width: 480px) {
         margin-bottom: 10px;
         align-items: center;
-        position: absolute;
-        bottom: 75%;
-        left: 7%;
+      
     }
 
     @media screen and (min-width: 768px) {
-        position:static;
-        align-items: center;
     }
 }
 
-.bookInfo {
-    padding-left: 55px;
-    margin-top: 43px;
-
+.bookInfoWrapper {
+    position: absolute;
+    left: 55px;
+    top: 45px;
+    @media screen and (min-width: 480px) {
+       left: 50px;
+    
+    }
 }
 
 .bookTitle {
@@ -85,15 +74,17 @@ button {
 }
 
 .bookMoreInfo {
-    margin-left: 30px;
-    margin-top: 45px;
+    position: absolute;
+    top: 45px;
+    left: 126px;
 
     @media screen and (min-width: 768px) {
+        left: 216px;
+        top: 12px;
         display: flex;
-        margin-top: 0;
     }
     @media screen and (min-width: 1280px) {
-        margin-left: 0;
+        left: 340px;
 
     }
 }
@@ -169,4 +160,17 @@ button {
         max-height: 40px;
     }
 }
+// .bookReviewItemWrapper {
+//     background: var (--primary-bg-color);
+//     box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+// }
 
+.ratingStar {
+    position: absolute;
+    top: 20px;
+    right: 117px;
+
+        @media screen and (min-width: 1280px) {
+            left: 815px;
+        }
+}
