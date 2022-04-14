@@ -76,7 +76,7 @@ const Results = () => {
       notFinishedBookYet &&
       notFinishedBookYet.pagesFinished === 0
     ) {
-      console.log(finishedBookYet);
+      // console.log(finishedBookYet);
       toast.success(`${finishedBookYet.title} has already finished`);
     }
   }, [curReadBooks]);
