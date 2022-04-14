@@ -4,14 +4,14 @@ import { langOptionsMyPurposeToRead } from "../../assets/langOptionsMyPurposeToR
 import { getLang } from "../../redux/lang/langSelector";
 import {
   getDurationPeriod,
-  getRemaindBooks,
+  // getRemaindBooks,
 } from "../../redux/training/trainingSelectors";
 import { getTheme } from "../../redux/theme/themeSelector";
 import s from "./MyPurposeToRead.module.scss";
 
 const MyPurposeToRead = ({ books, isTrain }) => {
   const duration = useSelector(getDurationPeriod);
-  const remaindBooks = useSelector(getRemaindBooks);
+  // const remaindBooks = useSelector(getRemaindBooks);
   const theme = useSelector(getTheme);
   const lang = useSelector(getLang);
   const { goal, booksNum, days, read } = langOptionsMyPurposeToRead;

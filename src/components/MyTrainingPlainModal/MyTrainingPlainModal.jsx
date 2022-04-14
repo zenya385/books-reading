@@ -28,6 +28,15 @@ import { Formik } from "formik";
 import PurposeToReadList from "../PurposeToReadList/PurposeToReadList";
 import ReadListWithCheckBox from "../ReadListWithCheckBox/ReadListWithCheckBox";
 
+
+const curDate = new Date();
+const today = [curDate.getFullYear(), curDate.getMonth(), curDate.getDate()];
+const nextDay = [
+  curDate.getFullYear(),
+  curDate.getMonth(),
+  curDate.getDate() + 1,
+];
+
 const MyTrainingPlainModal = ({
   onHandleClose,
   cbAddBtn,
@@ -38,8 +47,8 @@ const MyTrainingPlainModal = ({
   const lang = useSelector(getLang);
   const { training, startTraining, btn } = langOptionsMyTrainPlan;
 
-  const [startDateOrigin, setStartDateOrigin] = useState(new Date());
-  const [endDateOrigin, setEndDateOrigin] = useState(new Date());
+  const [startDateOrigin, setStartDateOrigin] = useState(new Date(...today));
+  const [endDateOrigin, setEndDateOrigin] = useState(new Date(...nextDay));
 
   useEffect(() => {
     dispatch(

@@ -9,9 +9,6 @@ import {
   getDuration,
 } from "../../redux/training/trainingSlice";
 import { formatISO, intervalToDuration } from "date-fns";
-import { 
-  getBooksGoingToReadState,
-} from "../../redux/books/booksSelectors";
 import {
   getDurationPeriod,
   getEndDate,
@@ -39,7 +36,6 @@ import {
   Legend,
 } from "chart.js";
 import ChartLine from "../ChartLine/ChartLine";
-import toast from "react-hot-toast";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -51,19 +47,21 @@ ChartJS.register(
 );
 
 const curDate = new Date();
-const today= [
-  curDate.getFullYear(),
-  curDate.getMonth(),
-  curDate.getDate(),
-];
+const today = [curDate.getFullYear(), curDate.getMonth(), curDate.getDate()];
 const nextDay = [
   curDate.getFullYear(),
   curDate.getMonth(),
   curDate.getDate() + 1,
 ];
-const MyTrainingPlaining = ({ onHandleClose }) => {
-  const duration=useSelector(getDurationPeriod)
-  const booksLibrary = useSelector(getBooksGoingToReadState);
+
+const MyTrainingPlaining = ({
+  curReadBooks,
+  handleSubmitBookForRead,
+  bookForTraining,
+  handleDeleteBook,
+  handleChangeValue,
+}) => {
+  const duration = useSelector(getDurationPeriod);
   const books = useSelector(getTrainingBooks);
   const startDate = useSelector(getStartDate);
   const endDate = useSelector(getEndDate);
@@ -73,9 +71,6 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
 
   const [startDateOrigin, setStartDateOrigin] = useState(new Date(...today));
   const [endDateOrigin, setEndDateOrigin] = useState(new Date(...nextDay));
-  const [curReadBooks, setCurReadBooks] = useState([]);
-  const [bookForTraining, setBookForTraining] = useState(booksLibrary);
-  const [valueIdBook, setValueIdBook] = useState("default");
   const [modalOpen, setModalOpen] = React.useState(false);
   const dispatch = useDispatch();
 
@@ -86,10 +81,6 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
   const onModalClose = (e) => {
     setModalOpen(false);
   };
-
-  useEffect(() => {
-    isTrain && setCurReadBooks([]);
-  }, [isTrain]);
 
   useEffect(() => {
     dispatch(
@@ -120,29 +111,9 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
     );
   }, [startDateOrigin, endDateOrigin]);
 
-  const handleChangeValue = (e) => {
-    setValueIdBook(e.target.value);
-  };
-
-  const handleSubmitBookForRead = (e) => {
-    e.preventDefault();
-
-    setCurReadBooks((prev) => {
-      console.log("prev setCurReadBooks :>> ", prev);
-      return [...prev, booksLibrary.find((book) => book._id === valueIdBook)];
-    });
-    setBookForTraining((prev) => {
-      console.log("prev setBookForTraining :>> ", prev);
-      return prev.filter((book) => book._id !== valueIdBook);
-    });
-    setValueIdBook("default");
-    toast.success("book adds to list");
-  };
-
   const handleSubmitBookForTraining = (e) => {
     e.preventDefault();
     // console.log(books);
-    // onHandleClose();
     dispatch(
       addPlaningTraining({
         startDate,
@@ -152,33 +123,14 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
     );
   };
 
-  const handleDeleteBook = (e) => {
-    let idBook = e.currentTarget.value;
-    setValueIdBook(e.currentTarget);
-    setCurReadBooks((prev) => {
-      return prev.filter((book) => book._id !== idBook);
-    });
-    setBookForTraining((prev) => {
-      // console.log('booksLibrary.find)', booksLibrary.find((book) => book._id === idBook))
-      return [...prev, booksLibrary.find((book) => book._id === idBook)];
-    });
-    setValueIdBook("default");
-    // console.log('e.currentTarget', e.currentTarget.value)
-    toast.error("book deletes from list");
-  };
-
   const theme = useSelector(getTheme);
-  // console.log("bookForTraining>>>", bookForTraining);
-  // console.log("curReadBooks>>>", curReadBooks);
-  // console.log("books>>>", books);
-  // console.log("valueIdBook>>>", valueIdBook);
   const isCurReadBooks = Boolean(curReadBooks.length);
-  const isBookForTraining = Boolean(bookForTraining.length);
-  console.log('startDateOrigin', startDateOrigin)
-  console.log('startDate', startDate)
-  console.log('endDateOrigin', endDateOrigin)
-  console.log('endDate', endDate)
-  duration>=0&&console.log('Duration', duration)  
+  // const isBookForTraining = Boolean(bookForTraining.length);
+  // console.log("startDateOrigin", startDateOrigin);
+  // console.log("startDate", startDate);
+  // console.log("endDateOrigin", endDateOrigin);
+  // console.log("endDate", endDate);
+  // duration >= 0 && console.log("Duration", duration);
   return (
     <>
       <MediaQuery minWidth={768}>
@@ -206,8 +158,10 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
             <DatePicker
               dateFormat="dd.MM.yyyy"
               selected={endDateOrigin}
-              onChange={(date) => {console.log('date', date)
-                return setEndDateOrigin(date)}}
+              onChange={(date) => {
+                console.log("date", date);
+                return setEndDateOrigin(date);
+              }}
               className={s.datePickerInput}
             />
           </div>

@@ -1,5 +1,5 @@
 import { ErrorMessage, Formik } from "formik";
-import React, { useState } from "react";
+import React from "react";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { langOptionsBookForm } from "../../assets/langOptionsBookForm";
@@ -30,7 +30,7 @@ export default function BookForm({ onHandleClose }) {
         }}
         validationSchema={addBookValidationSchema}
         onSubmit={(values, { resetForm }) => {
-          console.log("values", values);
+          // console.log("values", values);
           dispatch(addBook(values));
           toast.success("book adds to list");
           resetForm();
@@ -40,8 +40,6 @@ export default function BookForm({ onHandleClose }) {
       >
         {({
           values,
-          errors,
-          touched,
           handleChange,
           handleBlur,
           handleSubmit,
@@ -129,62 +127,5 @@ export default function BookForm({ onHandleClose }) {
         )}
       </Formik>
     </>
-
-    // <form onSubmit={handleSubmit} className={s.form}>
-    //   <div className={s.form__container}>
-    //     <label className={s.form__label}>
-    //       Назва книги
-    //       <input
-    //         type="text"
-    //         name="title"
-    //         autoComplete="off"
-    //         value={title}
-    //         onChange={handleChange}
-    //         placeholder="..."
-    //         className={s.title}
-    //       />
-    //     </label>
-    //     <label className={s.form__label}>
-    //       Автор книги
-    //       <input
-    //         type="text"
-    //         name="author"
-    //         autoComplete="off"
-    //         value={author}
-    //         onChange={handleChange}
-    //         placeholder="..."
-    //         className={s.author}
-    //       />
-    //     </label>
-    //     <label className={s.form__label}>
-    //       Рік випуску
-    //       <input
-    //         type="number"
-    //         name="publishYear"
-    //         autoComplete="off"
-    //         value={publishYear}
-    //         onChange={handleChange}
-    //         placeholder="..."
-    //         className={s.yearPages}
-    //       />
-    //     </label>
-    //     <label className={s.form__label}>
-    //       Кількість сторінок
-    //       <input
-    //         type="number"
-    //         name="pagesTotal"
-    //         autoComplete="off"
-    //         value={pagesTotal}
-    //         onChange={handleChange}
-    //         placeholder="..."
-    //         className={s.yearPages}
-    //       />
-    //     </label>
-    //   </div>
-
-    //   <button type="submit" className={s.form__btn}>
-    //     Додати
-    //   </button>
-    // </form>
   );
 }
