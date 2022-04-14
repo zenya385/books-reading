@@ -38,8 +38,8 @@ const PurposeToReadList = ({
         </MediaQuery>
         {booksLibrary.length &&
           booksLibrary.map((book) => (
-            <li className={s.item}>
-              <div key={book._id} className={s.itemLineWrepper}>
+            <li className={s.item} key={book._id}>
+              <div className={s.itemLineWrepper}>
                 <span className={s.itemLine}></span>
               </div>
               <div className={s.iconTitle}>

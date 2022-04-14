@@ -31,9 +31,9 @@ export default function FailModal({ isOpenModal, handleClose }) {
   const { textOk, textNo, btn } = langOptionsFailModal;
   const theme = useSelector(getTheme);
 
-  useEffect(() => {
-    endOfBook(training);
-  }, [training]);
+  // useEffect(() => {
+  //   endOfBook(training);
+  // }, [training]);
 
   return (
     <div>
