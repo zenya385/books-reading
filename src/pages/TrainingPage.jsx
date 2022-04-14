@@ -116,7 +116,10 @@ const TrainingPage = () => {
         <div className={s.TrainingPage}>
           {isTrain && <Timer />}
 
-          <MyPurposeToRead books={curReadBooks} isTrain={isTrain} />
+          <MyPurposeToRead
+            books={isTrain ? trainingBooks : curReadBooks}
+            isTrain={isTrain}
+          />
 
           <MyTrainingPlaining
             curReadBooks={curReadBooks}
@@ -141,7 +144,10 @@ const TrainingPage = () => {
             />
           </div>
           <div className={s.statisticMeta}>
-            <MyPurposeToRead books={curReadBooks} isTrain={isTrain} />
+            <MyPurposeToRead
+              books={isTrain ? trainingBooks : curReadBooks}
+              isTrain={isTrain}
+            />
             {isTrain && <StatisticsResults />}
           </div>
         </div>
