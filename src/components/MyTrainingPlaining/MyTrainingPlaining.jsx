@@ -159,7 +159,7 @@ const MyTrainingPlaining = ({
               dateFormat="dd.MM.yyyy"
               selected={endDateOrigin}
               onChange={(date) => {
-                console.log("date", date);
+                // console.log("date", date);
                 return setEndDateOrigin(date);
               }}
               className={s.datePickerInput}
@@ -202,18 +202,13 @@ const MyTrainingPlaining = ({
       </MediaQuery>
       {isCurReadBooks && !isTrain && (
         <PurposeToReadList
-          booksLibrary={curReadBooks}
+          books={curReadBooks}
           colorIcon="grey"
-          review={0}
           handleDeleteBook={handleDeleteBook}
         />
       )}
       {isTrain && (
-        <ReadListWithCheckBox
-          booksLibrary={books}
-          colorIcon="grey"
-          review={0}
-        />
+        <ReadListWithCheckBox booksLibrary={books} colorIcon="grey" />
       )}
       {isCurReadBooks && !isTrain && (
         <button
