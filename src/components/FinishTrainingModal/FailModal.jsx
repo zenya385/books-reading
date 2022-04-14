@@ -8,9 +8,36 @@ import { getLang } from "../../redux/lang/langSelector";
 import { langOptionsFailModal } from "../../assets/langOptionsFailModal";
 import { resetTrain } from "../../redux/training/trainingSlice";
 import { getTheme } from "../../redux/theme/themeSelector";
+// import { getTrainingBooks } from "../../../redux/training/trainingSelectors";
+// import { getBooksCurrentlyReadingState } from "../../../redux/books/booksSelectors";
+
+// const getIsValidPages = ({ trainingBooks }) => {
+//   const deltaPages = trainingBooks
+//     .map((book) => book.pagesTotal - book.pagesFinished)
+//     .filter((el) => el !== 0);
+//   const pagesToRead = deltaPages[0];
+//   return pagesToRead;
+// };
+
+// const getFinishedBook = ({ curReadBooks }) => {
+//   const deltaPages = curReadBooks.filter(
+//     (book) => book.pagesTotal - book.pagesFinished === 0
+//   );
+//   const finishedBook = deltaPages[deltaPages.length - 1];
+//   return finishedBook;
+// };
+// const getNextdBookAfterFinishedBook = ({ curReadBooks }) => {
+//   const deltaPages = curReadBooks.filter(
+//     (book) => book.pagesTotal - book.pagesFinished !== 0
+//   );
+//   const notFinishedBook = deltaPages[0];
+//   return notFinishedBook;
+// };
 
 export default function FailModal({ isOpenModal, handleClose }) {
   const dispatch = useDispatch();
+  // const trainingBooks = useSelector(getTrainingBooks);
+  // const curReadBooks = useSelector(getBooksCurrentlyReadingState);
   // const [open, setOpen] = React.useState(true);
   const lang = useSelector(getLang);
   const { text, btn } = langOptionsFailModal;
@@ -28,8 +55,9 @@ export default function FailModal({ isOpenModal, handleClose }) {
         <Box
           className={s.failModal}
           // onClick={handleClose}
-          style={{ backgroundColor:
-                 theme === "light" ? "white" : "var(--modal-dark)",}}
+          style={{
+            backgroundColor: theme === "light" ? "white" : "var(--modal-dark)",
+          }}
         >
           <svg className={s.failModal_icon} width="54px" height="54px">
             <use xlinkHref={`${Icons}#icon-like`} />
