@@ -18,7 +18,7 @@ export const options = {
       align: "end",
       display: true,
       labels: {
-        color: "rgb(255, 99, 132)",
+        color: "#FF6B08",
       },
     },
     title: {
@@ -33,17 +33,15 @@ const ChartLine = ({ curReadBooks }) => {
   const isTrain = useSelector(getIsTrain);
   const duration = useSelector(getDurationPeriod);
 
-  // console.log("statsArr", statsArr);
-
   let dateNow = new Date();
-  const labels = [];
+  const labels = ["start"];
 
-  for (let i = 0; i <= duration+1; i += 1) {
+  for (let i = 0; i <= duration; i += 1) {
     let k = new Date(Date.now(dateNow) + i * (3600 * 1000 * 24));
-    labels[i] = formatISO(new Date(k), { representation: "date" });
+    labels.push(formatISO(new Date(k), { representation: "date" }));
   }
 
-  const planData = [];
+  const planData = [0];
   let pages = 0;
 
   curReadBooks.forEach((el) => {
@@ -52,21 +50,18 @@ const ChartLine = ({ curReadBooks }) => {
 
   let pagesForDay = Math.ceil(pages / duration);
 
-  for (let i = 0; i <= duration+1; i += 1) {
+  for (let i = 1; i <= duration + 1; i += 1) {
     planData[i] = pagesForDay;
   }
 
   const factData = [0];
-//   const factData = statsArr.forEach((el) => {
-//       el.pagesCount
-//   });
-
-for (let i=0; i<statsArr.length;i+=1){
+ 
+  for (let i = 0; i < statsArr.length; i += 1) {
     // console.log('statsArr[i]', statsArr[i])
-    factData[i+1]= statsArr[i].pagesCount
-}
-// console.log('factData', factData)
-const data = {
+    factData[i + 1] = statsArr[i].pagesCount;
+  }
+  // console.log('factData', factData)
+  const data = {
     labels,
     datasets: [
       {
@@ -75,7 +70,7 @@ const data = {
         borderColor: "rgb(0, 0, 0)",
         backgroundColor: "rgb(0, 0, 0)",
       },
-       {
+      {
         label: "fact",
         data: factData,
         borderColor: "#FF6B08",

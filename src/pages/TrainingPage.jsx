@@ -6,13 +6,12 @@ import MyPurposeToRead from "../components/MyPurposeToRead/MyPurposeToRead";
 import s from "./TrainingPage.module.scss";
 import MyTrainingPlaining from "../components/MyTrainingPlaining/MyTrainingPlaining";
 import {
-  getDurationPeriod,
   getIsTrain,
   getTrainingBooks,
 } from "../redux/training/trainingSelectors";
 import StatisticsResults from "../components/AllStatistics/StatisticsResults/StatisticsResults";
 import Timer from "../components/Timer/Timer";
-import { getBooksCurrentlyReadingState } from "../redux/books/booksSelectors";
+import { getBooksGoingToReadState } from "../redux/books/booksSelectors";
 import { getPlaningTraining } from "../redux/training/trainingOperations";
 import {
   changeDateEnd,
@@ -20,12 +19,11 @@ import {
   resetTrain,
 } from "../redux/training/trainingSlice";
 import MediaQuery from "react-responsive";
-import ReadListWithCheckBox from "../components/ReadListWithCheckBox/ReadListWithCheckBox";
 import FailModal from "../components/FinishTrainingModal/FailModal";
-import { useHistory } from "react-router-dom";
 import { formatISO } from "date-fns";
 import Container from "../components/Share/Container";
 import Notification from "../components/Share/Notification";
+import toast from "react-hot-toast";
 
 const getIsTrainingFinished = (trainingBooks) => {
   if (!trainingBooks.length) return false;
@@ -36,12 +34,13 @@ const getIsTrainingFinished = (trainingBooks) => {
 const TrainingPage = () => {
   const dispatch = useDispatch();
   const trainingBooks = useSelector(getTrainingBooks);
-  // const trainingBooks = useSelector(getBooksCurrentlyReadingState);
-  // const infoTraining = useSelector((state) => state.training);
+  const booksLibrary = useSelector(getBooksGoingToReadState);
   const loggedIn = useSelector(getIsLoggedIn);
   const isTrain = useSelector(getIsTrain);
-  const history = useHistory();
 
+  const [curReadBooks, setCurReadBooks] = useState([]);
+  const [valueIdBook, setValueIdBook] = useState("default");
+  const [bookForTraining, setBookForTraining] = useState(booksLibrary);
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   const toggleModal = () => {
@@ -49,10 +48,8 @@ const TrainingPage = () => {
   };
 
   useEffect(() => {
-    // dispatch(getBooks());
     if (!isOpenModal && getIsTrainingFinished(trainingBooks)) {
       toggleModal();
-      // dispatch(resetTrain());
     }
   }, [trainingBooks]);
 
@@ -74,10 +71,43 @@ const TrainingPage = () => {
       dispatch(
         changeDateEnd(formatISO(new Date(), { representation: "date" }))
       );
-      // history.push("/library");
-      // history.push("/training");
     }
   }, [isOpenModal]);
+
+  useEffect(() => {
+    isTrain && setCurReadBooks([]);
+  }, [isTrain]);
+
+  const handleChangeValue = (e) => {
+    setValueIdBook(e.target.value);
+  };
+
+  const handleSubmitBookForRead = (e) => {
+    e.preventDefault();
+
+    setCurReadBooks((prev) => {
+      console.log("prev setCurReadBooks :>> ", prev);
+      return [...prev, booksLibrary.find((book) => book._id === valueIdBook)];
+    });
+    setBookForTraining((prev) => {
+      // console.log("prev setBookForTraining :>> ", prev);
+      return prev.filter((book) => book._id !== valueIdBook);
+    });
+    setValueIdBook("default");
+    toast.success("book adds to list");
+  };
+  const handleDeleteBook = (e) => {
+    let idBook = e.currentTarget.value;
+    setValueIdBook(e.currentTarget);
+    setCurReadBooks((prev) => {
+      return prev.filter((book) => book._id !== idBook);
+    });
+    setBookForTraining((prev) => {
+      return [...prev, booksLibrary.find((book) => book._id === idBook)];
+    });
+    setValueIdBook("default");
+    toast.error("book deletes from list");
+  };
 
   return (
     <Container>
@@ -86,24 +116,32 @@ const TrainingPage = () => {
         <div className={s.TrainingPage}>
           {isTrain && <Timer />}
 
-          <MyPurposeToRead books={trainingBooks} isTrain={isTrain} />
+          <MyPurposeToRead books={curReadBooks} isTrain={isTrain} />
 
-          <MyTrainingPlaining />
+          <MyTrainingPlaining
+            curReadBooks={curReadBooks}
+            handleSubmitBookForRead={handleSubmitBookForRead}
+            bookForTraining={bookForTraining}
+            handleDeleteBook={handleDeleteBook}
+            handleChangeValue={handleChangeValue}
+          />
 
           {isTrain && <StatisticsResults />}
-          {/* лист с чекбоксом после прописания логики можно удалить */}
         </div>
       </MediaQuery>
       <MediaQuery minWidth={1280}>
         <div className={s.TrainingPage}>
           <div className={s.timerTrainingLine}>
             {isTrain && <Timer />}
-            <MyTrainingPlaining />
-
-            {/* лист с чекбоксом после прописания логики можно удалить */}
+            <MyTrainingPlaining
+              curReadBooks={curReadBooks}
+              handleSubmitBookForRead={handleSubmitBookForRead}
+              bookForTraining={bookForTraining}
+              handleDeleteBook={handleDeleteBook}
+            />
           </div>
           <div className={s.statisticMeta}>
-            <MyPurposeToRead books={trainingBooks} isTrain={isTrain} />
+            <MyPurposeToRead books={curReadBooks} isTrain={isTrain} />
             {isTrain && <StatisticsResults />}
           </div>
         </div>
