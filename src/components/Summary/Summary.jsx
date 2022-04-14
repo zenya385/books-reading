@@ -14,6 +14,8 @@ const Summary = ({ bookId, rating, feedback }) => {
   const { resume, ratingI } = langOptionsSummary;
   const theme = useSelector(getTheme);
 
+  const theme = useSelector(getTheme);
+
   const toggleModal = () => {
     setIsModalOpen((prev) => !prev);
   };

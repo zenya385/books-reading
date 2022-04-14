@@ -1,21 +1,39 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Icons from "../../images/symbol-defs.svg";
 import s from "./FinishTrainingModal.module.scss";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { getLang } from "../../redux/lang/langSelector";
 import { langOptionsFailModal } from "../../assets/langOptionsFailModal";
-import { resetTrain } from "../../redux/training/trainingSlice";
 import { getTheme } from "../../redux/theme/themeSelector";
+import {
+  getTraining,
+  getTrainingBooks,
+} from "../../redux/training/trainingSelectors";
+import { getBooksCurrentlyReadingState } from "../../redux/books/booksSelectors";
+
+const today = [
+  new Date().getFullYear(),
+  new Date().getMonth(),
+  new Date().getDate(),
+];
+
+const endOfBook = ({ training }) => {
+  const deltaDates = training.endDate >= today;
+  console.log("deltaDates", deltaDates);
+  return deltaDates;
+};
 
 export default function FailModal({ isOpenModal, handleClose }) {
-  const dispatch = useDispatch();
-  // const [open, setOpen] = React.useState(true);
+  const training = useSelector(getTraining);
   const lang = useSelector(getLang);
-  const { text, btn } = langOptionsFailModal;
+  const { textOk, textNo, btn } = langOptionsFailModal;
   const theme = useSelector(getTheme);
-  // const handleClose = () => setOpen(false);
+
+  // useEffect(() => {
+  //   endOfBook(training);
+  // }, [training]);
 
   return (
     <div>
@@ -27,14 +45,18 @@ export default function FailModal({ isOpenModal, handleClose }) {
       >
         <Box
           className={s.failModal}
-          // onClick={handleClose}
-          style={{ backgroundColor:
-                 theme === "light" ? "white" : "var(--modal-dark)",}}
+          style={{
+            backgroundColor: theme === "light" ? "white" : "var(--modal-dark)",
+          }}
         >
           <svg className={s.failModal_icon} width="54px" height="54px">
             <use xlinkHref={`${Icons}#icon-like`} />
           </svg>
-          <p className={s.failModal_description}>{text[lang]}</p>
+          {/* {endOfBook(training) === true ? ( */}
+          <p className={s.failModal_description}>{textOk[lang]}</p>
+          {/* ) : (
+            <p className={s.failModal_description}>{textNo[lang]}</p>
+          )} */}
           <button onClick={handleClose} className={s.failModal_btn}>
             {btn[lang]}
           </button>
