@@ -1,12 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Icons from "../../images/symbol-defs.svg";
 import s from "./FinishTrainingModal.module.scss";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { getLang } from "../../redux/lang/langSelector";
 import { langOptionsFailModal } from "../../assets/langOptionsFailModal";
-import { resetTrain } from "../../redux/training/trainingSlice";
 import { getTheme } from "../../redux/theme/themeSelector";
 import {
   getTraining,

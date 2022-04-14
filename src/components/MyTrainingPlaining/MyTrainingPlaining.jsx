@@ -4,19 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import "react-datepicker/dist/react-datepicker.css";
 import s from "./MyTrainingPlaining.module.scss";
 import {
-  addBookForTraining,
-  addCurBookForTraining,
   changeDateEnd,
   changeDateStart,
   getDuration,
 } from "../../redux/training/trainingSlice";
 import { formatISO, intervalToDuration } from "date-fns";
 import {
-  // getBooksCurrentlyReadingState,
-  getBooksGoingToReadState,
-} from "../../redux/books/booksSelectors";
-import BookInfoList from "../BookInfoList/BookInfoList";
-import {
+  getDurationPeriod,
   getEndDate,
   getIsTrain,
   getStartDate,
@@ -26,14 +20,11 @@ import { getLang } from "../../redux/lang/langSelector";
 import { langOptionsMyTrainPlan } from "../../assets/langOptionsMyTrainPlan";
 import { addPlaningTraining } from "../../redux/training/trainingOperations";
 import { getTheme } from "../../redux/theme/themeSelector";
-import { Formik } from "formik";
 import PurposeToReadList from "../PurposeToReadList/PurposeToReadList";
 import ReadListWithCheckBox from "../ReadListWithCheckBox/ReadListWithCheckBox";
 import MediaQuery from "react-responsive";
-import MyTrainingPlainModal from "../MyTrainingPlainModal/MyTrainingPlainModal";
 import AddTrainingModal from "../AddTrainingModal/AddTrainingModal";
 import { BsPlusLg } from "react-icons/bs";
-import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -45,7 +36,6 @@ import {
   Legend,
 } from "chart.js";
 import ChartLine from "../ChartLine/ChartLine";
-import toast from "react-hot-toast";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -56,56 +46,22 @@ ChartJS.register(
   Legend
 );
 
-// export const options = {
-//   backgroundColor: "#FF6B08",
-//   cubicInterpolationMode: "monotone",
-//   responsive: true,
-//   plugins: {
-//     legend: {
-//       position: "top",
-//       align: "end",
-//       display: true,
-//       labels: {
-//         color: "rgb(255, 99, 132)",
-//       },
-//     },
-//     title: {
-//       display: false,
-//       text: "Кількість сторінок за день",
-//     },
-//   },
-// };
-
-// let labels = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
-// export const data = {
-//   labels,
-//   datasets: [
-//     {
-//       label: "plan",
-//       data: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
-//       // data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-//       borderColor: "rgb(0, 0, 0)",
-//       backgroundColor: "rgba(0, 0, 0, 0.8)",
-//     },
-//     {
-//       label: "fact",
-//       data: [0, 10, 12, 13, 15, 18, 10, 12, 15, 10, 12],
-
-//       // data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-//       borderColor: "#FF6B08",
-//       backgroundColor: "#FF6B08",
-//     },
-//   ],
-// };
 const curDate = new Date();
+const today = [curDate.getFullYear(), curDate.getMonth(), curDate.getDate()];
 const nextDay = [
   curDate.getFullYear(),
   curDate.getMonth(),
   curDate.getDate() + 1,
 ];
-const MyTrainingPlaining = ({ onHandleClose }) => {
-  const booksLibrary = useSelector(getBooksGoingToReadState);
+
+const MyTrainingPlaining = ({
+  curReadBooks,
+  handleSubmitBookForRead,
+  bookForTraining,
+  handleDeleteBook,
+  handleChangeValue,
+}) => {
+  const duration = useSelector(getDurationPeriod);
   const books = useSelector(getTrainingBooks);
   const startDate = useSelector(getStartDate);
   const endDate = useSelector(getEndDate);
@@ -113,11 +69,8 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
   const isTrain = useSelector(getIsTrain);
   const { training, startTraining, btn } = langOptionsMyTrainPlan;
 
-  const [startDateOrigin, setStartDateOrigin] = useState(new Date());
+  const [startDateOrigin, setStartDateOrigin] = useState(new Date(...today));
   const [endDateOrigin, setEndDateOrigin] = useState(new Date(...nextDay));
-  const [curReadBooks, setCurReadBooks] = useState([]);
-  const [bookForTraining, setBookForTraining] = useState(booksLibrary);
-  const [valueIdBook, setValueIdBook] = useState("default");
   const [modalOpen, setModalOpen] = React.useState(false);
   const dispatch = useDispatch();
 
@@ -128,10 +81,6 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
   const onModalClose = (e) => {
     setModalOpen(false);
   };
-
-  useEffect(() => {
-    isTrain && setCurReadBooks([]);
-  }, [isTrain]);
 
   useEffect(() => {
     dispatch(
@@ -162,29 +111,9 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
     );
   }, [startDateOrigin, endDateOrigin]);
 
-  const handleChangeValue = (e) => {
-    setValueIdBook(e.target.value);
-  };
-
-  const handleSubmitBookForRead = (e) => {
-    e.preventDefault();
-
-    setCurReadBooks((prev) => {
-      console.log("prev setCurReadBooks :>> ", prev);
-      return [...prev, booksLibrary.find((book) => book._id === valueIdBook)];
-    });
-    setBookForTraining((prev) => {
-      console.log("prev setBookForTraining :>> ", prev);
-      return prev.filter((book) => book._id !== valueIdBook);
-    });
-    setValueIdBook("default");
-    toast.success("book adds to list");
-  };
-
   const handleSubmitBookForTraining = (e) => {
     e.preventDefault();
     // console.log(books);
-    // onHandleClose();
     dispatch(
       addPlaningTraining({
         startDate,
@@ -194,28 +123,14 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
     );
   };
 
-  const handleDeleteBook = (e) => {
-    let idBook = e.currentTarget.value;
-    setValueIdBook(e.currentTarget);
-    setCurReadBooks((prev) => {
-      return prev.filter((book) => book._id !== idBook);
-    });
-    setBookForTraining((prev) => {
-      // console.log('booksLibrary.find)', booksLibrary.find((book) => book._id === idBook))
-      return [...prev, booksLibrary.find((book) => book._id === idBook)];
-    });
-    setValueIdBook("default");
-    // console.log('e.currentTarget', e.currentTarget.value)
-    toast.error("book deletes from list");
-  };
-
   const theme = useSelector(getTheme);
-  // console.log("bookForTraining>>>", bookForTraining);
-  // console.log("curReadBooks>>>", curReadBooks);
-  // console.log("books>>>", books);
-  // console.log("valueIdBook>>>", valueIdBook);
   const isCurReadBooks = Boolean(curReadBooks.length);
-  const isBookForTraining = Boolean(bookForTraining.length);
+  // const isBookForTraining = Boolean(bookForTraining.length);
+  // console.log("startDateOrigin", startDateOrigin);
+  // console.log("startDate", startDate);
+  // console.log("endDateOrigin", endDateOrigin);
+  // console.log("endDate", endDate);
+  // duration >= 0 && console.log("Duration", duration);
   return (
     <>
       <MediaQuery minWidth={768}>
@@ -243,7 +158,10 @@ const MyTrainingPlaining = ({ onHandleClose }) => {
             <DatePicker
               dateFormat="dd.MM.yyyy"
               selected={endDateOrigin}
-              onChange={(date) => setEndDateOrigin(date)}
+              onChange={(date) => {
+                console.log("date", date);
+                return setEndDateOrigin(date);
+              }}
               className={s.datePickerInput}
             />
           </div>

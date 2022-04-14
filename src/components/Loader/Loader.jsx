@@ -1,5 +1,5 @@
 import React from "react";
-import { Oval, Plane, TailSpin } from "react-loader-spinner";
+import { Oval } from "react-loader-spinner";
 import s from "./Loader.module.scss";
 function Loader() {
   return (

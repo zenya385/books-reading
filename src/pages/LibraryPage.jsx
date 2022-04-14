@@ -6,7 +6,6 @@ import {
   getBooksFinishedReadingState,
   getBooksGoingToReadState,
   getBooksState,
-  // getBooksState,
   getIsLoading,
 } from "../redux/books/booksSelectors";
 import BookInfoList from "../components/BookInfoList/BookInfoList";
@@ -15,43 +14,17 @@ import { getIsLoggedIn } from "../redux/auth/authSelectors";
 import InstructionModal from "../components/InstructionModal/InstructionModal";
 import MediaQuery from "react-responsive";
 import { Link } from "react-router-dom";
-import { getPlaningTraning } from "../redux/training/trainingOperations";
 import { BsPlusLg } from "react-icons/bs";
 import s from "./LibraryPage.module.scss";
 import AddBookModal from "../components/AddBookModal/AddBookModal";
 import { langOptionsLibPage } from "../assets/langOptionsLibPage";
 import { getLang } from "../redux/lang/langSelector";
 import { getTheme } from "../redux/theme/themeSelector";
-import BookReviewItem from "../components/BookReviewItem/BookReviewItem";
 import BookReviewList from "../components/BookReviewList/BookReviewList";
 import Container from "../components/Share/Container";
-import { Toaster } from "react-hot-toast";
 import Notification from "../components/Share/Notification";
 
-// const booksLibrary = [
-//   {
-//     title: "The Book of Five Rings",
-//     author: "Miyamoto Musashi",
-//     publishYear: 1643,
-//     totalPages: 110,
-//     pagesFinished: 0,
-//     _id: "507f1f77bcf86cd799439013",
-//     __v: 0,
-//   },
-//   {
-//     title: "Scrum. Революционный метод управлениями проектами.",
-//     author: "Джефф Сазерленд",
-//     publishYear: 1643,
-//     totalPages: 25,
-//     pagesFinished: 0,
-//     _id: "507f1f77bcf86cd799439012",
-//     __v: 0,
-//   },
-// ];
-
-const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
-  // const fullArray = useSelector(getGoingToRead);
-
+const LibraryPage = () => {
   const loggedIn = useSelector(getIsLoggedIn);
   const booksGoingToRead = useSelector(getBooksGoingToReadState);
   const booksFinishedReading = useSelector(getBooksFinishedReadingState);
@@ -60,18 +33,13 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
   const ratingChange = useSelector(getBooksState);
   const dispatch = useDispatch();
   const lang = useSelector(getLang);
-  const { titleDone, titleNow, titleFuture, btn } = langOptionsLibPage;
-
-  // console.log(Boolean(booksFinishedReading.length));
-  // console.log(booksGoingToRead.length);
-  // console.log(booksAllLibrary);
+  const { titleNow, titleFuture, btn } = langOptionsLibPage;
 
   let review = 1;
 
   loggedIn &&
     useEffect(() => {
       dispatch(getBooks());
-      //  setTimeout( (dispatch(getPlaningTraning())),0)
     }, [ratingChange.feedback, ratingChange.rating]);
 
   // console.log(booksCurrentlyReading);
@@ -95,11 +63,6 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
         <MediaQuery minWidth={768}>
           <BookForm />
         </MediaQuery>
-        {/* {booksFinishedReading && Boolean(booksFinishedReading.length) && (
-          <h2 style={{
-            color: theme === "light" ? "black" : "white",
-          }}>Прочитано</h2>
-        )} */}
 
         {booksFinishedReading && Boolean(booksFinishedReading.length) && (
           <BookReviewList
@@ -107,11 +70,6 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
             colorIcon="dark-grey"
             review={review}
           />
-          // <BookInfoList
-          //   booksLibrary={booksFinishedReading}
-          //   colorIcon="dark-grey"
-          //   review={review}
-          // />
         )}
         {booksCurrentlyReading && Boolean(booksCurrentlyReading.length) && (
           <h2
@@ -160,13 +118,6 @@ const LibraryPage = ({ days = 0, hours = 0, minutes = 0, seconds = 0 }) => {
             <BsPlusLg style={{ width: "18px", height: "18px" }} />
           </button>
         </MediaQuery>
-        {/* {loggedIn && (
-        <ul>
-          {fullArray.map((el) => (
-            <li key={el._id}>{el.title}</li>
-          ))}
-        </ul>
-      )} */}
       </section>
     </Container>
   );
