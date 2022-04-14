@@ -8,15 +8,16 @@ import { getLang } from "../../redux/lang/langSelector";
 import { langOptionsPurposeToRead } from "../../assets/langOptionsPurposeToRead";
 
 const PurposeToReadList = ({
-  booksLibrary,
+  books,
   colorIcon,
-  review,
   handleDeleteBook,
 }) => {
   const theme = useSelector(getTheme);
   const lang = useSelector(getLang);
   const { title, author, publishYear, pagesTotal } = langOptionsPurposeToRead;
 
+// console.log('booksLibrary', booksLibrary)
+  
   return (
     <>
       <ul
@@ -36,8 +37,8 @@ const PurposeToReadList = ({
           </div>
           <span className={s.bookInfoLine}></span>
         </MediaQuery>
-        {booksLibrary.length &&
-          booksLibrary.map((book) => (
+        {Boolean(books.length) &&
+          books.map((book) => (
             <li className={s.item} key={book._id}>
               <div className={s.itemLineWrepper}>
                 <span className={s.itemLine}></span>

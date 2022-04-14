@@ -86,7 +86,7 @@ const TrainingPage = () => {
     e.preventDefault();
 
     setCurReadBooks((prev) => {
-      console.log("prev setCurReadBooks :>> ", prev);
+      // console.log("prev setCurReadBooks :>> ", prev);
       return [...prev, booksLibrary.find((book) => book._id === valueIdBook)];
     });
     setBookForTraining((prev) => {
@@ -141,13 +141,16 @@ const TrainingPage = () => {
               handleSubmitBookForRead={handleSubmitBookForRead}
               bookForTraining={bookForTraining}
               handleDeleteBook={handleDeleteBook}
+              handleChangeValue={handleChangeValue}
             />
           </div>
           <div className={s.statisticMeta}>
-            <MyPurposeToRead
-              books={isTrain ? trainingBooks : curReadBooks}
-              isTrain={isTrain}
-            />
+            {isTrain && (
+              <MyPurposeToRead books={trainingBooks} isTrain={isTrain} />
+            )}
+            {!isTrain && (
+              <MyPurposeToRead books={curReadBooks} isTrain={isTrain} />
+            )}
             {isTrain && <StatisticsResults />}
           </div>
         </div>
