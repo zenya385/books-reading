@@ -11,7 +11,7 @@
     @media screen and (min-width: 768px) {
         justify-content: center; 
         width: 678px;
-        height: 60px;
+        height: 40px;
         margin: 11px auto 0;
 
         align-items: center;
@@ -276,12 +276,16 @@
         border-top: 1px solid #E0E5EB;
     
         border-bottom: 1px solid #E0E5EB;
+        
     
     }
 
     @media screen and (min-width:1280px) {
+        padding-bottom: 10px;
         width: 886px;
-        max-height: 233px;
+        min-height: 80px;
+        margin-bottom: 10px;
+
     }
 
 }
