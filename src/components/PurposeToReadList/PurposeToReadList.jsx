@@ -7,17 +7,13 @@ import { useSelector } from "react-redux";
 import { getLang } from "../../redux/lang/langSelector";
 import { langOptionsPurposeToRead } from "../../assets/langOptionsPurposeToRead";
 
-const PurposeToReadList = ({
-  books,
-  colorIcon,
-  handleDeleteBook,
-}) => {
+const PurposeToReadList = ({ books, colorIcon, handleDeleteBook }) => {
   const theme = useSelector(getTheme);
   const lang = useSelector(getLang);
   const { title, author, publishYear, pagesTotal } = langOptionsPurposeToRead;
 
-// console.log('booksLibrary', booksLibrary)
-  
+  // console.log('booksLibrary', booksLibrary)
+
   return (
     <>
       <ul
@@ -47,7 +43,6 @@ const PurposeToReadList = ({
                 <svg className={s.navIcon} width="22px" height="17px">
                   <use xlinkHref={`${Icons}#icon-flat-${colorIcon}`} />
                 </svg>
-
                 <p
                   className={s.bookTitle}
                   style={{
