@@ -7,6 +7,7 @@ import { getTheme } from "../redux/theme/themeSelector";
 import { loginValidationSchema } from "../utils/validation/LoginValid";
 import { getLang } from "../redux/lang/langSelector";
 import { langOptionsLogin } from "../assets/langOptionsLogin";
+import { Link } from "react-router-dom";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -98,9 +99,9 @@ const LoginPage = () => {
                 >
                   {buttonLogin[lang]}
                 </button>
-                <a className={s.btnRegisterLogin} href="/register">
+                <Link className={s.btnRegisterLogin} to="/register">
                   {linkReg[lang]}
-                </a>
+                </Link>
               </form>
             )}
           </Formik>
