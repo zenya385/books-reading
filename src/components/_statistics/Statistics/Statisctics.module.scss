@@ -1,0 +1,47 @@
+.stat_item {
+    list-style: none;
+    display: flex;
+    height: 20px;
+}
+
+.stat_date_text {
+    font-family: 'Montserrat';
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 38px;
+    text-transform: uppercase;
+    color: #242A37;
+    margin-right: 30px;
+    width: 65px;
+    text-align: center;
+
+    @media screen and (max-width: 1280px) {
+        margin-right: 22px;
+    }
+}
+
+.stat_time_text {
+    font-family: 'Montserrat';
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 38px;
+    text-transform: uppercase;
+    color: #898F9F;
+    width: 55px;
+    text-align: center;
+}
+
+.stat_pages_text {
+    font-family: 'Montserrat';
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 38px;
+    color: #242A37;
+    width: 100%;
+    text-align: right;
+
+}
+
+.stat_pages_span {
+    color: #898F9F;
+}

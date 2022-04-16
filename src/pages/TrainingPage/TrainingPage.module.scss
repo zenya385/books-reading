@@ -1,0 +1,31 @@
+body{
+    background: var(--third-bg-color);
+    padding: 0;
+
+}
+.TrainingPage{
+    display: flex;
+        @media screen and (max-width: 1279px) {
+            flex-direction: column;
+            align-items: center;
+        }
+        @media screen and (min-width: 1280px) {
+        flex-direction: row;
+        }
+}
+.timerTrainingLine{
+    @media screen and (min-width: 1280px) {
+        margin-right: 40px;
+        width: 886px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.statisticMeta{
+    @media screen and (min-width: 1280px) {
+        margin-top: 50px;
+    }
+}
+

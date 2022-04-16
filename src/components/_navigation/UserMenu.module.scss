@@ -1,0 +1,77 @@
+.logout_btb {
+  @media screen and (min-width: 320px) {
+    border: none;
+    background: #ffffff;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 38px;
+    text-decoration: underline;
+    text-underline-position: under;
+    color: #242a37;
+    padding: 0;
+    cursor: pointer;
+  }
+  @media screen and (min-width: 480px) {
+    margin-left: 145px;
+  }
+  @media screen and (min-width: 768px) {
+    margin-left: 100px;
+  }
+}
+.user_menu {
+  @media screen and (min-width: 320px) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 205px;
+  }
+}
+.link_training {
+  @media screen and (min-width: 320px) {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 200px;
+  }
+  @media screen and (min-width: 480px) {
+    right: 225px;
+  }
+  @media screen and (min-width: 768px) {
+    right: 180px;
+  }
+}
+.link_library {
+  @media screen and (min-width: 320px) {
+    margin-left: 15px;
+    position: absolute;
+    right: 235px;
+  }
+  @media screen and (min-width: 480px) {
+    right: 260px;
+  }
+  @media screen and (min-width: 768px) {
+    right: 220px;
+  }
+}
+
+.line {
+  @media screen and (min-width: 320px) {
+    display: none;
+  }
+  @media screen and (min-width: 480px) {
+    display: inline-block;
+    height: 33px;
+    border: 1px solid #e0e5eb;
+    margin-left: 15px;
+    position: absolute;
+    right: 210px;
+  }
+  @media screen and (min-width: 768px) {
+    right: 165px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-left: 100px;
+  }
+}

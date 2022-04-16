@@ -1,0 +1,113 @@
+.header {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  padding: 16px 25px;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+  @media screen and (min-width: 320px) {
+    min-width: 320px;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  @media screen and (min-width: 480px) {
+    min-width: 480px;
+  }
+  @media screen and (min-width: 768px) {
+    min-width: 768px;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 100%;
+  }
+}
+.link {
+  text-decoration: none;
+  color: #242a37;
+  font-family: "Abril Fatface";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 27px;
+  margin: 0 auto;
+  @media screen and (min-width: 768px) {
+    margin: 0;
+  }
+}
+.activLink {
+  text-decoration: none;
+  color: #242a37;
+  font-family: "Abril Fatface";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 27px;
+  @media screen and (min-width: 768px) {
+    margin: 0;
+  }
+}
+.name_wrapper {
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
+}
+.letter_wrapper {
+  @media screen and (min-width: 320px) {
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    background: #f5f7fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 62px;
+    top: 15px;
+  }
+  @media screen and (min-width: 480px) {
+    right: 75px;
+  }
+  @media screen and (min-width: 768px) {
+    position: sticky;
+  }
+}
+.firs_letter {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 38px;
+  color: #242a37;
+  margin-left: 0;
+}
+.name {
+  @media screen and (min-width: 320px) {
+    display: none;
+  }
+  @media screen and (min-width: 768px) {
+    display: inline-block;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 38px;
+    color: #242a37;
+    margin-left: 10px;
+  }
+  @media screen and (min-width: 1280px) {
+  }
+}
+.flex {
+  width: calc(100vw - 50%);
+  display: flex;
+  justify-content: space-between;
+  @media screen and (min-width: 768px) {
+    justify-content: space-between;
+  }
+}

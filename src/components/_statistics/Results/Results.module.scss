@@ -1,0 +1,103 @@
+.input_date {
+    padding: 0px;
+    width: 110px;
+    height: 42px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 38px;
+    color: #242A37;
+    background-color: #F6F7FB;
+    border: 1px solid #A6ABB9;
+    letter-spacing: 1.4px;
+    margin-right: 20px;
+}
+
+.form_res {
+    @media screen and (max-width: 1279px) {
+        display: flex;
+    }
+    @media screen and (max-width: 767px)  {
+        display: block;
+    }
+}
+.data_text {
+    margin: 0;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 38px;
+    color: #898F9F;
+    @media screen and (max-width: 767px) {
+        height: 28px;
+    }
+}
+
+.inputs_div {
+    display: flex;
+    margin-bottom: 20px;
+    @media screen and (max-width: 1279px) {
+        margin-bottom: 12px;    
+    }
+}
+
+.input_pages {
+    padding: 0px;
+    background: #F6F7FB;
+    border: 1px solid #A6ABB9;
+    padding-left: 13px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 38px;
+    color: #242A37;
+    width: 110px;
+    height: 42px; 
+}
+
+
+.pages_text {
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 3.45;
+    color: #898F9F;
+    @media screen and (max-width: 767px) {
+        height: 28px;
+    }
+}
+
+.add_res_btn {
+    width: 240px;
+    height: 40px;
+    text-align: center;
+    color: #FFFFFF;
+    background-color: #FF6B08;
+    border: 0px;
+    margin-bottom: 20px;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 38px;
+    @media screen and (max-width: 1279px) {
+        margin-top: 38px;
+        height: 42px;
+        margin-left: 30px;
+    }
+    @media screen and (max-width: 767px) {
+        margin-top: 0px;
+        margin-left: 0px;
+        margin-bottom: 24px;
+        height: 42px;
+    }
+}
+.errorMessage {
+    position: absolute;
+    top: 94%;
+    right: 5%;
+    font-weight: 500;
+    font-size: 15px;
+    color: red;
+    text-align: center;
+    font-style: italic;
+}
+.relat {
+    position: relative;
+}
