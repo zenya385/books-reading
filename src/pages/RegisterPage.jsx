@@ -7,6 +7,7 @@ import { regValidationSchema } from "../utils/validation/RegisterValid";
 import { getLang } from "../redux/lang/langSelector";
 import { langOptionsRegister } from "../assets/langOptionsRegister";
 import { getTheme } from "../redux/theme/themeSelector";
+import { Link } from "react-router-dom";
 
 const RegisterPage = () => {
   const dispatch = useDispatch();
@@ -152,9 +153,9 @@ const RegisterPage = () => {
                 </button>
                 <div className={s.regFormRegistrText}>
                   <p className={s.btnRegisterSmallText}>{question[lang]}</p>
-                  <a className={s.btnRegisterLogin} href="/login">
+                  <Link className={s.btnRegisterLogin} to="/login">
                     {linkLog[lang]}
-                  </a>
+                  </Link>
                 </div>
               </form>
             )}
