@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { langOptionsBookForm } from "../../assets/langOptionsBookForm";
 import { addBook } from "../../redux/books/booksOperations";
 import { getLang } from "../../redux/lang/langSelector";
-import { addBookValidationSchema } from "../../validation/BookFormValid";
+import { addBookValidationSchema } from "../../utils/validation/BookFormValid";
 import s from "../BookForm/BookForm.module.scss";
 
 export default function BookForm({ onHandleClose }) {

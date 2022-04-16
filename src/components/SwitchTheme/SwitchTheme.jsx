@@ -15,14 +15,19 @@ const SwitchTheme = () => {
           className={s.btnD}
           onClick={() => dispatch(changeTheme("dark"))}
         >
-          &#127774;
+          <span role="img" aria-label="moon">
+            {" "}
+            &#127774;
+          </span>
         </button>
       ) : (
         <button
           onClick={() => dispatch(changeTheme("light"))}
           className={s.btnL}
         >
-          &#127769;
+          <span role="img" aria-label="sun">
+            &#127769;
+          </span>
         </button>
       )}
     </div>

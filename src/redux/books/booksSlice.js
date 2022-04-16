@@ -3,7 +3,6 @@ import { logoutUser } from "../auth/authSlice";
 import {
   addPages,
   addPlaningTraining,
-  // addPlaningTraning,
   getPlaningTraining,
 } from "../training/trainingOperations";
 import { resetTrain } from "../training/trainingSlice";
@@ -70,17 +69,10 @@ const booksSlice = createSlice({
       error: payload,
       isLoading: false,
     }),
-
-    // [addPlaningTraning.fulfilled]: (state, { payload }) => ({
-    //   ...state,
-    //   currentlyReading: [...payload.books],
-    // }),
-
     [getPlaningTraining.fulfilled]: (state, { payload }) => ({
       ...state,
       currentlyReading: payload.planning.books,
     }),
-
     [addPlaningTraining.fulfilled]: (state, { payload }) => ({
       ...state,
       currentlyReading: payload.books,

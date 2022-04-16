@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, Link, useHistory } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { logout } from "../../redux/auth/authOperations";
 import styles from "./UserMenu.module.scss";
 import Icons from "../../images/symbol-defs.svg";

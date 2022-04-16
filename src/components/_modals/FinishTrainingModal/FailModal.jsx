@@ -1,17 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import Icons from "../../images/symbol-defs.svg";
+import Icons from "../../../images/symbol-defs.svg";
 import s from "./FinishTrainingModal.module.scss";
 import { useSelector } from "react-redux";
-import { getLang } from "../../redux/lang/langSelector";
-import { langOptionsFailModal } from "../../assets/langOptionsFailModal";
-import { getTheme } from "../../redux/theme/themeSelector";
-import {
-  getTraining,
-  getTrainingBooks,
-} from "../../redux/training/trainingSelectors";
-import { getBooksCurrentlyReadingState } from "../../redux/books/booksSelectors";
+import { getLang } from "../../../redux/lang/langSelector";
+import { langOptionsFailModal } from "../../../assets/langOptionsFailModal";
+import { getTheme } from "../../../redux/theme/themeSelector";
+import { getTraining } from "../../../redux/training/trainingSelectors";
 
 const today = [
   new Date().getFullYear(),
@@ -19,16 +15,16 @@ const today = [
   new Date().getDate(),
 ];
 
-const endOfBook = ({ training }) => {
-  const deltaDates = training.endDate >= today;
-  console.log("deltaDates", deltaDates);
-  return deltaDates;
-};
+// const endOfBook = ({ training }) => {
+//   const deltaDates = training.endDate >= today;
+//   console.log("deltaDates", deltaDates);
+//   return deltaDates;
+// };
 
 export default function FailModal({ isOpenModal, handleClose }) {
-  const training = useSelector(getTraining);
+  // const training = useSelector(getTraining);
   const lang = useSelector(getLang);
-  const { textOk, textNo, btn } = langOptionsFailModal;
+  const { textOk, btn } = langOptionsFailModal;
   const theme = useSelector(getTheme);
 
   // useEffect(() => {
@@ -52,11 +48,7 @@ export default function FailModal({ isOpenModal, handleClose }) {
           <svg className={s.failModal_icon} width="54px" height="54px">
             <use xlinkHref={`${Icons}#icon-like`} />
           </svg>
-          {/* {endOfBook(training) === true ? ( */}
           <p className={s.failModal_description}>{textOk[lang]}</p>
-          {/* ) : (
-            <p className={s.failModal_description}>{textNo[lang]}</p>
-          )} */}
           <button onClick={handleClose} className={s.failModal_btn}>
             {btn[lang]}
           </button>

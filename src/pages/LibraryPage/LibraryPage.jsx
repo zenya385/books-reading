@@ -16,13 +16,13 @@ import MediaQuery from "react-responsive";
 import { Link } from "react-router-dom";
 import { BsPlusLg } from "react-icons/bs";
 import s from "./LibraryPage.module.scss";
-import AddBookModal from "../../components/AddBookModal/AddBookModal";
+import AddBookModal from "../../components/_modals/AddBookModal/AddBookModal";
 import { langOptionsLibPage } from "../../assets/langOptionsLibPage";
 import { getLang } from "../../redux/lang/langSelector";
 import { getTheme } from "../../redux/theme/themeSelector";
 import BookReviewList from "../../components/BookReviewList/BookReviewList";
-import Container from "../../components/Share/Container";
-import Notification from "../../components/Share/Notification";
+import Container from "../../components/_shared/Container/Container";
+import Notification from "../../components/_shared/Notification";
 
 const LibraryPage = () => {
   const loggedIn = useSelector(getIsLoggedIn);

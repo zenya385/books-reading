@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import classnames from "classnames";
 import s from "./TimerLogicOfYear.module.scss";
 import { langOptionsTimerLogicOfYear } from "../../../assets/langOptionsTimerLogicOfYear";
 import { getLang } from "../../../redux/lang/langSelector";

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import MediaQuery from "react-responsive";
 import Rating from "@mui/material/Rating";
-import ReviewModal from "../ReviewModal/ReviewModal";
+import ReviewModal from "../_modals/ReviewModal/ReviewModal";
 import { getLang } from "../../redux/lang/langSelector";
 import { langOptionsSummary } from "../../assets/langOptionsSummary";
 import { getTheme } from "../../redux/theme/themeSelector";

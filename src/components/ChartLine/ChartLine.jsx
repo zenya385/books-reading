@@ -4,7 +4,6 @@ import { formatISO } from "date-fns";
 import { Line } from "react-chartjs-2";
 import {
   getDurationPeriod,
-  getIsTrain,
   getStats,
 } from "../../redux/training/trainingSelectors";
 
@@ -30,7 +29,6 @@ export const options = {
 
 const ChartLine = ({ curReadBooks }) => {
   const statsArr = useSelector(getStats);
-  const isTrain = useSelector(getIsTrain);
   const duration = useSelector(getDurationPeriod);
 
   let dateNow = new Date();

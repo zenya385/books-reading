@@ -94,22 +94,11 @@ const authSlice = createSlice({
         isLoading: false,
         ...payload,
       };
-      // state.accessToken = payload.accessToken;
-      // state.refreshToken = payload.refreshToken;
-      // state.sid = payload.sid;
-      // state.isLoggedIn = true;
-      // state.isLoading = false;
     },
     [getNewTokens.rejected](state, { payload }) {
       state.isLoading = false;
       state.error = payload;
     },
-
-    // [getUser.fulfilled](state, { payload }) {
-    //   state.user.name = payload.name;
-    //   state.user.email = payload.email;
-    //   // state.isLoggedIn = true;
-    // },
     [getBooks.fulfilled](state, { payload }) {
       state.user.name = payload.name;
       state.user.email = payload.email;

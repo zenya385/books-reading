@@ -10,7 +10,6 @@ import {
 } from "../../redux/training/trainingSlice";
 import { formatISO, intervalToDuration } from "date-fns";
 import {
-  getDurationPeriod,
   getEndDate,
   getIsTrain,
   getStartDate,
@@ -23,7 +22,7 @@ import { getTheme } from "../../redux/theme/themeSelector";
 import PurposeToReadList from "../PurposeToReadList/PurposeToReadList";
 import ReadListWithCheckBox from "../ReadListWithCheckBox/ReadListWithCheckBox";
 import MediaQuery from "react-responsive";
-import AddTrainingModal from "../AddTrainingModal/AddTrainingModal";
+import AddTrainingModal from "../_modals/AddTrainingModal/AddTrainingModal";
 import { BsPlusLg } from "react-icons/bs";
 import {
   Chart as ChartJS,

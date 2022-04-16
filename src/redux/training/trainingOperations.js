@@ -40,11 +40,10 @@ export const addPages = createAsyncThunk(
     const state = thunkApi.getState();
     const accessToken = state.auth.accessToken;
     try {
-      const data=await addPagesApi(pages,accessToken);
-      // const stats=await getPlanningApi(accessToken)
+      const data = await addPagesApi(pages, accessToken);
       // console.log("planningPages>>>", data);
-      console.log("getPlanningApi>>>",data);
-      
+      console.log("getPlanningApi>>>", data);
+
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);

@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import AppBar from "../navigation/AppBar";
+import AppBar from "../../_navigation/AppBar";
 import { BiArrowBack } from "react-icons/bi";
-import MyTrainingPlainModal from "../MyTrainingPlainModal/MyTrainingPlainModal";
+import MyTrainingPlainModal from "../../MyTrainingPlainModal/MyTrainingPlainModal";
 import s from "./AddTrainingModal.module.scss";
 
 export default function AddTrainingModal({

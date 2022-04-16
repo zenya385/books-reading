@@ -5,9 +5,9 @@ import "react-datepicker/dist/react-datepicker.css";
 import { langOptionsResults } from "../../../assets/langOptionsResults";
 import { addPages } from "../../../redux/training/trainingOperations";
 import { getLang } from "../../../redux/lang/langSelector";
-import { useFormik } from "formik";
 import { getTrainingBooks } from "../../../redux/training/trainingSelectors";
 import { getBooksCurrentlyReadingState } from "../../../redux/books/booksSelectors";
+import { useFormik } from "formik";
 import toast from "react-hot-toast";
 import s from "./Results.module.scss";
 
@@ -36,11 +36,10 @@ const getNextdBookAfterFinishedBook = ({ curReadBooks }) => {
 
 const Results = () => {
   const [startDate, setStartDate] = useState(new Date());
-  const [pages, setPages] = useState("");
-  const lang = useSelector(getLang);
+  const dispatch = useDispatch();
   const trainingBooks = useSelector(getTrainingBooks);
   const curReadBooks = useSelector(getBooksCurrentlyReadingState);
-  const dispatch = useDispatch();
+  const lang = useSelector(getLang);
   const { date, numPages, addRes } = langOptionsResults;
 
   const formik = useFormik({
@@ -88,7 +87,6 @@ const Results = () => {
               disabled
               onChange={(date) => {
                 setStartDate(date);
-                // console.log(startDate);
               }}
               dateFormat="dd.MM.yyyy"
             />

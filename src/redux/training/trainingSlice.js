@@ -48,7 +48,6 @@ const trainingSlice = createSlice({
     },
 
     getDuration(state, { payload }) {
-      // console.log(state);
       return {
         ...state,
         duration: payload,
@@ -56,16 +55,13 @@ const trainingSlice = createSlice({
     },
 
     addBookForTraining(state, { payload }) {
-      console.log(payload);
       return {
         ...state,
         books: [...state.books, payload.valueIdBook],
-        // books: [payload],
       };
     },
 
     addCurBookForTraining(state, { payload }) {
-      console.log(payload);
       return {
         ...state,
         payload,
@@ -134,8 +130,6 @@ const trainingSlice = createSlice({
     },
   },
 });
-
-// console.log(trainingSlice);
 
 export default trainingSlice.reducer;
 export const {

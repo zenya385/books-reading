@@ -6,11 +6,11 @@ import Modal from "@mui/material/Modal";
 import Rating from "@mui/material/Rating";
 import s from "./ReviewModal.module.scss";
 import { useFormik } from "formik";
-import { reviewBook } from "../../redux/books/booksOperations";
-import { getLang } from "../../redux/lang/langSelector";
-import { langOptionsReviewModal } from "../../assets/langOptionsReviewModal";
-import { getBooksFinishedReadingState } from "../../redux/books/booksSelectors";
-import { getTheme } from "../../redux/theme/themeSelector";
+import { reviewBook } from "../../../redux/books/booksOperations";
+import { getLang } from "../../../redux/lang/langSelector";
+import { langOptionsReviewModal } from "../../../assets/langOptionsReviewModal";
+import { getBooksFinishedReadingState } from "../../../redux/books/booksSelectors";
+import { getTheme } from "../../../redux/theme/themeSelector";
 
 export default function ReviewModal({
   bookId,

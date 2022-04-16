@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { langOptionsMyPurposeToRead } from "../../assets/langOptionsMyPurposeToRead";
 import { getLang } from "../../redux/lang/langSelector";

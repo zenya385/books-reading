@@ -34,16 +34,16 @@ const BookReviewItem = ({
         <svg className={s.navIcon} width="22px" height="17px">
           <use xlinkHref={`${Icons}#icon-flat-${colorIcon}`} />
         </svg>
-        <a href="" className="link nav__link-contact">
-          <p
-            className={s.bookTitle}
-            style={{
-              color: theme === "light" ? "#242A37" : "var(--dark-text)",
-            }}
-          >
-            {title}
-          </p>
-        </a>
+        {/* <a href="#" className="link nav__link-contact"> */}
+        <p
+          className={s.bookTitle}
+          style={{
+            color: theme === "light" ? "#242A37" : "var(--dark-text)",
+          }}
+        >
+          {title}
+        </p>
+        {/* </a> */}
       </div>
       <MediaQuery maxWidth={767}>
         <div className={s.bookInfoWrapper}>

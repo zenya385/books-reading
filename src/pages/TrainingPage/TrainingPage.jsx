@@ -9,7 +9,7 @@ import {
   getIsTrain,
   getTrainingBooks,
 } from "../../redux/training/trainingSelectors";
-import StatisticsResults from "../../components/AllStatistics/StatisticsResults/StatisticsResults";
+import StatisticsResults from "../../components/_statistics/StatisticsResults/StatisticsResults";
 import Timer from "../../components/Timer/Timer";
 import { getBooksGoingToReadState } from "../../redux/books/booksSelectors";
 import { getPlaningTraining } from "../../redux/training/trainingOperations";
@@ -19,10 +19,10 @@ import {
   resetTrain,
 } from "../../redux/training/trainingSlice";
 import MediaQuery from "react-responsive";
-import FailModal from "../../components/FinishTrainingModal/FailModal";
+import FailModal from "../../components/_modals/FinishTrainingModal/FailModal";
 import { formatISO } from "date-fns";
-import Container from "../../components/Share/Container";
-import Notification from "../../components/Share/Notification";
+import Container from "../../components/_shared/Container/Container";
+import Notification from "../../components/_shared/Notification";
 import toast from "react-hot-toast";
 
 const getIsTrainingFinished = (trainingBooks) => {

@@ -1,19 +1,17 @@
-.form{
-	
-}
+
 .visuallyHidden {
 	@media screen and (min-width: 1280px) {
-			position: absolute;
-			white-space: nowrap;
-			width: 1px;
-			height: 1px;
-			overflow: hidden;
-			border: 0;
-			padding: 0;
-			clip: rect(0 0 0 0);
-			clip-path: inset(50%);
-			margin: -1px;
-	
+		position: absolute;
+		white-space: nowrap;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		border: 0;
+		padding: 0;
+		clip: rect(0 0 0 0);
+		clip-path: inset(50%);
+		margin: -1px;
+			
 	}
 
 }
@@ -29,7 +27,6 @@
 	@media screen and (min-width: 1280px) {
 		width: 886px;
 		margin-top: 50px;
-	
 	}
 }
 
@@ -38,7 +35,6 @@
 	width: 52px;
 	height: 52px;
 	background: rgba(255, 107, 8, 0.782);
-
 	border-radius: 50%;
 	position: fixed;
 	bottom: 10%;
@@ -69,6 +65,7 @@
 		color: #F6F7FB;
 	}
 }
+
 .startTrainingBtn{
 	width: 171px;
 	height: 42px;
@@ -83,13 +80,16 @@
 	margin-bottom: 30px;
 	
 }
+
 .datePicker{
 	display: flex;
 	text-align: center;
 }
+
 .datePickerInput{
 	width: 250px;
 }
+
 .select{
 		width: 482px;
 		height: 42px;
@@ -97,6 +97,6 @@
 		margin-bottom: 40px;
 		@media screen and (min-width: 1280px) {
 			width: 669px;
-		margin-right: 46px;
+			margin-right: 46px;
 		}
 }

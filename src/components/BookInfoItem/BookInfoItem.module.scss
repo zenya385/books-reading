@@ -1,36 +1,25 @@
 .item {
   display: flex;
- 
-
   margin: 0;
- 
- 
   background-color: var (--primary-bg-color);
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
 
   @media screen and (max-width: 767px) {
-  
     padding: 18px 15px 0px 10px;
     position: relative;
-   
     height: 180px;
     margin-bottom: 30px;
-  
   }
 
   @media screen and (min-width: 768px) {
     margin-top: 14px;
-   
     height: 62px;
   }
 }
 
-
-
 a {
   text-decoration: none;
 }
-
 
 button {
   background: transparent;
@@ -40,9 +29,7 @@ button {
 
 .iconTitle {
   display: flex;
-
   @media screen and (max-width: 767px) {
-
     align-items: center;
     position: absolute;
     bottom: 74%;
@@ -51,7 +38,6 @@ button {
 
   @media screen and (min-width: 768px) {
     align-items: center;
-    
   }
 
 }
@@ -62,7 +48,6 @@ button {
 .bookInfoWrapper{
   @media screen and (max-width: 767px) {display: flex;
   align-items: flex-end;}
- 
 }
 
 .bookTitle {
@@ -75,10 +60,8 @@ button {
 
   @media screen and (min-width: 768px) {
     width: 264px;
-
     font-size: 14px;
     line-height: 1.5;
-
   }
 
   @media screen and (min-width: 1280px) {
@@ -86,7 +69,6 @@ button {
     margin-right: 60px;
     font-size: 14px;
     line-height: 2.71;
-
   }
 }
 
@@ -96,14 +78,13 @@ button {
   @media screen and (min-width: 768px) {
     margin-left: 20px;
     margin-right: 20px;
-
   }
 
 }
 
 .bookMoreInfo {
   margin-left: 30px;
-margin-top: 5px;
+  margin-top: 5px;
   @media screen and (min-width: 768px) {
     display: flex;
     align-items: center;
@@ -114,25 +95,20 @@ margin-top: 5px;
   font-weight: 500;
   font-size: 12px;
   line-height: 3.17;
-  
   color: #898F9F;
-
-  @media screen and (min-width: 768px) {}
 }
 
 .bookMoreInfoAuthor {
-font-weight: 500;
-font-size: 12px;
-line-height: 1.17;
-color: #242A37;
-height: 26px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+  color: #242A37;
+  height: 26px;
 
   @media screen and (min-width: 768px) {
     width: 160px;
     font-size: 14px;
    line-height: 1.5;
-
-
   }
 
   @media screen and (min-width: 1280px) {
@@ -173,12 +149,9 @@ height: 26px;
   @media screen and (min-width: 768px) {
     font-size: 14px;
     line-height: 0.8;
-
   }
 
   @media screen and (min-width: 1280px) {
-
-
     font-size: 14px;
     line-height: 2.71;
   }
@@ -186,6 +159,5 @@ height: 26px;
 .bookInfoWrapper {
   @media screen and (min-width: 768px) {
    display: flex;
-  
   }
 }

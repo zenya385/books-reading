@@ -1,6 +1,5 @@
 .dateGroup {
   display: flex;
-  /* margin-right: 30px; */
 }
 
 .date {
@@ -10,7 +9,6 @@
   font-size: 25px;
   line-height: 1.52;
   margin-left: 10px;
-
   color: #091e3f;
 }
 
@@ -34,12 +32,10 @@
   top: 30px;
   left: 21%;
   transform: translateX(-50%);
-
   font-family: Montserrat;
   font-weight: 500;
   font-size: 10px;
   line-height: 3.8;
-
   color: #898f9f;
 }
 .hours {
@@ -48,12 +44,10 @@
   top: 30px;
   left: 41%;
   transform: translateX(-50%);
-
   font-family: Montserrat;
   font-weight: 500;
   font-size: 10px;
   line-height: 3.8;
-
   color: #898f9f;
 }
 .minutes {
@@ -62,12 +56,10 @@
   top: 30px;
   left: 60%;
   transform: translateX(-50%);
-
   font-family: Montserrat;
   font-weight: 500;
   font-size: 10px;
   line-height: 3.8;
-
   color: #898f9f;
 }
 .seconds {
@@ -76,25 +68,22 @@
   top: 30px;
   left: 79%;
   transform: translateX(-50%);
-
   font-family: Montserrat;
   font-weight: 500;
   font-size: 10px;
   line-height: 3.8;
-
   color: #898f9f;
 }
 
 .box {
   padding: 5px;
   position: relative;
-   margin-bottom: 45px;
+  margin-bottom: 45px;
   width: 290px;
   height: 60px;
-
   background-color: white;
   box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
-  // margin-right: 70px;
+
   @media screen and (min-width: 1280px) {
     margin-bottom: 0;
   }
@@ -102,16 +91,13 @@
 
 .boxText {
   display: inline-block;
-
   position: absolute;
   top: -38px;
   left: 55%;
   transform: translateX(-50%);
-
   line-height: 2.71;
   font-size: 14px;
   font-weight: 500;
   width: 240px;
-
   color: #898f9f;
 }
