@@ -1,12 +1,12 @@
 import React from "react";
 import { ErrorMessage, Formik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
-import { register } from "../redux/auth/authOperations";
+import { register } from "../../redux/auth/authOperations";
 import s from "./RegisterPage.module.scss";
-import { regValidationSchema } from "../utils/validation/RegisterValid";
-import { getLang } from "../redux/lang/langSelector";
-import { langOptionsRegister } from "../assets/langOptionsRegister";
-import { getTheme } from "../redux/theme/themeSelector";
+import { regValidationSchema } from "../../utils/validation/RegisterValid";
+import { getLang } from "../../redux/lang/langSelector";
+import { langOptionsRegister } from "../../assets/langOptionsRegister";
+import { getTheme } from "../../redux/theme/themeSelector";
 import { Link } from "react-router-dom";
 
 const RegisterPage = () => {
@@ -165,14 +165,25 @@ const RegisterPage = () => {
 
       <div className={s.textRegist}>
         <div className={s.textRegistDiv}>
-          <h2 className={s.regFormTitleMain} style={{
-              color:
-              theme === "light" ? "var(--title-text-color)" : "white",}}>Books Reading</h2>
+          <h2
+            className={s.regFormTitleMain}
+            style={{
+              color: theme === "light" ? "var(--title-text-color)" : "white",
+            }}
+          >
+            Books Reading
+          </h2>
           <div>
             <div className={s.regFormTitleText}>
-              <h3 className={s.regFormTitle} style={{
-              color:
-              theme === "light" ? "var(--title-text-color)" : "white",}}>{textTitle1[lang]}</h3>
+              <h3
+                className={s.regFormTitle}
+                style={{
+                  color:
+                    theme === "light" ? "var(--title-text-color)" : "white",
+                }}
+              >
+                {textTitle1[lang]}
+              </h3>
               <div className={s.regFormSpanText}>
                 <span className={s.spanArrow}>&#62;</span>
                 <p className={s.textFontRegistr}>{text1_1[lang]}</p>
@@ -187,9 +198,15 @@ const RegisterPage = () => {
               </div>
             </div>
             <div className={s.regFormTitleText}>
-              <h3 className={s.regFormTitle} style={{
-              color:
-              theme === "light" ? "var(--title-text-color)" : "white",}}>{textTitle2[lang]}</h3>
+              <h3
+                className={s.regFormTitle}
+                style={{
+                  color:
+                    theme === "light" ? "var(--title-text-color)" : "white",
+                }}
+              >
+                {textTitle2[lang]}
+              </h3>
               <div className={s.regFormSpanText}>
                 <span className={s.spanArrow}>&#62;</span>
                 <p className={s.textFontRegistr}>{text2_1[lang]}</p>

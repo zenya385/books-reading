@@ -1,14 +1,14 @@
 import React, { useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import s from "./ReviewModal.module.scss";
 import Rating from "@mui/material/Rating";
-import { useDispatch, useSelector } from "react-redux";
+import s from "./ReviewModal.module.scss";
+import { useFormik } from "formik";
 import { reviewBook } from "../../redux/books/booksOperations";
 import { getLang } from "../../redux/lang/langSelector";
 import { langOptionsReviewModal } from "../../assets/langOptionsReviewModal";
-import { useFormik } from "formik";
 import { getBooksFinishedReadingState } from "../../redux/books/booksSelectors";
 import { getTheme } from "../../redux/theme/themeSelector";
 
@@ -19,14 +19,12 @@ export default function ReviewModal({
   bookRating,
   coment,
 }) {
-  const [rating, setRaiting] = React.useState(bookRating);
-  const [feedback, setFeedback] = React.useState(coment);
-  const booksFinished = useSelector(getBooksFinishedReadingState);
-  const lang = useSelector(getLang);
-  const { text, resume, btnBack, btnSave } = langOptionsReviewModal;
   const dispatch = useDispatch();
+  const booksFinished = useSelector(getBooksFinishedReadingState);
   const isBookUpdateRef = useRef(false);
   const theme = useSelector(getTheme);
+  const lang = useSelector(getLang);
+  const { text, resume, btnBack, btnSave } = langOptionsReviewModal;
 
   useEffect(() => {
     isBookUpdateRef.current && onModalClose();

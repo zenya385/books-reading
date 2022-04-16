@@ -1,14 +1,15 @@
-import * as React from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Icons from "../../images/symbol-defs.svg";
 import s from "./InstructionModal.module.scss";
-import { useSelector } from "react-redux";
+
 import { getLang } from "../../redux/lang/langSelector";
 import { langOptionsInstrModal } from "../../assets/langOptionsInstrModal";
 
 export default function InstructionModal() {
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = useState(true);
   const lang = useSelector(getLang);
   const {
     step1,

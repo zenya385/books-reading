@@ -2,22 +2,17 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { changeTheme } from "../../redux/theme/themeSlice";
 import { getTheme } from "../../redux/theme/themeSelector";
-import style from "./SwitchTheme.module.scss";
+import s from "./SwitchTheme.module.scss";
 
 const SwitchTheme = () => {
   const dispatch = useDispatch();
   const theme = useSelector(getTheme);
 
   return (
-    <div className={style.switch_theme_div}>
+    <div className={s.switch_theme_div}>
       {theme === "light" ? (
         <button
-          style={{
-            color: "black",
-            fontSize: "20px",
-            background: "transparent",
-            border: "none",
-          }}
+          className={s.btnD}
           onClick={() => dispatch(changeTheme("dark"))}
         >
           &#127774;
@@ -25,12 +20,7 @@ const SwitchTheme = () => {
       ) : (
         <button
           onClick={() => dispatch(changeTheme("light"))}
-          style={{
-            color: "white",
-            fontSize: "20px",
-            background: "transparent",
-            border: "none",
-          }}
+          className={s.btnL}
         >
           &#127769;
         </button>

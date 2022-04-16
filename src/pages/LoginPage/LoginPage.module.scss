@@ -25,7 +25,7 @@ font-style: italic;
       rgba(9, 30, 63, 0.8),
       rgba(9, 30, 63, 0.8)
     ),
-    url(../images/pic1-mob-1x.jpg);
+    url(../../images/pic1-mob-1x.jpg);
     background-position: center;
     background-size: cover;
     width: 100%;
@@ -36,7 +36,7 @@ font-style: italic;
       rgba(9, 30, 63, 0.8),
       rgba(9, 30, 63, 0.8)
     ),
-    url(../images/pic-desk-2x.jpg);
+    url(../../images/pic-desk-2x.jpg);
     background-position: center;
     background-size: cover;
   }
@@ -47,7 +47,7 @@ font-style: italic;
       rgba(9, 30, 63, 0.8),
       rgba(9, 30, 63, 0.8)
     ),
-    url(../images/pic1-mob-1x.jpg);
+    url(../../images/pic1-mob-1x.jpg);
     background-position: center;
     background-size: cover;
     padding: 70px 184px;
@@ -173,14 +173,14 @@ font-style: italic;
   height: 18px;
   top: 11px;
   left: 9px;
-  background-image: url(../images/google-mob.png);
+  background-image: url(../../images/google-mob.png);
   background-size: auto;
   background-repeat: no-repeat;
 @media screen and (min-width: 768px) {
-  background-image: url(../images/google-mob.png);
+  background-image: url(../../images/google-mob.png);
 }
 @media screen and (min-width: 1280px) {
-  background-image: url(../images/google-mob.png);
+  background-image: url(../../images/google-mob.png);
 }
 }
 .textLogin {
@@ -228,11 +228,11 @@ font-style: italic;
   height: 17px;
   top: -29px;
   left: 120px;
-  background-image: url(../images/kavy-mob-1x.png);
+  background-image: url(../../images/kavy-mob-1x.png);
   background-size: auto;
   background-repeat: no-repeat;
   @media screen and (min-width: 480px) {  
-    background-image: url(../images/kavy-mob-1x.png);
+    background-image: url(../../images/kavy-mob-1x.png);
     background-size: cover;
     width: 23px;
     height: 17px;
@@ -240,7 +240,7 @@ font-style: italic;
     left: 187px;
 }
     @media screen and (min-width: 768px) {  
-    background-image: url(../images/kavy-desctop-2x.png);
+    background-image: url(../../images/kavy-desctop-2x.png);
     background-size: cover;
     width: 25px;
     height: 19px;
@@ -248,7 +248,7 @@ font-style: italic;
     left: 258px;
     }
     @media screen and (min-width: 1280px) {  
-      background-image: url(../images/kavy-desctop-2x.png);
+      background-image: url(../../images/kavy-desctop-2x.png);
       background-size: cover;
       width: 24px;
       height: 19px;
@@ -285,11 +285,11 @@ font-style: italic;
   height: 2px;
   top: 5px;
   left: 86px;
-  background-image: url(../images/Line-all-1x.png);
+  background-image: url(../../images/Line-all-1x.png);
   background-size: auto;
   background-repeat: no-repeat;
   @media screen and (min-width: 480px) {  
-    background-image: url(../images/Line-all-1x.png);
+    background-image: url(../../images/Line-all-1x.png);
     background-size: cover;
     width: 91px;
     height: 2px;
@@ -297,7 +297,7 @@ font-style: italic;
     left: 151px;
 }
     @media screen and (min-width: 768px) {  
-    background-image: url(../images/Line-all-1x.png);
+    background-image: url(../../images/Line-all-1x.png);
     background-size: cover;
     width: 120px;
     height: 2px;
@@ -305,7 +305,7 @@ font-style: italic;
     left: 210px;
     }
     @media screen and (min-width: 1280px) {  
-      background-image: url(../images/Line-all-1x.png);
+      background-image: url(../../images/Line-all-1x.png);
       background-size: cover;
       width: 150px;
       height: 2px;

@@ -1,28 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getIsLoggedIn } from "../redux/auth/authSelectors";
-import { getBooks } from "../redux/books/booksOperations";
-import MyPurposeToRead from "../components/MyPurposeToRead/MyPurposeToRead";
+import { getIsLoggedIn } from "../../redux/auth/authSelectors";
+import { getBooks } from "../../redux/books/booksOperations";
+import MyPurposeToRead from "../../components/MyPurposeToRead/MyPurposeToRead";
 import s from "./TrainingPage.module.scss";
-import MyTrainingPlaining from "../components/MyTrainingPlaining/MyTrainingPlaining";
+import MyTrainingPlaining from "../../components/MyTrainingPlaining/MyTrainingPlaining";
 import {
   getIsTrain,
   getTrainingBooks,
-} from "../redux/training/trainingSelectors";
-import StatisticsResults from "../components/AllStatistics/StatisticsResults/StatisticsResults";
-import Timer from "../components/Timer/Timer";
-import { getBooksGoingToReadState } from "../redux/books/booksSelectors";
-import { getPlaningTraining } from "../redux/training/trainingOperations";
+} from "../../redux/training/trainingSelectors";
+import StatisticsResults from "../../components/AllStatistics/StatisticsResults/StatisticsResults";
+import Timer from "../../components/Timer/Timer";
+import { getBooksGoingToReadState } from "../../redux/books/booksSelectors";
+import { getPlaningTraining } from "../../redux/training/trainingOperations";
 import {
   changeDateEnd,
   changeDateStart,
   resetTrain,
-} from "../redux/training/trainingSlice";
+} from "../../redux/training/trainingSlice";
 import MediaQuery from "react-responsive";
-import FailModal from "../components/FinishTrainingModal/FailModal";
+import FailModal from "../../components/FinishTrainingModal/FailModal";
 import { formatISO } from "date-fns";
-import Container from "../components/Share/Container";
-import Notification from "../components/Share/Notification";
+import Container from "../../components/Share/Container";
+import Notification from "../../components/Share/Notification";
 import toast from "react-hot-toast";
 
 const getIsTrainingFinished = (trainingBooks) => {

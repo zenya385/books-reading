@@ -1,19 +1,18 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import MediaQuery from "react-responsive";
 import Rating from "@mui/material/Rating";
 import ReviewModal from "../ReviewModal/ReviewModal";
-import { useSelector } from "react-redux";
 import { getLang } from "../../redux/lang/langSelector";
 import { langOptionsSummary } from "../../assets/langOptionsSummary";
-import s from "./Summary.module.scss";
-import MediaQuery from "react-responsive";
 import { getTheme } from "../../redux/theme/themeSelector";
+import s from "./Summary.module.scss";
 
 const Summary = ({ bookId, rating, feedback }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const theme = useSelector(getTheme);
   const lang = useSelector(getLang);
   const { resume, ratingI } = langOptionsSummary;
-
-  const theme = useSelector(getTheme);
 
   const toggleModal = () => {
     setIsModalOpen((prev) => !prev);

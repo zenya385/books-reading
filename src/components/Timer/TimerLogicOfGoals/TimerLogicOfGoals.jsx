@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import classnames from "classnames";
 import s from "./TimerLogicOfGoals.module.scss";
 import { getEndDate } from "../../../redux/training/trainingSelectors";
 import { getTheme } from "../../../redux/theme/themeSelector";
 import { getLang } from "../../../redux/lang/langSelector";
-import { langOptionsTimerLogicOfGoals } from "../../../assets/langOptionsTimerLogicOfGoals.jsx";
+import { langOptionsTimerLogicOfGoals } from "../../../assets/langOptionsTimerLogicOfGoals";
 
 const TimerLogicOfGoals = () => {
   const lang = useSelector(getLang);
@@ -13,9 +12,8 @@ const TimerLogicOfGoals = () => {
   const endDate = useSelector(getEndDate);
   const oneDay = 86400000;
   const goal = new Date(endDate).getTime();
-
+  const theme = useSelector(getTheme);
   const [, setDateTime] = useState(new Date());
-
   const diff = goal + oneDay - new Date().getTime();
 
   const days = () => {
@@ -59,8 +57,6 @@ const TimerLogicOfGoals = () => {
     };
   }, []);
 
-  const theme = useSelector(getTheme);
-  // console.log(time);
   return (
     <div
       className={s.box}

@@ -1,19 +1,15 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useSelector, useDispatch } from "react-redux";
 import { langOptionsResults } from "../../../assets/langOptionsResults";
-import {
-  addPages,
-  getPlaningTraining,
-} from "../../../redux/training/trainingOperations";
+import { addPages } from "../../../redux/training/trainingOperations";
 import { getLang } from "../../../redux/lang/langSelector";
-import s from "./Results.module.scss";
 import { useFormik } from "formik";
 import { getTrainingBooks } from "../../../redux/training/trainingSelectors";
-import toast from "react-hot-toast";
 import { getBooksCurrentlyReadingState } from "../../../redux/books/booksSelectors";
+import toast from "react-hot-toast";
+import s from "./Results.module.scss";
 
 const getIsValidPages = ({ trainingBooks }) => {
   const deltaPages = trainingBooks
@@ -76,7 +72,6 @@ const Results = () => {
       notFinishedBookYet &&
       notFinishedBookYet.pagesFinished === 0
     ) {
-      // console.log(finishedBookYet);
       toast.success(`${finishedBookYet.title} has already finished`);
     }
   }, [curReadBooks]);
@@ -98,7 +93,7 @@ const Results = () => {
               dateFormat="dd.MM.yyyy"
             />
           </div>
-          <div style={{ position: "relative" }}>
+          <div className={s.relat}>
             <p className={s.pages_text}>{numPages[lang]}</p>
             <input
               name="pages"

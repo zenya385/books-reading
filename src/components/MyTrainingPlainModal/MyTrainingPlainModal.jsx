@@ -1,33 +1,16 @@
 import React, { useEffect, useState } from "react";
-import DatePicker from "react-datepicker";
 import { useDispatch, useSelector } from "react-redux";
+import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import s from "./MyTrainingPlainModal.module.scss";
 import {
-  addBookForTraining,
-  addCurBookForTraining,
   changeDateEnd,
   changeDateStart,
   getDuration,
 } from "../../redux/training/trainingSlice";
 import { formatISO, intervalToDuration } from "date-fns";
-import {
-  // getBooksCurrentlyReadingState,
-  getBooksGoingToReadState,
-} from "../../redux/books/booksSelectors";
-import BookInfoList from "../BookInfoList/BookInfoList";
-import {
-  getEndDate,
-  getStartDate,
-  getTrainingBooks,
-} from "../../redux/training/trainingSelectors";
 import { getLang } from "../../redux/lang/langSelector";
 import { langOptionsMyTrainPlan } from "../../assets/langOptionsMyTrainPlan";
-import { addPlaningTraining } from "../../redux/training/trainingOperations";
-import { Formik } from "formik";
-import PurposeToReadList from "../PurposeToReadList/PurposeToReadList";
-import ReadListWithCheckBox from "../ReadListWithCheckBox/ReadListWithCheckBox";
-
 
 const curDate = new Date();
 const today = [curDate.getFullYear(), curDate.getMonth(), curDate.getDate()];
@@ -45,7 +28,7 @@ const MyTrainingPlainModal = ({
 }) => {
   const dispatch = useDispatch();
   const lang = useSelector(getLang);
-  const { training, startTraining, btn } = langOptionsMyTrainPlan;
+  const { training, btn } = langOptionsMyTrainPlan;
 
   const [startDateOrigin, setStartDateOrigin] = useState(new Date(...today));
   const [endDateOrigin, setEndDateOrigin] = useState(new Date(...nextDay));
@@ -117,15 +100,6 @@ const MyTrainingPlainModal = ({
               </button>
             </>
           )}
-          {/* лист с чекбоксом после прописания логики можно удалить */}
-
-          {/* {Boolean(curReadBooks.length) && (
-        <ReadListWithCheckBox
-          booksLibrary={curReadBooks}
-          colorIcon="grey"
-          review={0}
-        />
-      )} */}
         </form>
       </div>
     </>

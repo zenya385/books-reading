@@ -8,7 +8,6 @@ import { langOptionsBookInfoList } from "../../assets/langOptionsBookInfoList";
 import { getLang } from "../../redux/lang/langSelector";
 
 const BookInfoList = ({ booksLibrary, colorIcon, review }) => {
-  // console.log(booksLibrary);
   const theme = useSelector(getTheme);
   const lang = useSelector(getLang);
   const {
@@ -38,7 +37,6 @@ const BookInfoList = ({ booksLibrary, colorIcon, review }) => {
         <MediaQuery minWidth={768}>
           <div className={s.bookInfo}>
             <p className={s.title}>{title[lang]}</p>
-
             <p className={s.author}>{author[lang]}</p>
             <p className={s.year}>{publishYear[lang]}</p>
             <p className={s.page}>{pagesTotal[lang]}</p>

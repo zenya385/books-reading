@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import DatePicker from "react-datepicker";
 import { useDispatch, useSelector } from "react-redux";
+import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import s from "./MyTrainingPlaining.module.scss";
 import {
@@ -61,7 +61,6 @@ const MyTrainingPlaining = ({
   handleDeleteBook,
   handleChangeValue,
 }) => {
-  const duration = useSelector(getDurationPeriod);
   const books = useSelector(getTrainingBooks);
   const startDate = useSelector(getStartDate);
   const endDate = useSelector(getEndDate);
@@ -130,11 +129,9 @@ const MyTrainingPlaining = ({
   // console.log("startDate", startDate);
   // console.log("endDateOrigin", endDateOrigin);
   // console.log("endDate", endDate);
-  // duration >= 0 && console.log("Duration", duration);
   return (
     <>
       <MediaQuery minWidth={768}>
-        {/* {!isTrain && ( */}
         <form
           className={isTrain ? s.visuallyHidden : s.form}
           onSubmit={handleSubmitBookForRead}
@@ -159,7 +156,6 @@ const MyTrainingPlaining = ({
               dateFormat="dd.MM.yyyy"
               selected={endDateOrigin}
               onChange={(date) => {
-                // console.log("date", date);
                 return setEndDateOrigin(date);
               }}
               className={s.datePickerInput}
@@ -185,7 +181,6 @@ const MyTrainingPlaining = ({
             {btn[lang]}
           </button>
         </form>
-        {/* )} */}
       </MediaQuery>
 
       <MediaQuery maxWidth={767}>

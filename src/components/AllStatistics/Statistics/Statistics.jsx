@@ -8,6 +8,7 @@ import { getTheme } from "../../../redux/theme/themeSelector";
 
 const Statistics = () => {
   const arr = useSelector(getStats);
+  const theme = useSelector(getTheme);
   const lang = useSelector(getLang);
   const { pages } = langOptionsStatistics;
 
@@ -18,8 +19,7 @@ const Statistics = () => {
       return num;
     }
   };
-  // console.log(arr);
-  const theme = useSelector(getTheme);
+
   return (
     <>
       {arr.map((stat, index) => (
@@ -51,7 +51,7 @@ const Statistics = () => {
               style={{ color: theme === "light" ? "#898F9F" : "#898F9F" }}
             >
               {pages[lang]}
-            </span>{" "}
+            </span>
           </p>
         </li>
       ))}

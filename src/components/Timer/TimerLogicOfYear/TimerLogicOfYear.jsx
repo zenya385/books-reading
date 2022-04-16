@@ -7,10 +7,10 @@ import { useSelector } from "react-redux";
 import { getTheme } from "../../../redux/theme/themeSelector";
 
 const TimerLogicOfYear = () => {
+  const theme = useSelector(getTheme);
   const lang = useSelector(getLang);
   const { titleL, dayL, hourL, minL, secL } = langOptionsTimerLogicOfYear;
   const year = new Date(new Date().getFullYear() + 1, 0, 1).getTime();
-
   const [, setDateTime] = useState(new Date());
   const oneDay = 86400000;
 
@@ -60,7 +60,6 @@ const TimerLogicOfYear = () => {
     };
   }, []);
 
-  const theme = useSelector(getTheme);
   return (
     <div
       className={s.box}

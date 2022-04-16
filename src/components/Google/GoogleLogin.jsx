@@ -6,7 +6,6 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const GoogleLogin = () => {
   const location = useLocation();
-  // console.log("location", location);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -20,8 +19,6 @@ const GoogleLogin = () => {
           var param = val.split("=");
           paramMap[param[0]] = param[1];
         });
-
-      // console.log("paramMap :>> ", paramMap);
 
       const accessToken = decodeURI(paramMap.accessToken);
       const refreshToken = paramMap.refreshToken;

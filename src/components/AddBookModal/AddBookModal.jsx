@@ -1,10 +1,11 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import AppBar from "../navigation/AppBar";
 import BookForm from "../BookForm/BookForm";
 import { BiArrowBack } from "react-icons/bi";
 import s from "./AddBookModal.module.scss";
+
 export default function InstructionModal({ modalOpen, modalClose }) {
   const [open, setOpen] = React.useState(false);
 
@@ -13,8 +14,7 @@ export default function InstructionModal({ modalOpen, modalClose }) {
     modalClose(false);
   };
 
-  //   open && setOpen(true);
-  React.useEffect(() => {
+  useEffect(() => {
     setOpen(modalOpen);
   }, [modalOpen]);
 
@@ -33,16 +33,7 @@ export default function InstructionModal({ modalOpen, modalClose }) {
         >
           <AppBar />
           <button onClick={handleClose}>
-            <BiArrowBack
-              className={s.closeBtn}
-              style={{
-                marginTop: "40px",
-                marginLeft: "25px",
-                color: " #FF6B08",
-                width: "24px",
-                height: "24px",
-              }}
-            />
+            <BiArrowBack className={s.closeBtn} />
           </button>
           <BookForm onHandleClose={handleClose} />
         </Box>

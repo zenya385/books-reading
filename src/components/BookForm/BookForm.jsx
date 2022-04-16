@@ -1,6 +1,6 @@
-import { ErrorMessage, Formik } from "formik";
 import React from "react";
 import toast from "react-hot-toast";
+import { ErrorMessage, Formik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { langOptionsBookForm } from "../../assets/langOptionsBookForm";
 import { addBook } from "../../redux/books/booksOperations";
@@ -30,20 +30,13 @@ export default function BookForm({ onHandleClose }) {
         }}
         validationSchema={addBookValidationSchema}
         onSubmit={(values, { resetForm }) => {
-          // console.log("values", values);
           dispatch(addBook(values));
           toast.success("book adds to list");
           resetForm();
-          // console.log("values", values);
           onHandleClose();
         }}
       >
-        {({
-          values,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-        }) => (
+        {({ values, handleChange, handleBlur, handleSubmit }) => (
           <form onSubmit={handleSubmit} className={s.form}>
             <div className={s.form__container}>
               <label className={s.form__label}>

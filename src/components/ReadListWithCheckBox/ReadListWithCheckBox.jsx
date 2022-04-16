@@ -4,29 +4,13 @@ import MediaQuery from "react-responsive";
 import Icons from "../../images/symbol-defs.svg";
 import { getTheme } from "../../redux/theme/themeSelector";
 import { useSelector } from "react-redux";
-import { BsCheck } from "react-icons/bs";
-import { Checkbox } from "@mui/material";
 import { langOptionsReadList } from "../../assets/langOptionsReadList";
 import { getLang } from "../../redux/lang/langSelector";
-// import Checkbox from "react-custom-checkbox";
-
-// {  вызов компонента
-
-//   Boolean(curReadBooks.length) && (
-//     <ReadListWithCheckBox
-//       booksLibrary={curReadBooks}
-//       colorIcon="grey"
-//       review={0}
-//     />
-//   );
-// }
 
 const ReadListWithCheckBox = ({ booksLibrary }) => {
   const theme = useSelector(getTheme);
   const lang = useSelector(getLang);
   const { titleL, authorL, publishYearL, pagesTotalL } = langOptionsReadList;
-
-  const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
   return (
     <>

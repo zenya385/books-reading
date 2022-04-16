@@ -13,6 +13,7 @@ const AppBar = () => {
   const userName = useSelector(getUserName);
   const firsLetter = userName && userName.split("")[0].toUpperCase();
   const theme = useSelector(getTheme);
+
   return (
     <header
       className={styles.header}

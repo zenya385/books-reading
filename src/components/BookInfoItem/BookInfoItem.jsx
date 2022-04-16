@@ -13,14 +13,11 @@ const BookInfoItem = ({
   publishYear,
   pagesTotal,
   colorIcon,
-  review,
-  bookId,
-  rating,
-  feedback,
 }) => {
+  const theme = useSelector(getTheme);
   const lang = useSelector(getLang);
   const { authorItem, yearItem, pagesItem } = langOptionsBookInfoItem;
-  const theme = useSelector(getTheme);
+
   return (
     <li
       className={s.item}

@@ -1,21 +1,18 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link, useHistory } from "react-router-dom";
 import { logout } from "../../redux/auth/authOperations";
 import styles from "./UserMenu.module.scss";
 import Icons from "../../images/symbol-defs.svg";
 import { getLang } from "../../redux/lang/langSelector";
 import { langOptionsUserMenu } from "../../assets/langOptionsUserMenu";
 import { getTheme } from "../../redux/theme/themeSelector";
-import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
 
 export function UserMenu() {
   const dispatch = useDispatch();
+  const theme = useSelector(getTheme);
   const lang = useSelector(getLang);
   const { btn } = langOptionsUserMenu;
-  const theme = useSelector(getTheme);
-  const history = useHistory();
 
   return (
     <div className={styles.user_menu}>

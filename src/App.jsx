@@ -15,10 +15,14 @@ import { getIsError } from "./redux/books/booksSelectors";
 import { getIsErrorAuth } from "./redux/auth/authSelectors";
 import { logoutUser } from "./redux/auth/authSlice";
 
-const LoginPage = lazy(() => import("./pages/LoginPage.jsx"));
-const RegisterPage = lazy(() => import("./pages/RegisterPage.jsx"));
-const LibraryPage = lazy(() => import("./pages/LibraryPage.jsx"));
-const TrainingPage = lazy(() => import("./pages/TrainingPage.jsx"));
+const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage.jsx"));
+const RegisterPage = lazy(() =>
+  import("./pages/RegisterPage/RegisterPage.jsx")
+);
+const LibraryPage = lazy(() => import("./pages/LibraryPage/LibraryPage.jsx"));
+const TrainingPage = lazy(() =>
+  import("./pages/TrainingPage/TrainingPage.jsx")
+);
 
 export default function App() {
   const dispatch = useDispatch();
@@ -44,7 +48,6 @@ export default function App() {
 
     if (Number(Auth) === 401 || Number(Train) === 401 || Number(Book) === 401) {
       dispatch(logoutUser());
-      // console.log("first");
     }
   }, [authError, trainError, booksError]);
 

@@ -12,18 +12,9 @@ const PurposeToReadList = ({ books, colorIcon, handleDeleteBook }) => {
   const lang = useSelector(getLang);
   const { title, author, publishYear, pagesTotal } = langOptionsPurposeToRead;
 
-  // console.log('booksLibrary', booksLibrary)
-
   return (
     <>
-      <ul
-        className={s.bookList}
-        // style={{
-        //   backgroundColor:
-        //     theme === "light" ? "var(--light-theme)" : "var(--light-theme)",
-        //   color: theme === "light" ? "black" : "white",
-        // }}
-      >
+      <ul className={s.bookList}>
         <MediaQuery minWidth={768}>
           <div className={s.bookInfo}>
             <p className={s.title}>{title[lang]}</p>

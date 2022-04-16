@@ -1,28 +1,28 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import BookForm from "../components/BookForm/BookForm";
+import BookForm from "../../components/BookForm/BookForm";
 import {
   getBooksCurrentlyReadingState,
   getBooksFinishedReadingState,
   getBooksGoingToReadState,
   getBooksState,
   getIsLoading,
-} from "../redux/books/booksSelectors";
-import BookInfoList from "../components/BookInfoList/BookInfoList";
-import { getBooks } from "../redux/books/booksOperations";
-import { getIsLoggedIn } from "../redux/auth/authSelectors";
-import InstructionModal from "../components/InstructionModal/InstructionModal";
+} from "../../redux/books/booksSelectors";
+import BookInfoList from "../../components/BookInfoList/BookInfoList";
+import { getBooks } from "../../redux/books/booksOperations";
+import { getIsLoggedIn } from "../../redux/auth/authSelectors";
+import InstructionModal from "../../components/InstructionModal/InstructionModal";
 import MediaQuery from "react-responsive";
 import { Link } from "react-router-dom";
 import { BsPlusLg } from "react-icons/bs";
 import s from "./LibraryPage.module.scss";
-import AddBookModal from "../components/AddBookModal/AddBookModal";
-import { langOptionsLibPage } from "../assets/langOptionsLibPage";
-import { getLang } from "../redux/lang/langSelector";
-import { getTheme } from "../redux/theme/themeSelector";
-import BookReviewList from "../components/BookReviewList/BookReviewList";
-import Container from "../components/Share/Container";
-import Notification from "../components/Share/Notification";
+import AddBookModal from "../../components/AddBookModal/AddBookModal";
+import { langOptionsLibPage } from "../../assets/langOptionsLibPage";
+import { getLang } from "../../redux/lang/langSelector";
+import { getTheme } from "../../redux/theme/themeSelector";
+import BookReviewList from "../../components/BookReviewList/BookReviewList";
+import Container from "../../components/Share/Container";
+import Notification from "../../components/Share/Notification";
 
 const LibraryPage = () => {
   const loggedIn = useSelector(getIsLoggedIn);

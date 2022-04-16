@@ -1,7 +1,7 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { formatISO } from "date-fns";
 import { Line } from "react-chartjs-2";
-import { useSelector } from "react-redux";
 import {
   getDurationPeriod,
   getIsTrain,
@@ -55,7 +55,7 @@ const ChartLine = ({ curReadBooks }) => {
   }
 
   const factData = [0];
- 
+
   for (let i = 0; i < statsArr.length; i += 1) {
     // console.log('statsArr[i]', statsArr[i])
     factData[i + 1] = statsArr[i].pagesCount;

@@ -1,9 +1,10 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import AppBar from "../navigation/AppBar";
 import { BiArrowBack } from "react-icons/bi";
 import MyTrainingPlainModal from "../MyTrainingPlainModal/MyTrainingPlainModal";
+import s from "./AddTrainingModal.module.scss";
 
 export default function AddTrainingModal({
   modalOpen,
@@ -19,8 +20,7 @@ export default function AddTrainingModal({
     modalClose(false);
   };
 
-  //   open && setOpen(true);
-  React.useEffect(() => {
+  useEffect(() => {
     setOpen(modalOpen);
   }, [modalOpen]);
 
@@ -39,16 +39,7 @@ export default function AddTrainingModal({
         >
           <AppBar />
           <button onClick={handleClose}>
-            <BiArrowBack
-              //   className={s.closeBtn}
-              style={{
-                marginTop: "40px",
-                marginLeft: "25px",
-                color: " #FF6B08",
-                width: "24px",
-                height: "24px",
-              }}
-            />
+            <BiArrowBack className={s.closeBtn} />
           </button>
           <MyTrainingPlainModal
             onHandleClose={handleClose}

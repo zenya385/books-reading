@@ -2,9 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { langOptionsMyPurposeToRead } from "../../assets/langOptionsMyPurposeToRead";
 import { getLang } from "../../redux/lang/langSelector";
-import {
-  getDurationPeriod,
-} from "../../redux/training/trainingSelectors";
+import { getDurationPeriod } from "../../redux/training/trainingSelectors";
 import { getTheme } from "../../redux/theme/themeSelector";
 import s from "./MyPurposeToRead.module.scss";
 import { getBooksCurrentlyReadingState } from "../../redux/books/booksSelectors";
@@ -15,14 +13,14 @@ const MyPurposeToRead = ({ books, isTrain }) => {
   const theme = useSelector(getTheme);
   const lang = useSelector(getLang);
   const { goal, booksNum, days, read } = langOptionsMyPurposeToRead;
-  
+
   let booksToRead = 0;
-  
-      for (let i = 0; i < booksCurrentlyReading.length; i += 1) {
-      (Number(booksCurrentlyReading[i].pagesFinished) !==
-        Number(booksCurrentlyReading[i].pagesTotal) )&& (booksToRead += 1);
-      // console.log("alreadyRead", booksToRead);
-    }  
+
+  for (let i = 0; i < booksCurrentlyReading.length; i += 1) {
+    Number(booksCurrentlyReading[i].pagesFinished) !==
+      Number(booksCurrentlyReading[i].pagesTotal) && (booksToRead += 1);
+    // console.log("alreadyRead", booksToRead);
+  }
 
   return (
     <div
@@ -82,7 +80,6 @@ const MyPurposeToRead = ({ books, isTrain }) => {
                   theme === "light"
                     ? "var(--third-bg-color)"
                     : "var(--dark-theme)",
-                // color: theme === "light" ? "black" : 'var(--dark-text)'
               }}
             >
               {booksToRead}

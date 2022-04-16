@@ -1,12 +1,12 @@
 import React from "react";
 import { ErrorMessage, Formik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../redux/auth/authOperations";
+import { login } from "../../redux/auth/authOperations";
 import s from "./LoginPage.module.scss";
-import { getTheme } from "../redux/theme/themeSelector";
-import { loginValidationSchema } from "../utils/validation/LoginValid";
-import { getLang } from "../redux/lang/langSelector";
-import { langOptionsLogin } from "../assets/langOptionsLogin";
+import { getTheme } from "../../redux/theme/themeSelector";
+import { loginValidationSchema } from "../../utils/validation/LoginValid";
+import { getLang } from "../../redux/lang/langSelector";
+import { langOptionsLogin } from "../../assets/langOptionsLogin";
 import { Link } from "react-router-dom";
 
 const LoginPage = () => {

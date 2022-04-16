@@ -6,9 +6,6 @@ const Notification = () => {
     <Toaster
       position="top-center"
       reverseOrder={false}
-      //   gutter={8}
-      //   containerClassName=""
-      //   containerStyle={{}}
       toastOptions={{
         // Define default options
         className: "",
@@ -34,16 +31,6 @@ const Notification = () => {
           },
           style: {
             background: "grey",
-          },
-        },
-        inform: {
-          duration: 3000,
-          // theme: {
-          //   primary: "drey",
-          //   secondary: "black",
-          // },
-          style: {
-            background: "yellow",
           },
         },
       }}
