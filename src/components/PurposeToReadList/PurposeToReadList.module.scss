@@ -25,6 +25,8 @@
 .itemLineWrepper {
     width: 100%;
     margin: 0 auto;
+     position: absolute;
+    top: -20px;
 
     @media screen and (min-width: 768px) {
        
@@ -71,7 +73,7 @@
 }
 
 .bookTitle {
-    width: 154px;
+    width: 205px;
     max-height: 30px;
 
     margin-left: 14px;
@@ -81,35 +83,40 @@
 
     color: #242A37;
         
-        @media screen and (min-width: 480px) {}
+        @media screen and (min-width: 480px) {
+            width: 250px;
+        }
 
         @media screen and (min-width: 768px) {
-            width: 180px;
-            height: 34px;
+            width: 310px;
             margin-left: 17px;
-
             font-size: 14px;
         }
 
         @media screen and (min-width: 1280px) {
-            width: 240px;
+            width: 380px;
             max-height: 40px;
             line-height: 1.5;
+
         }
 }
 
 .bookInfo {
+    top: 30px;
+    left: 30px;
+    position: absolute;
     display: flex;
     flex-direction: column;
-    margin-left: 35px;
-    margin-top: 20px;
 
     @media screen and (min-width: 480px) {
         margin-left: 5px;
+        left: 15px;
+        top: 20px;
 
     }
     
     @media screen and (min-width: 768px) {
+        position: unset;
         display: flex;
         flex-direction: row;
         margin-left: 0;
@@ -130,25 +137,30 @@
     margin-top: 18px;
 }
 .bookMoreInfo {
-        margin-left: 30px;
-        margin-top: 20px;
-
+    position: absolute;
+    top: 30px;
+    left: 90px;
+    
     @media screen and (min-width: 480px) {
-        margin-left: 50px;
+        left: 100px;
+        top: 20px;
     }
 
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 768px) { 
         display: flex;
-        margin-left: 150px;
-        margin-top: 0;
+        // margin-left: 150px;
+
+        top: 0;
+        left: 355px;
     }
 
     @media screen and (min-width: 1280px) {
-            display: flex;
-            margin-left: 200px;
-            margin-top: 0;
-            }
-    }
+        left: 450px;
+            // display: flex;
+            // margin-left: 200px;
+            // margin-top: 0;
+         }
+}
 
 
 .bookMoreInfoAuthor {
@@ -161,8 +173,8 @@
 
 
     @media screen and (min-width: 768px) {
-    margin-right: 43px;
-    width: 140px;
+    margin-right: 25px;
+    width: 115px;
 
     font-size: 14px;
     line-height: 1.7;
@@ -170,7 +182,7 @@
     }
 
     @media screen and (min-width: 1280px) {
-    margin-right: 80px;
+    margin-right: 30px;
     width: 150px;
     }
 }
@@ -184,15 +196,15 @@
     color: #242A37;
 
     @media screen and (min-width: 768px) {
+        width: 40px;
+        margin-right: 30px;
         margin-top: 0;
         font-size: 14px;
         line-height: 1.7;
-        width: 40px;
-        margin-right: 50px;
     }
 
     @media screen and (min-width: 1280px) {
-        margin-right: 85px;
+        margin-right: 70px;
         line-height: 1.7;
     }
 }
@@ -213,11 +225,6 @@
     }
 }
 
-// .bookInfo {
-//     display: flex;
-
-// }
-
 .bookList {
     @media screen and (min-width:768px) {
         border-top: 2px solid #E0E5EB;;
@@ -233,31 +240,31 @@
 
 .title {
     @media screen and (min-width: 768px) {
-       width: 92px;
-       margin-right: 171px;
+        width: 100px;
+        margin-right: 250px;
     
     }
     
     @media screen and (min-width: 1280px) {
-        margin-right: 264px;
+        margin-right: 345px;
     }
 }
 
 .author {
     @media screen and (min-width: 768px) {
-       width: 45px;
-       margin-right: 146px;
+        width: 45px;
+        margin-right: 98px;
     }
 
     @media screen and (min-width: 1280px) {
-        margin-right: 185px;
+        margin-right: 135px;
     }
 }
 
 .year {
     @media screen and (min-width: 767px) {
         width: 23px;
-        margin-right: 55px
+        margin-right: 45px;
     }
 
     @media screen and (min-width: 1280px) {
@@ -270,11 +277,12 @@
     top: 0;
 
     @media screen and (min-width: 480px) {
-        right: -40px;
+        right: -7px;
+
     }
     
     @media screen and (min-width: 768px) {
-        right: 49px;
+        right: 20px;
     }
     
     @media screen and (min-width: 1280px) {
