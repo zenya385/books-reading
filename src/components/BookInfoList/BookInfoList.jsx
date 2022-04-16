@@ -20,13 +20,13 @@ const BookInfoList = ({ booksLibrary, colorIcon, review }) => {
 
   return (
     <div className={s.infoListConteiner}>
-      <h2
+      {/* <h2
         style={{
           color: theme === "light" ? "black" : "white",
         }}
       >
-        {titleFuture[lang]}
-      </h2>
+        Маю намір прочитати
+      </h2> */}
       <ul
         className={s.bookList}
         style={{

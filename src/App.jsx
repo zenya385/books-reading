@@ -36,15 +36,15 @@ export default function App() {
   useEffect(() => {
     const errArrAuth = authError && authError.split(" ");
     const Auth = errArrAuth && errArrAuth[errArrAuth.length - 1];
-    console.log("Auth", Auth);
+    // console.log("Auth", Auth);
 
     const errArrTr = trainError && trainError.split(" ");
     const Train = errArrTr && errArrTr[errArrTr.length - 1];
-    console.log("Train", Train);
+    // console.log("Train", Train);
 
     const errArrBook = booksError && booksError.split(" ");
     const Book = errArrBook && errArrBook[errArrBook.length - 1];
-    console.log("Book", Book);
+    // console.log("Book", Book);
 
     if (Number(Auth) === 401 || Number(Train) === 401 || Number(Book) === 401) {
       dispatch(logoutUser());

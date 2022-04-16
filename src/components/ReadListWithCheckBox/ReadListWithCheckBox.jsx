@@ -33,8 +33,8 @@ const ReadListWithCheckBox = ({ booksLibrary }) => {
         </MediaQuery>
         {booksLibrary.map(
           ({ _id, pagesFinished, pagesTotal, title, author, publishYear }) => (
-            <li className={s.item}>
-              <div key={_id} className={s.itemLineWrepper}>
+            <li className={s.item} key={_id}>
+              <div className={s.itemLineWrepper}>
                 <span className={s.itemLine}></span>
               </div>
               <div className={s.conteiner}>

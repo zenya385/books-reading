@@ -1,4 +1,3 @@
-export const getGoingToRead = (state) => state.books.goingToRead;
 export const getBooksGoingToReadState = (state) => state.books.goingToRead;
 export const getBooksFinishedReadingState = (state) =>
   state.books.finishedReading;
