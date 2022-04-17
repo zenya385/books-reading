@@ -15,8 +15,4 @@ export const langOptionsBookInfoList = {
     ua: "Стор.",
     en: "Pages",
   },
-  // titleFuture: {
-  //   ua: "Маю намір прочитати",
-  //   en: "Plan to read",
-  // },
 };
