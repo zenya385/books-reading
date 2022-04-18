@@ -35,14 +35,6 @@ const RegisterPage = () => {
     <div className={s.regForm}>
       <div className={s.LoginRegDiv}>
         <div className={s.regFormFormikGoogle}>
-          <div className={s.googleFormDiv}>
-            <a
-              className={s.googleForm}
-              href="https://bookread-backend.goit.global/auth/google"
-            >
-              Google
-            </a>
-          </div>
           <Formik
             initialValues={{
               name: "",
