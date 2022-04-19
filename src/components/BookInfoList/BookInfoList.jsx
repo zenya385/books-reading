@@ -10,13 +10,7 @@ import { getLang } from "../../redux/lang/langSelector";
 const BookInfoList = ({ booksLibrary, colorIcon, review }) => {
   const theme = useSelector(getTheme);
   const lang = useSelector(getLang);
-  const {
-    title,
-    author,
-    publishYear,
-    pagesTotal,
-    titleFuture,
-  } = langOptionsBookInfoList;
+  const { title, author, publishYear, pagesTotal } = langOptionsBookInfoList;
 
   return (
     <div className={s.infoListConteiner}>

@@ -53,3 +53,11 @@ h2{
 		background-color: var(--accent-primary-color);
 		}
 }
+.title {
+		width: 270px;
+		margin: 0 auto;
+
+		@media screen and (min-width: 768px) {
+			width: 100%;
+		}
+}

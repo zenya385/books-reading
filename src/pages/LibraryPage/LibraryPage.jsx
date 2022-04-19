@@ -87,17 +87,9 @@ const LibraryPage = () => {
             review={0}
           />
         )}
-        {/* {booksGoingToRead && Boolean(booksGoingToRead.length) && (
-          <h2
-            style={{
-              color: theme === "light" ? "black" : "white",
-            }}
-          >
-            {titleFuture[lang]} gjgh
-          </h2>
-        )} */}
         {booksGoingToRead && Boolean(booksGoingToRead.length) && (
           <h2
+            className={s.title}
             style={{
               color: theme === "light" ? "black" : "white",
             }}
@@ -117,14 +109,11 @@ const LibraryPage = () => {
           booksCurrentlyReading.length < 1 &&
           booksFinishedReading.length < 1 && <InstructionModal />}
 
-        {/* {(booksGoingToRead.length !== 0 ||
-          booksFinishedReading.length !== 0) && ( */}
         <div className={s.nextBtnWrapper}>
           <Link to="/training" className={s.nextBtn}>
             {btn[lang]}
           </Link>
         </div>
-        {/* )} */}
 
         <MediaQuery maxWidth={767}>
           <button onClick={onModalOpen} className={s.modalOpenBtn}>
